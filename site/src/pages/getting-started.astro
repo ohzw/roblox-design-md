@@ -1,7 +1,7 @@
 ---
 // Installation & usage guide. Two personas: (1) use a taste to build UI,
-// (2) create & share your own taste. Honest about current-state vs
-// future `npx skills` distribution.
+// (2) create & share your own taste. Skills install via `npx skills add`
+// (vercel-labs/skills — scans this repo's /skills directory).
 import Base from "../layouts/Base.astro";
 ---
 
@@ -23,10 +23,15 @@ import Base from "../layouts/Base.astro";
       <ol class="steps">
         <li>
           <h3>Install the skill</h3>
-          <p>Today, straight from the repository:</p>
-          <pre><code># copy the implementation skill into your project's agent skills
-cp -r roblox-design-md/skills/designmd-to-react-lua &lt;your-project&gt;/.claude/skills/</code></pre>
-          <p class="aside-line">Planned distribution <span class="soon">coming</span>: <code>npx skills add designmd-to-react-lua</code></p>
+          <p>One command, from your project root:</p>
+          <pre><code>npx skills add ohzw/roblox-design-md --skill designmd-to-react-lua</code></pre>
+          <p class="aside-line">
+            Works with Claude Code, Cursor, Codex and any
+            <a href="https://skills.sh">Agent Skills</a>-compatible agent.
+            Prefer manual? Copy <code>skills/designmd-to-react-lua/</code> from
+            the repo into your project's skills directory — the skill is
+            self-contained.
+          </p>
         </li>
 
         <li>
@@ -84,8 +89,7 @@ top-right currency pills, bottom-center primary action. react-lua.</code></pre>
       <ol class="steps">
         <li>
           <h3>Install the extraction skill</h3>
-          <pre><code>cp -r roblox-design-md/skills/screenshot-to-designmd &lt;your-project&gt;/.claude/skills/
-# planned: npx skills add screenshot-to-designmd</code></pre>
+          <pre><code>npx skills add ohzw/roblox-design-md --skill screenshot-to-designmd</code></pre>
         </li>
 
         <li>
@@ -103,8 +107,13 @@ top-right currency pills, bottom-center primary action. react-lua.</code></pre>
 
         <li>
           <h3>Validate</h3>
-          <pre><code>node tools/linter/lint.mjs DESIGN.roblox.md   # 0 errors required
-# planned: npx designmd-roblox-lint DESIGN.roblox.md</code></pre>
+          <pre><code># in the catalog repo:
+node tools/linter/lint.mjs DESIGN.roblox.md   # 0 errors required</code></pre>
+          <p class="aside-line">
+            Installed the skill standalone? It carries the full spec
+            (<code>references/spec/</code>) and validates against it — an npm
+            CLI (<code>npx designmd-roblox-lint</code>) is planned.
+          </p>
         </li>
 
         <li>

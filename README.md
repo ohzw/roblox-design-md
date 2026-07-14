@@ -26,16 +26,24 @@ coherent react-lua UI.
 | `site/` | Static catalog site (Phase 5) |
 | [`docs/phase0-report.md`](docs/phase0-report.md) | Research findings and the plan behind all of the above |
 
-## Quick start (today)
+## Quick start
 
 ```sh
-# lint an entry
+# install the skills into your own project (any Agent Skills-compatible agent)
+npx skills add ohzw/roblox-design-md --skill designmd-to-react-lua
+npx skills add ohzw/roblox-design-md --skill screenshot-to-designmd
+
+# lint an entry (in this repo)
 cd tools/linter && npm install
 node lint.mjs ../../design-md/cartoon-chunky/DESIGN.roblox.md
 
 # browse the catalog locally
 cd site && npm install && npm run dev   # http://localhost:4321
 ```
+
+The two skills under `skills/` are self-contained (each bundles the format
+spec at `references/spec/`, regenerated via `node tools/sync-skill-bundles.mjs`)
+— they are the only skills this repository publishes.
 
 The first taste, [`cartoon-chunky`](design-md/cartoon-chunky/DESIGN.roblox.md),
 is the handwritten golden sample that calibrates the extraction and

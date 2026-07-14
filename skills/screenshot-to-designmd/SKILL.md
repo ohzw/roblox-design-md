@@ -7,12 +7,15 @@ description: Generate a spec-conformant DESIGN.roblox.md (Roblox design-system d
 
 You turn screenshots of a Roblox game's UI into a `DESIGN.roblox.md` — a
 design-system document that lets any AI agent reproduce the game's *taste*.
-The format is defined by `SPEC.md` at the repository root (machine-readable:
-`spec/spec-config.yaml`); the handwritten exemplar is
-`design-md/cartoon-chunky/DESIGN.roblox.md`. Read both before extracting.
-The exemplar shows STRUCTURE and prose register only — every value in your
-output must come from your own inputs, never from the exemplar. (In blind
-calibration runs the exemplar is off-limits; skip it and rely on SPEC.md.)
+The format spec is BUNDLED at `references/spec/SPEC.md` (machine-readable:
+`references/spec/spec-config.yaml`) — read it before extracting. (When
+working inside the catalog repository itself, the repo-root `SPEC.md` /
+`spec/spec-config.yaml` are the canonical originals of those bundles, and
+the handwritten exemplar `design-md/cartoon-chunky/DESIGN.roblox.md` is
+available too. The exemplar shows STRUCTURE and prose register only — every
+value in your output must come from your own inputs, never from the
+exemplar. In blind calibration runs the exemplar is off-limits. Installed
+standalone via `npx skills`, neither exists: the bundle is sufficient.)
 
 ## Workflow
 
@@ -63,12 +66,17 @@ the `extraction` block. No token without provenance.
 
 ### 4. Validate before delivering
 
+In the catalog repository:
+
 ```sh
 node tools/linter/lint.mjs <output>.md
 ```
 
-Zero errors is mandatory; resolve warnings or state why they stay. Then
-self-review against the checklist at the end of
+Zero errors is mandatory; resolve warnings or state why they stay.
+Standalone installs have no linter — validate manually against the `lint:`
+rules in `references/spec/spec-config.yaml` (section order/duplicates,
+reference resolution, value grammars, banned vocabulary/fonts) and say the
+lint step was manual. Then self-review against the checklist at the end of
 `references/extraction-procedure.md` (evidence coverage, section order,
 banned vocabulary, banned fonts).
 

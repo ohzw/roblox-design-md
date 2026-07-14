@@ -5,11 +5,15 @@ description: Implement Roblox UI with react-lua from a DESIGN.roblox.md design-s
 
 # designmd-to-react-lua
 
-You turn a `DESIGN.roblox.md` (see `SPEC.md` at the repository root) plus a
-screen requirement ("build the HUD and shop") into working react-lua code.
-The canonical worked example is `preview-place/` (hand-built from
-`design-md/cartoon-chunky/DESIGN.roblox.md`) — read a component or two from it
-to absorb the register before generating.
+You turn a `DESIGN.roblox.md` (format spec bundled at
+`references/spec/SPEC.md`) plus a screen requirement ("build the HUD and
+shop") into working react-lua code. When working inside the catalog
+repository, the canonical worked example is `preview-place/` (hand-built
+from `design-md/cartoon-chunky/DESIGN.roblox.md`) — read a component or two
+from it to absorb the register before generating. Installed standalone via
+`npx skills`, the repo isn't present: the reference docs' inline patterns
+(button/window/motion anatomies, worked code shapes) are the register —
+they are sufficient on their own.
 
 ## Non-negotiables (read the references before writing any code)
 
@@ -32,10 +36,11 @@ to absorb the register before generating.
 
 ### 1. Read the DESIGN.roblox.md
 
-Lint it first (`node tools/linter/lint.mjs <file>` if the repo's linter is
-available); refuse to build from a file with errors. Then read the prose —
-the Overview, Do's and Don'ts, and Agent Prompt Guide constrain every choice
-the tokens don't.
+Lint it first (`node tools/linter/lint.mjs <file>` if the catalog repo's
+linter is available; standalone, sanity-check the file against
+`references/spec/spec-config.yaml` instead); refuse to build from a file
+with errors. Then read the prose — the Overview, Do's and Don'ts, and Agent
+Prompt Guide constrain every choice the tokens don't.
 
 ### 2. Generate in this order
 

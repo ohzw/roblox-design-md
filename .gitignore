@@ -21,3 +21,8 @@ Packages/
 # Machine-local Claude Code state (not project content)
 .claude/settings.local.json
 .claude/scheduled_tasks.lock
+
+# Locally-installed agent skills + project-skill symlinks (npx skills state,
+# not published content — the canonical skills live in /skills)
+.claude/skills/
+skills-lock.json
