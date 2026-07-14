@@ -7,7 +7,7 @@ description: >
   celebrate you, and nothing on screen is thin, gray, or quiet.
 taste: [cartoon-chunky, playful, juicy]
 genre: [simulator, pet-collector, clicker]
-inspiration: "Pet Simulator-class pet collectors (genre-wide; hand-written exemplar, not extracted from a single title)"
+inspiration: "Pet Simulator-class collectors (genre-wide exemplar, no single title)"
 
 colors:
   primary: "#5FCB3F"          # CTA green — buy, claim, hatch. The "yes" color.
@@ -428,4 +428,4 @@ Canned prompts:
 
 ---
 
-*Independent analysis of publicly observable UI conventions in the Pet Simulator-class pet-collector genre, provided as-is for inspiration. Not affiliated with or endorsed by its creators or any studio. Rights holders may request changes or removal at any time.*
+*Independent analysis of publicly observable UI conventions in the Pet Simulator-class pet-collector genre (this entry is a hand-written genre exemplar, not extracted from any single title), provided as-is for inspiration. Not affiliated with or endorsed by any game or studio. Rights holders may request changes or removal at any time.*
