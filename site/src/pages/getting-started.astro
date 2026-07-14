@@ -107,12 +107,12 @@ top-right currency pills, bottom-center primary action. react-lua.</code></pre>
 
         <li>
           <h3>Validate</h3>
-          <pre><code># in the catalog repo:
-node tools/linter/lint.mjs DESIGN.roblox.md   # 0 errors required</code></pre>
+          <pre><code># the linter ships inside the skill — no install:
+node &lt;skill-dir&gt;/references/linter/lint.bundle.mjs DESIGN.roblox.md   # 0 errors required</code></pre>
           <p class="aside-line">
-            Installed the skill standalone? It carries the full spec
-            (<code>references/spec/</code>) and validates against it — an npm
-            CLI (<code>npx designmd-roblox-lint</code>) is planned.
+            The skill is fully self-contained: it carries the format spec
+            (<code>references/spec/</code>) and this single-file linter, so
+            validation works offline with plain Node.
           </p>
         </li>
 

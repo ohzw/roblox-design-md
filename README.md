@@ -41,9 +41,11 @@ node lint.mjs ../../design-md/cartoon-chunky/DESIGN.roblox.md
 cd site && npm install && npm run dev   # http://localhost:4321
 ```
 
-The two skills under `skills/` are self-contained (each bundles the format
-spec at `references/spec/`, regenerated via `node tools/sync-skill-bundles.mjs`)
-— they are the only skills this repository publishes.
+The two skills under `skills/` are self-contained — each bundles the format
+spec (`references/spec/`) and a zero-dependency single-file linter
+(`references/linter/lint.bundle.mjs`), both regenerated via
+`node tools/sync-skill-bundles.mjs` after spec/linter edits. They are the
+only skills this repository publishes.
 
 The first taste, [`cartoon-chunky`](design-md/cartoon-chunky/DESIGN.roblox.md),
 is the handwritten golden sample that calibrates the extraction and

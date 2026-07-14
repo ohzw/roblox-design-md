@@ -36,11 +36,12 @@ they are sufficient on their own.
 
 ### 1. Read the DESIGN.roblox.md
 
-Lint it first (`node tools/linter/lint.mjs <file>` if the catalog repo's
-linter is available; standalone, sanity-check the file against
-`references/spec/spec-config.yaml` instead); refuse to build from a file
-with errors. Then read the prose — the Overview, Do's and Don'ts, and Agent
-Prompt Guide constrain every choice the tokens don't.
+Lint it first with the bundled linter
+(`node <this-skill-dir>/references/linter/lint.bundle.mjs <file>` —
+self-contained; in the catalog repo `node tools/linter/lint.mjs <file>` is
+the same linter from source); refuse to build from a file with errors. Then
+read the prose — the Overview, Do's and Don'ts, and Agent Prompt Guide
+constrain every choice the tokens don't.
 
 ### 2. Generate in this order
 

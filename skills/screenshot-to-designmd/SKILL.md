@@ -66,17 +66,16 @@ the `extraction` block. No token without provenance.
 
 ### 4. Validate before delivering
 
-In the catalog repository:
+Run the bundled linter (self-contained, no install needed — it ships with
+this skill and auto-resolves the bundled spec):
 
 ```sh
-node tools/linter/lint.mjs <output>.md
+node <this-skill-dir>/references/linter/lint.bundle.mjs <output>.md
 ```
 
-Zero errors is mandatory; resolve warnings or state why they stay.
-Standalone installs have no linter — validate manually against the `lint:`
-rules in `references/spec/spec-config.yaml` (section order/duplicates,
-reference resolution, value grammars, banned vocabulary/fonts) and say the
-lint step was manual. Then self-review against the checklist at the end of
+(In the catalog repository, `node tools/linter/lint.mjs <output>.md` is the
+same linter from source.) Zero errors is mandatory; resolve warnings or
+state why they stay. Then self-review against the checklist at the end of
 `references/extraction-procedure.md` (evidence coverage, section order,
 banned vocabulary, banned fonts).
 
