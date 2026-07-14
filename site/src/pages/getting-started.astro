@@ -3,6 +3,8 @@
 // (2) create & share your own taste. Skills install via `npx skills add`
 // (vercel-labs/skills — scans this repo's /skills directory).
 import Base from "../layouts/Base.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <Base title="Getting started — DESIGN.roblox.md">
@@ -50,7 +52,7 @@ ReactRoblox = "roblox/react-roblox@17.3.9"</code></pre>
         <li>
           <h3>Pick a taste</h3>
           <p>
-            Browse the <a href="/#catalog">catalog</a>, open a taste, hit
+            Browse the <a href={`${base}/#catalog`}>catalog</a>, open a taste, hit
             <strong>Copy DESIGN.roblox.md</strong> (or Download), and put the
             file in your project root.
           </p>
@@ -140,6 +142,10 @@ node &lt;skill-dir&gt;/references/linter/lint.bundle.mjs DESIGN.roblox.md   # 0 
         <li>
           Your own game's design system is yours — share it under its real
           name if you like.
+        </li>
+        <li>
+          Rights holders can request changes or removal anytime — see
+          <a href={`${base}/rights/`}>Rights &amp; takedown</a>.
         </li>
       </ul>
     </section>

@@ -11,6 +11,7 @@ description: >
   entrance motion (preset).
 taste: [frosted-baseplate, toy-arcade, chunky, wintry]
 genre: [minigame, arena-battler, casual-pvp]
+inspiration: "Knock Out!"
 
 colors:
   primary: "#34CC33"          # forward actions — redeem, reset, claim, spin
@@ -538,6 +539,4 @@ Canned prompts:
 
 ---
 
-*Independent analysis of publicly observable UI conventions in the casual
-arena-minigame genre, provided as-is for inspiration. Not affiliated with or
-endorsed by any game or studio.*
+*Independent analysis of publicly observable UI conventions in Knock Out!, provided as-is for inspiration. Not affiliated with or endorsed by its creators or any studio. Rights holders may request changes or removal at any time.*

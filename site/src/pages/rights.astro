@@ -1,0 +1,121 @@
+---
+// Rights & transparency: what the catalog publishes, what it never does, and
+// how rights holders get changes or removal. Linked from Base.astro's nav/
+// footer and from getting-started's "Rules of the road" section.
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Rights & takedown — DESIGN.roblox.md"
+  description="What the catalog publishes, what it never publishes, and how rights holders can request changes or removal."
+>
+  <div class="wrap guide">
+    <header class="guide-head">
+      <h1>Rights &amp; takedown</h1>
+      <p class="sub">
+        A short, honest account of what this catalog is, what it isn't, and
+        how to reach us if something needs to change.
+      </p>
+    </header>
+
+    <section class="path" aria-labelledby="publish-h">
+      <h2 id="publish-h">What the catalog publishes</h2>
+      <p class="path-lede">
+        Each entry is an independent analysis of publicly observable UI
+        conventions — colors, shapes, layout and motion habits — written up as
+        a plain-text design system, plus our own re-implementation of that
+        style rendered in Roblox Studio for proof.
+      </p>
+
+      <div class="note">
+        <p>
+          <strong>What we never publish:</strong> screenshots of other games,
+          their assets, logos, sounds, or decal IDs. Every preview image on
+          this site is a capture of our own re-implementation, not the
+          reference game.
+        </p>
+      </div>
+    </section>
+
+    <section class="path" aria-labelledby="transparency-h">
+      <h2 id="transparency-h">Transparency</h2>
+      <ul class="rules-list">
+        <li>
+          Every extracted entry names its reference game in an
+          <code>inspiration</code> field, right in the document's front matter.
+        </li>
+        <li>
+          Entries never claim to <em>be</em> that game's design system — they
+          describe a taste inspired by it.
+        </li>
+        <li>
+          <strong>Not affiliated with or endorsed by</strong> the named game or
+          studio applies everywhere on this site, without exception.
+        </li>
+      </ul>
+    </section>
+
+    <section class="path" aria-labelledby="takedown-h">
+      <h2 id="takedown-h">Takedown</h2>
+      <p class="path-lede">
+        If you're a rights holder and want an entry changed, re-attributed, or
+        removed, open an issue and tell us what to fix:
+      </p>
+      <a
+        class="btn btn-primary"
+        href="https://github.com/ohzw/roblox-design-md/issues"
+        >Open an issue on GitHub</a
+      >
+      <p class="aside-line" style="margin-top: var(--space-md);">
+        Requests are honored promptly — no forms, no friction.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .guide { padding-top: var(--space-2xl); max-width: 880px; padding-bottom: var(--space-3xl); }
+
+  .guide-head h1 { font-size: var(--text-2xl); letter-spacing: -0.02em; }
+  .sub {
+    margin-top: var(--space-md);
+    color: var(--muted);
+    font-size: var(--text-lg);
+    line-height: 1.55;
+    max-width: 56ch;
+  }
+
+  .path { margin-top: var(--space-section); }
+  .path h2 { font-size: var(--text-xl); letter-spacing: -0.015em; }
+  .path-lede { color: var(--muted); margin-top: var(--space-sm); max-width: 64ch; line-height: 1.65; }
+
+  .note {
+    margin-top: var(--space-xl);
+    background: var(--crimson-wash);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .note p { font-size: var(--text-sm); line-height: 1.7; max-width: 68ch; }
+
+  .rules-list {
+    margin-top: var(--space-lg);
+    padding-left: 1.25rem;
+    display: grid;
+    gap: var(--space-sm);
+    max-width: 68ch;
+    font-size: var(--text-base);
+    line-height: 1.65;
+  }
+  .rules-list li::marker { color: var(--crimson); }
+  .rules-list code {
+    background: var(--surface);
+    border-radius: 5px;
+    padding: 0.1em 0.4em;
+    font-size: 0.8125em;
+  }
+
+  .path .btn { margin-top: var(--space-lg); }
+  .aside-line { color: var(--muted); font-size: var(--text-sm); }
+</style>

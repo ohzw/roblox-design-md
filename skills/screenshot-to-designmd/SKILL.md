@@ -60,9 +60,11 @@ the `extraction` block. No token without provenance.
   (`recommended_token_names`) whenever they fit; invent new names only for
   concepts the recommendations don't cover. This keeps extraction
   near-deterministic across runs.
-- Naming and rights (SPEC §7): taste-named `name`/slug, never the source
-  game's name; no third-party assets or asset IDs; end with the
-  independent-analysis disclaimer.
+- Naming and rights (SPEC §7, transparency policy): taste-named `name`/slug
+  (never the source game's name), but credit the reference game openly in
+  the `inspiration` front-matter field; no third-party assets or asset IDs;
+  end with the independent-analysis disclaimer naming the reference game and
+  noting that rights holders may request changes or removal.
 
 ### 4. Validate before delivering
 

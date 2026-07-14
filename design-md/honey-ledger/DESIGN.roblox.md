@@ -9,6 +9,7 @@ description: >
   work — windows snap in and out with no ceremony.
 taste: [legacy-flat, dense, utilitarian, retro-simulator]
 genre: [simulator, resource-grinder]
+inspiration: "Bee Swarm Simulator"
 
 colors:
   primary: "#1B772A"          # CTA green — craft/confirm/redeem; same hex on 3 screens
@@ -585,5 +586,4 @@ Canned prompts:
 
 ---
 
-*Independent analysis of publicly observable UI conventions, provided as-is
-for inspiration. Not affiliated with or endorsed by any game or studio.*
+*Independent analysis of publicly observable UI conventions in Bee Swarm Simulator, provided as-is for inspiration. Not affiliated with or endorsed by its creators or any studio. Rights holders may request changes or removal at any time.*

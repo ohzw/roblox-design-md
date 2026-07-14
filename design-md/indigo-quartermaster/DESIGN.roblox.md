@@ -10,6 +10,7 @@ description: >
   with no strokes, no bevels, and no drop shadows.
 taste: [flat-utility, one-hue, competitive-casual]
 genre: [pvp, minigame, casual-competitive]
+inspiration: "BedWars"
 
 extraction:
   inputs:
@@ -615,6 +616,4 @@ Canned prompts:
 
 ---
 
-*Independent analysis of publicly observable UI conventions in the
-casual-PvP minigame genre, provided as-is for inspiration. Not affiliated
-with or endorsed by any game or studio.*
+*Independent analysis of publicly observable UI conventions in BedWars, provided as-is for inspiration. Not affiliated with or endorsed by its creators or any studio. Rights holders may request changes or removal at any time.*

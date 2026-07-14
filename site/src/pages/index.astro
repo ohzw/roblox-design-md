@@ -10,8 +10,9 @@ const genres = [...new Set(entries.flatMap((e) => e.genre))].sort();
 const featured = [...entries].sort((a, b) => b.previews.length - a.previews.length)[0];
 const rest = entries.filter((e) => e.slug !== featured.slug);
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const hudOf = (e) => (e.previews.includes("hud.png") ? "hud.png" : e.previews[0]);
-const thumbOf = (e) => (e.previews.length > 0 ? `/previews/${e.slug}/${hudOf(e)}` : null);
+const thumbOf = (e) => (e.previews.length > 0 ? `${base}/previews/${e.slug}/${hudOf(e)}` : null);
 
 // Hero belt: seven captures drifting past on a slow conveyor,
 // duplicated once for a seamless loop.
@@ -26,6 +27,7 @@ const arc = [
   file: hudOf(e),
 }));
 const CENTER = 3;
+const heroBgUrl = `url("${base}/hero/hero-bg.webp")`;
 ---
 
 <Base title="DESIGN.roblox.md — game-UI tastes your AI agent can read">
@@ -40,7 +42,7 @@ const CENTER = 3;
       </p>
       <div class="hero-actions">
         <a class="btn hero-btn" href="#catalog">Browse the tastes</a>
-        <a class="btn btn-inverse" href="/getting-started/">How it works</a>
+        <a class="btn btn-inverse" href={`${base}/getting-started/`}>How it works</a>
       </div>
     </div>
 
@@ -52,7 +54,7 @@ const CENTER = 3;
             {arc.map((f, i) => (
               <figure class="frame">
                 <img
-                  src={`/previews/${f.slug}/${f.file}`}
+                  src={`${base}/previews/${f.slug}/${f.file}`}
                   alt={dup === 0 ? `${f.name} HUD, captured in Roblox Studio` : ""}
                   width="320"
                   height="180"
@@ -100,7 +102,7 @@ const CENTER = 3;
 
     <a
       class="card feature"
-      href={`/design-md/${featured.slug}/`}
+      href={`${base}/design-md/${featured.slug}/`}
       data-taste={featured.taste.join(",")}
       data-genre={featured.genre.join(",")}
     >
@@ -137,7 +139,7 @@ const CENTER = 3;
       {rest.map((e) => (
         <a
           class="card"
-          href={`/design-md/${e.slug}/`}
+          href={`${base}/design-md/${e.slug}/`}
           data-taste={e.taste.join(",")}
           data-genre={e.genre.join(",")}
         >
@@ -187,7 +189,7 @@ const CENTER = 3;
   </section>
 </Base>
 
-<style>
+<style define:vars={{ heroBgUrl }}>
   /* --- hero: an inset, rounded crimson canvas with atmospheric light --- */
   .hero {
     position: relative;
@@ -213,7 +215,7 @@ const CENTER = 3;
     position: absolute;
     inset: auto 0 0 0;
     height: min(58%, 34rem);
-    background: url("/hero/hero-bg.webp") bottom center / cover no-repeat;
+    background: var(--heroBgUrl) bottom center / cover no-repeat;
     -webkit-mask-image: linear-gradient(180deg, transparent, black 58%);
     mask-image: linear-gradient(180deg, transparent, black 58%);
     pointer-events: none;

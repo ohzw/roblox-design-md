@@ -8,6 +8,7 @@ description: >
   text is white with a heavy near-black outline.
 taste: [studded-toybox, toy-brick, loud, juicy]
 genre: [survival, collector, casual]
+inspiration: "Escape Tsunami for Brainrot"
 
 colors:
   primary: "#0BD520"          # CTA green — Enter/Spin/Equip family (mid of its gradient)
@@ -496,5 +497,4 @@ Canned prompts:
 
 ---
 
-*Independent analysis of publicly observable UI conventions, provided as-is
-for inspiration. Not affiliated with or endorsed by any game or studio.*
+*Independent analysis of publicly observable UI conventions in Escape Tsunami for Brainrot, provided as-is for inspiration. Not affiliated with or endorsed by its creators or any studio. Rights holders may request changes or removal at any time.*

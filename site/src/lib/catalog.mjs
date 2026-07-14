@@ -32,6 +32,7 @@ export function loadCatalog() {
       description: (fm.description ?? "").trim(),
       taste: fm.taste ?? [],
       genre: fm.genre ?? [],
+      inspiration: fm.inspiration ?? null,
       colors: fm.colors ?? {},
       typography: fm.typography ?? {},
       componentCount: Object.keys(fm.components ?? {}).length,

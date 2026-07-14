@@ -61,6 +61,7 @@ frontmatter:
     - description
     - taste          # list of taste tags, e.g. [cartoon-chunky, playful]
     - genre          # list of genre tags, e.g. [simulator, pet-collector]
+    - inspiration    # transparency: the reference game(s) analyzed, named openly (see rights rules)
     - extraction     # provenance: inputs analyzed + per-section confidence
     - colors
     - typography

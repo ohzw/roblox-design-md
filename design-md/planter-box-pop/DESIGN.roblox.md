@@ -8,6 +8,7 @@ description: >
   overshoot-pop cartoon motion.
 taste: [garden-chunky, blocky, playful]
 genre: [simulator, farming]
+inspiration: "Grow a Garden"
 
 colors:
   primary: "#F7C11E"          # gold action plates — RESTOCK, Claim, selected tab
@@ -510,6 +511,4 @@ Canned prompts:
 
 ---
 
-*Independent analysis of publicly observable UI conventions in the farming
-simulator genre, provided as-is for inspiration. Not affiliated with or
-endorsed by any game or studio.*
+*Independent analysis of publicly observable UI conventions in Grow a Garden, provided as-is for inspiration. Not affiliated with or endorsed by its creators or any studio. Rights holders may request changes or removal at any time.*

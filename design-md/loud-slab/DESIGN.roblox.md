@@ -8,6 +8,7 @@ description: >
   and motion runs chunky overshoot defaults.
 taste: [flat-slab, loud, meme-maximal, dense]
 genre: [collector, pvp-simulator, meme]
+inspiration: "Steal a Brainrot"
 
 colors:
   primary: "#519E56"        # buy/price-pill and toggle-on green — the repeated "yes" action
@@ -452,5 +453,4 @@ Canned prompts:
 
 ---
 
-Independent analysis of publicly observable UI conventions, provided as-is
-for inspiration. Not affiliated with or endorsed by any game or studio.
+*Independent analysis of publicly observable UI conventions in Steal a Brainrot, provided as-is for inspiration. Not affiliated with or endorsed by its creators or any studio. Rights holders may request changes or removal at any time.*

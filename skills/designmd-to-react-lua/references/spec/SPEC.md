@@ -316,18 +316,26 @@ errors `duplicate-section`, `broken-ref`, `invalid-value`; warnings
 A file **conforms** when it has zero errors. Extracted files additionally
 should have zero warnings before catalog inclusion.
 
-## 7. Naming and rights rules
+## 7. Naming and rights rules (transparency policy)
 
 - Entries describe **tastes, not games**. `name` and the catalog slug are
   taste-descriptive (`cartoon-chunky`), never a third-party game or studio
-  name.
-- Prose may say "inspired by popular pet-collecting simulators" but must not
-  claim to *be* any game's design system, and files must not embed or link
-  third-party assets (images, logos, sounds, decal IDs). Tokens describe
-  colors, shapes, and conventions — publicly observable style facts.
-- Every published entry carries: "Independent analysis of publicly observable
-  UI conventions, provided as-is for inspiration. Not affiliated with or
-  endorsed by any game or studio."
+  name — the taste is the reusable thing, not the game.
+- **Reference games are credited openly** in the optional `inspiration`
+  front-matter field (e.g. `inspiration: "DOORS (Horror, LSPLASH)"`).
+  Truthfully naming what was analyzed is the honest form of attribution;
+  hiding it implies something to hide. An entry must still never claim to
+  *be* any game's design system.
+- Files must not embed or link third-party assets (images, logos, sounds,
+  decal IDs from other games). Tokens describe colors, shapes, and
+  conventions — publicly observable style facts. Input screenshots are
+  working material only and are never redistributed.
+- Every published entry carries: "Independent analysis of publicly
+  observable UI conventions, provided as-is for inspiration. Not affiliated
+  with or endorsed by any game or studio." — naming the reference game where
+  one exists.
+- Takedown: rights holders can request changes or removal at any time via
+  the repository's issue tracker; requests are honored promptly.
 
 ## 8. Versioning
 

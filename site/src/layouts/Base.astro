@@ -12,8 +12,12 @@ const {
 } = Astro.props;
 
 const path = Astro.url.pathname;
+// import.meta.env.BASE_URL may or may not carry a trailing slash depending on
+// how Astro normalizes the configured `base` — strip it once here so every
+// consumer below can just do `${base}/segment/`.
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const isCurrent = (href) =>
-  href === "/" ? path === "/" : path.startsWith(href) ? "page" : undefined;
+  href === `${base}/` ? path === `${base}/` : path.startsWith(href) ? "page" : undefined;
 
 const favicon =
   "data:image/svg+xml," +
@@ -36,10 +40,11 @@ const favicon =
 
     <header class={`site-header tone-${headerTone}`}>
       <div class="wrap bar">
-        <a class="wordmark" href="/">DESIGN<span class="rbx">.roblox</span>.md</a>
+        <a class="wordmark" href={`${base}/`}>DESIGN<span class="rbx">.roblox</span>.md</a>
         <nav class="site-nav" aria-label="Site">
-          <a href="/" aria-current={isCurrent("/")}>Catalog</a>
-          <a href="/getting-started/" aria-current={isCurrent("/getting-started/")}>Getting started</a>
+          <a href={`${base}/`} aria-current={isCurrent(`${base}/`)}>Catalog</a>
+          <a href={`${base}/getting-started/`} aria-current={isCurrent(`${base}/getting-started/`)}>Getting started</a>
+          <a href={`${base}/rights/`} aria-current={isCurrent(`${base}/rights/`)}>Rights</a>
         </nav>
       </div>
     </header>
@@ -50,10 +55,11 @@ const favicon =
 
     <footer class="site-footer">
       <div class="wrap inner">
-        <a class="wordmark" href="/">DESIGN<span class="rbx">.roblox</span>.md</a>
+        <a class="wordmark" href={`${base}/`}>DESIGN<span class="rbx">.roblox</span>.md</a>
         <nav aria-label="Footer">
-          <a href="/">Catalog</a>
-          <a href="/getting-started/">Getting started</a>
+          <a href={`${base}/`}>Catalog</a>
+          <a href={`${base}/getting-started/`}>Getting started</a>
+          <a href={`${base}/rights/`}>Rights &amp; takedown</a>
         </nav>
         <p class="legal">
           Every entry is an independent analysis of publicly observable UI

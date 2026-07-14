@@ -9,6 +9,7 @@ description: >
   carry all the emotional color. Flat, quiet, and warm in the dark.
 taste: [candlelit-parlor, cozy-dark, flat-translucent, thin-stroke]
 genre: [horror, escape-survival, co-op]
+inspiration: "DOORS"
 
 colors:
   primary: "#FFDEBC"          # candle-cream — the single brand ink AND the main CTA fill
@@ -559,6 +560,4 @@ Canned prompts:
 
 ---
 
-*Independent analysis of publicly observable UI conventions in the co-op
-horror escape genre, provided as-is for inspiration. Not affiliated with or
-endorsed by any game or studio.*
+*Independent analysis of publicly observable UI conventions in DOORS, provided as-is for inspiration. Not affiliated with or endorsed by its creators or any studio. Rights holders may request changes or removal at any time.*
