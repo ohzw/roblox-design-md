@@ -17,3 +17,7 @@ Packages/
 # OS / editor cruft
 .DS_Store
 *.log
+
+# Machine-local Claude Code state (not project content)
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
