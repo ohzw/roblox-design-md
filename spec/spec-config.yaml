@@ -1,0 +1,255 @@
+# spec-config.yaml — single source of truth for the DESIGN.roblox.md format.
+#
+# Why this file exists: the upstream Google DESIGN.md project drives its spec
+# document AND its linter from one YAML file (packages/cli/src/linter/spec-config.yaml).
+# We follow the same structure so that a spec revision is a one-file change that
+# propagates to the linter and to SPEC.md consistently, and so extraction-skill
+# output can be validated deterministically (quality bar: near-deterministic output).
+
+format:
+  name: DESIGN.roblox.md
+  version: alpha
+  # Upstream compatibility: sections shared with the Stitch DESIGN.md spec keep
+  # upstream's canonical names and relative order, so generic DESIGN.md tooling
+  # degrades gracefully on our files (unknown sections must be preserved, per
+  # upstream rule). Roblox-specific sections are marked `extension: true`.
+  upstream: https://github.com/google-labs-code/design.md
+
+# ---------------------------------------------------------------------------
+# Sections: may be omitted, but those present MUST appear in this order.
+# A duplicate canonical section is an error (reject the file). Unknown sections
+# are preserved and never an error (upstream extensibility rule).
+# ---------------------------------------------------------------------------
+sections:
+  - canonical: Overview
+    aliases: ["Brand & Style"]
+    purpose: Taste in prose — atmosphere, references, target genre, what makes it feel right.
+  - canonical: Colors
+    purpose: Palette and semantic roles (primary CTA, danger, currency colors...).
+  - canonical: Typography
+    purpose: Font families (FontFace-first), hierarchy, text stroke conventions.
+  - canonical: Layout
+    aliases: ["Layout & Spacing"]
+    purpose: Spacing scale, layout delegation rules, safe areas, tap targets.
+  - canonical: "Elevation & Depth"
+    aliases: [Elevation, "Stroke & Shadow"]
+    purpose: UIStroke weights, shadow treatment, background dim, layering (ZIndex/DisplayOrder).
+  - canonical: Shapes
+    purpose: Corner radius scale (UICorner) and silhouette conventions.
+  - canonical: Motion
+    extension: true
+    purpose: Tween duration scale, easing families, entrance/exit and feedback patterns.
+  - canonical: Components
+    purpose: Roblox game UI staples with states, referencing tokens.
+  - canonical: Screen Patterns
+    extension: true
+    purpose: HUD/shop/inventory/popup composition conventions and information density.
+  - canonical: "Do's and Don'ts"
+    purpose: Anti-patterns and guardrails; negative constraints are load-bearing.
+  - canonical: Agent Prompt Guide
+    extension: true
+    purpose: Quick reference and canned prompts for implementing agents.
+
+# ---------------------------------------------------------------------------
+# Front matter: allowed top-level keys. Custom keys are permitted (upstream
+# philosophy: "any key, any section") but typo-likely keys trigger a warning.
+# ---------------------------------------------------------------------------
+frontmatter:
+  keys:
+    - version        # format version string, e.g. "alpha"
+    - name           # taste name; MUST NOT be a third-party game/brand name (see rights rules)
+    - description
+    - taste          # list of taste tags, e.g. [cartoon-chunky, playful]
+    - genre          # list of genre tags, e.g. [simulator, pet-collector]
+    - extraction     # provenance: inputs analyzed + per-section confidence
+    - colors
+    - typography
+    - spacing
+    - rounded
+    - strokes
+    - motion
+    - components
+  typo_suspects:     # near-misses that should warn (unknown-key rule)
+    colours: colors
+    color: colors
+    fonts: typography
+    spacings: spacing
+    corner: rounded
+    stroke: strokes
+    motions: motion
+    component: components
+
+# ---------------------------------------------------------------------------
+# Value grammars (Roblox-native; CSS vocabulary is banned in token values).
+# ---------------------------------------------------------------------------
+values:
+  color:
+    # "#RRGGBB" (recommended) or "#RRGGBBAA". Alpha maps to (1 - Transparency).
+    # Rationale: hex round-trips losslessly to Color3.fromHex.
+    pattern: "^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$"
+  dimension:
+    # "<number>px" = pixel offset at the 1920x1080 reference resolution.
+    # "full" (rounded only) = pill shape, UDim.new(1, 0).
+    # Scale-based sizing is a layout concern expressed in prose/components,
+    # not in primitive dimension tokens.
+    units: [px]
+    keywords: [full]
+  duration:
+    # "<number>s" seconds, matching TweenInfo time.
+    units: [s]
+  reference:
+    # {path.to.token}, e.g. {colors.primary}, {motion.durations.fast}.
+    # Must resolve within this file's front matter. Composite references
+    # (e.g. {typography.label-md}) are allowed only inside components.
+    pattern: "\\{[a-zA-Z0-9_.-]+\\}"
+
+typography_entry:
+  fields:
+    fontFamily:  "Roblox font family name usable with Font.fromName(), e.g. FredokaOne, Montserrat, BuilderSans"
+    fontWeight:  "Enum.FontWeight name (Regular|Medium|SemiBold|Bold|ExtraBold|Heavy) or 100-900"
+    fontStyle:   "Normal | Italic (optional, default Normal)"
+    textSize:    "Dimension px at reference resolution; implementations may switch to TextScaled per component rules"
+    lineHeight:  "unitless multiplier (optional)"
+    uppercase:   "boolean (optional)"
+  banned_families:
+    # Removed from Enum.Font and silently remapped by the engine; never emit.
+    - Gotham
+    - GothamMedium
+    - GothamBold
+    - GothamBlack
+    - Arial
+    - ArialBold
+
+stroke_entry:
+  fields:
+    thickness: "Dimension px"
+    color:     "color or reference"
+    mode:      "Border | Contextual (ApplyStrokeMode; Contextual for text strokes)"
+
+motion_schema:
+  durations: "map<name, duration> — recommended names: instant, fast, normal, slow"
+  easings:   "map<name, {style: Enum.EasingStyle name, direction: Enum.EasingDirection name}>"
+
+components:
+  # Allowed component properties (superset of upstream's 8, extended with
+  # Roblox-native concerns). Unknown properties: accept with warning.
+  properties:
+    - backgroundColor
+    - textColor
+    - typography      # composite reference into typography.*
+    - rounded         # reference into rounded.* or dimension
+    - stroke          # reference into strokes.*
+    - textStroke      # reference into strokes.* (Contextual)
+    - padding         # dimension (maps to UIPadding)
+    - size            # prose-ish UDim2 intent, e.g. "scale 0.28 x aspect 4.5:1"
+    - height
+    - width
+    - aspectRatio     # number, maps to UIAspectRatioConstraint
+    - gradient        # "vertical(#top, #bottom)" or refs; maps to UIGradient
+    - shadow          # "none" | "drop(<x>px <y>px <color>)" | "bevel(<h>px <color>)"
+    - transparency    # 0..1
+  state_suffixes:
+    # Variants are sibling keys (upstream convention), Roblox-appropriate states:
+    - pressed
+    - hover      # desktop only; never required for correctness
+    - disabled
+    - selected
+  recommended_names:
+    - button-primary
+    - button-secondary
+    - button-icon
+    - button-close
+    - button-buy        # price pill / purchase button on cards and offers
+    - currency-bar
+    - side-button
+    - window
+    - window-header
+    - dim-overlay
+    - card-grid
+    - progress-bar
+    - badge-notification
+    - badge-slot        # hotbar keybind / slot-number tag
+    - banner-offer      # promotional strip inside shop windows
+    - tooltip
+
+recommended_token_names:
+  colors:
+    - primary          # main CTA
+    - secondary
+    - danger
+    - surface          # window/panel background
+    - surface-deep     # inset wells inside panels
+    - surface-dark     # dark chrome fills (currency pills, tooltips)
+    - on-surface       # default text on surface
+    - currency-soft    # soft currency (coins/gold)
+    - currency-hard    # hard/premium currency (gems/robux-adjacent)
+    - accent-rare      # rarity/highlight accent; extra tiers use accent-<tier> (accent-epic...)
+    - outline          # the taste's dominant stroke color
+    - dim              # background dim behind popups
+  typography:
+    - display          # big rewards / titles
+    - heading          # window headers
+    - body
+    - label            # buttons
+    - caption          # badges, counters
+    # Multi-family tastes may add extra tiers; prefer these names for
+    # determinism across extraction runs:
+    - eyebrow          # small section-label caps (KNOBS, REVIVES...)
+    - cta              # dedicated lobby call-to-action voice when it differs from label
+  rounded: [none, sm, md, lg, xl, full]
+  spacing: [xs, sm, md, lg, xl]
+
+# Banned CSS vocabulary — the css-vocabulary lint rule greps body prose for
+# these (word-boundary, case-insensitive). Keep aligned with SPEC.md §5.1.
+banned_vocabulary:
+  - margin
+  - margins
+  - border-radius
+  - box-shadow
+  - z-index
+  - breakpoint
+  - breakpoints
+  - media query
+  - media queries
+  - linear-gradient
+  - font-family
+  - hover state   # allowed concept is "-hover variant"; CSS phrasing banned
+
+# ---------------------------------------------------------------------------
+# Lint rules (v1 — implemented in tools/linter)
+# ---------------------------------------------------------------------------
+lint:
+  rules:
+    - id: duplicate-section
+      severity: error
+      desc: The same canonical section (or its alias) appears more than once.
+    - id: broken-ref
+      severity: error
+      desc: A {path.to.token} reference (front matter or body) does not resolve.
+    - id: invalid-value
+      severity: error
+      desc: A token value does not match its grammar (color pattern, dimension unit, banned font family).
+    - id: section-order
+      severity: warning
+      desc: Known sections present but out of canonical order.
+    - id: unknown-key
+      severity: warning
+      desc: Top-level front matter key looks like a typo of a known key.
+    - id: unknown-component-property
+      severity: warning
+      desc: Component property outside the allowed list (accepted, but flagged).
+    - id: missing-primary
+      severity: warning
+      desc: colors defined but no `primary` token.
+    - id: css-vocabulary
+      severity: warning
+      desc: Body prose uses banned CSS vocabulary (margin, border-radius, box-shadow, z-index, breakpoint, media query...).
+    - id: missing-extraction-confidence
+      severity: info
+      desc: extraction block absent or lacks per-section confidence (fine for handwritten files).
+    - id: token-summary
+      severity: info
+      desc: Reports token counts per group.
+
+reference_resolution: 1920x1080
+min_tap_target: 44px   # logical px; no official Roblox number exists — adopted from Apple HIG, see SPEC.md

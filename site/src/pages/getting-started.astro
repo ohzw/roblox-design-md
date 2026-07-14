@@ -1,0 +1,135 @@
+---
+// Installation & usage guide. Two personas: (1) use a taste to build UI,
+// (2) create & share your own taste. Kept honest about current-state vs
+// future `npx skills` distribution.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Getting Started — DESIGN.roblox.md</title>
+    <style>
+      :root {
+        --bg: #14151d; --panel: #1e2029; --line: #32354a;
+        --text: #e8e6df; --muted: #9a97a8; --accent: #ffd84d;
+      }
+      * { box-sizing: border-box; margin: 0; }
+      body { background: var(--bg); color: var(--text); font: 16px/1.7 system-ui, sans-serif; }
+      .wrap { max-width: 880px; margin: 0 auto; padding: 40px 24px; }
+      a.back { color: var(--muted); text-decoration: none; font-size: 14px; }
+      h1 { font-size: 30px; margin: 12px 0 6px; }
+      .sub { color: var(--muted); margin-bottom: 30px; }
+      h2 { font-size: 22px; margin: 40px 0 12px; }
+      h3 { font-size: 16px; margin: 22px 0 8px; color: var(--accent); }
+      p, li { color: #cfccc2; font-size: 15px; }
+      ol, ul { padding-left: 22px; margin: 8px 0; }
+      .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px 26px; margin: 14px 0; }
+      pre {
+        background: #0d0e13; border: 1px solid var(--line); border-radius: 10px;
+        padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.5; margin: 10px 0;
+      }
+      code { font-family: ui-monospace, monospace; }
+      p code, li code { background: #0d0e13; border-radius: 5px; padding: 1px 6px; font-size: 13px; }
+      .soon { font-size: 11px; background: #4a3a2a; color: #e0c08a; border-radius: 999px; padding: 2px 10px; vertical-align: middle; margin-left: 6px; }
+      .note { border-left: 3px solid var(--accent); padding-left: 14px; color: var(--muted); font-size: 14px; margin: 12px 0; }
+      footer { margin-top: 48px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); padding-top: 16px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="back" href="/">← catalog</a>
+      <h1>Getting Started</h1>
+      <p class="sub">
+        DESIGN.roblox.md is a plain-text design system your AI agent reads to
+        build coherent Roblox UI — no design knowledge required. You install a
+        <b>skill</b> once, pick a <b>taste</b> from the catalog, and prompt.
+      </p>
+
+      <h2>1. Build UI with a catalog taste</h2>
+      <div class="card">
+        <h3>Install the skill</h3>
+        <p>Today (from the repository):</p>
+        <pre><code># copy the implementation skill into your project's agent skills
+cp -r roblox-design-md/skills/designmd-to-react-lua &lt;your-project&gt;/.claude/skills/</code></pre>
+        <p>Planned distribution <span class="soon">coming</span>:</p>
+        <pre><code>npx skills add designmd-to-react-lua</code></pre>
+
+        <h3>Add react-lua to your Roblox project</h3>
+        <pre><code># wally.toml
+[dependencies]
+React = "jsdotlua/react@17.2.1"
+ReactRoblox = "jsdotlua/react-roblox@17.2.1"</code></pre>
+        <p>then <code>wally install</code>. (Rojo/Argon project assumed; the skill knows the rest.)</p>
+
+        <h3>Pick a taste</h3>
+        <ol>
+          <li>Browse the <a href="/" style="color:var(--accent)">catalog</a> and open a taste.</li>
+          <li>Hit <b>Copy DESIGN.roblox.md</b> (or Download) and put it in your project root.</li>
+        </ol>
+
+        <h3>Prompt your agent</h3>
+        <pre><code>Using DESIGN.roblox.md, build the HUD: left side-button column,
+top-right currency pills, bottom-center primary action. react-lua.</code></pre>
+        <p>
+          The skill enforces the load-bearing conventions for you: Scale-first
+          layout, UIListLayout delegation, safe areas, ZIndex rules, exact
+          react-lua syntax, motion tokens.
+        </p>
+      </div>
+
+      <div class="note">
+        Optional but recommended: Roblox Studio's built-in MCP server lets the
+        agent verify its own work (play → screenshot → fix). The skill uses it
+        automatically when connected. UI-Labs stories are generated for every
+        component so you can eyeball everything in Studio.
+      </div>
+
+      <h2>2. Create &amp; share your own taste</h2>
+      <div class="card">
+        <p>
+          The catalog is meant to be community-built: extract a taste from
+          screenshots, verify it, share it.
+        </p>
+        <h3>Install the extraction skill</h3>
+        <pre><code>cp -r roblox-design-md/skills/screenshot-to-designmd &lt;your-project&gt;/.claude/skills/
+# planned: npx skills add screenshot-to-designmd</code></pre>
+        <h3>Feed it screenshots</h3>
+        <ul>
+          <li>Required: HUD full view / a window (shop, settings...) / a screen with 2+ buttons</li>
+          <li>Recommended: inventory grid, popup with dim, reward moment, progress bar</li>
+          <li>Optional: a 3–10s video of open/close/press for motion</li>
+        </ul>
+        <p>
+          The skill tells you exactly what's missing and marks gaps honestly
+          (<code>confidence: low</code>) instead of inventing values.
+        </p>
+        <h3>Validate</h3>
+        <pre><code>node tools/linter/lint.mjs DESIGN.roblox.md   # 0 errors required
+# planned: npx designmd-roblox-lint DESIGN.roblox.md</code></pre>
+        <h3>Share</h3>
+        <p>
+          Entries need a real-device preview (screenshots of the generated UI
+          running in Studio) before they're published — the catalog marks
+          entries without one as <i>preview pending</i>. Submission flow
+          (PR / request form) opens with the public launch.
+        </p>
+      </div>
+
+      <h2>Rules of the road</h2>
+      <div class="card">
+        <ul>
+          <li>Tastes describe publicly observable style conventions — colors, shapes, motion habits. Never copy assets, logos, or names from other games.</li>
+          <li>Name entries by taste (<code>cartoon-chunky</code>), not by game.</li>
+          <li>Your own game's design system is yours — share it under its real name if you like.</li>
+        </ul>
+      </div>
+
+      <footer>
+        Independent analyses of publicly observable UI conventions, provided
+        as-is for inspiration. Not affiliated with or endorsed by any game or
+        studio.
+      </footer>
+    </div>
+  </body>
+</html>

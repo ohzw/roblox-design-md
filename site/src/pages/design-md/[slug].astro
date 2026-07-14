@@ -1,0 +1,136 @@
+---
+import { loadCatalog } from "../../lib/catalog.mjs";
+import { marked } from "marked";
+
+export function getStaticPaths() {
+  return loadCatalog().map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const bodyHtml = marked.parse(entry.body);
+const rawUrl = `/raw/${entry.slug}.md`;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{entry.name} — DESIGN.roblox.md</title>
+    <style>
+      :root {
+        --bg: #14151d; --panel: #1e2029; --line: #32354a;
+        --text: #e8e6df; --muted: #9a97a8; --accent: #ffd84d;
+      }
+      * { box-sizing: border-box; margin: 0; }
+      body { background: var(--bg); color: var(--text); font: 16px/1.7 system-ui, sans-serif; }
+      .wrap { max-width: 980px; margin: 0 auto; padding: 40px 24px; }
+      a.back { color: var(--muted); text-decoration: none; font-size: 14px; }
+      h1 { font-size: 30px; margin: 12px 0 4px; }
+      .desc { color: var(--muted); max-width: 640px; }
+      .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 22px; }
+      .tags b { font-weight: 500; font-size: 12px; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 2px 10px; }
+      .actions { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+      .btn {
+        border: 1px solid var(--line); background: var(--panel); color: var(--text);
+        padding: 10px 18px; border-radius: 10px; font-size: 14px; cursor: pointer; text-decoration: none;
+      }
+      .btn.primary { background: var(--accent); border-color: var(--accent); color: #201a05; font-weight: 600; }
+      h2.sec { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 34px 0 12px; }
+      .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+      .gallery figure { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+      .gallery img { width: 100%; display: block; }
+      .gallery figcaption { font-size: 12px; color: var(--muted); padding: 6px 10px; }
+      .pending { color: var(--muted); font-size: 14px; background: var(--panel); border: 1px dashed var(--line); border-radius: 10px; padding: 18px; }
+      .swatchrow { display: flex; flex-wrap: wrap; gap: 10px; }
+      .sw { width: 92px; }
+      .sw i { display: block; height: 48px; border-radius: 8px; border: 1px solid #0006; }
+      .sw span { font-size: 11px; color: var(--muted); word-break: break-all; }
+      .doc {
+        background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+        padding: 28px 32px; margin-top: 12px; overflow-x: auto;
+      }
+      .doc h2 { border-bottom: 1px solid var(--line); padding-bottom: 6px; margin: 26px 0 12px; font-size: 21px; }
+      .doc h2:first-child { margin-top: 0; }
+      .doc h1 { font-size: 24px; margin-bottom: 12px; }
+      .doc p, .doc li { color: #cfccc2; font-size: 15px; }
+      .doc ul, .doc ol { padding-left: 22px; margin: 10px 0; }
+      .doc code { background: #14151d; border-radius: 5px; padding: 1px 6px; font-size: 13px; }
+      .doc strong { color: var(--text); }
+      .doc em { color: var(--muted); }
+      footer { margin-top: 48px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); padding-top: 16px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="back" href="/">← catalog</a>
+      <h1>{entry.name}</h1>
+      <p class="desc">{entry.description}</p>
+      <div class="tags">
+        {entry.taste.map((t) => <b>{t}</b>)}
+        {entry.genre.map((g) => <b>{g}</b>)}
+        <b>{entry.componentCount} components</b>
+        {entry.confidence && <b>extracted (confidence declared)</b>}
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="copyBtn">Copy DESIGN.roblox.md</button>
+        <a class="btn" href={rawUrl} download={`DESIGN.roblox.md`}>Download</a>
+        <a class="btn" href={rawUrl}>Raw</a>
+      </div>
+
+      <h2 class="sec">Real-device previews</h2>
+      {entry.previews.length > 0 ? (
+        <div class="gallery">
+          {entry.previews.map((p) => (
+            <figure>
+              <img src={`/previews/${entry.slug}/${p}`} alt={p} loading="lazy" />
+              <figcaption>{p.replace(/\.(png|jpe?g|webp)$/i, "")}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <p class="pending">
+          No real-device previews yet — this entry has not passed the
+          screenshot stage of the pipeline. (Policy: entries without in-engine
+          previews are not published.)
+        </p>
+      )}
+
+      <h2 class="sec">Palette</h2>
+      <div class="swatchrow">
+        {Object.entries(entry.colors).map(([name, val]) => (
+          <div class="sw">
+            <i style={`background:${String(val).slice(0, 7)}`}></i>
+            <span>{name}<br />{val}</span>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="sec">Document</h2>
+      <div class="doc" set:html={bodyHtml} />
+
+      <h2 class="sec">Use it</h2>
+      <div class="doc">
+        <p>
+          1. Copy or download <code>DESIGN.roblox.md</code> into your project root.<br />
+          2. Give your AI agent the <code>designmd-to-react-lua</code> skill (this repository's <code>skills/</code>).<br />
+          3. Ask: <em>"Using DESIGN.roblox.md, build the HUD and shop with react-lua."</em><br />
+          Full walkthrough: <a href="/getting-started/" style="color:var(--accent)">Getting started</a>.
+        </p>
+      </div>
+
+      <footer>
+        Independent analysis of publicly observable UI conventions, provided
+        as-is for inspiration. Not affiliated with or endorsed by any game or
+        studio.
+      </footer>
+    </div>
+
+    <script define:vars={{ rawUrl }}>
+      document.getElementById("copyBtn").addEventListener("click", async (ev) => {
+        const res = await fetch(rawUrl);
+        await navigator.clipboard.writeText(await res.text());
+        ev.target.textContent = "Copied!";
+        setTimeout(() => (ev.target.textContent = "Copy DESIGN.roblox.md"), 1500);
+      });
+    </script>
+  </body>
+</html>

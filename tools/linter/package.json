@@ -1,0 +1,14 @@
+{
+  "name": "designmd-roblox-linter",
+  "version": "0.1.0",
+  "description": "Linter for DESIGN.roblox.md files, driven by spec/spec-config.yaml",
+  "type": "module",
+  "bin": { "designmd-roblox-lint": "./lint.mjs" },
+  "scripts": {
+    "lint:golden": "node lint.mjs ../../design-md/cartoon-chunky/DESIGN.roblox.md",
+    "test": "node test.mjs"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

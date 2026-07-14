@@ -1,0 +1,13 @@
+[package]
+name = "roblox-design-md/cartoon-chunky-preview"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+# jsdotlua scope, NOT the official roblox/react@17.3.9: as of 2026-07-12 the
+# official package is broken on the public Wally index (depends on
+# roblox/symbol@1.0.1 which is not published there). The API surface is the
+# same React 17 — migrate the scope once Roblox publishes the missing deps.
+[dependencies]
+React = "jsdotlua/react@17.2.1"
+ReactRoblox = "jsdotlua/react-roblox@17.2.1"

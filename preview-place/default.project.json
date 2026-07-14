@@ -1,0 +1,32 @@
+{
+  "name": "cartoon-chunky-preview",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Packages": { "$path": "Packages" },
+      "CartoonChunky": { "$path": "src" }
+    },
+    "Workspace": {
+      "$properties": {},
+      "PreviewFloor": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Size": [512, 4, 512],
+          "Position": [0, -2, 0],
+          "Color": [0.353, 0.549, 0.353],
+          "Material": "Grass"
+        }
+      },
+      "PreviewSpawn": {
+        "$className": "SpawnLocation",
+        "$properties": {
+          "Anchored": true,
+          "Size": [12, 1, 12],
+          "Position": [0, 0.5, 0],
+          "Neutral": true
+        }
+      }
+    }
+  }
+}
