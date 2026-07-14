@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-14T13:20:00+09:00",
+  "title": "Design System: DESIGN.roblox.md Catalog",
+  "extensions": {
+    "colorMeta": {
+      "kiln-crimson": {
+        "role": "primary",
+        "displayName": "Kiln Crimson",
+        "canonical": "oklch(52% 0.165 31)",
+        "tonalRamp": ["oklch(15% 0.06 31)", "oklch(25% 0.1 31)", "oklch(35% 0.125 31)", "oklch(45% 0.15 31)", "oklch(52% 0.165 31)", "oklch(65% 0.14 31)", "oklch(80% 0.08 31)", "oklch(95% 0.021 31)"]
+      },
+      "kiln-deep": {
+        "role": "primary",
+        "displayName": "Kiln Deep",
+        "canonical": "oklch(41% 0.135 31)",
+        "tonalRamp": ["oklch(15% 0.05 31)", "oklch(22% 0.08 31)", "oklch(30% 0.11 31)", "oklch(41% 0.135 31)", "oklch(52% 0.14 31)", "oklch(66% 0.11 31)", "oklch(82% 0.06 31)", "oklch(94% 0.02 31)"]
+      },
+      "golden-sample": {
+        "role": "secondary",
+        "displayName": "Golden Sample",
+        "canonical": "oklch(86% 0.155 92)",
+        "tonalRamp": ["oklch(20% 0.05 88)", "oklch(32% 0.08 88)", "oklch(45% 0.1 90)", "oklch(58% 0.12 90)", "oklch(70% 0.14 92)", "oklch(86% 0.155 92)", "oklch(92% 0.1 94)", "oklch(97% 0.04 95)"]
+      },
+      "verified-green": {
+        "role": "secondary",
+        "displayName": "Verified Green",
+        "canonical": "oklch(44% 0.115 152)",
+        "tonalRamp": ["oklch(15% 0.04 152)", "oklch(24% 0.07 152)", "oklch(34% 0.09 152)", "oklch(44% 0.115 152)", "oklch(56% 0.11 152)", "oklch(70% 0.09 152)", "oklch(84% 0.06 152)", "oklch(95% 0.03 152)"]
+      },
+      "roast-ink": {
+        "role": "neutral",
+        "displayName": "Roast Ink",
+        "canonical": "oklch(24.5% 0.02 31)",
+        "tonalRamp": ["oklch(15% 0.015 31)", "oklch(24.5% 0.02 31)", "oklch(35% 0.022 31)", "oklch(45% 0.022 31)", "oklch(60% 0.018 31)", "oklch(80% 0.02 31)", "oklch(90% 0.013 31)", "oklch(96.5% 0.007 31)"]
+      },
+      "gallery-white": {
+        "role": "neutral",
+        "displayName": "Gallery White",
+        "canonical": "oklch(100% 0 0)"
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only; weight 800, balanced wrap." },
+      "headline": { "displayName": "Headline", "purpose": "Page and section titles." },
+      "body": { "displayName": "Body", "purpose": "All prose; 62-70ch measure." },
+      "label": { "displayName": "Mono Label", "purpose": "Real machine artifacts only: filenames, tokens, captions, code." }
+    },
+    "shadows": [
+      { "name": "shadow-sm", "value": "0 1px 2px oklch(24.5% 0.02 31 / 0.05), 0 3px 10px oklch(24.5% 0.02 31 / 0.06)", "purpose": "Resting cards and badges." },
+      { "name": "shadow-md", "value": "0 2px 4px oklch(24.5% 0.02 31 / 0.05), 0 14px 36px -8px oklch(24.5% 0.02 31 / 0.14)", "purpose": "Panels, floating chips, hovered buttons." },
+      { "name": "shadow-lg", "value": "0 4px 8px oklch(24.5% 0.02 31 / 0.05), 0 28px 72px -16px oklch(24.5% 0.02 31 / 0.22)", "purpose": "Hovered cards, lifted states." },
+      { "name": "shadow-float", "value": "0 8px 20px -8px oklch(28% 0.1 31 / 0.3), 0 32px 64px -20px oklch(28% 0.1 31 / 0.45)", "purpose": "The hero's fanned prints only." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default UI easing (quint)." },
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Image zooms and decisive reveals." },
+      { "name": "dur-fast", "value": "120ms", "purpose": "Press feedback, color shifts." },
+      { "name": "dur", "value": "220ms", "purpose": "Hovers, state changes." },
+      { "name": "dur-slow", "value": "420ms", "purpose": "Card image scale, larger reveals." },
+      { "name": "print-bob", "value": "8s ease-in-out infinite alternate, ±7px", "purpose": "Hero prints float; static under reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "chip-scroll", "value": "640px", "purpose": "Below: filter chips scroll sideways." },
+      { "name": "feature-split", "value": "760px", "purpose": "Above: featured card goes horizontal." },
+      { "name": "detail-columns", "value": "900px", "purpose": "Above: entry detail gains sticky sidebar." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Kiln Crimson pill with top-lit gradient; the copy/browse CTA.",
+      "html": "<button class=\"ds-btn-primary\">Copy DESIGN.roblox.md</button>",
+      "css": ".ds-btn-primary { font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif; font-size: 0.875rem; font-weight: 700; color: oklch(98.5% 0.006 31); background: linear-gradient(180deg, oklch(56% 0.17 32), oklch(52% 0.165 31) 55%, oklch(48% 0.155 30)); border: none; border-radius: 999px; padding: 0.8125rem 1.5rem; cursor: pointer; box-shadow: 0 1px 2px oklch(24.5% 0.02 31 / 0.05), 0 3px 10px oklch(24.5% 0.02 31 / 0.06), inset 0 1px 0 oklch(100% 0 0 / 0.18); transition: transform 120ms cubic-bezier(0.22,1,0.36,1), background 120ms, box-shadow 120ms; } .ds-btn-primary:hover { background: linear-gradient(180deg, oklch(48% 0.155 30), oklch(41% 0.135 31)); transform: translateY(-1px); box-shadow: 0 2px 4px oklch(24.5% 0.02 31 / 0.05), 0 14px 36px -8px oklch(24.5% 0.02 31 / 0.14); } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid oklch(52% 0.165 31); outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Quiet secondary action on white.",
+      "html": "<button class=\"ds-btn-ghost\">Download</button>",
+      "css": ".ds-btn-ghost { font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif; font-size: 0.875rem; font-weight: 700; color: oklch(24.5% 0.02 31); background: oklch(100% 0 0); border: 1.5px solid oklch(80% 0.02 31); border-radius: 999px; padding: 0.8125rem 1.5rem; cursor: pointer; transition: transform 120ms cubic-bezier(0.22,1,0.36,1), border-color 120ms; } .ds-btn-ghost:hover { border-color: oklch(24.5% 0.02 31); transform: translateY(-1px); } .ds-btn-ghost:active { transform: scale(0.97); } .ds-btn-ghost:focus-visible { outline: 2px solid oklch(52% 0.165 31); outline-offset: 2px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Taste/genre filter; aria-pressed flips it solid crimson.",
+      "html": "<span style=\"display:inline-flex;gap:8px\"><button class=\"ds-chip\">playful</button><button class=\"ds-chip\" aria-pressed=\"true\">chunky</button></span>",
+      "css": ".ds-chip { font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; color: oklch(24.5% 0.02 31); background: oklch(100% 0 0); border: 1.5px solid oklch(80% 0.02 31); border-radius: 999px; padding: 0.375rem 0.875rem; cursor: pointer; transition: background 120ms, border-color 120ms, color 120ms, transform 120ms; } .ds-chip:hover { border-color: oklch(52% 0.165 31); color: oklch(52% 0.165 31); } .ds-chip:active { transform: scale(0.96); } .ds-chip[aria-pressed=\"true\"] { background: oklch(52% 0.165 31); border-color: oklch(52% 0.165 31); color: oklch(98.5% 0.006 31); }"
+    },
+    {
+      "name": "Verified Badge",
+      "kind": "chip",
+      "refersTo": "badge-verified",
+      "description": "The proof mark; only on entries with real-device captures.",
+      "html": "<span class=\"ds-badge-verified\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M3 8.5L6.5 12L13 4.5\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>verified in-engine</span>",
+      "css": ".ds-badge-verified { display: inline-flex; align-items: center; gap: 0.375em; font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif; font-size: 0.75rem; font-weight: 700; color: oklch(44% 0.115 152); background: oklch(95% 0.03 152); border-radius: 999px; padding: 0.1875rem 0.625rem; white-space: nowrap; }"
+    },
+    {
+      "name": "Golden Sample Badge",
+      "kind": "chip",
+      "refersTo": "badge-pending",
+      "description": "Gold marks the exemplar entry and pending previews — nothing else.",
+      "html": "<span class=\"ds-badge-gold\">the golden sample</span>",
+      "css": ".ds-badge-gold { display: inline-flex; align-items: center; font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif; font-size: 0.75rem; font-weight: 700; color: oklch(38% 0.08 80); background: oklch(86% 0.155 92); border-radius: 999px; padding: 0.25rem 0.75rem; box-shadow: 0 1px 2px oklch(24.5% 0.02 31 / 0.05), 0 3px 10px oklch(24.5% 0.02 31 / 0.06); }"
+    },
+    {
+      "name": "Catalog Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Screenshot-first entry card; the capture is the face.",
+      "html": "<a class=\"ds-card\" href=\"#\"><span class=\"ds-card-thumb\"></span><span class=\"ds-card-meta\"><span class=\"ds-card-title\">Cartoon Chunky <span class=\"ds-card-badge\">✓ verified</span></span><span class=\"ds-card-desc\">Bright, toy-like UI for pet-collecting and clicker simulators.</span></span></a>",
+      "css": ".ds-card { display: flex; flex-direction: column; width: 280px; background: oklch(100% 0 0); border: 1px solid oklch(90% 0.013 31); border-radius: 20px; overflow: hidden; text-decoration: none; box-shadow: 0 1px 2px oklch(24.5% 0.02 31 / 0.05), 0 3px 10px oklch(24.5% 0.02 31 / 0.06); transition: transform 220ms cubic-bezier(0.22,1,0.36,1), border-color 220ms, box-shadow 220ms; } .ds-card:hover { transform: translateY(-4px); border-color: oklch(85% 0.05 31); box-shadow: 0 4px 8px oklch(24.5% 0.02 31 / 0.05), 0 28px 72px -16px oklch(24.5% 0.02 31 / 0.22); } .ds-card-thumb { display: block; aspect-ratio: 16/9; background: linear-gradient(135deg, oklch(80% 0.09 240), oklch(70% 0.12 250)); } .ds-card-meta { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem 1rem 1.25rem; } .ds-card-title { font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif; font-size: 1.25rem; font-weight: 700; color: oklch(24.5% 0.02 31); letter-spacing: -0.01em; } .ds-card-badge { font-size: 0.7rem; font-weight: 700; color: oklch(44% 0.115 152); background: oklch(95% 0.03 152); border-radius: 999px; padding: 0.15em 0.6em; vertical-align: middle; } .ds-card-desc { font-family: 'Bricolage Grotesque Variable', system-ui, sans-serif; font-size: 0.875rem; line-height: 1.55; color: oklch(45% 0.022 31); }"
+    },
+    {
+      "name": "Code Slab",
+      "kind": "custom",
+      "refersTo": "code-block",
+      "description": "Dark slab on the white page; Martian Mono, the honest artifact.",
+      "html": "<pre class=\"ds-code\"><code># wally.toml\n[dependencies]\nReact = \"roblox/react@17.3.9\"</code></pre>",
+      "css": ".ds-code { background: oklch(23% 0.015 31); color: oklch(92% 0.01 31); border-radius: 14px; padding: 1rem 1.5rem; overflow-x: auto; margin: 0; } .ds-code code { font-family: 'Martian Mono Variable', ui-monospace, Menlo, monospace; font-size: 0.75rem; line-height: 1.7; font-variant-ligatures: none; }"
+    },
+    {
+      "name": "Nav Wordmark",
+      "kind": "nav",
+      "refersTo": "label",
+      "description": "The filename as identity; .roblox burns crimson.",
+      "html": "<a class=\"ds-wordmark\" href=\"#\">DESIGN<span class=\"ds-wordmark-rbx\">.roblox</span>.md</a>",
+      "css": ".ds-wordmark { font-family: 'Martian Mono Variable', ui-monospace, Menlo, monospace; font-weight: 700; font-size: 0.9rem; letter-spacing: -0.01em; text-decoration: none; color: oklch(24.5% 0.02 31); white-space: nowrap; } .ds-wordmark-rbx { color: oklch(52% 0.165 31); } .ds-wordmark:hover { text-decoration: underline wavy oklch(52% 0.165 31) 1.5px; text-underline-offset: 5px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Blocky Diorama Shelf",
+    "overview": "The site is a shelf of blocky toy dioramas photographed by a careful hand: real in-engine captures framed in white, floating above a warm terracotta block-world, arranged on pure white gallery walls. The warmth lives entirely in the brand color (Kiln Crimson) and the generated diorama imagery; the walls themselves stay pure white so every taste's own palette reads true. Playfulness sits on the surface — fanned prints, wavy underlines, gently bobbing cards — while the structure underneath stays exact: verified badges, lint-clean specs, honest captions.",
+    "keyCharacteristics": [
+      "Pure white gallery ground; color arrives only as Kiln Crimson, entry screenshots, and the diorama world",
+      "Real screenshots are the heroes — the design frames them, never competes",
+      "Soft, diffuse, layered shadows on floating elements only",
+      "Pill-shaped controls with confident weight; instant, honest feedback",
+      "One golden accent reserved for the exemplar entry"
+    ],
+    "rules": [
+      { "name": "The White Wall Rule", "body": "The body background is exactly oklch(100% 0 0). Warmth is carried by Kiln Crimson, imagery, and type — never by tinting the walls. A cream page is a broken build.", "section": "colors" },
+      { "name": "The One Gold Rule", "body": "Gold marks exactly two things: the golden sample and a pending preview. Any third use dilutes both.", "section": "colors" },
+      { "name": "The Honest Mono Rule", "body": "Martian Mono appears only on real technical artifacts: file names, token values, code, capture labels. Mono as 'tech vibes' costume is prohibited.", "section": "typography" },
+      { "name": "The Lifted Print Rule", "body": "Static surfaces stay flat. Only elements with a physical metaphor — prints, cards, pills, the copy button — may float, and they float on large soft diffusion, never a tight dark edge.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the body background pure white and let screenshots carry the color.",
+      "Do lead every entry surface with the real capture — proof before prose.",
+      "Do use white text on any crimson fill; secondary text on crimson is on-crimson-soft, never gray.",
+      "Do keep motion soft and physical with reduced-motion fallbacks.",
+      "Do write copy playful in phrasing, exact in fact."
+    ],
+    "donts": [
+      "Don't ship the sterile technical-document look — no bare-Markdown-viewer pages.",
+      "Don't tint the page background warm; cream walls are prohibited.",
+      "Don't put gold on plain Kiln Crimson (3.6:1 fails); gold belongs on Kiln Deep or white.",
+      "Don't use side-stripe borders, gradient text, or glass cards.",
+      "Don't dress non-technical content in Martian Mono.",
+      "Don't give static surfaces shadows; if it can't be picked up, it doesn't float.",
+      "Don't crop or restyle in-engine captures beyond the white frame."
+    ]
+  }
+}

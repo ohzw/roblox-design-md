@@ -1,135 +1,248 @@
 ---
 // Installation & usage guide. Two personas: (1) use a taste to build UI,
-// (2) create & share your own taste. Kept honest about current-state vs
+// (2) create & share your own taste. Honest about current-state vs
 // future `npx skills` distribution.
+import Base from "../layouts/Base.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Getting Started — DESIGN.roblox.md</title>
-    <style>
-      :root {
-        --bg: #14151d; --panel: #1e2029; --line: #32354a;
-        --text: #e8e6df; --muted: #9a97a8; --accent: #ffd84d;
-      }
-      * { box-sizing: border-box; margin: 0; }
-      body { background: var(--bg); color: var(--text); font: 16px/1.7 system-ui, sans-serif; }
-      .wrap { max-width: 880px; margin: 0 auto; padding: 40px 24px; }
-      a.back { color: var(--muted); text-decoration: none; font-size: 14px; }
-      h1 { font-size: 30px; margin: 12px 0 6px; }
-      .sub { color: var(--muted); margin-bottom: 30px; }
-      h2 { font-size: 22px; margin: 40px 0 12px; }
-      h3 { font-size: 16px; margin: 22px 0 8px; color: var(--accent); }
-      p, li { color: #cfccc2; font-size: 15px; }
-      ol, ul { padding-left: 22px; margin: 8px 0; }
-      .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px 26px; margin: 14px 0; }
-      pre {
-        background: #0d0e13; border: 1px solid var(--line); border-radius: 10px;
-        padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.5; margin: 10px 0;
-      }
-      code { font-family: ui-monospace, monospace; }
-      p code, li code { background: #0d0e13; border-radius: 5px; padding: 1px 6px; font-size: 13px; }
-      .soon { font-size: 11px; background: #4a3a2a; color: #e0c08a; border-radius: 999px; padding: 2px 10px; vertical-align: middle; margin-left: 6px; }
-      .note { border-left: 3px solid var(--accent); padding-left: 14px; color: var(--muted); font-size: 14px; margin: 12px 0; }
-      footer { margin-top: 48px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); padding-top: 16px; }
-    </style>
-  </head>
-  <body>
-    <div class="wrap">
-      <a class="back" href="/">← catalog</a>
-      <h1>Getting Started</h1>
+<Base title="Getting started — DESIGN.roblox.md">
+  <div class="wrap guide">
+    <header class="guide-head">
+      <h1>Getting started</h1>
       <p class="sub">
         DESIGN.roblox.md is a plain-text design system your AI agent reads to
-        build coherent Roblox UI — no design knowledge required. You install a
-        <b>skill</b> once, pick a <b>taste</b> from the catalog, and prompt.
+        build coherent Roblox UI — no design knowledge required. Install a
+        <strong>skill</strong> once, pick a <strong>taste</strong> from the
+        catalog, and prompt.
       </p>
+    </header>
 
-      <h2>1. Build UI with a catalog taste</h2>
-      <div class="card">
-        <h3>Install the skill</h3>
-        <p>Today (from the repository):</p>
-        <pre><code># copy the implementation skill into your project's agent skills
+    <section class="path" aria-labelledby="path1">
+      <h2 id="path1">Build UI with a catalog taste</h2>
+
+      <ol class="steps">
+        <li>
+          <h3>Install the skill</h3>
+          <p>Today, straight from the repository:</p>
+          <pre><code># copy the implementation skill into your project's agent skills
 cp -r roblox-design-md/skills/designmd-to-react-lua &lt;your-project&gt;/.claude/skills/</code></pre>
-        <p>Planned distribution <span class="soon">coming</span>:</p>
-        <pre><code>npx skills add designmd-to-react-lua</code></pre>
+          <p class="aside-line">Planned distribution <span class="soon">coming</span>: <code>npx skills add designmd-to-react-lua</code></p>
+        </li>
 
-        <h3>Add react-lua to your Roblox project</h3>
-        <pre><code># wally.toml
+        <li>
+          <h3>Add react-lua to your Roblox project</h3>
+          <pre><code># wally.toml
 [dependencies]
-React = "jsdotlua/react@17.2.1"
-ReactRoblox = "jsdotlua/react-roblox@17.2.1"</code></pre>
-        <p>then <code>wally install</code>. (Rojo/Argon project assumed; the skill knows the rest.)</p>
+React = "roblox/react@17.3.9"
+ReactRoblox = "roblox/react-roblox@17.3.9"</code></pre>
+          <p>
+            then <code>wally install</code>. Rojo or Argon project assumed —
+            the skill knows the rest, including the jsdotlua scope if you
+            prefer it.
+          </p>
+        </li>
 
-        <h3>Pick a taste</h3>
-        <ol>
-          <li>Browse the <a href="/" style="color:var(--accent)">catalog</a> and open a taste.</li>
-          <li>Hit <b>Copy DESIGN.roblox.md</b> (or Download) and put it in your project root.</li>
-        </ol>
+        <li>
+          <h3>Pick a taste</h3>
+          <p>
+            Browse the <a href="/#catalog">catalog</a>, open a taste, hit
+            <strong>Copy DESIGN.roblox.md</strong> (or Download), and put the
+            file in your project root.
+          </p>
+        </li>
 
-        <h3>Prompt your agent</h3>
-        <pre><code>Using DESIGN.roblox.md, build the HUD: left side-button column,
+        <li>
+          <h3>Prompt your agent</h3>
+          <pre><code>Using DESIGN.roblox.md, build the HUD: left side-button column,
 top-right currency pills, bottom-center primary action. react-lua.</code></pre>
-        <p>
-          The skill enforces the load-bearing conventions for you: Scale-first
-          layout, UIListLayout delegation, safe areas, ZIndex rules, exact
-          react-lua syntax, motion tokens.
-        </p>
-      </div>
+          <p>
+            The skill enforces the load-bearing conventions for you:
+            Scale-first layout, UIListLayout delegation, safe areas, ZIndex
+            rules, exact react-lua syntax, motion tokens.
+          </p>
+        </li>
+      </ol>
 
       <div class="note">
-        Optional but recommended: Roblox Studio's built-in MCP server lets the
-        agent verify its own work (play → screenshot → fix). The skill uses it
-        automatically when connected. UI-Labs stories are generated for every
-        component so you can eyeball everything in Studio.
-      </div>
-
-      <h2>2. Create &amp; share your own taste</h2>
-      <div class="card">
         <p>
-          The catalog is meant to be community-built: extract a taste from
-          screenshots, verify it, share it.
+          <strong>Optional but recommended:</strong> Roblox Studio's built-in
+          MCP server lets the agent verify its own work (play → screenshot →
+          fix). The skill uses it automatically when connected, and UI-Labs
+          stories are generated for every component so you can eyeball
+          everything in Studio.
         </p>
-        <h3>Install the extraction skill</h3>
-        <pre><code>cp -r roblox-design-md/skills/screenshot-to-designmd &lt;your-project&gt;/.claude/skills/
+      </div>
+    </section>
+
+    <section class="path" aria-labelledby="path2">
+      <h2 id="path2">Create &amp; share your own taste</h2>
+      <p class="path-lede">
+        The catalog is meant to be community-built: extract a taste from
+        screenshots, verify it, share it.
+      </p>
+
+      <ol class="steps">
+        <li>
+          <h3>Install the extraction skill</h3>
+          <pre><code>cp -r roblox-design-md/skills/screenshot-to-designmd &lt;your-project&gt;/.claude/skills/
 # planned: npx skills add screenshot-to-designmd</code></pre>
-        <h3>Feed it screenshots</h3>
-        <ul>
-          <li>Required: HUD full view / a window (shop, settings...) / a screen with 2+ buttons</li>
-          <li>Recommended: inventory grid, popup with dim, reward moment, progress bar</li>
-          <li>Optional: a 3–10s video of open/close/press for motion</li>
-        </ul>
-        <p>
-          The skill tells you exactly what's missing and marks gaps honestly
-          (<code>confidence: low</code>) instead of inventing values.
-        </p>
-        <h3>Validate</h3>
-        <pre><code>node tools/linter/lint.mjs DESIGN.roblox.md   # 0 errors required
+        </li>
+
+        <li>
+          <h3>Feed it screenshots</h3>
+          <ul>
+            <li><strong>Required:</strong> HUD full view · a window (shop, settings…) · a screen with 2+ buttons</li>
+            <li><strong>Recommended:</strong> inventory grid, popup with dim, reward moment, progress bar</li>
+            <li><strong>Optional:</strong> a 3–10s video of open/close/press for motion</li>
+          </ul>
+          <p>
+            The skill tells you exactly what's missing and marks gaps honestly
+            (<code>confidence: low</code>) instead of inventing values.
+          </p>
+        </li>
+
+        <li>
+          <h3>Validate</h3>
+          <pre><code>node tools/linter/lint.mjs DESIGN.roblox.md   # 0 errors required
 # planned: npx designmd-roblox-lint DESIGN.roblox.md</code></pre>
-        <h3>Share</h3>
-        <p>
-          Entries need a real-device preview (screenshots of the generated UI
-          running in Studio) before they're published — the catalog marks
-          entries without one as <i>preview pending</i>. Submission flow
-          (PR / request form) opens with the public launch.
-        </p>
-      </div>
+        </li>
 
-      <h2>Rules of the road</h2>
-      <div class="card">
-        <ul>
-          <li>Tastes describe publicly observable style conventions — colors, shapes, motion habits. Never copy assets, logos, or names from other games.</li>
-          <li>Name entries by taste (<code>cartoon-chunky</code>), not by game.</li>
-          <li>Your own game's design system is yours — share it under its real name if you like.</li>
-        </ul>
-      </div>
+        <li>
+          <h3>Share</h3>
+          <p>
+            Entries need a real-device preview — screenshots of the generated
+            UI running in Studio — before they're published; the catalog marks
+            entries without one as <em>preview pending</em>. Submission flow
+            (PR / request form) opens with the public launch.
+          </p>
+        </li>
+      </ol>
+    </section>
 
-      <footer>
-        Independent analyses of publicly observable UI conventions, provided
-        as-is for inspiration. Not affiliated with or endorsed by any game or
-        studio.
-      </footer>
-    </div>
-  </body>
-</html>
+    <section class="rules" aria-labelledby="rules-h">
+      <h2 id="rules-h">Rules of the road</h2>
+      <ul>
+        <li>
+          Tastes describe publicly observable style conventions — colors,
+          shapes, motion habits. Never copy assets, logos, or names from other
+          games.
+        </li>
+        <li>Name entries by taste (<code>cartoon-chunky</code>), not by game.</li>
+        <li>
+          Your own game's design system is yours — share it under its real
+          name if you like.
+        </li>
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .guide { padding-top: var(--space-2xl); max-width: 880px; }
+
+  .guide-head h1 { font-size: var(--text-2xl); letter-spacing: -0.02em; }
+  .sub {
+    margin-top: var(--space-md);
+    color: var(--muted);
+    font-size: var(--text-lg);
+    line-height: 1.55;
+    max-width: 56ch;
+  }
+  .sub strong { color: var(--ink); }
+
+  .path { margin-top: var(--space-section); }
+  .path h2 { font-size: var(--text-xl); letter-spacing: -0.015em; }
+  .path-lede { color: var(--muted); margin-top: var(--space-sm); max-width: 56ch; }
+
+  /* numbered steps — a real sequence, so the numbers carry meaning */
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin-top: var(--space-xl);
+    display: grid;
+    gap: var(--space-xl);
+  }
+  .steps > li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 4rem;
+  }
+  .steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: -0.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    background: var(--crimson);
+    color: var(--on-crimson);
+    font-weight: 800;
+    font-size: var(--text-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+  }
+  /* connector between steps */
+  .steps > li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 1.1875rem;
+    top: 2.75rem;
+    bottom: calc(-1 * var(--space-xl) + 0.5rem);
+    width: 2px;
+    border-radius: 1px;
+    background: var(--line);
+  }
+  .steps h3 { font-size: var(--text-lg); margin-bottom: var(--space-xs); letter-spacing: -0.01em; }
+  .steps p, .steps li li { font-size: var(--text-base); line-height: 1.65; max-width: 62ch; }
+  .steps ul { padding-left: 1.25rem; margin: var(--space-xs) 0; display: grid; gap: var(--space-2xs); }
+  .steps ul li::marker { color: var(--crimson); }
+
+  pre {
+    background: var(--code-bg);
+    color: var(--code-ink);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
+    overflow-x: auto;
+    font-size: var(--text-xs);
+    line-height: 1.7;
+    margin: var(--space-sm) 0;
+  }
+  /* direct children only — a bare `li code` would also hit `pre > code`
+     inside the numbered steps and wash the dark blocks out */
+  p > code, li > code, .aside-line > code {
+    background: var(--surface);
+    border-radius: 5px;
+    padding: 0.1em 0.4em;
+    font-size: 0.8125em;
+  }
+
+  .aside-line { color: var(--muted); font-size: var(--text-sm); }
+  .soon {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    background: var(--gold);
+    color: var(--gold-ink);
+    border-radius: var(--radius-pill);
+    padding: 0.125rem 0.5625rem;
+    vertical-align: middle;
+  }
+
+  .note {
+    margin-top: var(--space-xl);
+    background: var(--crimson-wash);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .note p { font-size: var(--text-sm); line-height: 1.7; max-width: 68ch; }
+
+  .rules { margin-top: var(--space-section); }
+  .rules h2 { font-size: var(--text-xl); letter-spacing: -0.015em; margin-bottom: var(--space-md); }
+  .rules ul { padding-left: 1.25rem; display: grid; gap: var(--space-xs); max-width: 68ch; }
+  .rules li { line-height: 1.65; }
+  .rules li::marker { color: var(--crimson); }
+</style>

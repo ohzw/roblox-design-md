@@ -1,0 +1,67 @@
+---
+// Shared shell: fonts, tokens, header, footer. `headerTone: "crimson"` lets the
+// index hero run flush into the header as one crimson field.
+import "@fontsource-variable/bricolage-grotesque";
+import "@fontsource-variable/martian-mono";
+import "../styles/global.css";
+
+const {
+  title,
+  description = "Design systems AI agents can read — for Roblox game UI. Pick a taste, hand your agent one file, ship coherent UI.",
+  headerTone = "light",
+} = Astro.props;
+
+const path = Astro.url.pathname;
+const isCurrent = (href) =>
+  href === "/" ? path === "/" : path.startsWith(href) ? "page" : undefined;
+
+const favicon =
+  "data:image/svg+xml," +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#b23a22"/><text x="16" y="23" font-family="Menlo,monospace" font-size="17" font-weight="bold" fill="#fff" text-anchor="middle">.md</text></svg>`
+  );
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+    <meta name="theme-color" content="#b23a22" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class={`site-header tone-${headerTone}`}>
+      <div class="wrap bar">
+        <a class="wordmark" href="/">DESIGN<span class="rbx">.roblox</span>.md</a>
+        <nav class="site-nav" aria-label="Site">
+          <a href="/" aria-current={isCurrent("/")}>Catalog</a>
+          <a href="/getting-started/" aria-current={isCurrent("/getting-started/")}>Getting started</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap inner">
+        <a class="wordmark" href="/">DESIGN<span class="rbx">.roblox</span>.md</a>
+        <nav aria-label="Footer">
+          <a href="/">Catalog</a>
+          <a href="/getting-started/">Getting started</a>
+        </nav>
+        <p class="legal">
+          Every entry is an independent analysis of publicly observable UI
+          conventions, provided as-is for inspiration. Tastes are named for the
+          taste, never the game. Not affiliated with or endorsed by any game or
+          studio.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
