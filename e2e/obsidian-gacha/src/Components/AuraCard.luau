@@ -14,6 +14,7 @@ local React = require(Packages.React)
 local Theme = require(script.Parent.Parent.Theme)
 local CornerBrackets = require(script.Parent.CornerBrackets)
 local ActionButton = require(script.Parent.ActionButton)
+local Glow = require(script.Parent.Glow)
 
 local e = React.createElement
 
@@ -26,6 +27,19 @@ local function AuraCard(props)
 
 	local children = {
 		Corner = e("UICorner", { CornerRadius = Theme.rounded.sm }),
+		-- top-tier tile bloom: a rarity-colored radial halo behind the whole
+		-- tile that spills past its edges (card does not clip) -- makes a
+		-- legendary/epic tile read as EMITTING, not just tinted.
+		TileBloom = if filled
+			then e(Glow, {
+				colorOverride = rarityColor,
+				token = Theme.glow.rarity,
+				intensity = 0.75,
+				spread = 20,
+				elementSize = UDim2.fromScale(1, 1),
+				zIndex = 0,
+			})
+			else nil,
 		-- filled/glowing wash for high rarity (rarity hue at high transparency
 		-- over the dark fill — no new palette introduced).
 		Wash = if filled
@@ -56,9 +70,18 @@ local function AuraCard(props)
 				ZIndex = 2,
 			})
 			else nil,
+		-- radial glow behind the wordmark (soft bloom, not a thin stroke ring).
+		NameGlow = e(Glow, {
+			colorOverride = rarityColor,
+			token = Theme.glow.rarity,
+			intensity = 0.55,
+			spread = 8,
+			elementSize = UDim2.new(1, -Theme.spacing.sm, 0, 20),
+			position = UDim2.new(0.5, 0, if props.icon then 0.62 else 0.5, 0),
+			zIndex = 2,
+		}),
 		-- holographic name: a rarity-hue -> cool-white gradient sheen on the
-		-- rarity-colored text, with a faint same-hue glow (thin contextual
-		-- stroke) standing in for the soft outer glow (Typography prose).
+		-- rarity-colored text (Typography prose); the bloom above is its glow.
 		Name = e("TextLabel", {
 			BackgroundTransparency = 1,
 			Size = UDim2.new(1, -Theme.spacing.sm, 0, 22),
@@ -76,12 +99,6 @@ local function AuraCard(props)
 			Gradient = e("UIGradient", {
 				Color = ColorSequence.new(rarityColor, Theme.colors.onSurface),
 				Rotation = 90,
-			}),
-			Glow = e("UIStroke", {
-				Thickness = 1,
-				Color = rarityColor,
-				Transparency = 0.45,
-				ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual,
 			}),
 		}),
 		Qty = if props.qty

@@ -173,6 +173,22 @@ Theme.assets = {
 	itemLantern = "rbxassetid://76487404033438",     -- full-color w/ glow, transparent
 	itemCompass = "rbxassetid://696398371",          -- white circle compass, tintable
 	itemCrown = "rbxassetid://360172301",            -- full-color gold (legendary pop)
+	-- Soft radial glow texture (Creator Store free, decal 89001478118494
+	-- "Circle light but bigger" by Twe1v -> resolved image 71544661109805).
+	-- In-engine verified as a soft radial bloom over dark (faint mid-ring; the
+	-- lit element sits over the center and hides it). Used by Glow.luau.
+	glowRadial = "rbxassetid://71544661109805",
+}
+
+-- Emission tokens (DESIGN.md `glow:` group). A glow is a soft radial halo in
+-- the element's color, placed behind it, sized `spread` beyond, at
+-- Transparency ~ 1 - intensity. See Glow.luau. Emission is the load-bearing
+-- craft of this taste -- flat accents are a failed reproduction.
+Theme.glow = {
+	accent = { color = Theme.colors.primary, spread = 10, intensity = 0.5 },
+	gem = { color = Theme.colors.currencySoft, spread = 12, intensity = 0.7 },
+	rarity = { color = Theme.colors.accentRare, spread = 14, intensity = 0.6 },
+	reward = { color = Theme.colors.onSurface, spread = 24, intensity = 0.9 },
 }
 
 return Theme

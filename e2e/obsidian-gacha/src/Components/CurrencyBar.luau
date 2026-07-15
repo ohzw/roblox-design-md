@@ -7,6 +7,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Packages = ReplicatedStorage:WaitForChild("Packages")
 local React = require(Packages.React)
 local Theme = require(script.Parent.Parent.Theme)
+local Glow = require(script.Parent.Glow)
 
 local e = React.createElement
 
@@ -57,13 +58,28 @@ local function CurrencyBar(props)
 			Padding = UDim.new(0, Theme.spacing.sm),
 			SortOrder = Enum.SortOrder.LayoutOrder,
 		}),
-		Icon = e("ImageLabel", {
+		-- gem slot: the gem blooms in its currency color (glow behind, gem on top).
+		-- The slot is the layout item; the halo overflows it and the pill edge
+		-- (CurrencyBar does not ClipsDescendants), giving the "lit readout" bloom.
+		GemSlot = e("Frame", {
 			BackgroundTransparency = 1,
-			Image = iconAsset,
-			ImageColor3 = iconColor,
 			Size = UDim2.fromOffset(34, 34),
 			LayoutOrder = 1,
 			ZIndex = (props.zIndex or 1) + 1,
+		}, {
+			Bloom = e(Glow, {
+				colorOverride = iconColor,
+				token = Theme.glow.gem,
+				elementSize = UDim2.fromOffset(34, 34),
+				zIndex = (props.zIndex or 1) + 1,
+			}),
+			Icon = e("ImageLabel", {
+				BackgroundTransparency = 1,
+				Image = iconAsset,
+				ImageColor3 = iconColor,
+				Size = UDim2.fromScale(1, 1),
+				ZIndex = (props.zIndex or 1) + 2,
+			}),
 		}),
 		Amount = e("TextLabel", {
 			BackgroundTransparency = 1,

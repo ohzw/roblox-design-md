@@ -15,6 +15,7 @@ local TweenService = game:GetService("TweenService")
 local Packages = ReplicatedStorage:WaitForChild("Packages")
 local React = require(Packages.React)
 local Theme = require(script.Parent.Parent.Theme)
+local Glow = require(script.Parent.Glow)
 
 local e = React.createElement
 
@@ -79,6 +80,16 @@ local function IconTile(props)
 			Color = stroke.color,
 			ApplyStrokeMode = stroke.mode,
 		}),
+		-- emission: the glyph blooms in its role color (behind the icon).
+		IconGlow = if props.icon
+			then e(Glow, {
+				colorOverride = props.iconColor or Theme.colors.onSurface,
+				token = Theme.glow.accent,
+				intensity = 0.6,
+				elementSize = UDim2.fromScale(0.5, 0.5),
+				zIndex = 1,
+			})
+			else nil,
 		Icon = if props.icon
 			then e("ImageLabel", {
 				BackgroundTransparency = 1,
