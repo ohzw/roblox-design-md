@@ -65,8 +65,16 @@ per story. Fixes go into the source files, not the harness.
 | 2026-07-12 | ProgressBar | 0 / 65% / MAX all correct; gradient subtle at 26px height | acceptable |
 | 2026-07-12 | Window (blind calibration) | Drop-shadow frame was a CHILD of Panel → under Sibling it rendered above the panel, tinting cream to tan. Caught only by blind extraction (contaminated eyes read it as cream) | Shadow restructured as a sibling behind Panel; fix verified by re-capture |
 | 2026-07-12 | all (blind calibration) | Captures are downscaled (viewport 2660 logical → ~1920 image): px measured on the image are 0.72× logical. Blind run #1 sizes skewed accordingly | extraction-procedure.md now mandates image→logical conversion via `workspace.CurrentCamera.ViewportSize` |
+| 2026-07-15 | obsidian-gacha (all 9) | `osascript` AXRaise + `set frontmost` lets the AGENT raise the target Studio window itself → no user babysitting. With the taste's Studio on a display separate from the user's active work, captures don't disturb them | recipe raises frontmost before every shot; packaged as `capture-catalog-previews` skill |
+| 2026-07-15 | obsidian-gacha (settings) | Focus race: one shot photographed the user's terminal + the OTHER Studio window (privacy). Contaminated frame was 627 KB vs ~20–110 KB for clean UI shots | caught by mandatory read-back of every PNG; deleted + re-shot with a double-raise. Size is a smell test, read-back is the gate |
+| 2026-07-15 | obsidian-gacha (dead-ends) | Re-confirmed the non-persisting routes so future sessions don't re-explore: MCP `screen_capture` = bytes-only; `CaptureService` = in-memory `rbxtemp`; `screencapture -l<id>` = blank when Studio backgrounded (render pauses); Orca can't focus/enumerate the window | only working path is `osascript` raise → `screencapture -R` → `magick` crop |
 
 ## Persisting previews to disk (for `design-md/<slug>/previews/`)
+
+> Packaged as the **`capture-catalog-previews`** skill
+> (`skills/capture-catalog-previews/`) — invoke that for the full step-by-step
+> workflow + the reusable `references/capture.sh` helper. This section is the
+> canonical recipe + findings log it points back to.
 
 MCP `screen_capture` images live only in the agent's context. File output
 goes through macOS `screencapture` of the Studio window — verified recipe:
