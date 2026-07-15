@@ -5,6 +5,20 @@ they break the moment someone swaps in real art — the slot's sizing,
 aspect, and contrast were never exercised. Catalog implementations therefore
 use REAL image assets, sourced legitimately.
 
+**Never rebuild baked ART with UI primitives (the fake-art anti-pattern).**
+When the DESIGN.md describes an effect that is pre-rendered art — a per-item
+stylized name wordmark, a faceted 3D gem, a shop offer's light-burst / glowing
+medallion — place an `ImageLabel` asset in that slot. Do NOT reconstruct it out
+of `UIGradient`/`UIStroke`/`Frame`s: a per-item wordmark faked as gradient text +
+a radial glow comes out uniform and identity-less, with a glowing elliptical
+halo the real UI never has (verified in an in-engine review). Rule of thumb: if
+a visual **differs per item, or has baked stylized typography / 3D shading / a
+light-burst, it is an asset slot** — fills, strokes, sheens, and single-color
+glows behind an icon/stroke are UI. If the DESIGN.md itself mis-labels a baked-
+art effect as a "gradient/glow" UI recipe, implement it as an asset slot anyway
+and note the conflict in delivery (per SKILL.md precedence) — do not fake the art
+just because the prose said "UIGradient".
+
 ## Where assets come from (in order)
 
 1. **Creator Store free assets**, found via the Studio MCP `search_asset`

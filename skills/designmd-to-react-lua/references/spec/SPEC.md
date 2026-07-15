@@ -43,6 +43,18 @@ extraction and implementation skills.
    carry per-token provenance (which screenshot, which element) and per-section
    confidence, so a human can review cheaply and an agent knows which values
    are load-bearing versus defaulted.
+5. **UI-vs-asset boundary is load-bearing.** Every ornament is either a UI
+   primitive the implementer BUILDS (`UIGradient`, `UIStroke`, `UICorner`,
+   layered frames, a single-color glow behind an icon/stroke) or a pre-rendered
+   IMAGE ASSET they PLACE (baked stylized typography, per-item bespoke design,
+   3D/faceted shading, a light-burst). The document must classify each one, in
+   prose: describe an asset's STYLE and mark it an image slot (never an asset ID
+   — §7), and give a UI recipe only for genuine UI. Mis-labeling baked art as a
+   "gradient/glow" recipe is a high-severity failure — it makes implementers
+   rebuild art out of primitives and ship identity-less fakes (a per-item
+   wordmark faked as UIGradient text yields uniform names and a glowing
+   elliptical halo the source never had). Heuristic: *if it differs per item, or
+   has baked type / 3D / a burst, it is an asset.*
 
 ## 2. File anatomy
 

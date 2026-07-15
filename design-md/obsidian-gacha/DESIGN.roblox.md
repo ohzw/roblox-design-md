@@ -302,22 +302,22 @@ Roles are assigned by **behavior, not hue**:
   taste may recolor one and not the other.
 
 **Rarity is a spectrum, not a token.** Each aura owns a signature color, and the
-grid renders it three ways at once: a very dark tint of that hue as the tile
-fill, the tile's corner brackets recolored to it, and the aura's name in a
-holographic gradient of it (often with a soft outer glow). Top-tier auras
-upgrade to a fully filled, glowing tile. `accent-rare` `#B14DE0` is stored as a
-single representative (a vivid magenta) so implementers have a default — but the
-real system is "pick the aura's color and drive fill + bracket + text from it."
-Never flatten rarity to one swatch.
+tile carries it two ways in UI — a very dark tint of that hue as the tile fill,
+and the corner brackets recolored to it — plus the aura's **name wordmark, which
+is a per-aura IMAGE ASSET, not UI text** (see the UI-vs-asset boundary in
+Elevation §Emission). `accent-rare` `#B14DE0` is a single representative default
+for the UI parts (fill + brackets); the real system is "pick the aura's color
+and drive fill + bracket from it." Never flatten rarity to one swatch.
 
 **Every accent color is a light source, not a paint.** The palette values above
 are the *hue* of each emission — but in this taste a hue is always delivered as
 light: the primary blue on a button is a stroke *plus* a faint `{glow.accent}`
-halo; the cyan gem *blooms* (`{glow.gem}`); the rarity hue on a wordmark glows
-(`{glow.rarity}`). Contrast is deliberately wide — surfaces sink to near-black,
-accents spike bright and bleed — so the accents read as *emitting* against the
-dark, never as evenly-lit flat shapes. If you set a color and stop, you are
-half-done.
+halo; the cyan gem *blooms* (`{glow.gem}`, a UI glow behind the gem icon-asset);
+the top-tier tile glows. (The aura *name* is an art asset with its glow baked
+in — do not add a UI glow behind it; see §Emission.) Contrast is deliberately
+wide — surfaces sink to near-black, accents spike bright and bleed — so the
+accents read as *emitting* against the dark, never as evenly-lit flat shapes. If
+you set a color and stop, you are half-done.
 
 `outline` `#AEBCCB` is the neutral silver-blue used for the panel/well hairlines
 and the corner brackets. It is *not* a universal stroke color the way a cartoon
@@ -344,14 +344,20 @@ automatically rejoin" line.
 **Casing is Title Case / sentence case, never shouty ALL-CAPS.** Casing is not
 where this taste finds emphasis — color and glow are.
 
-**Text strokes are minimal, but accent text is a light source.** Chrome text
-(titles, labels, rows) is clean — no thick contextual outline. But rarity and
-accent text is *never* flat: an aura name is a **holographic wordmark** — a
-`UIGradient` on the `TextLabel` (rarity hue → cool white) plus a `{glow.rarity}`
-halo recolored to the aura (see Elevation §Emission). Neon labels and hero
-reward numbers glow the same way. Flat single-color accent text is the #1 tell
-that a reproduction missed the taste — if a word is meant to be special, it
-emits.
+**Text strokes are minimal.** Chrome text (titles, labels, rows, counters) is
+clean — no thick contextual outline — and lives in the one UI font family.
+
+**The aura NAME is not UI text at all — it is a per-aura image asset.** In the
+real game each aura's name is bespoke pre-rendered art: its own display font,
+its own gradient, its own baked glow, unique per aura (a graffiti "Prodigy", a
+pixel "Numerical BINARY", an italic "Reborn - True Farm"). Do NOT rebuild this
+with a `UIGradient` on the UI font plus a glow — that is the taste's single
+worst failure mode (it yields uniform, identity-less names and a glowing
+elliptical halo the real game never has; see the UI-vs-asset boundary in
+Elevation §Emission). Represent the name as an `ImageLabel` asset slot keyed by
+aura. A `UIGradient`-on-one-font rendering is an explicit *low-fidelity
+fallback* only, and even then its glow must clamp to the letterforms
+(Contextual `UIStroke`), never a radial halo behind the text.
 
 ## Layout
 
@@ -410,8 +416,30 @@ navy; do not bake a solid opaque fill.
 
 ### Emission (the load-bearing craft — do not skip)
 
-Four concrete treatments carry the "luminous in the dark" identity. Each is a
-Roblox-native recipe; apply them liberally and recolor per element.
+**First, the UI-vs-asset boundary (get this wrong and you fake art badly).**
+Some of this taste's shine is UI you build; some of it is pre-rendered ART you
+place. Classifying an effect wrong is the worst failure mode — it makes an
+implementer rebuild baked art out of `UIGradient`/`Frame`s and produce cheap,
+identity-less imitations (the verified example: per-aura name wordmarks faked as
+UIGradient text, which came out uniform with a glowing elliptical halo).
+
+- **UI primitives (build these):** flat/gradient fills (`UIGradient`),
+  strokes, corner brackets, the specular sheen, single-color glow halos behind
+  an *icon or stroke*, dim, blur, layout.
+- **Image-asset slots (place these, never rebuild):** anything with **baked
+  stylized typography, per-item bespoke design, 3D/faceted shading, or a
+  light-burst** — the per-aura **name wordmarks**, the faceted **currency gem**,
+  the shop **offer icons / light-bursts / glowing medallions**. Describe their
+  style in prose and expose an `ImageLabel` slot (per asset-sourcing); do not
+  reconstruct them in UI.
+- **The rule of thumb:** *if it differs per item, or has baked type/3D/burst,
+  it is an asset.* If it is a fill, stroke, sheen, or a plain colored glow, it
+  is UI. (Counter-example so you don't over-assetize: the magenta gradient on
+  the storage rail icon, the pill's gloss, banner *background* gradients, and
+  price pills are all trivially UI — build them.)
+
+Now the concrete UI treatments — the "luminous in the dark" identity. Each is a
+Roblox-native recipe; apply liberally and recolor per element.
 
 1. **Glow halo** (`{glow.*}` tokens). Behind any accent glyph, gem, accent
    stroke, or rarity wordmark, place a soft additive halo in that element's
@@ -427,8 +455,10 @@ Roblox-native recipe; apply them liberally and recolor per element.
    stacked `UIStroke` rings or nested frames — those render as hard concentric
    borders, worse than no glow (verified: a blind build did exactly this and it
    read as double-bordered boxes, not light). The halo color always matches the
-   thing it lights. This is the single highest-impact treatment: gems, rail
-   icons, accent button strokes, and aura names all wear one.
+   thing it lights. Use it behind **icons and strokes** — the gem icon, rail
+   glyphs, accent button strokes. Do **not** put a radial halo behind the aura
+   *name* (that is an art asset with its glow baked in; a UI halo behind it is
+   the elliptical-donut artifact).
 
 2. **Specular gloss** (glass sheen on pills, banners, filled tiles). Overlay a
    **top-anchored white `UIGradient`** — `Transparency` ~0.82 at the top edge →
@@ -437,14 +467,19 @@ Roblox-native recipe; apply them liberally and recolor per element.
    banners from "gradient rectangles" into *lit glass*. Pair with a faint
    inner top-edge highlight line on panels.
 
-3. **Holographic wordmark** (aura names, hero reward text). The name is not
-   flat text — it is a `UIGradient` on the `TextLabel` (rarity hue → cool white,
-   rotated ~90°) *plus* a `{glow.rarity}` halo recolored to the aura. Top-tier
-   auras escalate: the whole tile fills with a dark tint of the hue *and* emits
-   a `{glow.rarity}` bloom past its edges (the tile itself glows, not just the
-   text).
+3. **Aura wordmark = ASSET (not a UI treatment).** The aura name is placed as a
+   per-aura `ImageLabel` art slot, not built here (see the boundary above). The
+   only UI job around it is fitting the image into the tile. Hero reward text may
+   likewise be art; a plain neon `TextLabel` is the fallback.
 
-4. **Contrast grading.** Keep surfaces genuinely near-black (`surface`,
+4. **Top-tier tile bloom.** A high-rarity tile becomes a **full-bleed bright
+   fill** (a `Frame` at a bright tint of the rarity hue filling the tile) with a
+   soft glow that HUGS the tile rectangle — implement the glow *inside* the tile
+   with `ClipsDescendants = true` so it never bleeds past the tile bounds and
+   breaks the grid. This is a *filled, evenly-glowing* tile (Telekinesis is solid
+   green edge-to-edge), NOT a centered radial halo spilling outside the square.
+
+5. **Contrast grading.** Keep surfaces genuinely near-black (`surface`,
    `surface-deep`) and let accents spike bright and bleed. Do not lift panels
    toward mid-navy or desaturate accents — the wide range (black floor, neon
    peaks) *is* the mood. A middle-grey, evenly-lit image has lost it.
@@ -506,11 +541,13 @@ that same semantic color. The stroke *is* the button — and it carries a faint
 light rather than sitting as crisp flat lines. Read that once and the whole
 component set follows.
 
-- **currency-bar** — top-left pill, `surface-dark` navy vertical `UIGradient`,
-  a bright cyan rim that **blooms outward** (`{glow.gem}` on the stroke), a
-  **top-anchored white specular gloss** over the upper half (glass), and a
-  faceted cyan gem that glows (`{glow.gem}` halo) + white amount (`260K`). Feel:
-  *a lit display readout* — glass and emission, not a matte gradient pill.
+- **currency-bar** — top-left pill. UI parts: `surface-dark` navy vertical
+  `UIGradient`, a bright cyan rim (`{glow.gem}` behind the stroke), a
+  **top-anchored white specular gloss** over the upper half (glass), white
+  amount (`260K`). Asset part: the **gem is a faceted 3D-shaded icon asset**
+  (`ImageLabel`) — its shine is baked, not a UIGradient — with a `{glow.gem}` UI
+  halo behind it. Feel: *a lit display readout* — glass and emission, not a
+  matte gradient pill.
 - **side-button** — 66px `md`-rounded dark tile, 2px hairline, holding one
   **filled, saturated glyph that blooms** in its semantic color (aura index,
   storage, backpack=green, reroll, shop=red, achievements=gold, settings) — the
@@ -537,13 +574,15 @@ component set follows.
 - **button-roll** — the hero: a larger 130px `lg`-rounded dark tile with a white
   dice glyph and a "Roll" label beneath, flanked by Auto and Skip. Feel: *the
   lever you came to pull.*
-- **card-grid** — 90px square aura tile, `surface-deep` fill, corner brackets
-  recolored to the aura's rarity, and the name as a **holographic wordmark**
-  (rarity→white `UIGradient` + `{glow.rarity}` halo, recolored per aura), plus a
-  quantity badge bottom-right. Top rarities escalate to a **filled tile that
-  itself blooms** — a dark tint of the hue as fill *and* a `{glow.rarity}` bloom
-  spilling past the tile edge (Telekinesis glows green edge-to-edge). The
-  glowing wordmark IS the point of the tile; a flat colored name is a miss.
+- **card-grid** — 90px square aura tile. UI parts: `surface-deep` fill, corner
+  brackets recolored to the aura's rarity, a quantity badge bottom-right, and
+  `ClipsDescendants = true`. Asset part: the aura **name wordmark is a per-aura
+  `ImageLabel` art slot** (baked font + gradient + glow, unique per aura) — do
+  NOT rebuild it as UIGradient text with a radial halo (that is the elliptical-
+  donut artifact). Top rarities escalate to a **full-bleed bright fill** (a
+  bright tint of the hue filling the tile) with a soft glow **clipped to the
+  tile bounds** — an evenly-lit filled tile (Telekinesis green edge-to-edge), not
+  a centered radial halo spilling outside the square and breaking the grid.
 - **card-grid-selected** — fill brightens toward the rarity hue and the brackets
   go full-bright (this is a *selection* highlight — a brighter fill + brackets —
   distinct from the rarity ribbon/glow, which is the tile's baseline styling).
@@ -558,12 +597,14 @@ component set follows.
 - **toggle-switch** — pill track; ON = `primary` fill with the white knob slid
   right, OFF = `surface-deep` with a gray knob. The Hardcore row additionally
   tints its whole row faintly red.
-- **banner-offer** — a *lavish, lit* shop card, not a flat gradient rectangle.
-  Per-offer hue `UIGradient` + a **radial light-burst** behind the icon, a
-  glossy icon set in a **glowing circular medallion** (`{glow.accent}` recolored
-  to the offer), a **holographic** `display` title (gradient + glow), a top
-  specular gloss, a faint background watermark, and one or two `button-buy`
-  price pills whose strokes glow. Feel: *a premium storefront that emits.*
+- **banner-offer** — a *lavish, lit* shop card. UI parts: per-offer hue
+  `UIGradient` card background, a top specular gloss, `display` title, and one or
+  two `button-buy` price pills whose strokes glow. Asset part: the **offer icon,
+  its light-burst, and the glowing circular medallion are baked ART** — expose an
+  `ImageLabel` slot per offer; do NOT reconstruct the burst/medallion out of
+  `Frame`s and gradients. Feel: *a premium storefront that emits* — but the
+  premium is in the art, not in faked UI. A flat white outline icon on a plain
+  gradient card is the under-reach failure.
 
 ## Screen Patterns
 
@@ -602,10 +643,21 @@ padding; the darkness does the work of separating regions, so dividers are rare.
 
 ## Do's and Don'ts
 
-- **Do make accents EMIT.** Gems, rail icons, accent button strokes, aura names,
-  and progress fills all wear a color-matched glow halo (`{glow.*}`). This is the
-  #1 rule — a build with perfect layout but flat, un-glowing accents has failed
-  to reproduce the taste. **Don't** stop at setting a color; add the light.
+- **Do classify every ornament as UI-vs-ASSET before building it.** Fills,
+  gradients, strokes, sheens, and single-color glows behind an *icon/stroke* are
+  UI. Anything with baked stylized typography, per-item bespoke design, 3D
+  shading, or a light-burst — the **per-aura name wordmarks, the faceted gem,
+  the shop offer icons/bursts/medallions** — is an **image-asset slot**.
+  **Don't** rebuild asset-art out of `UIGradient`/`Frame`s: faking a per-aura
+  wordmark with gradient text + a radial glow is this taste's worst failure
+  (uniform names, an elliptical-donut halo the real game never has). If it
+  differs per item or has baked type/3D/burst, it is an asset.
+- **Do make accents EMIT** — but only the UI ones. Gems (icon-asset), rail icons,
+  accent button strokes, and progress fills wear a color-matched glow halo
+  (`{glow.*}`); the aura name does NOT (its glow is baked into the art). A build
+  with flat, un-glowing UI accents has missed the taste; a build with a UI halo
+  behind the aura name has faked an asset. **Don't** stop at a color; **don't**
+  glow an asset.
 - **Don't** use thin line-art / outline icons. Rail and header glyphs are
   **filled, saturated, and blooming** in their semantic color. A gray gear
   line-icon reads as a utility app, not a luminous game HUD.
@@ -633,8 +685,9 @@ padding; the darkness does the work of separating regions, so dividers are rare.
   navies and a cool near-white.
 - **Don't** set thick contextual text outlines on chrome text. Only accent/rarity
   text gets a soft glow.
-- **Do** recolor a tile's fill *and* brackets *and* name from one rarity hue;
-  **don't** hardcode `accent-rare` for every rare — it is only a fallback swatch.
+- **Do** recolor a tile's fill *and* brackets from one rarity hue (the name is a
+  per-aura asset, carrying its own color); **don't** hardcode `accent-rare` for
+  every rare — it is only a fallback swatch for the UI fill/brackets.
 - **Don't** hardcode the topbar inset; query `GuiService:GetInsetArea()` after a
   Heartbeat.
 
@@ -643,11 +696,16 @@ padding; the darkness does the work of separating regions, so dividers are rare.
 **Cheat sheet**
 - Vibe: midnight loot vault. Dark cold glass + neon rarity + white corner
   brackets (reticle). Restraint in chrome, fireworks in rewards.
-- **#1 rule — EMISSION:** accents are light, not paint. Gems, icons, accent
-  strokes, aura names, progress fills all wear a color-matched `{glow.*}` halo;
-  pills/banners/tiles get a top specular gloss; icons are filled + blooming
-  (never line-art); aura names are holographic (gradient + glow). Flat accents =
-  failed reproduction.
+- **#1 rule — UI vs ASSET:** classify each ornament first. Baked art (per-aura
+  name wordmarks, faceted gem, shop offer icons/bursts/medallions) = **image-
+  asset slots**, never rebuilt in UI. Faking a wordmark with UIGradient text +
+  radial glow is the worst failure (elliptical-donut artifact).
+- **#2 rule — EMISSION (UI accents only):** accents are light, not paint. Gems
+  (icon-asset), rail icons, accent strokes, progress fills wear a color-matched
+  `{glow.*}` halo; pills/banners get a top specular gloss; icons are filled +
+  blooming (never line-art); top-tier tiles are full-bleed fill + glow CLIPPED to
+  bounds. The aura name does NOT get a UI glow (baked in the art). Flat UI
+  accents = failed reproduction.
 - Backgrounds: `surface #12171B` panels, `surface-deep #0D0D10` wells; no pure
   black/white; a whisper of panel translucency.
 - Buttons = shared dark fill + 3px **semantic-colored stroke** + same-color text.
@@ -674,22 +732,26 @@ padding; the darkness does the work of separating regions, so dividers are rare.
    integrated top-left header (sparkle icon + 'Aura Storage'), pill search field,
    floating white X top-right. Left = aura preview well + action well with
    Equip (blue-stroke), Lock (gold-stroke), Salvage (red-stroke) buttons; right =
-   a grid of 90px aura tiles whose fill, brackets, and gradient name text all
-   take the aura's rarity color, quantity badge bottom-right. Footer: Total
-   Value / Storage 30/30 + Normal|Hardcore pill tabs + circular pagination."
+   a grid of 90px aura tiles (ClipsDescendants) whose fill and brackets take the
+   aura's rarity color, with the aura NAME placed as a per-aura ImageLabel art
+   slot (NOT UIGradient text), quantity badge bottom-right; top-tier tiles get a
+   full-bleed fill + glow clipped to bounds. Footer: Total Value / Storage 30/30
+   + Normal|Hardcore pill tabs + circular pagination."
 3. "Animate window open/close: fade the panel `fast` with `settle`/`exit` easing
    and NO scale, while a depth-of-field backdrop blur eases in/out over `slow`.
    Reserve a Back-Out `pop` and a flash for the aura reveal moment only. Count
    currency and roll numbers up rather than snapping. Provide a reduced-motion
    path that drops the blur and reward scale to plain fades."
 4. "Make it EMIT (do this pass last, over the built layout): behind every accent
-   glyph, gem, accent button stroke, and aura name, add a color-matched radial
-   glow halo (`{glow.*}`, recolored to the element). Give the currency pill and
-   offer banners a top-anchored white specular gloss over their upper half.
-   Render aura names as holographic wordmarks (rarity→white `UIGradient` + glow).
-   Swap any line-art icons for filled, saturated, blooming glyphs. Darken
-   surfaces toward near-black and brighten accents so the whole thing reads as
-   neon lit in a dark vault, not flat dark-mode."
+   glyph, gem icon, and accent button stroke, add a color-matched radial glow
+   halo (`{glow.*}`, recolored to the element) — but NOT behind aura names (those
+   are art assets). Give the currency pill and offer banners a top-anchored white
+   specular gloss over their upper half. Make top-tier tiles a full-bleed fill +
+   glow clipped to the tile bounds. Swap any line-art icons for filled,
+   saturated, blooming glyphs. Keep aura name wordmarks and shop offer
+   icons/bursts as image-asset slots (do not fake them in UI). Darken surfaces
+   toward near-black and brighten accents so the whole thing reads as neon lit in
+   a dark vault, not flat dark-mode."
 
 ---
 
