@@ -27,29 +27,25 @@ local function AuraCard(props)
 
 	local children = {
 		Corner = e("UICorner", { CornerRadius = Theme.rounded.sm }),
-		-- top-tier tile bloom: a rarity-colored radial halo behind the whole
-		-- tile that spills past its edges (card does not clip) -- makes a
-		-- legendary/epic tile read as EMITTING, not just tinted.
-		TileBloom = if filled
-			then e(Glow, {
-				colorOverride = rarityColor,
-				token = Theme.glow.rarity,
-				intensity = 0.75,
-				spread = 20,
-				elementSize = UDim2.fromScale(1, 1),
-				zIndex = 0,
-			})
-			else nil,
-		-- filled/glowing wash for high rarity (rarity hue at high transparency
-		-- over the dark fill — no new palette introduced).
+		-- top-tier tile: a full-bleed bright fill of the rarity hue + a soft glow
+		-- that HUGS the tile (the card sets ClipsDescendants, so this never spills
+		-- past the tile bounds and breaks the grid -- DESIGN.md Emission #4).
 		Wash = if filled
 			then e("Frame", {
 				BackgroundColor3 = rarityColor,
-				BackgroundTransparency = 0.82,
+				BackgroundTransparency = 0.5,
 				Size = UDim2.fromScale(1, 1),
 				ZIndex = 1,
 			}, {
 				Corner = e("UICorner", { CornerRadius = Theme.rounded.sm }),
+				Bloom = e(Glow, {
+					colorOverride = rarityColor,
+					token = Theme.glow.rarity,
+					intensity = 0.7,
+					spread = 10,
+					elementSize = UDim2.fromScale(1, 1),
+					zIndex = 0,
+				}),
 			})
 			else nil,
 		Brackets = e(CornerBrackets, {
@@ -70,18 +66,12 @@ local function AuraCard(props)
 				ZIndex = 2,
 			})
 			else nil,
-		-- radial glow behind the wordmark (soft bloom, not a thin stroke ring).
-		NameGlow = e(Glow, {
-			colorOverride = rarityColor,
-			token = Theme.glow.rarity,
-			intensity = 0.55,
-			spread = 8,
-			elementSize = UDim2.new(1, -Theme.spacing.sm, 0, 20),
-			position = UDim2.new(0.5, 0, if props.icon then 0.62 else 0.5, 0),
-			zIndex = 2,
-		}),
-		-- holographic name: a rarity-hue -> cool-white gradient sheen on the
-		-- rarity-colored text (Typography prose); the bloom above is its glow.
+		-- ASSET SLOT: the aura name is really a per-aura pre-rendered wordmark
+		-- (bespoke font + gradient + baked glow). No per-aura art is available in
+		-- this preview, so this is the DESIGN.md's explicit LOW-FIDELITY FALLBACK:
+		-- gradient text in the UI font, with the glow CLAMPED to the letterforms
+		-- (a thin Contextual UIStroke) -- NOT a radial halo behind the text (that
+		-- was the elliptical-donut artifact an in-engine review flagged).
 		Name = e("TextLabel", {
 			BackgroundTransparency = 1,
 			Size = UDim2.new(1, -Theme.spacing.sm, 0, 22),
@@ -99,6 +89,14 @@ local function AuraCard(props)
 			Gradient = e("UIGradient", {
 				Color = ColorSequence.new(rarityColor, Theme.colors.onSurface),
 				Rotation = 90,
+			}),
+			-- letterform-clamped glow (fallback): a thin same-hue Contextual
+			-- stroke, NOT a radial halo behind the text.
+			LetterGlow = e("UIStroke", {
+				Thickness = 1,
+				Color = rarityColor,
+				Transparency = 0.5,
+				ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual,
 			}),
 		}),
 		Qty = if props.qty
@@ -134,6 +132,8 @@ local function AuraCard(props)
 		Text = "",
 		AutoButtonColor = false,
 		BackgroundColor3 = baseFill,
+		-- clip so the top-tier bloom hugs the tile and never spills into neighbors.
+		ClipsDescendants = true,
 		Size = props.size or UDim2.fromOffset(150, 150),
 		Position = props.position,
 		AnchorPoint = props.anchorPoint,
