@@ -1,0 +1,32 @@
+{
+  "name": "obsidian-gacha-preview",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Packages": { "$path": "../../preview-place/Packages" },
+      "ObsidianGacha": { "$path": "src" }
+    },
+    "Workspace": {
+      "$properties": {},
+      "PreviewFloor": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Size": [512, 4, 512],
+          "Position": [0, -2, 0],
+          "Color": [0.208, 0.314, 0.431],
+          "Material": "Slate"
+        }
+      },
+      "PreviewSpawn": {
+        "$className": "SpawnLocation",
+        "$properties": {
+          "Anchored": true,
+          "Size": [12, 1, 12],
+          "Position": [0, 0.5, 0],
+          "Neutral": true
+        }
+      }
+    }
+  }
+}

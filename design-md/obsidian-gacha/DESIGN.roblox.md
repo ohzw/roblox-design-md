@@ -1,0 +1,565 @@
+---
+version: alpha
+name: Obsidian Gacha
+description: >
+  Near-black glass windows framed by white targeting-reticle corner brackets;
+  buttons are dark tiles that speak through a colored stroke, not a fill;
+  transitions are fast fades over an animated depth-of-field blur, with bounce
+  reserved for rarity reveals.
+taste: [obsidian-gacha, neon-rarity, hud-reticle, premium-gacha]
+genre: [rng, aura-collector, gacha, simulator]
+inspiration: "Jule's RNG — aura-RNG genre (Sol's RNG lineage). On-screen version tag: ARC 4.0-7051."
+
+colors:
+  primary: "#3961E1"        # confirm/brand blue — Equip, toggles ON, section headers, Join Group, currency gloss
+  secondary: "#66D82E"      # affordable/success green — "Free", claim-ready, backpack (shares hex with currency-hard)
+  danger: "#D64359"         # destructive — Salvage Mode, delete, Hardcore Mode, shop
+  surface: "#12171B"        # window/panel fill — near-black with a cold navy cast
+  surface-deep: "#0D0D10"   # inset wells and button fills — near-pure black
+  surface-dark: "#14253C"   # currency pill / dark glossy chrome
+  on-surface: "#F2F6FA"     # primary text — a cool near-white, never pure #FFFFFF
+  on-surface-dim: "#9AA6B2" # secondary text, placeholders, disabled labels (cool gray)
+  currency-soft: "#60FFF7"  # gems (cyan diamond) — the earned currency
+  currency-hard: "#66D82E"  # Robux price accent — premium spend (same green as secondary; roles may diverge in other games)
+  accent-gold: "#E3B36E"    # lock / favorite / VIP / premium tier
+  accent-rare: "#B14DE0"    # ONE representative of the holographic rarity spectrum (see Colors prose)
+  outline: "#AEBCCB"        # neutral panel/well hairline + corner-bracket reticles (silver-blue)
+  dim: "#05070Acc"          # popup backdrop darken (paired with an animated depth-of-field blur — see Motion)
+
+typography:
+  display:
+    fontFamily: FredokaOne
+    fontWeight: Regular
+    textSize: 40px          # reward/aura reveal, hero numbers (size inferred — no celebration frame captured)
+  heading:
+    fontFamily: FredokaOne
+    fontWeight: Regular
+    textSize: 26px          # window titles ("Aura Storage", "Settings")
+  label:
+    fontFamily: FredokaOne
+    fontWeight: Regular
+    textSize: 22px          # buttons ("Equip", "Roll", "Skip")
+  body:
+    fontFamily: FredokaOne
+    fontWeight: Regular
+    textSize: 18px          # rows, values, offer subtitles
+  caption:
+    fontFamily: FredokaOne
+    fontWeight: Regular
+    textSize: 14px          # counters, quantity badges, helper microcopy
+
+spacing: { xs: 4px, sm: 8px, md: 12px, lg: 20px, xl: 32px }
+rounded: { sm: 8px, md: 14px, lg: 20px, full: full }
+
+strokes:
+  panel:    { thickness: 2px, color: "{colors.outline}", mode: Border }     # window & well hairline
+  bracket:  { thickness: 3px, color: "{colors.outline}", mode: Border }     # corner reticle brackets
+  confirm:  { thickness: 3px, color: "{colors.primary}", mode: Border }     # Equip / affirmative buttons
+  destroy:  { thickness: 3px, color: "{colors.danger}", mode: Border }      # Salvage / delete
+  favorite: { thickness: 3px, color: "{colors.accent-gold}", mode: Border } # Lock / favorite
+  affirm:   { thickness: 3px, color: "{colors.secondary}", mode: Border }   # buy / claim price pills
+  neutral:  { thickness: 2px, color: "{colors.on-surface-dim}", mode: Border } # Enter / Use / non-committal
+
+motion:
+  durations: { instant: 0.08s, fast: 0.15s, normal: 0.25s, slow: 0.4s }
+  easings:
+    pop:    { style: Back, direction: Out }       # reward / rarity reveal ONLY
+    settle: { style: Quad, direction: Out }        # window content settle, value count-up
+    exit:   { style: Quad, direction: In }         # window dismiss
+    blur:   { style: Sine, direction: InOut }      # depth-of-field backdrop fade
+
+components:
+  currency-bar:
+    backgroundColor: "{colors.surface-dark}"
+    textColor: "{colors.on-surface}"
+    typography: "{typography.label}"
+    rounded: "{rounded.full}"
+    stroke: "{strokes.confirm}"          # cyan/blue glossy rim; gem glyph in currency-soft
+    gradient: "vertical(#1B3B5C, #0E1B2E)"
+    height: 60px
+    size: "scale 0.12 wide, aspect 3.6:1"
+  side-button:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.md}"
+    stroke: "{strokes.panel}"
+    size: "66px square"
+    aspectRatio: 1                       # glowing semantic-colored glyph; stroke tints to the glyph's role
+  window:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.md}"
+    stroke: "{strokes.panel}"
+    gradient: "vertical(#141B21, #0C0F13)"
+    shadow: none
+    transparency: 0.04                   # a whisper of translucency lets the blurred world tint the panel
+    size: "scale 0.60 wide, aspect 1.7:1"
+  window-header:
+    textColor: "{colors.on-surface}"
+    typography: "{typography.heading}"   # integrated top-left: semantic icon + white title, no overlapping band
+  button-close:
+    textColor: "{colors.on-surface}"
+    typography: "{typography.heading}"   # a bare white X glyph top-right — no fill, no stroke
+  dim-overlay:
+    backgroundColor: "{colors.dim}"      # plus an animated depth-of-field blur on the world (see Motion)
+  button-primary:
+    backgroundColor: "{colors.surface-deep}"
+    textColor: "{colors.primary}"
+    typography: "{typography.label}"
+    rounded: "{rounded.sm}"
+    stroke: "{strokes.confirm}"
+    height: 48px
+    shadow: none
+  button-primary-pressed:
+    transparency: 0.15                   # fill lifts toward the stroke color; no scale bounce on chrome
+  button-secondary:
+    backgroundColor: "{colors.surface-deep}"
+    textColor: "{colors.accent-gold}"
+    typography: "{typography.label}"
+    rounded: "{rounded.sm}"
+    stroke: "{strokes.favorite}"
+    height: 48px
+  button-danger:
+    backgroundColor: "{colors.surface-deep}"
+    textColor: "{colors.danger}"
+    typography: "{typography.label}"
+    rounded: "{rounded.sm}"
+    stroke: "{strokes.destroy}"
+    height: 44px
+  button-buy:
+    backgroundColor: "{colors.surface-deep}"
+    textColor: "{colors.secondary}"
+    typography: "{typography.label}"
+    rounded: "{rounded.sm}"
+    stroke: "{strokes.affirm}"           # price pill: Robux/gem glyph + amount, colored to the currency
+    height: 44px
+  button-icon:
+    backgroundColor: "{colors.surface-deep}"
+    rounded: "{rounded.md}"
+    stroke: "{strokes.panel}"
+    size: "110px square"                 # Auto / Skip / reroll / pagination — dark tile + white glyph
+    aspectRatio: 1
+  button-roll:
+    backgroundColor: "{colors.surface-deep}"
+    rounded: "{rounded.lg}"
+    stroke: "{strokes.panel}"
+    size: "130px square"                 # the hero: bigger dark tile, white dice glyph, "Roll" label beneath
+    aspectRatio: 1
+    shadow: none
+  card-grid:
+    backgroundColor: "{colors.surface-deep}"
+    stroke: "{strokes.bracket}"          # bracket + name text recolor to the aura's rarity in situ
+    typography: "{typography.caption}"
+    rounded: "{rounded.sm}"
+    size: "90px square, 12px cell gap"
+    aspectRatio: 1
+  card-grid-selected:
+    backgroundColor: "#223349"           # fill brightens toward the rarity hue; brackets go full-bright
+    stroke: "{strokes.confirm}"
+  badge-slot:
+    textColor: "{colors.on-surface}"
+    typography: "{typography.caption}"   # quantity, anchored bottom-right of a tile
+  progress-bar:
+    backgroundColor: "{colors.surface-deep}"
+    rounded: "{rounded.full}"
+    stroke: "{strokes.panel}"
+    gradient: "horizontal(#3961E1, #5591E5)"   # fill is primary; height ~14px
+    height: 14px
+  segmented-tab:
+    backgroundColor: "{colors.surface-deep}"
+    textColor: "{colors.on-surface-dim}"
+    typography: "{typography.body}"
+    rounded: "{rounded.full}"
+  segmented-tab-selected:
+    backgroundColor: "#2E3338"           # selected pill lifts to a mid-gray; text goes on-surface
+    textColor: "{colors.on-surface}"
+  toggle-switch:
+    backgroundColor: "{colors.surface-deep}"
+    rounded: "{rounded.full}"
+    size: "54px x 28px track, white knob"
+  toggle-switch-selected:
+    backgroundColor: "{colors.primary}"  # ON: primary track, knob slides right
+  banner-offer:
+    textColor: "{colors.on-surface}"
+    typography: "{typography.display}"
+    rounded: "{rounded.md}"
+    stroke: "{strokes.panel}"
+    gradient: "horizontal(#12324F, #0E1B2E)"   # per-offer hue (cyan 2X, purple INF, gold VIP); holds icon + title + price pill
+
+extraction:
+  inputs:
+    - id: clip-1
+      kind: video
+      describes: "53s desktop screen-recording (1800x1102, HEVC) of an aura-RNG game: HUD, Aura Storage (+ aura detail), Inventory, Exclusive Shop, Achievements, Settings; window open/close transitions"
+  confidence:
+    Overview: high
+    Colors: high
+    Typography: medium
+    Layout: high
+    "Elevation & Depth": high
+    Shapes: medium
+    Motion: medium
+    Components: high
+    "Screen Patterns": high
+    "Do's and Don'ts": high
+  notes: >
+    Single clip: a WINDOWED capture of the Roblox client on a macOS 4K display,
+    saved at 1800x1102. px scale was CALIBRATED, not assumed: the Roblox unibar
+    measures ~34px tall inside a ~55px top inset in the image, matching Roblox's
+    canonical topbar offset dimensions (inset ~58px desktop) at factor ~1.0. This
+    rules out a 2x retina backing-store capture (which would have shown a ~70-88px
+    unibar and required halving every token). So image px ≈ Roblox offset px; px
+    tokens stand as measured (residual uncertainty ±~30% on absolute px is absorbed
+    by scale-first sizing + friendly rounding — spacing 4px, radii 2px, strokes 1px).
+    Colors sampled per-element with ImageMagick (center-of-fill, 8x8 averages) — high
+    confidence. Motion derived from 40fps sampling of the Aura Storage open/close:
+    chrome fades in/out in <=2 frames (no scale-down observed) while an animated
+    depth-of-field blur on the world clears over ~0.4s; easing families for the
+    chrome were not resolvable at that speed, so `pop`/reward motion is a taste-family
+    preset (Motion=medium). No celebration/reward frame was captured: `display` size
+    and reward `pop` are inferred. currency-hard duplicates the secondary green hex
+    (Robux vs "Free" both green) — coincidence recorded, roles kept separate. In-game
+    text references "Jule's RNG"; credited in `inspiration`, never used as the taste name.
+---
+
+# Obsidian Gacha
+
+## Overview
+
+Obsidian Gacha is the taste of a **premium loot vault at midnight**: near-black
+glass panels floating over a blurred world, every one framed by thin white
+**corner brackets** like a targeting reticle, and a neon rarity system that lets
+the *content* (the auras) supply all the color while the chrome stays dark and
+disciplined. It feels like the equipment screen of a sci-fi collectathon crossed
+with a slot machine — think the loadout menus of a looter-shooter, restyled for
+a Roblox aura-RNG grinder.
+
+The emotional job is **anticipation and status**. The core loop is one giant
+button — *Roll* — and everything else is the display case for what you pull. So
+the UI is deliberately quiet and expensive-looking (dark, glossy, precise) to
+make the bright holographic aura reveals feel like the reward they are. This is
+NOT the bouncy, sticker-outlined cartoon-simulator taste; it is its cooler,
+more restrained cousin. Restraint in the chrome, fireworks in the payoff.
+
+Adjectives: dark, neon, precise, glossy, collector-grade.
+
+**Reference game (analyzed, not affiliated):** an aura-RNG game whose in-game
+text references *Jule's RNG* (Sol's RNG lineage). Credited openly; the taste
+below is the reusable thing, not the game.
+
+## Colors
+
+The palette is **one dark stage and a small cast of neon roles**. Backgrounds
+are near-black with a cold navy cast (`surface` `#12171B`), inset wells drop to
+near-pure black (`surface-deep` `#0D0D10`), and pure `#000000`/`#FFFFFF` are
+avoided — text is a cool near-white (`on-surface` `#F2F6FA`) and the darks carry
+a faint blue temperature. Record this: the whole taste reads *cold*, never warm.
+
+Roles are assigned by **behavior, not hue**:
+- `primary` `#3961E1` — the confirm/brand blue. It is the "yes, commit" voice:
+  Equip, toggles that are ON, section headers, *Join Group*, the glossy rim of
+  the currency pill, and the progress-bar fill.
+- `danger` `#D64359` — anything destructive or high-stakes: *Salvage Mode*, the
+  delete/trash button, *Hardcore Mode*'s row tint, the shop entry.
+- `secondary` `#66D82E` — the affordable/success green: the *Free* tag, a
+  claim-ready achievement, the backpack glyph.
+- `accent-gold` `#E3B36E` — lock, favorite, and premium tier (VIP, the medal).
+- Currencies get their own accents: `currency-soft` `#60FFF7` (cyan gem diamond,
+  the earned currency shown as `260K`) and `currency-hard` `#66D82E` (the Robux
+  price accent). currency-hard and secondary share the same green hex — a
+  coincidence in this game; keep the roles separate because another game in this
+  taste may recolor one and not the other.
+
+**Rarity is a spectrum, not a token.** Each aura owns a signature color, and the
+grid renders it three ways at once: a very dark tint of that hue as the tile
+fill, the tile's corner brackets recolored to it, and the aura's name in a
+holographic gradient of it (often with a soft outer glow). Top-tier auras
+upgrade to a fully filled, glowing tile. `accent-rare` `#B14DE0` is stored as a
+single representative (a vivid magenta) so implementers have a default — but the
+real system is "pick the aura's color and drive fill + bracket + text from it."
+Never flatten rarity to one swatch.
+
+`outline` `#AEBCCB` is the neutral silver-blue used for the panel/well hairlines
+and the corner brackets. It is *not* a universal stroke color the way a cartoon
+taste has one brown ink: **action buttons override the stroke with their
+semantic color** (see Components), and that semantic-stroke system is the taste.
+
+`dim` `#05070Acc` darkens the world behind a popup — but the more important
+backdrop treatment is the animated blur (Motion), not the darken.
+
+## Typography
+
+**One family, many sizes.** The entire UI is set in a rounded, heavy, friendly
+bold sans (mapped to `FredokaOne`; runner-up `BuilderSans` if a lighter, more
+neutral read is wanted) — rounded terminals, even weight, geometric but warm.
+Using a single family across titles, buttons, values, and microcopy is a taste
+feature here, not a shortcut; keep it uniform. Helper microcopy renders at a
+lighter optical weight simply by being smaller — do not switch families for it.
+
+Hierarchy: `display` (40px) for reward/aura reveals and hero numbers; `heading`
+(26px) for window titles; `label` (22px) for buttons; `body` (18px) for rows and
+values; `caption` (14px) for counters, quantity badges, and the "You will
+automatically rejoin" line.
+
+**Casing is Title Case / sentence case, never shouty ALL-CAPS.** Casing is not
+where this taste finds emphasis — color and glow are.
+
+**Text strokes are minimal.** Unlike the cartoon-chunky taste, UI text does not
+wear a thick contextual outline. Chrome text is clean; the only "outline"
+treatment is a **soft outer glow** on rarity/accent text (an aura name, a neon
+label). Implement that as a subtle drop glow, not a hard `UIStroke`.
+
+## Layout
+
+Sizes are Scale-first (`UDim2` Scale + `UIAspectRatioConstraint`); the `px`
+tokens here are offset details — pill heights, tile sizes, gaps, stroke weights —
+delegated to `UIListLayout`/`UIGridLayout`/`UIPadding`, never hand-positioned.
+
+- **Spacing scale** `{spacing}`: grid cells sit on a `md` (12px) `CellPadding`;
+  window inner breathing room is `lg` (20px); tight clusters (a glyph and its
+  label, price pill internals) use `sm` (8px).
+- **Density is moderate-to-high but calm.** The HUD keeps a single vertical rail
+  of ~7 icon buttons on the left and one action cluster bottom-center; it never
+  crowds the center where the avatar and the reward reveal live. Windows are
+  denser (grids, dual panes) but always inside generous padding so the darkness
+  reads as space, not clutter.
+- **Tap targets** stay at/above 44px: side-buttons are 66px squares, action
+  tiles 110px, the Roll hero 130px. Do not shrink touch controls below 44px at
+  reference.
+- **Safe areas & reserved zones**: HUD roots use `ScreenInsets = DeviceSafeInsets`
+  and query `GuiService:GetInsetArea()` for the topbar — never hardcode it. Keep
+  the HUD clear of the bottom-left (virtual joystick), bottom-right (jump), and
+  the top strip (unibar). The left rail starts *below* the currency pill, which
+  itself sits just under the topbar.
+
+## Elevation & Depth
+
+Depth here is built from **strokes, brackets, and a blurred backdrop — not
+shadows or bevels.** There is no fake-3D bottom edge and no drop shadow anywhere;
+`shadow: none` is the correct default for this taste. Recording the *absence* of
+bevels is as important as any positive token — a cartoon bevel would instantly
+break it.
+
+Two stroke weights form the scale:
+- **2px** hairline (`strokes.panel`, `strokes.neutral`) for window edges, well
+  edges, and non-committal buttons.
+- **3px** (`strokes.bracket` and every semantic button stroke) for the corner
+  reticles and for action buttons.
+
+**The corner-bracket motif is the signature elevation cue.** Instead of stroking
+a panel's full perimeter, this taste draws thin light **L-shaped brackets at the
+four corners** of every panel *and* every sub-well (the aura preview, the action
+well, each grid tile). Read them as four small `Frame`s (or a 9-slice image)
+anchored to the corners, `outline`-colored, 3px thick with ~26px arms. On a
+selected or high-rarity element the brackets go full-bright and recolor.
+
+Layer stack, bottom to top: **blurred world → `dim` darken → window panel →
+corner brackets + chrome → floating close X.** Set `ScreenGui.ZIndexBehavior =
+Sibling` explicitly and band by `DisplayOrder`: HUD low, windows mid, the reward
+reveal above everything. The panel carries a hair of translucency
+(`transparency 0.04`) so the blurred backdrop faintly tints it — that is why the
+Inventory panel reads faintly green over grass and the Aura Storage panel reads
+navy; do not bake a solid opaque fill.
+
+## Shapes
+
+A calm rounded-rectangle world with two pill exceptions.
+
+- **Corner radii** `{rounded}`: `sm` (8px) on buttons, grid tiles, and wells;
+  `md` (14px) on windows, side-buttons, and offer banners; `lg` (20px) on the
+  Roll hero tile. Nothing is sharp-cornered; nothing is heavily rounded either —
+  the radii are tight and precise, matching the "equipment screen" mood.
+- **Pills** (`full`): the currency bar, the search field, the segmented tabs
+  (Normal/Hardcore, Items/Amulets/Materials), and toggle tracks are fully
+  rounded. Pagination arrows are circular.
+- Silhouette rule: **chrome is rounded-rectangles; switches and filters are
+  pills; avatars/pagination are circles.** Squares (icon tiles, aura cards) keep
+  a 1:1 `UIAspectRatioConstraint`.
+
+## Motion
+
+Motion splits cleanly into **restrained chrome** and **loud rewards** — honor
+both or the taste collapses into either "too sluggish" or "too toylike."
+
+Observed from the clip (40fps sampling of Aura Storage open/close):
+- **Windows fade fast.** Chrome appears and disappears in under ~2 frames with
+  **no scale-down** — treat window enter/exit as a `fast` (0.15s) transparency
+  fade, `settle`/`exit` easing, *not* a `pop` scale. Overshoot on chrome would
+  read as cheap here.
+- **The backdrop blur is the signature transition.** A depth-of-field blur on
+  the world animates in as the window opens and clears over ~`slow` (0.4s) after
+  it closes, using the `blur` easing (Sine InOut). This animated blur — more
+  than the darken — is what sells "a panel came forward." Implement via
+  `Lighting` DOF or a blurred backdrop `Frame` tweened on transparency.
+- Values **count up** rather than snap (the `66 / 800` style counters), `settle`
+  easing.
+
+Reserved (inferred — no reward frame in the clip, so taste-family preset):
+- **Rarity/aura reveals get the `pop`** (Back Out) and may scale 0.8→1.0 with a
+  flash; this is the ONE place bounce belongs. Higher rarity = bigger, longer
+  celebration. Keep `Elastic` for only the very top pulls.
+- **Press feedback** on buttons is a fill lift toward the stroke color
+  (`button-*-pressed`), not a squash — the chrome does not deform.
+
+**Reduced motion:** drop the backdrop blur animation and reward scale/flash to
+plain `fast` fades; never remove the state change itself. All motion must remain
+optional garnish over an already-legible static layout.
+
+## Components
+
+Every button in this taste is the **same object wearing a different stroke**: a
+`surface-deep` near-black fill, a 3px semantic-colored `UIStroke`, and text in
+that same semantic color. The stroke *is* the button. Read that once and the
+whole component set follows.
+
+- **currency-bar** — top-left pill, `surface-dark` navy with a blue/cyan glossy
+  vertical `UIGradient` and a bright rim; cyan gem glyph + white amount
+  (`260K`). Feel: *a lit display readout.*
+- **side-button** — 66px `md`-rounded dark tile, 2px hairline, holding one
+  glowing semantic-colored glyph (aura index, storage, backpack=green,
+  reroll, shop=red, achievements=gold, settings). The glyph's role tints the
+  tile's glow. Feel: *a rack of labeled switches.*
+- **window** — `surface` panel, `md` corners, 2px hairline, faint top-to-bottom
+  `UIGradient`, a whisper of translucency, `shadow: none`. Feel: *black glass.*
+- **window-header** — integrated top-left inside the panel: a semantic-colored
+  icon + white `heading` title. No overlapping band, no separate header bar.
+- **button-close** — a bare white **X** glyph anchored top-right, no fill and no
+  stroke. It floats on the panel, not in a button.
+- **dim-overlay** — `dim` darken plus the animated backdrop blur (Motion).
+- **button-primary** — dark fill, `confirm` (blue) stroke + blue label; the
+  Equip/commit voice. Pressed: fill lifts, no bounce.
+- **button-secondary** — dark fill, `favorite` (gold) stroke + gold label
+  (Lock/favorite).
+- **button-danger** — dark fill, `destroy` (red) stroke + red label (Salvage,
+  delete).
+- **button-buy** — dark fill, `affirm` (green) stroke, a currency glyph
+  (Robux/gem) + amount; the price pill on offers and cards.
+- **button-icon** — 110px dark tile + white glyph (Auto, Skip, reroll,
+  pagination arrows go circular).
+- **button-roll** — the hero: a larger 130px `lg`-rounded dark tile with a white
+  dice glyph and a "Roll" label beneath, flanked by Auto and Skip. Feel: *the
+  lever you came to pull.*
+- **card-grid** — 90px square aura tile, `surface-deep` fill, corner brackets and
+  gradient name text recolored to the aura's rarity, quantity badge bottom-right.
+  Top rarities become a filled glowing tile.
+- **card-grid-selected** — fill brightens toward the rarity hue and the brackets
+  go full-bright (this is a *selection* highlight — a brighter fill + brackets —
+  distinct from the rarity ribbon/glow, which is the tile's baseline styling).
+- **badge-slot** — small `caption` quantity anchored bottom-right of a tile.
+- **progress-bar** — `full`-rounded dark track (~14px) with a `primary`
+  horizontal-gradient fill; used for achievement completion.
+- **segmented-tab** — a pill group (Normal/Hardcore, Items/Amulets/Materials);
+  the selected segment lifts to a mid-gray fill with `on-surface` text, others
+  stay transparent with `on-surface-dim` text.
+- **toggle-switch** — pill track; ON = `primary` fill with the white knob slid
+  right, OFF = `surface-deep` with a gray knob. The Hardcore row additionally
+  tints its whole row faintly red.
+- **banner-offer** — a shop card with a per-offer horizontal `UIGradient` hue
+  (cyan *2X Gems*, purple *INF Storage*, gold *VIP*), holding an icon, a
+  `display` title, a `body` subtitle, and one or two `button-buy` price pills.
+
+## Screen Patterns
+
+**HUD (gameplay).** A quiet frame around a busy center:
+- **Top-left:** the currency pill, just under the topbar.
+- **Left rail:** a single vertical column of ~7 `side-button` tiles (aura index,
+  storage, inventory, reroll, shop, achievements, settings), evenly spaced.
+- **Bottom-center:** the action cluster — `button-roll` in the middle with Auto
+  (and a green *Free* tag) to its left and Skip (with a blue *Join Group* label)
+  to its right, three roll counters stacked above (`66 / 800`, `66 / 100`,
+  `6 / 10`), and a helper line beneath ("You will automatically rejoin").
+- **Top-right:** two small platform/system glyphs.
+- **Reserved clear:** center stage (avatar + reward reveals), bottom-left/right
+  (joystick/jump), top strip. Persistent HUD element count is low — the taste
+  keeps the world visible.
+
+**Windows** (Aura Storage, Inventory, Shop, Achievements, Settings) share one
+grammar: a centered `surface` panel over the dimmed+blurred world, integrated
+top-left header (icon + title), a pill **search field** top-center-right, a
+floating white **X** top-right, corner brackets on the panel and on every
+sub-well, and a footer strip carrying filters/toggles (Normal|Hardcore) and
+pagination (circular arrows + "Page 1/2"). Content patterns seen:
+- **Aura Storage / Inventory:** a left detail column (preview well + action
+  well, each bracketed) beside a right scrolling grid of `card-grid` tiles.
+  Footer shows Total Value / Storage `30/30` and the Normal|Hardcore filter.
+- **Shop:** a vertical stack of `banner-offer` cards, each with its own gradient
+  hue and price pills.
+- **Achievements:** a left "current achievement" detail card + REWARDS/Locked
+  panel beside a right scrolling list of rows, each with a `progress-bar` and an
+  `x / y` count; Daily|All Time segmented tabs in the footer.
+- **Settings:** grouped rows (Profile Settings, Gameplay Settings) of label +
+  `toggle-switch` (or an Edit button); the Hardcore row is tinted red.
+
+**Information density:** windows are grid- and list-dense but always inside `lg`
+padding; the darkness does the work of separating regions, so dividers are rare.
+
+## Do's and Don'ts
+
+- **Do** frame panels and wells with thin light corner brackets. This reticle
+  motif is the single most recognizable thing about the taste — omit it and the
+  windows look like generic dark boxes.
+- **Do** make buttons speak through their stroke color over a shared dark fill.
+  **Don't** give buttons solid saturated fills — a solid blue "Equip" pill is
+  the wrong taste entirely.
+- **Don't** add bevels or drop shadows. Depth comes from strokes, brackets, and
+  the blurred backdrop. A fake-3D bottom edge reads as cartoon-simulator, not
+  this.
+- **Don't** let the chrome bounce. Windows fade; they do not pop or scale in.
+  Reserve overshoot and flashes exclusively for aura/rarity reveals.
+- **Do** keep chrome color-quiet so the holographic rarity content supplies the
+  color. **Don't** paint the panels with the rarity palette — the vault is dark
+  on purpose.
+- **Don't** use pure black or pure white. Everything is cold-tinted: near-black
+  navies and a cool near-white.
+- **Don't** set thick contextual text outlines on chrome text. Only accent/rarity
+  text gets a soft glow.
+- **Do** recolor a tile's fill *and* brackets *and* name from one rarity hue;
+  **don't** hardcode `accent-rare` for every rare — it is only a fallback swatch.
+- **Don't** hardcode the topbar inset; query `GuiService:GetInsetArea()` after a
+  Heartbeat.
+
+## Agent Prompt Guide
+
+**Cheat sheet**
+- Vibe: midnight loot vault. Dark cold glass + neon rarity + white corner
+  brackets (reticle). Restraint in chrome, fireworks in rewards.
+- Backgrounds: `surface #12171B` panels, `surface-deep #0D0D10` wells; no pure
+  black/white; a whisper of panel translucency.
+- Buttons = shared dark fill + 3px **semantic-colored stroke** + same-color text.
+  Blue=confirm, red=danger, gold=lock/favorite, green=buy/claim, gray=neutral.
+- Corner brackets (`outline #AEBCCB`, 3px, ~26px arms) on every panel AND well;
+  full-bright + recolored when selected/high-rarity.
+- Depth = strokes + brackets + blurred backdrop. **No bevels, no drop shadows.**
+- Motion: windows fade `fast` (no scale); backdrop blur clears over `slow`;
+  count-up values; `pop`/Back-Out reserved for rarity reveals only.
+- Font: one rounded heavy sans (`FredokaOne`), Title Case, no shouty caps, no
+  thick text outlines (soft glow on accents only).
+- Radii: `sm 8` buttons/tiles, `md 14` windows/side-buttons, `lg 20` Roll hero;
+  pills for currency/search/tabs/toggles.
+
+**Canned prompts**
+1. "Build the gameplay HUD in the Obsidian Gacha taste: top-left glossy navy
+   currency pill (cyan gem glyph), a left vertical rail of 66px dark rounded-tile
+   side-buttons with glowing semantic-colored glyphs, and a bottom-center action
+   cluster — a 130px dark 'Roll' hero tile (white dice) flanked by Auto and Skip
+   icon tiles, with three stacked roll counters above. `ScreenInsets =
+   DeviceSafeInsets`, keep joystick/jump/topbar zones clear."
+2. "Make an Aura Storage window: centered near-black `surface` panel over a
+   dimmed, blurred world, white corner brackets on the panel and each sub-well,
+   integrated top-left header (sparkle icon + 'Aura Storage'), pill search field,
+   floating white X top-right. Left = aura preview well + action well with
+   Equip (blue-stroke), Lock (gold-stroke), Salvage (red-stroke) buttons; right =
+   a grid of 90px aura tiles whose fill, brackets, and gradient name text all
+   take the aura's rarity color, quantity badge bottom-right. Footer: Total
+   Value / Storage 30/30 + Normal|Hardcore pill tabs + circular pagination."
+3. "Animate window open/close: fade the panel `fast` with `settle`/`exit` easing
+   and NO scale, while a depth-of-field backdrop blur eases in/out over `slow`.
+   Reserve a Back-Out `pop` and a flash for the aura reveal moment only. Count
+   currency and roll numbers up rather than snapping. Provide a reduced-motion
+   path that drops the blur and reward scale to plain fades."
+
+---
+
+*Independent analysis of publicly observable UI conventions, provided as-is for
+inspiration. Not affiliated with or endorsed by any game or studio. Reference
+game analyzed: an aura-RNG game whose in-game text references "Jule's RNG"
+(Sol's RNG lineage). Rights holders may request changes or removal at any time
+via the repository's issue tracker; requests are honored promptly.*
