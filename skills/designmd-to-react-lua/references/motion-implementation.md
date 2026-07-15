@@ -72,6 +72,16 @@ subtree (slight blur on text at scale ≠ 1, memory cost), and
 transparency — translucent-panel tokens keep their meaning, but verify the
 settled state numerically (GroupTransparency == 0, panel transparency ==
 token).
+**CanvasGroup visibly DIMS/mutes its subtree even at GroupTransparency 0 and
+scale 1** — the rasterized composite reads muddier than direct rendering, so
+every child token color measures correct (`execute_luau` reads exact hexes) yet
+the capture looks washed and low-contrast. This is a CAPTURE-ONLY bug: numeric
+assertions pass, only a screenshot reveals it (verified in-engine on a dark
+taste — the whole window read dim until the CanvasGroup was removed). For any
+taste whose settled fidelity matters (especially dark/near-black ones), prefer a
+plain `Frame` wrapper and fade panel + children individually, or drop the
+group-fade and keep only the backdrop transition — and NEVER ship a CanvasGroup
+you have not confirmed in a screenshot.
 **CanvasGroup CLIPS to its own bounds.** If the taste's anatomy has chrome
 floating OUTSIDE the panel rect (sticker tabs, corner-overlapping close
 buttons), a CanvasGroup wrapper silently cuts them off. In that case use a

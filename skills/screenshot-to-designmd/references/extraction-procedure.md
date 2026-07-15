@@ -60,6 +60,23 @@ so a reader could recolor the whole document without touching it. The
 `description` front-matter field must be a one-line STRUCTURAL summary
 (window grammar + motion signature), not a list of colors.
 
+**Classify every ornament as UI-primitive vs IMAGE-ASSET.** For each decorative
+effect you see (a gradient, a glow, a glossy icon, a stylized name, a rarity
+tile, a banner burst), decide and RECORD in the doc whether it is (a) reproducible
+with Roblox UI primitives (`UIGradient`/`UIStroke`/`UICorner`/layered frames — a
+fill, sheen, stroke, or single-color glow behind an icon/stroke), or (b) a
+pre-rendered IMAGE ASSET (baked stylized typography, per-item bespoke design,
+3D/faceted shading, or a light-burst). Mis-classifying is a load-bearing failure:
+if the doc calls a baked-art effect a "gradient/glow," the implementer rebuilds
+it out of UI primitives and produces a cheap, identity-less fake (verified: per-
+item name wordmarks described as "UIGradient text + glow" came out uniform with
+an elliptical-donut halo the real game never had). Heuristic: **if it differs per
+item, or has baked type / 3D / a burst, it is an asset slot** — describe its
+STYLE in prose and mark it an `ImageLabel` slot (no asset IDs — SPEC §7), never
+a UI recipe. Flag the reverse too (a plain per-panel gradient is UI, not an
+asset). This classification belongs in Colors/Typography/Components prose, not
+just implied.
+
 ## 1. Colors
 
 1. **Exclude the game world.** Terrain, sky, characters are not UI. Only

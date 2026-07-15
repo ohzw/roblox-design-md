@@ -5,6 +5,20 @@ they break the moment someone swaps in real art — the slot's sizing,
 aspect, and contrast were never exercised. Catalog implementations therefore
 use REAL image assets, sourced legitimately.
 
+**Never rebuild baked ART with UI primitives (the fake-art anti-pattern).**
+When the DESIGN.md describes an effect that is pre-rendered art — a per-item
+stylized name wordmark, a faceted 3D gem, a shop offer's light-burst / glowing
+medallion — place an `ImageLabel` asset in that slot. Do NOT reconstruct it out
+of `UIGradient`/`UIStroke`/`Frame`s: a per-item wordmark faked as gradient text +
+a radial glow comes out uniform and identity-less, with a glowing elliptical
+halo the real UI never has (verified in an in-engine review). Rule of thumb: if
+a visual **differs per item, or has baked stylized typography / 3D shading / a
+light-burst, it is an asset slot** — fills, strokes, sheens, and single-color
+glows behind an icon/stroke are UI. If the DESIGN.md itself mis-labels a baked-
+art effect as a "gradient/glow" UI recipe, implement it as an asset slot anyway
+and note the conflict in delivery (per SKILL.md precedence) — do not fake the art
+just because the prose said "UIGradient".
+
 ## Where assets come from (in order)
 
 1. **Creator Store free assets**, found via the Studio MCP `search_asset`
@@ -133,3 +147,26 @@ wants it. Precision: **transparent background is the hard requirement**
 strokes are a soft preference — dark-on-transparent icons still tint
 acceptably via ImageColor3. A baked-canvas asset is usable only as a
 full-bleed render (note the tint limitation where you record it).
+
+## Glow / emission textures (for luminous tastes)
+
+Dark, neon, or "glowing" tastes call for a soft glow halo behind gems, icons,
+accent strokes, and rarity text. Implement it as an `ImageLabel` holding a
+**soft radial glow texture**, `ImageColor3`-tinted to the element's color, at a
+lower ZIndex, sized past the element, `Transparency ≈ 1 - intensity`.
+
+- **The texture must be a round blob: bright center → FULLY transparent edges.**
+  Creator Store "glow" search is especially noisy; three common failure modes to
+  REJECT on a dark-fill render: a *hollow ring* (renders as an outline circle),
+  a *square canvas* whose corners stay tinted (renders as a tinted square), and
+  any *hard edge*. Arbitrate by rendering the candidate tinted over a near-black
+  fill and confirming a continuous soft halo — the in-engine render is the only
+  reliable check (thumbnails lie).
+- **Do NOT substitute a stack of `UIStroke` rings or nested/concentric frames**
+  for a real glow texture. They render as discrete concentric BORDERS, not
+  light — an instant tell of a missed reproduction (verified: a blind build did
+  exactly this and read as double-bordered boxes). If no acceptable radial
+  texture is found, that is a documented gap for a human, not a ring-stack.
+- A soft radial glow texture found + verified this way is worth adding to the
+  shared registry below with its provenance and a "verified soft radial over
+  dark" note.
