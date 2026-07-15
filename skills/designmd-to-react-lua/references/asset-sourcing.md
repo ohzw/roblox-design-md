@@ -133,3 +133,26 @@ wants it. Precision: **transparent background is the hard requirement**
 strokes are a soft preference — dark-on-transparent icons still tint
 acceptably via ImageColor3. A baked-canvas asset is usable only as a
 full-bleed render (note the tint limitation where you record it).
+
+## Glow / emission textures (for luminous tastes)
+
+Dark, neon, or "glowing" tastes call for a soft glow halo behind gems, icons,
+accent strokes, and rarity text. Implement it as an `ImageLabel` holding a
+**soft radial glow texture**, `ImageColor3`-tinted to the element's color, at a
+lower ZIndex, sized past the element, `Transparency ≈ 1 - intensity`.
+
+- **The texture must be a round blob: bright center → FULLY transparent edges.**
+  Creator Store "glow" search is especially noisy; three common failure modes to
+  REJECT on a dark-fill render: a *hollow ring* (renders as an outline circle),
+  a *square canvas* whose corners stay tinted (renders as a tinted square), and
+  any *hard edge*. Arbitrate by rendering the candidate tinted over a near-black
+  fill and confirming a continuous soft halo — the in-engine render is the only
+  reliable check (thumbnails lie).
+- **Do NOT substitute a stack of `UIStroke` rings or nested/concentric frames**
+  for a real glow texture. They render as discrete concentric BORDERS, not
+  light — an instant tell of a missed reproduction (verified: a blind build did
+  exactly this and read as double-bordered boxes). If no acceptable radial
+  texture is found, that is a documented gap for a human, not a ring-stack.
+- A soft radial glow texture found + verified this way is worth adding to the
+  shared registry below with its provenance and a "verified soft radial over
+  dark" note.

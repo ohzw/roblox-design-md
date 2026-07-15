@@ -415,13 +415,17 @@ Roblox-native recipe; apply them liberally and recolor per element.
 
 1. **Glow halo** (`{glow.*}` tokens). Behind any accent glyph, gem, accent
    stroke, or rarity wordmark, place a soft additive halo in that element's
-   color: an `ImageLabel` holding a **soft radial glow texture** (a round blob
-   gradient — bright center, transparent edge; source one per asset-sourcing),
+   color: an `ImageLabel` holding a **soft radial glow texture**,
    `ImageColor3`-tinted to the element's color, sized `spread` beyond it, at
    `Transparency ≈ 1 - intensity`, on a lower-`ZIndex` sibling. It must read as
-   a **continuous soft bloom**. **Do NOT** approximate it with stacked
-   `UIStroke` rings or nested frames — those render as hard concentric borders,
-   which is worse than no glow (verified: a blind build did exactly this and it
+   a **continuous soft bloom**. The texture must be a round blob whose bright
+   center fades to **fully transparent edges** — when sourcing (per
+   asset-sourcing), reject a *hollow ring*, a *square canvas* whose corners
+   stay tinted, or anything with a hard edge; verify the pick renders as a soft
+   halo over a dark fill before committing (these three failure modes are common
+   in Creator Store "glow" results). **Do NOT** approximate the halo with
+   stacked `UIStroke` rings or nested frames — those render as hard concentric
+   borders, worse than no glow (verified: a blind build did exactly this and it
    read as double-bordered boxes, not light). The halo color always matches the
    thing it lights. This is the single highest-impact treatment: gems, rail
    icons, accent button strokes, and aura names all wear one.
