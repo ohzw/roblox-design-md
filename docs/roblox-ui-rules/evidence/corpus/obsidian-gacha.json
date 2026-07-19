@@ -1,0 +1,1098 @@
+{
+  "taste": "obsidian-gacha",
+  "filesInspected": [
+    "design-md/obsidian-gacha/DESIGN.roblox.md",
+    "e2e/obsidian-gacha/README.md",
+    "e2e/obsidian-gacha/default.project.json",
+    "e2e/obsidian-gacha/src/ObsidianGacha.storybook.luau",
+    "e2e/obsidian-gacha/src/Theme.luau",
+    "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+    "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+    "e2e/obsidian-gacha/src/Components/BannerOffer.luau",
+    "e2e/obsidian-gacha/src/Components/CloseButton.luau",
+    "e2e/obsidian-gacha/src/Components/CornerBrackets.luau",
+    "e2e/obsidian-gacha/src/Components/CurrencyBar.luau",
+    "e2e/obsidian-gacha/src/Components/Gloss.luau",
+    "e2e/obsidian-gacha/src/Components/Glow.luau",
+    "e2e/obsidian-gacha/src/Components/IconTile.luau",
+    "e2e/obsidian-gacha/src/Components/ProgressBar.luau",
+    "e2e/obsidian-gacha/src/Components/RollButton.luau",
+    "e2e/obsidian-gacha/src/Components/SegmentedTabs.luau",
+    "e2e/obsidian-gacha/src/Components/SettingRow.luau",
+    "e2e/obsidian-gacha/src/Components/ToggleSwitch.luau",
+    "e2e/obsidian-gacha/src/Components/Window.luau",
+    "e2e/obsidian-gacha/src/Screens/SettingsScreen.luau",
+    "e2e/obsidian-gacha/src/Stories/Buttons.story.luau",
+    "e2e/obsidian-gacha/src/Stories/CurrencyBar.story.luau",
+    "e2e/obsidian-gacha/src/Stories/Dialog.story.luau",
+    "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+    "e2e/obsidian-gacha/src/Stories/ProgressBar.story.luau",
+    "e2e/obsidian-gacha/src/Stories/Settings.story.luau",
+    "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+    "e2e/obsidian-gacha/src/Stories/Tokens.story.luau",
+    "e2e/obsidian-gacha/src/Stories/Window.story.luau"
+  ],
+  "screens": [
+    "HUD",
+    "Aura Storage window",
+    "Shop window",
+    "Settings window",
+    "Confirm dialog",
+    "Buttons showcase",
+    "Currency Bar showcase",
+    "Progress Bar showcase",
+    "Tokens reference"
+  ],
+  "components": [
+    "ActionButton",
+    "AuraCard",
+    "BannerOffer",
+    "CloseButton",
+    "CornerBrackets",
+    "CurrencyBar",
+    "Gloss",
+    "Glow",
+    "IconTile",
+    "ProgressBar",
+    "RollButton",
+    "SegmentedTabs",
+    "SettingRow",
+    "ToggleSwitch",
+    "Window",
+    "SettingsScreen"
+  ],
+  "observations": [
+    {
+      "id": "OBS-OBSIDIAN-GACHA-001",
+      "category": "structure",
+      "subject": "Preview project and story catalog",
+      "observed": "The Rojo project mounts the shared Packages tree and the entire taste src tree into ReplicatedStorage, while the storybook exposes src/Stories as its only story root. The documented capture catalog contains nine stories: HUD, Window, Shop, Settings, Buttons, CurrencyBar, ProgressBar, Tokens, and Dialog.",
+      "inferredPurpose": "Provide one isolated Studio preview place and a finite UI-Labs capture surface for this taste.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/default.project.json",
+          "lines": "1-27",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/ObsidianGacha.storybook.luau",
+          "lines": "1-5",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/README.md",
+          "lines": "19-32",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-002",
+      "category": "visual-style",
+      "subject": "Cold near-black semantic palette",
+      "observed": "The implementation centralizes the source palette in Theme: primary #3961E1, danger #D64359, surface #12171B, surfaceDeep #0D0D10, cool near-white onSurface #F2F6FA, cyan currencySoft #60FFF7, gold #E3B36E, rarity purple #B14DE0, and silver-blue outline #AEBCCB. These values match the DESIGN front matter.",
+      "inferredPurpose": "Keep dark chrome quiet so semantic neon accents dominate.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "10-24",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "10-25",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "284-324",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-003",
+      "category": "hierarchy",
+      "subject": "Typography and spacing hierarchy",
+      "observed": "Theme uses FredokaOne Regular for all five roles, with sizes display 40, heading 26, label 22, body 18, and caption 14; it also defines spacing 4/8/12/20/32 and radii 8/14/20/full. The Tokens story renders every typography role and twelve semantic palette chips.",
+      "inferredPurpose": "Express hierarchy through size and color while preserving one rounded type voice.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "45-64",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Tokens.story.luau",
+          "lines": "13-34",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Tokens.story.luau",
+          "lines": "78-107",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "337-361",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-004",
+      "category": "visual-style",
+      "subject": "Derived still-preview colors",
+      "observed": "The implementation deliberately changes source-adjacent presentation values for static capture: dim transparency is 0.4 rather than directly applying the source alpha, the story backdrop is an introduced #35506E, and cardFill is an introduced #1A222B instead of surfaceDeep. Comments identify still legibility and panel separation as the reasons.",
+      "inferredPurpose": "Prevent the still preview from collapsing near-black layers into one mass when world blur is not visually available.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "27-43",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "106-123",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "384-414",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-005",
+      "category": "structure",
+      "subject": "HUD composition",
+      "observed": "The HUD story places a soft and hard CurrencyBar stack at top-left, a vertical left rail containing Shop, Items, and Settings IconTiles, and a bottom-center cluster with three counters above Auto, Roll, and Skip controls. Auto has a green Free tag and Skip a blue Join Group tag.",
+      "inferredPurpose": "Frame gameplay around a clear center while making Roll the dominant action.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "47-66",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "69-84",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "85-130",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "611-622",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-006",
+      "category": "responsive",
+      "subject": "HUD inset and reserved-zone strategy",
+      "observed": "At story render, HUD reads GuiService:GetGuiInset().Y and adds that value to the top-left currency stack. The rail uses a fixed 66x240 frame at vertical center, and the 420-wide action cluster is anchored bottom-center with a 20px bottom offset. The implementation uses GetGuiInset rather than the DESIGN-prescribed DeviceSafeInsets plus GetInsetArea strategy.",
+      "inferredPurpose": "Avoid the desktop topbar and keep the rail/action cluster away from the central play area with a simple story-level layout.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "47-58",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "69-90",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "364-383",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-007",
+      "category": "responsive",
+      "subject": "Window sizing",
+      "observed": "Window fills its parent root, centers its panel, uses scale sizing of 0.82x0.78 with a 1000x620 maximum, and switches to 0.5x0.42 with a 460x300 maximum for variant='dialog'. A UISizeConstraint enforces the maxima.",
+      "inferredPurpose": "Allow the same window anatomy to contract with viewport size while preventing oversized desktop panels.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "46-52",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "67-80",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "364-378",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-008",
+      "category": "hierarchy",
+      "subject": "Shared window anatomy",
+      "observed": "Window renders a full-screen dim dismiss target, then a centered translucent gradient panel with rounded corners, 2px panel stroke and four-corner brackets. The panel integrates an optional colored 30px header icon, cool-white title, optional pill-shaped Search placeholder, bare close control, and padded content below a fixed 48px header region.",
+      "inferredPurpose": "Create one consistent modal grammar across storage, shop, settings, and dialogs.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "50-88",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "89-159",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "624-632",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-009",
+      "category": "structure",
+      "subject": "Aura Storage window",
+      "observed": "The Aura Storage story divides content into a 34% left column and 66% right column. The left contains bracketed Preview and Actions wells; the action well contains Equip, Lock, Enter, and Salvage Mode variants. The right contains a heading, scrolling aura grid, and footer with Total Value, Storage, and Normal/Hardcore tabs.",
+      "inferredPurpose": "Separate selected-item inspection and actions from collection browsing.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Window.story.luau",
+          "lines": "65-91",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Window.story.luau",
+          "lines": "126-160",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Window.story.luau",
+          "lines": "168-223",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "624-632",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-010",
+      "category": "scrolling",
+      "subject": "Aura Storage grid scrolling",
+      "observed": "Aura Storage uses a ScrollingFrame for its right grid with a fixed CanvasSize height of 396, a 4px dim scrollbar, and a UIGridLayout with 118x118 cells and 12px gaps. Eight cards are supplied, one selected.",
+      "inferredPurpose": "Keep the collection browsable inside a fixed panel region while retaining the footer.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Window.story.luau",
+          "lines": "20-29",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Window.story.luau",
+          "lines": "44-58",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Window.story.luau",
+          "lines": "178-186",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-011",
+      "category": "scrolling",
+      "subject": "Settings scrolling",
+      "observed": "SettingsScreen uses a full-content ScrollingFrame whose CanvasSize is a React binding updated from UIListLayout.AbsoluteContentSize.Y. It uses a 4px dim scrollbar and 8px vertical row gaps.",
+      "inferredPurpose": "Allow the settings list to grow without hard-coding its canvas height.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Screens/SettingsScreen.luau",
+          "lines": "47-70",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-012",
+      "category": "structure",
+      "subject": "Shop composition",
+      "observed": "The Shop story is a hybrid rather than only a banner stack: it places one 2X Gems BannerOffer above a scrolling six-item AuraCard grid, followed by Items/Amulets/Materials tabs. Grid cells are 140x168 with 8px gaps and a fixed 372px canvas.",
+      "inferredPurpose": "Map fixed showcase inventory items onto the taste's rarity-card grammar while retaining one source-like featured offer.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+          "lines": "23-34",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+          "lines": "37-54",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+          "lines": "62-104",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "633-634",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-013",
+      "category": "hierarchy",
+      "subject": "Settings grouping and danger row",
+      "observed": "SettingsScreen has primary-blue Profile Settings and Gameplay Settings section headers. Name Tag Effect ends in a confirm-colored Edit button; Hardcore Mode includes explanatory caption text, danger=true, and a toggle; four more gameplay rows end in toggles. SettingRow implements danger as a red fill at 0.9 transparency and includes a faint 1px divider.",
+      "inferredPurpose": "Make the high-stakes Hardcore setting visually distinct while preserving scanable grouped rows.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Screens/SettingsScreen.luau",
+          "lines": "18-27",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Screens/SettingsScreen.luau",
+          "lines": "72-108",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/SettingRow.luau",
+          "lines": "18-35",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "638-639",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-014",
+      "category": "interaction",
+      "subject": "Semantic ActionButton family",
+      "observed": "ActionButton maps confirm, favorite, danger, buy, and neutral variants to matching semantic strokes, label colors, and derived pressed colors. All variants share surfaceDeep fill, an 8px radius, and optional currency icon plus price text. The Buttons story exposes all five variants together.",
+      "inferredPurpose": "Make action meaning come from the stroke and label rather than saturated fills.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+          "lines": "22-39",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+          "lines": "53-115",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Buttons.story.luau",
+          "lines": "40-56",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "537-540",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-015",
+      "category": "input",
+      "subject": "ActionButton pointer and activation handling",
+      "observed": "ActionButton disables Roblox AutoButtonColor, uses MouseButton1Down for an 0.08s fill lift, MouseButton1Up and MouseLeave for a 0.15s return, and Activated for the semantic callback. Press feedback changes color only; it does not scale or deform the control.",
+      "inferredPurpose": "Keep chrome motion restrained while allowing Activated to serve Roblox's generalized activation path.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+          "lines": "30-39",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+          "lines": "56-82",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "525-529",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-016",
+      "category": "interaction",
+      "subject": "Disabled action state",
+      "observed": "When disabled=true, ActionButton replaces the variant label and stroke with onSurfaceDim and neutral stroke, suppresses the press lift, and suppresses onActivated. The Buttons story exposes Disabled as a control applied to all five ActionButtons.",
+      "inferredPurpose": "Provide a legible noninteractive state without inventing a new component anatomy.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+          "lines": "41-54",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+          "lines": "66-82",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Buttons.story.luau",
+          "lines": "17-20",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Buttons.story.luau",
+          "lines": "51-55",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-017",
+      "category": "input",
+      "subject": "Close and backdrop dismissal",
+      "observed": "CloseButton is an invisible 44x44 TextButton containing a cool-white multiplication-sign glyph capped at 30px, and invokes onActivated. Window routes the same onClose callback from both this close control and an Activated event on the full-screen dim layer.",
+      "inferredPurpose": "Preserve the source's visually bare X while maintaining a touch-sized target and allowing outside-tap dismissal.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/CloseButton.luau",
+          "lines": "14-41",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "54-66",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "140-145",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "561-563",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-018",
+      "category": "interaction",
+      "subject": "Segmented tabs",
+      "observed": "SegmentedTabs renders a surfaceDeep pill group split equally by option count. The selected segment has opaque #2E3338 and onSurface text; unselected segments are transparent with dim text. Each segment calls onSelect(index) through Activated, but selection is controlled by selectedIndex rather than held internally.",
+      "inferredPurpose": "Provide compact category/filter switching with restrained state contrast.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/SegmentedTabs.luau",
+          "lines": "14-57",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/SegmentedTabs.luau",
+          "lines": "60-79",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "594-599",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-019",
+      "category": "motion",
+      "subject": "Toggle state transition",
+      "observed": "ToggleSwitch is a 54x28 pill with a 22px cool-white knob. On value changes, TweenService moves the knob between x=0.28 and x=0.72 and changes the track between surfaceDeep and primary over the fast duration with Quad Out easing. Activated requests the inverse value through onChanged.",
+      "inferredPurpose": "Make binary state immediately visible through both position and brand color.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ToggleSwitch.luau",
+          "lines": "15-39",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ToggleSwitch.luau",
+          "lines": "43-75",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "597-599",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-020",
+      "category": "hierarchy",
+      "subject": "Roll hero control",
+      "observed": "RollButton defaults to a 130px square surfaceDeep tile with 20px corners and neutral panel stroke, draws a rotated cool-white die face with three dark pips procedurally, and places the Roll label below. Its pointer press uses the same color-lift/no-deform strategy as ActionButton.",
+      "inferredPurpose": "Make Roll the largest and most recognizable control without introducing bounce into chrome.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/RollButton.luau",
+          "lines": "19-49",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/RollButton.luau",
+          "lines": "52-105",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "573-576",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-021",
+      "category": "structure",
+      "subject": "IconTile dual anatomy",
+      "observed": "IconTile serves both bare rail buttons and labeled roll-cluster tiles. It uses a square surfaceDeep button with variant stroke, a color-tinted image and Glow, optional red count badge, and optional top tag plus bottom label outside the square. Bare rail buttons return only the square wrapper; labeled controls use a vertical stack.",
+      "inferredPurpose": "Reuse one dark glowing tile grammar while keeping the rail compact and the roll cluster explanatory.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/IconTile.luau",
+          "lines": "22-46",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/IconTile.luau",
+          "lines": "55-119",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/IconTile.luau",
+          "lines": "121-159",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-022",
+      "category": "visual-style",
+      "subject": "CurrencyBar implementation",
+      "observed": "CurrencyBar selects cyan gem or green hard-currency icon/asset by kind, renders a fully rounded vertical navy gradient with a semi-transparent 3px primary stroke, and places a radial gem-token Glow behind the 34px icon. Amounts abbreviate at 10K, 1M, and 1B thresholds.",
+      "inferredPurpose": "Make currency read as a compact luminous glass display.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/CurrencyBar.luau",
+          "lines": "14-28",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/CurrencyBar.luau",
+          "lines": "30-83",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/CurrencyBar.luau",
+          "lines": "84-95",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "544-549",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-023",
+      "category": "visual-style",
+      "subject": "Reusable emission primitive",
+      "observed": "Glow renders Theme.assets.glowRadial as an ImageLabel, tints it to a token or override color, expands it by spread on all sides, computes ImageTransparency as 1-intensity, and defaults it to a lower ZIndex of 0. Theme defines accent, gem, rarity, and reward glow tokens.",
+      "inferredPurpose": "Produce continuous color-matched bloom without nested stroke rings.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Glow.luau",
+          "lines": "21-46",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "179-191",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "444-461",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-024",
+      "category": "layering",
+      "subject": "AuraCard rarity, selection, and clipping",
+      "observed": "AuraCard resolves a rarity color with common fallback; epic and legendary are marked filled in Theme. Filled cards add a full-tile rarity wash plus Glow. Selected cards switch to selectedCardFill and cool-white brackets. The root sets ClipsDescendants=true, so the filled bloom and all children remain within the tile.",
+      "inferredPurpose": "Encode baseline rarity separately from selection and keep high-tier emission from contaminating adjacent grid cells.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "138-152",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+          "lines": "21-55",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+          "lines": "133-145",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "475-481",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "577-588",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-025",
+      "category": "visual-style",
+      "subject": "Aura name fallback",
+      "observed": "AuraCard does not expose an ImageLabel wordmark slot. It always renders the aura name as a TextLabel in the shared UI font with a rarity-to-white UIGradient and a 1px contextual same-hue stroke; comments identify this as the source's explicit low-fidelity fallback and avoid a radial halo behind the text.",
+      "inferredPurpose": "Keep names visible without available per-aura artwork while limiting the known elliptical-halo failure mode.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+          "lines": "69-101",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "345-361",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "577-585",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-026",
+      "category": "hierarchy",
+      "subject": "BannerOffer anatomy",
+      "observed": "BannerOffer renders a 96px rounded horizontal gradient card with neutral panel stroke and padding. It optionally shows one 64px ImageLabel, then a display-sized title/body subtitle block, and one right-aligned buy ActionButton with a Robux icon. Although its header comment mentions one or two price pills and a gems prop, the implementation only renders the single Buy pill.",
+      "inferredPurpose": "Present a featured premium offer with title hierarchy and a single obvious purchase action.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/BannerOffer.luau",
+          "lines": "1-10",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/BannerOffer.luau",
+          "lines": "18-57",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/BannerOffer.luau",
+          "lines": "58-118",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "600-605",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-027",
+      "category": "motion",
+      "subject": "ProgressBar state update",
+      "observed": "ProgressBar clamps values into 0..1, initializes a React binding, then tweens a NumberValue to each new target over 0.25s with Quad Out easing and maps it to fill width. The rendered bar is a 14px fully rounded surfaceDeep track with 2px outline and a clipped horizontal blue gradient fill.",
+      "inferredPurpose": "Make progress changes settle smoothly while keeping the lit fill bounded by the pill track.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ProgressBar.luau",
+          "lines": "16-43",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ProgressBar.luau",
+          "lines": "45-79",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "590-593",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-028",
+      "category": "layering",
+      "subject": "Corner bracket primitive",
+      "observed": "CornerBrackets constructs eight decorative Frames: horizontal and vertical arms for each of TL, TR, BL, and BR. Defaults are outline color, 3px thickness, 24px arms, 6px inset, and ZIndex 6; callers override size/color for windows, wells, and cards.",
+      "inferredPurpose": "Implement the source's reticle motif as geometry that can recolor per rarity or state.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/CornerBrackets.luau",
+          "lines": "16-30",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/CornerBrackets.luau",
+          "lines": "32-61",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "396-407",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-029",
+      "category": "layering",
+      "subject": "Window ZIndex stack",
+      "observed": "Within Window, the dim layer is ZIndex 10 and panel is ZIndex 11; panel brackets/content use ZIndex 5, while header, search, and close use ZIndex 6 relative to their panel hierarchy. This establishes dim below panel and close/header above panel content locally.",
+      "inferredPurpose": "Keep the popup interactive chrome and floating X visually above its backdrop and panel body.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "54-88",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "89-110",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "112-159",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "409-414",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-030",
+      "category": "motion",
+      "subject": "Window blur and omitted panel fade",
+      "observed": "On mount, Window creates a Lighting BlurEffect at size 0 and tweens it to 18 over 0.4s with Sine InOut; cleanup destroys the effect immediately. The implementation comments explicitly state that the source-prescribed panel fade was dropped because CanvasGroup rasterization degraded settled color fidelity. No scale animation is used.",
+      "inferredPurpose": "Prioritize the source's depth-of-field transition and settled visual fidelity over a compromised group-opacity fade.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "23-43",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "511-520",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-031",
+      "category": "structure",
+      "subject": "Confirm dialog",
+      "observed": "Dialog.story reuses Window variant='dialog' with title Confirm and a primary-colored gem header icon. Its body asks 'Buy Crown for 2,500?' and anchors neutral Cancel plus confirm Confirm ActionButtons along the bottom.",
+      "inferredPurpose": "Demonstrate that small confirmations reuse the window grammar instead of introducing another modal style.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Dialog.story.luau",
+          "lines": "21-45",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Dialog.story.luau",
+          "lines": "46-60",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "46-48",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-032",
+      "category": "visual-style",
+      "subject": "Opaque story backdrops",
+      "observed": "Every screen/showcase story inspected renders against Theme.derived.worldBackdrop rather than a captured or live world. The README states that this opaque UI story backdrop hides the live 3D view, so Window's Lighting blur runs but is not visible in still captures.",
+      "inferredPurpose": "Guarantee consistent contrast for static catalog captures.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "106-111",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "50-52",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Window.story.luau",
+          "lines": "61-64",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+          "lines": "58-61",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Settings.story.luau",
+          "lines": "17-23",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/obsidian-gacha/README.md",
+          "lines": "46-49",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-033",
+      "category": "verification",
+      "subject": "Recorded verification status",
+      "observed": "README records that Studio MCP was offline during generation, no in-engine visual or numeric QA ran, syntax/banned-API/hex-outside-Theme checks passed, and the play-mount-screenshot-assert loop still must run before previews are trustworthy.",
+      "inferredPurpose": null,
+      "inferenceConfidence": "none",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/README.md",
+          "lines": "34-41",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-034",
+      "category": "verification",
+      "subject": "Asset verification status",
+      "observed": "Theme records catalog image IDs as previously in-engine verified on 2026-07-13 but says no in-session IsLoaded recheck was possible and assets must be reverified during capture. README repeats that requirement and identifies diamond/coin recolors as gem, Robux, and sparkle stand-ins; Roll's die is procedural.",
+      "inferredPurpose": null,
+      "inferenceConfidence": "none",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "154-178",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/obsidian-gacha/README.md",
+          "lines": "42-45",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-OBSIDIAN-GACHA-035",
+      "category": "verification",
+      "subject": "Shop cell-size assertion note",
+      "observed": "Shop.story contains a comment stating that 150px cells clipped the Crown in-engine and therefore uses 140x168 cells so all six items fit one row. This is an implementation comment, not an executable assertion.",
+      "inferredPurpose": "Preserve all six standard showcase items within the panel width.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+          "lines": "37-43",
+          "kind": "story"
+        }
+      ]
+    }
+  ],
+  "absences": [
+    {
+      "subject": "Inventory and Achievements implementations",
+      "evidence": "The DESIGN names Inventory and Achievements window patterns at design-md/obsidian-gacha/DESIGN.roblox.md:624-639, but the complete documented story table at e2e/obsidian-gacha/README.md:22-32 and the inspected src/Screens tree expose neither an Inventory nor Achievements screen/story."
+    },
+    {
+      "subject": "Full source HUD rail",
+      "evidence": "The DESIGN expects about seven rail buttons at design-md/obsidian-gacha/DESIGN.roblox.md:613-615; e2e/obsidian-gacha/src/Stories/HUD.story.luau:69-84 contains only Shop, Items, and Settings."
+    },
+    {
+      "subject": "HUD helper line and top-right system glyphs",
+      "evidence": "The DESIGN requires the helper line and two top-right glyphs at design-md/obsidian-gacha/DESIGN.roblox.md:616-622; the HUD cluster/root content ends after Auto/Roll/Skip at e2e/obsidian-gacha/src/Stories/HUD.story.luau:85-130 with neither element."
+    },
+    {
+      "subject": "Reward reveal screen and reward motion",
+      "evidence": "The source reserves Back-Out pop/flash for reward reveals at design-md/obsidian-gacha/DESIGN.roblox.md:522-529, but the complete story catalog at e2e/obsidian-gacha/README.md:22-32 has no reward/reveal story, and no inspected implementation instantiates Theme.motion.easings.pop."
+    },
+    {
+      "subject": "Reduced-motion path",
+      "evidence": "The source requires reduced motion at design-md/obsidian-gacha/DESIGN.roblox.md:531-533; e2e/obsidian-gacha/src/Components/Window.luau:23-43 always creates and tweens BlurEffect, and the inspected components expose no reduced-motion prop or branch."
+    },
+    {
+      "subject": "Window enter/exit fade and animated blur exit",
+      "evidence": "The source specifies fast panel fades and slow blur clearing at design-md/obsidian-gacha/DESIGN.roblox.md:511-520. e2e/obsidian-gacha/src/Components/Window.luau:27-43 explicitly drops the panel fade, only tweens blur on mount, and destroys blur immediately on cleanup."
+    },
+    {
+      "subject": "DeviceSafeInsets and prescribed inset query",
+      "evidence": "The source says ScreenInsets=DeviceSafeInsets and GuiService:GetInsetArea at design-md/obsidian-gacha/DESIGN.roblox.md:379-383. e2e/obsidian-gacha/src/Stories/HUD.story.luau:47-58 instead uses GetGuiInset().Y on a Frame story root; no ScreenGui inset property appears in the assigned implementation."
+    },
+    {
+      "subject": "Explicit global ZIndexBehavior/DisplayOrder bands",
+      "evidence": "The source requires Sibling ZIndexBehavior and DisplayOrder bands at design-md/obsidian-gacha/DESIGN.roblox.md:409-412. e2e/obsidian-gacha/src/Components/Window.luau:50-159 sets only local ZIndex values, and no ScreenGui/ZIndexBehavior/DisplayOrder declaration appears in the assigned tree."
+    },
+    {
+      "subject": "Interactive search field",
+      "evidence": "The source calls for a pill search field at design-md/obsidian-gacha/DESIGN.roblox.md:624-628. e2e/obsidian-gacha/src/Components/Window.luau:112-139 renders Search as a Frame containing a TextLabel placeholder, not a TextBox, and defines no text-change behavior."
+    },
+    {
+      "subject": "Window pagination controls",
+      "evidence": "The source window grammar includes circular arrows and Page 1/2 at design-md/obsidian-gacha/DESIGN.roblox.md:624-629. Aura Storage's footer at e2e/obsidian-gacha/src/Stories/Window.story.luau:187-223 contains only Total Value, Storage, and Normal/Hardcore tabs."
+    },
+    {
+      "subject": "Specular gloss application",
+      "evidence": "Gloss is defined at e2e/obsidian-gacha/src/Components/Gloss.luau:14-34, but no file in e2e/obsidian-gacha requires or renders it. CurrencyBar at e2e/obsidian-gacha/src/Components/CurrencyBar.luau:30-95 and BannerOffer at e2e/obsidian-gacha/src/Components/BannerOffer.luau:18-118 use gradients without the top sheen required at design-md/obsidian-gacha/DESIGN.roblox.md:463-467 and 544-546."
+    },
+    {
+      "subject": "Glow on semantic action-button strokes",
+      "evidence": "The source requires each button stroke to carry a faint recolored glow at design-md/obsidian-gacha/DESIGN.roblox.md:537-540. ActionButton imports only Theme and renders stroke/text without Glow at e2e/obsidian-gacha/src/Components/ActionButton.luau:13-27 and 56-124."
+    },
+    {
+      "subject": "Glow along ProgressBar fill",
+      "evidence": "The source requires glow along the progress fill at design-md/obsidian-gacha/DESIGN.roblox.md:590-593. e2e/obsidian-gacha/src/Components/ProgressBar.luau:45-79 renders track, clipping frame, fill, and gradient only, with no Glow."
+    },
+    {
+      "subject": "Per-aura ImageLabel wordmark slot",
+      "evidence": "The source requires a per-aura ImageLabel art slot at design-md/obsidian-gacha/DESIGN.roblox.md:577-585. e2e/obsidian-gacha/src/Components/AuraCard.luau:69-101 instead always renders a gradient TextLabel fallback and exposes no wordmark image prop."
+    },
+    {
+      "subject": "Offer burst/medallion art slots",
+      "evidence": "The source requires offer icon, light-burst, and medallion art slots at design-md/obsidian-gacha/DESIGN.roblox.md:600-605. e2e/obsidian-gacha/src/Components/BannerOffer.luau:47-57 has one generic icon ImageLabel and no burst or medallion layer."
+    },
+    {
+      "subject": "Second BannerOffer price pill",
+      "evidence": "BannerOffer's own contract comment mentions one or two price pills and a gems prop at e2e/obsidian-gacha/src/Components/BannerOffer.luau:1-10, but its pills subtree at e2e/obsidian-gacha/src/Components/BannerOffer.luau:93-118 always renders only one Robux Buy ActionButton."
+    },
+    {
+      "subject": "Hover, focus, and modality-specific visual states",
+      "evidence": "ActionButton at e2e/obsidian-gacha/src/Components/ActionButton.luau:56-82, IconTile at e2e/obsidian-gacha/src/Components/IconTile.luau:55-75, and RollButton at e2e/obsidian-gacha/src/Components/RollButton.luau:66-86 implement mouse-down/up/leave plus Activated; no hover-enter, SelectionGained/SelectionLost, keyboard, gamepad, or touch-specific visual state is present."
+    },
+    {
+      "subject": "Executable verification assertions in the assigned tree",
+      "evidence": "No test or assertion file appears in the complete assigned file set. README points to an external capture rig at e2e/obsidian-gacha/README.md:34-35 and states at lines 39-41 that in-engine visual/numeric QA did not run."
+    }
+  ],
+  "uncertainties": [
+    "Runtime rendering, asset load success, clipping, interaction behavior, and animation timing were not independently executed in this read-only observation task; README explicitly marks the in-engine capture loop outstanding at e2e/obsidian-gacha/README.md:39-45.",
+    "It cannot be determined from the assigned files whether UI-Labs or an outer host supplies ScreenGui.ScreenInsets, ZIndexBehavior, DisplayOrder, gamepad focus, or safe-zone behavior not declared by these stories.",
+    "The source DESIGN describes the aura TextLabel treatment as an explicit low-fidelity fallback, but the implementation provides no alternate ImageLabel wordmark path; whether production callers were expected to replace the component is not stated in the assigned files.",
+    "Theme comments claim earlier in-engine verification of asset IDs and Shop cell sizing, but those claims are not accompanied by executable assertions or capture artifacts inside the assigned target.",
+    "Window's BlurEffect is created globally in Lighting per mounted Window and destroyed on unmount; behavior with multiple simultaneous Window instances is not demonstrated by any assigned story.",
+    "The source requests count-up values, but the HUD counters and CurrencyBar amounts are rendered directly from current values; no assigned story demonstrates whether an outer controller animates those props."
+  ]
+}

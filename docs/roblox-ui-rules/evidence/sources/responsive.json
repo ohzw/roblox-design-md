@@ -1,0 +1,149 @@
+{
+  "topic": "Roblox responsive GUI layout and safe-area APIs/guidance",
+  "claims": [
+    {
+      "id": "SRC-001",
+      "claim": "Scale-relative sizing is preferable to fixed Offset sizing for UI intended to respond across multiple screen resolutions.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "On-screen GuiObject position and size expressed with UDim2 across varying viewport sizes; this is comparative guidance, not a universal engine requirement.",
+      "limitations": [
+        "Roblox says many UI elements scale more responsively with percentage-based Scale values, not that every size or position must use Scale.",
+        "The same official tutorial says strict pixel values are useful in certain cases; offsets remain appropriate for fixed padding, minimum/maximum bounds, and other intentionally pixel-sized details.",
+        "Scale alone does not guarantee a usable layout across different aspect ratios; Roblox separately recommends testing multiple emulated device categories."
+      ],
+      "sources": [
+        {
+          "title": "Create HUD meters — Position the frame / Resize the frame",
+          "url": "https://create.roblox.com/docs/tutorials/use-case-tutorials/ui/create-hud-meters",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines Scale as a percentage of the container and Offset as pixels; calls Scale the best approach for edge-relative positioning and says many UI elements scale more responsively across multiple screens when sized as a percentage, while acknowledging strict pixels can be useful."
+        },
+        {
+          "title": "Create score bars — Test the design",
+          "url": "https://create.roblox.com/docs/tutorials/use-case-tutorials/ui/create-a-score-bar",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Explains that differing viewport aspect ratios require validation across screen sizes and instructs creators to test at least one phone, tablet, desktop, and console device."
+        }
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "claim": "Size constraints can bound responsive UI elements.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "GuiObjects with a child UISizeConstraint; bounds are pixel-valued MinSize and MaxSize limits applied after responsive sizing/layout calculations.",
+      "limitations": [
+        "UISizeConstraint bounds are expressed in pixels, even when the GuiObject's base Size uses Scale.",
+        "When a UILayout also controls the object, the constraint determines the minimum/maximum size and overrides a layout-applied size at those bounds.",
+        "This establishes capability, not a rule that every responsive element should have a UISizeConstraint."
+      ],
+      "sources": [
+        {
+          "title": "UISizeConstraint API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UISizeConstraint",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that UISizeConstraint prevents a GuiObject from becoming larger than MaxSize or smaller than MinSize and defines both properties as pixel bounds."
+        },
+        {
+          "title": "Create HUD meters — Constrain the size",
+          "url": "https://create.roblox.com/docs/tutorials/use-case-tutorials/ui/create-hud-meters",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Shows a Scale-sized meter becoming too tall on tablet/older-phone aspect ratios, then applies UISizeConstraint.MaxSize to cap its height at 20 pixels."
+        },
+        {
+          "title": "Create score bars — Create the frame",
+          "url": "https://create.roblox.com/docs/tutorials/use-case-tutorials/ui/create-a-score-bar",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Uses UISizeConstraint.MinSize so a responsive score bar never shrinks below 40 pixels vertically and remains legible on smaller screens."
+        }
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "claim": "Safe-area/inset handling is required so interactive UI is not obscured by device cutouts or Roblox system UI.",
+      "verdict": "partially-supported",
+      "kind": "platform-guidance",
+      "scope": "Interactive or information-bearing descendants of ScreenGui on displays with cutouts and where Roblox Core UI/top-bar controls occupy screen space.",
+      "limitations": [
+        "The required outcome—keeping accessible UI clear of obstructions—is supported, but explicit custom inset code or configuration is not universally required: ScreenGui.ScreenInsets defaults to CoreUISafeInsets, which automatically keeps descendants clear of Roblox Core UI and device cutouts.",
+        "ScreenInsets.None is intentionally available. Roblox says it should only be used for ScreenGuis containing noninteractive content such as background images, so the rule is not universal for all GUI content.",
+        "DeviceSafeInsets avoids hardware cutouts but does not automatically reserve every Core UI control; the official HUD example relies on right alignment to remain clear of Roblox UI.",
+        "ClipToDeviceSafeArea controls clipping and defaults true; disabling it can allow descendants to be obscured. SafeAreaCompatibility provides legacy fullscreen transformations, but Roblox recommends ScreenInsets for new work."
+      ],
+      "sources": [
+        {
+          "title": "ScreenGui API reference — ScreenInsets, ClipToDeviceSafeArea, SafeAreaCompatibility, IgnoreGuiInset",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/ScreenGui",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents that CoreUISafeInsets is the default and keeps descendants clear of top-bar buttons and camera notches; warns that None can place UI behind Core UI/cutouts and should only be used for noninteractive content; documents clipping and compatibility behavior."
+        },
+        {
+          "title": "Create HUD meters — Utilize safe areas",
+          "url": "https://create.roblox.com/docs/tutorials/use-case-tutorials/ui/create-hud-meters",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Says modern phones have notches/cutouts and every Roblox game has top-bar controls; presents ScreenInsets as the mechanism to ensure UI remains visible and accessible, and contrasts CoreUISafeInsets with DeviceSafeInsets."
+        },
+        {
+          "title": "GuiService API reference — GetGuiInset and TopbarInset",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiService",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Provides pixel inset values through GetGuiInset and a dynamic TopbarInset for UI that must react to currently unoccupied top-bar space; TopbarInset may change with Core UI visibility."
+        }
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "claim": "667×375 is an official Roblox responsive-UI validation target.",
+      "verdict": "not-found",
+      "kind": "platform-guidance",
+      "scope": "Current Roblox Creator Hub/API documentation, official samples surfaced by Context7, and exact-term web fallback searches as of the access date.",
+      "limitations": [
+        "No current authoritative source located names 667×375 as a required, recommended, or canonical validation resolution.",
+        "The official score-bar guide instead requires testing at least one device from each of Phone, Tablet, Desktop, and Console, without naming 667×375.",
+        "The current HUD-meter guide gives iPhone X and Samsung Galaxy A51 as example phone presets and says the Device Emulator supports custom presets; examples are not universal validation targets.",
+        "A not-found verdict does not prove the resolution was never present in an older Studio preset or never used by the community."
+      ],
+      "sources": [
+        {
+          "title": "Create score bars — Test the design",
+          "url": "https://create.roblox.com/docs/tutorials/use-case-tutorials/ui/create-a-score-bar",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines the current validation guidance as using Actual Resolution and testing at least one Phone, Tablet, Desktop, and Console device; it does not identify 667×375."
+        },
+        {
+          "title": "Create HUD meters — Enable the Device Emulator",
+          "url": "https://create.roblox.com/docs/tutorials/use-case-tutorials/ui/create-hud-meters",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Calls the Device Emulator the best way to test UI across platforms, notes preset and custom devices, and names iPhone X or Samsung Galaxy A51 only as example phone emulations; it does not establish 667×375 as a target."
+        },
+        {
+          "title": "Studio testing modes — Device emulation",
+          "url": "https://create.roblox.com/docs/studio/testing-modes#device-emulation",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Provides the official device-emulation mechanism for cross-device testing; no authoritative 667×375 validation requirement was surfaced from this documentation through Context7 or exact-term web fallback."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "Generic responsive guidance supports preferring Scale for many multi-resolution elements, but it does not support converting that preference into an engine-level MUST or banning Offset.",
+    "Safe-area avoidance is strong official guidance for interactive UI, while the engine already applies CoreUISafeInsets by default and explicitly permits ScreenInsets.None for noninteractive backgrounds; therefore 'authors must always implement custom inset handling' conflicts with the API's defaults and exceptions.",
+    "Community references may use 667×375 as a practical small-phone test case, but no current official source located elevates it to a Roblox validation target."
+  ],
+  "unresolved": [
+    "Context7 was used first with /websites/create_roblox. It returned current responsive-sizing, constraint, safe-area, and emulator guidance but no material naming 667×375. Web search was then used as the required fallback for that gap; exact searches did not locate a current Creator Hub, official sample, or Roblox staff source establishing 667×375 as an official target.",
+    "Whether 667×375 corresponds to a historically shipped Device Emulator preset was not established by current authoritative documentation."
+  ]
+}

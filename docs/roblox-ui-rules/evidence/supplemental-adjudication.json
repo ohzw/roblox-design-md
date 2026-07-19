@@ -1,0 +1,148 @@
+{
+  "decisions": [
+    {
+      "ruleId": "RUI-022",
+      "classification": "accepted-universal",
+      "strength": "MUST",
+      "statement": "Treat direct GuiObject siblings controlled by UIListLayout as layout-owned for Position and Rotation, and direct GuiObject siblings controlled by UIGridLayout as layout-owned for Position and Size; when an item needs an independent value for an owned property, put the independently positioned, rotated, or sized object inside a laid-out wrapper, or remove the item from that layout's ownership.",
+      "rationale": "The engine documentation directly states that UIListLayout ignores or overrides sibling Position and Rotation and that UIGridLayout controls sibling Position and Size. That ownership is the engine invariant supporting MUST. A nested wrapper is a recommended way to create a descendant coordinate space that the parent layout does not own; removing or changing the layout is an equally valid alternative, so the rule does not mandate one wrapper architecture.",
+      "appliesWhen": [
+        "The affected GuiObject is a direct sibling of UIListLayout or UIGridLayout under the layout's parent.",
+        "Code or Studio configuration attempts to control a property that the active layout owns."
+      ],
+      "exceptions": [
+        "Descendants inside a laid-out sibling are not direct siblings of the parent layout and may use their own Position, Rotation, and Size within that wrapper.",
+        "A non-flex UIListLayout normally preserves sibling Size; flex settings, AutomaticSize interactions, and size constraints can alter that behavior.",
+        "A UIConstraint on an individual UIGridLayout item can determine its size instead of CellSize and can make the item span multiple cells.",
+        "Stored property values may remain readable even when the layout ignores or overrides their rendered effect."
+      ],
+      "evidenceIds": [
+        "LayoutResearch:SRC-004",
+        "LayoutResearch:SRC-005",
+        "LayoutResearch:SRC-006"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "In the target Studio/engine version, mutate Position and Rotation on a direct UIListLayout sibling and confirm that rendered placement remains layout-controlled.",
+        "Mutate Position and Size on a direct UIGridLayout sibling and confirm that rendered placement and unconstrained size remain grid-controlled.",
+        "Repeat the desired manual transform on a descendant inside a laid-out wrapper and confirm that the descendant retains the intended independent transform.",
+        "Exercise any relied-upon flex, AutomaticSize, UISizeConstraint, or UIAspectRatioConstraint combination because those mechanisms can change size ownership."
+      ]
+    },
+    {
+      "ruleId": "RUI-023",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "For text processed by Roblox localization that may outgrow its initial bounds, exercise Studio Locale emulation and Elongate, then choose and verify an explicit policy such as container expansion, wrapping with sufficient height, or deliberate truncation; use AutomaticSize and TextScaled as alternative sizing strategies rather than enabling both on the same TextLabel.",
+      "rationale": "Roblox provides Locale and Elongate specifically to expose length-pressure failures and identifies localization as an AutomaticSize use case, which supports a scoped SHOULD rather than a release-gating MUST. Fixed-size labels have observable fitting, wrapping, and truncation behavior, but the engine does not mandate one overflow policy. Roblox explicitly recommends avoiding TextScaled together with AutomaticSize because one scales text to the container while the other grows the container to the content; this is guidance, not an engine prohibition.",
+      "appliesWhen": [
+        "The text passes through Roblox's translation system and the UI is intended to support localization.",
+        "A localized string can exceed the label's originally designed width or height.",
+        "The implementation is selecting between growing the container, wrapping text, or intentionally hiding overflow."
+      ],
+      "exceptions": [
+        "Elongate does not affect hard-coded or otherwise unlocalized strings; use the separately documented pseudolocalization or direct inspection path for those strings.",
+        "Intentional truncation is valid when product requirements permit hidden content and the full value is available where necessary.",
+        "TextWrapped alone does not preserve all content in a fixed-height label; a line that exceeds the vertical bounds is omitted.",
+        "TextScaled can be appropriate for fixed containers, including some BillboardGui text, especially when UITextSizeConstraint bounds readability.",
+        "Combining TextScaled and AutomaticSize is not rejected by the engine; any intentional exception must be reproduced and constrained because Roblox recommends against it."
+      ],
+      "evidenceIds": [
+        "TextResearch:SRC-201",
+        "TextResearch:SRC-202",
+        "TextResearch:SRC-204",
+        "TextResearch:SRC-205"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Run Studio Player Emulator with representative supported Locales and the Elongate control, and inspect every affected layout at supported viewport sizes.",
+        "For expansion, verify final bounds and AnchorPoint-driven growth; for wrapping, verify that the available height renders every required line; for truncation, verify the selected AtEnd or SplitWord behavior.",
+        "Observe TextFits and TextBounds for representative longest strings rather than assuming that wrapping guarantees visibility.",
+        "Reproduce any TextWrapped plus TextTruncate combination before relying on it because the supplied official evidence does not establish their precedence.",
+        "Test real target-locale strings for shaping, line breaking, and translation quality because synthetic elongation validates length pressure only."
+      ]
+    },
+    {
+      "ruleId": "RUI-024",
+      "classification": "accepted-conditional",
+      "strength": "MUST",
+      "statement": "When ClipsDescendants is effective and true, treat the clipping GuiObject's rectangular bounds as an absolute descendant-rendering boundary: do not rely on ZIndex to render overflow outside it, do not expect UICorner to round the clipping shape, and account explicitly for the current rotated-descendant rollout and unsupported rotated-parent clipping.",
+      "rationale": "Official engine documentation defines ClipsDescendants as hiding descendant portions outside the parent's rectangle, while ZIndex only controls draw order; therefore a higher ZIndex cannot escape an effective clip. The same documentation states that UICorner does not define the clipping shape. Rotation requires conditional wording: the rollout can enable correct clipping of rotated descendants, but clipping by a rotated parent shape remains unsupported, and legacy behavior may ignore clipping when the clipping object or an ancestor has nonzero Rotation.",
+      "appliesWhen": [
+        "A descendant can render beyond an ancestor GuiObject whose ClipsDescendants property is true.",
+        "The clip is effective under the target client's StarterGui.ClipsDescendantsSupportsRotation rollout state.",
+        "An overlay, shadow, decoration, or scrolling child is expected to cross the ancestor's bounds."
+      ],
+      "exceptions": [
+        "Moving the visual outside the clipping ancestor's descendant branch can escape that particular boundary, although another shared clipping ancestor may still clip it.",
+        "Disabling ClipsDescendants permits overflow when doing so is acceptable for the entire affected descendant branch.",
+        "UICorner can round visible UI geometry, but it does not turn ClipsDescendants into a rounded mask.",
+        "With rotation support enabled, rotated descendants can be clipped; this does not make a rotated parent shape a supported clipping mask.",
+        "When the rotation rollout is not enabled, nonzero Rotation on the clipping GuiObject or an ancestor can cause ClipsDescendants to be ignored rather than applied."
+      ],
+      "evidenceIds": [
+        "LayeringResearch:SRC-004",
+        "LayeringResearch:SRC-005",
+        "LayoutResearch:SRC-009"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Inspect the effective StarterGui.ClipsDescendantsSupportsRotation state on each target client or rollout environment.",
+        "Render a high-ZIndex descendant beyond a ClipsDescendants boundary and confirm that the overflowing portion remains hidden.",
+        "Combine ClipsDescendants with UICorner and confirm that clipping remains rectangular.",
+        "Exercise separately a rotated descendant, a rotated clipping parent, and a rotated ancestor on the target engine version; record whether clipping applies or is ignored in each case."
+      ]
+    },
+    {
+      "ruleId": "RUI-025",
+      "classification": "implementation-guideline",
+      "strength": "SHOULD",
+      "statement": "For a stateful UI transition that can be superseded, assign transition ownership and define replacement behavior so that the final property values and callbacks are deterministic; distinguish Completed from Cancelled in Tween.Completed handlers, and use explicit Cancel only when the desired choreography is not already provided by automatic same-object, same-property replacement.",
+      "rationale": "The engine fact is precise: a newly played tween automatically cancels an older tween that targets the same property on the same object, while different-property tweens may coexist, and the cancelled tween's Completed event fires with PlaybackState.Cancelled. Roblox does not mandate an owner abstraction or universal explicit cancellation. Ownership, stale-callback prevention, and deterministic state commitment are therefore implementation guidance derived from documented interruption semantics, not a user-facing invariant.",
+      "appliesWhen": [
+        "A UI state change can start while an earlier transition is still playing.",
+        "A tween callback mutates state, visibility, interactivity, lifecycle, or another property whose value must correspond to the winning transition.",
+        "Several properties or several tweens collectively represent one logical transition."
+      ],
+      "exceptions": [
+        "Explicit cancellation is unnecessary solely to arbitrate two tweens on the same object and property because playing the newer tween already cancels and overwrites the older one.",
+        "Tweens targeting different properties may intentionally run concurrently.",
+        "A fire-and-forget decorative tween with no stateful callback or required terminal invariant may not need a dedicated ownership abstraction.",
+        "Cancel stops at the current interpolated property values and does not restore the start values; code that requires a snap, rollback, or commit must assign that end state itself.",
+        "Pause preserves progress and does not fire Completed, so pause/resume behavior is not interchangeable with cancellation behavior."
+      ],
+      "evidenceIds": [
+        "MotionResearch:SRC-002",
+        "MotionResearch:SRC-003"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Rapidly reverse or replace each interruptible transition and confirm that only the winning transition commits state.",
+        "Observe Tween.Completed for both the replaced tween and the winning tween, and verify branching on PlaybackState.Cancelled versus PlaybackState.Completed.",
+        "Test same-property overlap to confirm automatic cancellation and different-property overlap to confirm intended coexistence.",
+        "Exercise every explicit Cancel path and verify the immediate interpolated values, the assigned deterministic terminal values, callback count, visibility, and input state.",
+        "Replay a cancelled tween if that path is supported and confirm that the full-duration restart behavior matches the intended choreography."
+      ]
+    }
+  ]
+}

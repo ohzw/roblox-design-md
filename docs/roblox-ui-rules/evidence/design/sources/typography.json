@@ -1,0 +1,485 @@
+{
+  "topic": "Roblox on-screen typography and text readability",
+  "claims": [
+    {
+      "id": "SRC-001",
+      "claim": "Roblox's current API reference recommends that rendered text, and specifically UITextSizeConstraint.MinTextSize, not be lower than 9 because it may be unreadable or invisible to many users. The 9 value is an official Roblox readability recommendation in API-reference prose; it is not documented as a runtime/Studio warning, an enforced API minimum, or a universal platform rule.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "TextLabel on-screen text and UITextSizeConstraint.MinTextSize when constraining TextScaled text. The recommendation is expressed in Roblox API-reference documentation, not in a platform policy or conformance standard.",
+      "limitations": [
+        "UITextSizeConstraint.MinTextSize itself defaults to 1, so the API permits values below 9.",
+        "The TextLabel sample sets TextSize as low as 5, further showing that 9 is not an enforced lower bound.",
+        "No current official source found documents a warning, error, or rejection triggered solely by a value below 9. This documentation review cannot exclude an undocumented or future Studio diagnostic.",
+        "Roblox calls the value a size in pixels in UITextSizeConstraint, while TextLabel.TextSize is described as line height in offsets; neither statement establishes equivalence to CSS pixels or to the body-height measurement used by Xbox accessibility guidance."
+      ],
+      "sources": [
+        {
+          "title": "UITextSizeConstraint | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UITextSizeConstraint",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that values lower than 9 are not recommended for MinTextSize because text may not be readable to most users; also documents a default MinTextSize of 1."
+        },
+        {
+          "title": "TextLabel | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TextLabel",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that text size is recommended to be no lower than 9 because it may not be visible to many users, while its TextSize sample iterates from 5 to 100."
+        }
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "claim": "TextLabel.TextSize controls the height of one rendered line in offsets, not typographic points. Roblox does not document a separate enforced minimum on the TextSize property.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "TextLabel.TextSize; corresponding text classes have analogous properties, but this source directly establishes TextLabel behavior.",
+      "limitations": [
+        "The API text does not define how an offset maps to physical size, viewing distance, DPI, or measured glyph body height.",
+        "The absence of a documented property bound is not proof that every value renders usefully.",
+        "PreferredTextSize and other rendering/layout behavior can alter effective presentation."
+      ],
+      "sources": [
+        {
+          "title": "TextLabel | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TextLabel",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Defines TextSize as the height of one rendered line, in offsets rather than points; its published sample uses values beginning at 5."
+        }
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "claim": "UITextSizeConstraint constrains TextLabel, TextButton, or TextBox text between MinTextSize and MaxTextSize when parented to the text object; it is intended for use with TextScaled. MinTextSize defaults to 1, MaxTextSize defaults to 1000, and the minimum must not exceed the maximum.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "UITextSizeConstraint parented to supported Roblox text GuiObjects, especially with TextScaled enabled.",
+      "limitations": [
+        "The defaults are API defaults, not readability recommendations.",
+        "A constraint caps scaling; it does not by itself establish a typographic hierarchy or guarantee readability against a particular background."
+      ],
+      "sources": [
+        {
+          "title": "UITextSizeConstraint | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UITextSizeConstraint",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents supported GuiObjects, intended TextScaled use, dynamic lower/upper bounds, defaults, and ordering requirements."
+        }
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "claim": "With TextScaled enabled, TextSize is ignored, TextWrapped is automatically enabled, and text scales to fill the label. For on-screen UI Roblox recommends constraining the possible range, but more generally recommends avoiding TextScaled in favor of AutomaticSize because unconstrained scaling can make text unreadably small; Roblox also recommends not combining AutomaticSize and TextScaled on the same TextLabel.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "TextLabel.TextScaled, especially on-screen UI rather than BillboardGui text.",
+      "limitations": [
+        "The recommendation to avoid TextScaled is not an API prohibition.",
+        "BillboardGui is identified as a useful TextScaled case, so the advice is contextual rather than universal.",
+        "AutomaticSize changes container bounds rather than guaranteeing that surrounding layout can accommodate them."
+      ],
+      "sources": [
+        {
+          "title": "TextLabel | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TextLabel",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents TextScaled behavior, recommends UITextSizeConstraint for on-screen use, recommends AutomaticSize instead, and warns that careless scaling can become unreadable."
+        }
+      ]
+    },
+    {
+      "id": "SRC-005",
+      "claim": "Roblox provides a player Preferred Text Size setting. TextScaled text is not scaled by PreferredTextSize; UITextSizeConstraint caps the setting's effect; AutomaticSize can grow or shrink element bounds with the resized text; and wrapped text can add lines within the element's absolute-size limits.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Roblox player text-size preference and UI elements participating in the engine font-rendering pipeline.",
+      "limitations": [
+        "This is accommodation behavior, not a default readable-size threshold.",
+        "Using TextScaled can bypass the player's PreferredTextSize adjustment, so a UI can be technically valid yet fail to honor the preference for that element.",
+        "The accessibility design page was obtained through the official Creator Hub web fallback because the Context7 results covered the API properties but not this complete accessibility guidance."
+      ],
+      "sources": [
+        {
+          "title": "Accessibility guidelines | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Documents GuiService.PreferredTextSize and its interaction with UITextSizeConstraint, TextScaled, AutomaticSize, TextWrapped, and text measurement APIs."
+        }
+      ]
+    },
+    {
+      "id": "SRC-006",
+      "claim": "FontFace accepts Roblox's Font datatype, whose Weight property uses Enum.FontWeight. Roblox exposes nine enum values from Thin (100) through Heavy (900), with Regular (400) as the default; Font constructors accept a requested weight.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "TextLabel.FontFace and other UI properties that use the Font datatype.",
+      "limitations": [
+        "Enum availability does not establish that every font family contains a face for every enum weight.",
+        "Enum names and numeric values describe thickness, not semantic UI roles.",
+        "The API documentation does not establish a universal fallback/rendering rule for a requested weight absent from a family."
+      ],
+      "sources": [
+        {
+          "title": "Font | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/datatypes/Font",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Defines Font as family, weight, and style; documents Font.Weight, the Regular default, and constructors accepting FontWeight."
+        },
+        {
+          "title": "FontWeight | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/enums/FontWeight",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Lists Thin 100, ExtraLight 200, Light 300, Regular 400, Medium 500, SemiBold 600, Bold 700, ExtraBold 800, and Heavy 900."
+        },
+        {
+          "title": "TextLabel | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TextLabel",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents TextLabel.FontFace as a Font datatype property."
+        }
+      ]
+    },
+    {
+      "id": "SRC-007",
+      "claim": "Actual font-face availability should be established per family rather than inferred from Enum.FontWeight: TextService:GetFamilyInfoAsync returns a family's Faces, and Roblox's sample enumerates each face's Weight and Style.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Runtime inspection of Roblox font-family assets.",
+      "limitations": [
+        "The API can fail due to network errors and Roblox instructs callers to handle failure.",
+        "The returned family data reports faces; it does not prescribe which weight should represent body, label, heading, emphasis, or action text.",
+        "No current official API text found defines how rendering behaves when the requested weight is absent."
+      ],
+      "sources": [
+        {
+          "title": "TextService | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TextService",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents GetFamilyInfoAsync and demonstrates iterating info.Faces to print each face's Weight and Style."
+        },
+        {
+          "title": "Font | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/datatypes/Font",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that each family contains a number of faces and each face has a weight and style."
+        }
+      ]
+    },
+    {
+      "id": "SRC-008",
+      "claim": "Roblox's published design guidance uses size and boldness for hierarchy: headers and titles should be larger and bolder than body text, and color or bolding can highlight important information. It also says to prioritize legibility when selecting a font.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "General Roblox experience UI visual language and information hierarchy.",
+      "limitations": [
+        "This is qualitative guidance; it gives no text-size scale, weight-number mapping, ratio, maximum number of hierarchy levels, or specific roles for Medium/SemiBold/Bold.",
+        "It does not justify inferring semantic meaning from the FontWeight enum.",
+        "The UI/UX design page was obtained through the official Creator Hub web fallback because the Context7 design query did not return the complete page."
+      ],
+      "sources": [
+        {
+          "title": "UI and UX design | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines hierarchy of information, recommends larger/bolder headers and titles, permits bolding for important information, and prioritizes font legibility."
+        }
+      ]
+    },
+    {
+      "id": "SRC-009",
+      "claim": "Roblox publishes a specific semantic mapping such as Regular for body, Medium for labels, SemiBold for controls, and Bold for headings.",
+      "verdict": "not-found",
+      "kind": "design-recommendation",
+      "scope": "Current Roblox Creator Hub typography, UI/UX, accessibility, Font, and FontWeight materials reviewed for this assignment.",
+      "limitations": [
+        "Roblox publishes qualitative larger/bolder hierarchy guidance, but not a role-by-weight token system.",
+        "A project may define its own semantic weight tokens, but that would be a project design recommendation, not a Roblox engine fact.",
+        "Absence from the reviewed current official sources does not prove that no Roblox staff presentation or unpublished internal design system has ever offered such a mapping."
+      ],
+      "sources": [
+        {
+          "title": "UI and UX design | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Provides only qualitative larger/bolder hierarchy and emphasis guidance."
+        },
+        {
+          "title": "FontWeight | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/enums/FontWeight",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Defines thickness choices and numeric values but assigns no UI semantics."
+        }
+      ]
+    },
+    {
+      "id": "SRC-010",
+      "claim": "No current Roblox-specific rule for sentence case, title case, or all-caps usage was found in the reviewed official typography, accessibility, and UI/UX sources.",
+      "verdict": "not-found",
+      "kind": "design-recommendation",
+      "scope": "General on-screen Roblox UI copy and typography; this does not address language-specific localization rules.",
+      "limitations": [
+        "The finding is limited to current official sources reviewed for this assignment.",
+        "It should not be converted into a claim that casing never affects readability.",
+        "High-authority external game guidance supplies a recommendation when Roblox is silent."
+      ],
+      "sources": [
+        {
+          "title": "UI and UX design | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Covers hierarchy, attention, visual language, text legibility, and consistency without prescribing casing."
+        },
+        {
+          "title": "Accessibility guidelines | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Covers text size, contrast, and player preferences without prescribing casing."
+        }
+      ]
+    },
+    {
+      "id": "SRC-011",
+      "claim": "When Roblox is silent on casing, Microsoft Xbox Accessibility Guidelines recommend proper sentence case instead of full caps or full lowercase for lines of text; one- or two-word labels are exempt. For subtitles/captions, Microsoft recommends mixed case because it is easier to read than uniform case.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Imported high-authority game-accessibility guidance, not a Roblox platform requirement.",
+      "limitations": [
+        "The general rule explicitly exempts one- or two-word labels.",
+        "The subtitle rule applies to captions/subtitles, not necessarily every short HUD token.",
+        "This guidance cannot establish a universal Roblox MUST."
+      ],
+      "sources": [
+        {
+          "title": "Xbox Accessibility Guideline 101: Text display | Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/101",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends proper sentence case over full caps or full lowercase for text lines, with a one- or two-word-label exemption."
+        },
+        {
+          "title": "Xbox Accessibility Guideline 104: Subtitles and captions | Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/104",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends mixed-case subtitle/caption text and states that it is easier to read than all one case."
+        }
+      ]
+    },
+    {
+      "id": "SRC-012",
+      "claim": "Roblox TextLabel.LineHeight is an engine control expressed as a multiplier of the font em square. Its documented range is 1.0 to 3.0 and its default is 1.0. Roblox does not publish a separate readable line-height minimum in the reviewed design/accessibility guidance.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Multiline TextLabel rendering; the API fact does not itself prescribe an authored typographic leading scale.",
+      "limitations": [
+        "The default 1.0 is an engine default, not evidence that 1.0 is optimal for reading.",
+        "LineHeight scales spacing using the em square, not the glyph body-height measurement used by Xbox text-size guidance.",
+        "Roblox does not expose letter-spacing or word-spacing properties alongside LineHeight in the cited TextLabel material."
+      ],
+      "sources": [
+        {
+          "title": "TextLabel | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TextLabel",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Defines LineHeight as an em-square multiplier with range 1.0–3.0 and default 1.0."
+        },
+        {
+          "title": "Accessibility guidelines | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Provides general text readability and scaling guidance but no numeric authored line-height recommendation."
+        }
+      ]
+    },
+    {
+      "id": "SRC-013",
+      "claim": "For blocks longer than two lines, Xbox Accessibility Guideline 101 recommends configurability for line width and spacing; if configurability is absent, it suggests line spacing of at least 1.5, alongside limits/values for line width, paragraph spacing, letter spacing, and word spacing. WCAG 2.2's 1.5 line-height figure has a different scope: web content must survive a user override to that value without losing content or functionality; WCAG explicitly says authors are not required to use 1.5 as their default.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Xbox guidance is imported game-accessibility guidance; WCAG is imported web-accessibility guidance and is not directly a Roblox engine conformance requirement.",
+      "limitations": [
+        "Xbox's 1.5 recommendation is for blocks over two lines at standard size when players cannot configure spacing.",
+        "WCAG 2.2 SC 1.4.12 applies to markup technologies supporting user style overrides; it should not be misquoted as a mandatory authored line-height.",
+        "Language and writing-system differences can make some spacing metrics inapplicable.",
+        "Neither source creates a universal Roblox LineHeight rule."
+      ],
+      "sources": [
+        {
+          "title": "Xbox Accessibility Guideline 101: Text display | Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/101",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Suggests configurable spacing or, when unavailable, 1.5 line spacing for blocks longer than two lines plus other spacing metrics."
+        },
+        {
+          "title": "Understanding WCAG 2.2 Success Criterion 1.4.12: Text Spacing | W3C",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Requires no loss under specified user spacing overrides and explicitly states that content is not required to use those values by default."
+        }
+      ]
+    },
+    {
+      "id": "SRC-014",
+      "claim": "Roblox exposes TextStrokeColor3 and TextStrokeTransparency for text outlines. The API recommends TextStrokeTransparency in the 0.75–1 range for a subtle effect and identifies UIStroke as a more powerful gradient-capable alternative; it does not claim that every text element should have an outline or that this range guarantees readability.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "TextLabel text-stroke appearance; analogous properties exist on other Roblox text GuiObjects but this source directly establishes TextLabel.",
+      "limitations": [
+        "The 0.75–1 range is an aesthetic recommendation for subtlety, not an accessibility contrast target.",
+        "Transparency compounds because the stroke is multiple renderings; effective contrast depends on stroke color and every background behind the text.",
+        "The API page does not provide a stroke-width readability minimum."
+      ],
+      "sources": [
+        {
+          "title": "TextLabel | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TextLabel",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents stroke color/transparency, multiplicative rendering, the 0.75–1 subtle-effect recommendation, and UIStroke as an alternative."
+        }
+      ]
+    },
+    {
+      "id": "SRC-015",
+      "claim": "For text over variable gameplay backgrounds, Xbox guidance treats borders/outlines and solid or opacity-adjustable text backgrounds as valid ways to improve contrast. It recommends measuring text against the lowest-contrast area of a non-solid background; subtitle guidance specifically recommends a configurable solid background and opacity.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Imported game-accessibility guidance for dynamic game scenes, HUD text, and captions; not a mandate to outline all Roblox text.",
+      "limitations": [
+        "An outline is a contrast technique, not a substitute for measuring the resulting presentation.",
+        "Microsoft presents multiple approaches—background, color options, high-contrast mode, and borders—rather than making outline universal.",
+        "Caption-background configurability is specifically scoped to captions/subtitles.",
+        "The guidance does not prescribe Roblox TextStrokeTransparency or UIStroke values."
+      ],
+      "sources": [
+        {
+          "title": "Xbox Accessibility Guideline 102: Contrast | Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/102",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends solid/adjustable-opacity backgrounds, color options, high-contrast modes, and borders; requires measurement against the lowest-contrast background area."
+        },
+        {
+          "title": "Xbox Accessibility Guideline 104: Subtitles and captions | Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/104",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends configurable solid subtitle backgrounds and 0–100% background opacity for readability across gameplay backgrounds."
+        }
+      ]
+    },
+    {
+      "id": "SRC-016",
+      "claim": "Roblox's general accessibility guidance says small text can be difficult to read, increasing smaller labels makes them clearer to most players, and text/background colors should have sufficient contrast. That design page does not publish a numeric default text-size minimum or numeric contrast ratio.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "General Roblox experience accessibility design, distinct from the API-reference recommendation of 9.",
+      "limitations": [
+        "The examples are qualitative and do not define a measurement method.",
+        "The absence of a numeric threshold on this page does not erase the separate API-reference recommendation of 9.",
+        "'Sufficient contrast' is not quantified by Roblox in the cited page; numeric ratios below are imported external guidance.",
+        "The page was obtained via official Creator Hub web fallback after Context7 did not return the full accessibility material."
+      ],
+      "sources": [
+        {
+          "title": "Accessibility guidelines | Roblox Creator Hub",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Uses low-vision examples to recommend larger small labels and sufficient foreground/background contrast, without numeric minima."
+        }
+      ]
+    },
+    {
+      "id": "SRC-017",
+      "claim": "Microsoft Xbox Accessibility Guideline 101 supplies external game-specific numeric defaults when Roblox guidance is insufficient: at 1080p it recommends at least 26 measured body-height pixels on console and 18 on PC/VR; for mobile/game streaming it recommends 18 pixels at 100 DPI, scaling linearly with DPI. It also recommends allowing scaling to 200% of those default minima without loss of content, functionality, or meaning.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Imported Xbox game-accessibility guidance, measured from rendered ascender-to-descender body height under the stated resolution/DPI contexts; not Roblox TextSize values.",
+      "limitations": [
+        "These numbers are not Roblox requirements and must not be relabeled as Roblox minimum TextSize values.",
+        "The measurement method differs from Roblox's documented TextSize/MinTextSize terminology, so direct numeric substitution is unsupported.",
+        "Viewing distance, resolution, and DPI are part of the Xbox scope; 18 or 26 is not universal across all displays.",
+        "Xbox permits players to scale smaller at their discretion after providing an accessible default."
+      ],
+      "sources": [
+        {
+          "title": "Xbox Accessibility Guideline 101: Text display | Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/101",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines the measurement method, platform/resolution/DPI minimum default sizes, and 200% scaling guidance."
+        }
+      ]
+    },
+    {
+      "id": "SRC-018",
+      "claim": "High-authority external contrast guidance is numeric but not Roblox-specific: Xbox XAG 102 recommends 4.5:1 for standard important text and 3:1 for its defined large text; WCAG 2.2 SC 1.4.3 likewise requires 4.5:1 for ordinary web text and 3:1 for large-scale web text. WCAG 2.2 SC 1.4.4 requires web text to resize to 200% without loss of content or functionality.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Xbox values are imported game-accessibility guidance; WCAG values are imported web-accessibility conformance criteria. Neither is an official Roblox numeric rule.",
+      "limitations": [
+        "Xbox and WCAG define 'large text' differently and use context-specific measurements; their thresholds must not be mixed without preserving those definitions.",
+        "WCAG applies to web content, not automatically to Roblox-rendered game UI.",
+        "Roblox's official accessibility page says 'sufficient contrast' but does not adopt these ratios explicitly.",
+        "Contrast compliance does not alone establish readable text size, font choice, spacing, or viewing-distance suitability."
+      ],
+      "sources": [
+        {
+          "title": "Xbox Accessibility Guideline 102: Contrast | Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/xbox/accessibility/xbox-accessibility-guidelines/102",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Provides game-specific 4.5:1 and 3:1 contrast recommendations and contextual large-text definitions."
+        },
+        {
+          "title": "Understanding WCAG 2.2 Success Criterion 1.4.3: Contrast (Minimum) | W3C",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "States WCAG Level AA text contrast thresholds and web large-scale-text exceptions."
+        },
+        {
+          "title": "Understanding WCAG 2.2 Success Criterion 1.4.4: Resize Text | W3C",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/resize-text.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Requires web text to resize up to 200% without loss of content or functionality."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "The apparent numeric conflict between Roblox's 9 recommendation and Xbox's 18/26-pixel defaults is a scope and measurement conflict, not evidence that one source supersedes the other: Roblox discusses TextSize/MinTextSize readability in engine terms, while Xbox measures rendered body height under specified resolution/DPI and viewing contexts.",
+    "Roblox documents TextScaled as useful, especially for BillboardGui, while also recommending that on-screen UI avoid it in favor of AutomaticSize. This is contextual guidance, not a factual contradiction.",
+    "Roblox's TextStrokeTransparency 0.75–1 recommendation targets a subtle visual effect; Xbox's border/background guidance targets reliable contrast. A subtle stroke may be insufficient for accessibility, but the sources address different goals.",
+    "Xbox suggests authored 1.5 line spacing for longer blocks when configurability is absent; WCAG 2.2 SC 1.4.12 does not require authors to use 1.5 by default and instead requires web layouts to survive a user's spacing override. These statements are compatible once scope is preserved."
+  ],
+  "unresolved": [
+    "No current official Roblox numeric type scale, line-length target, authored body-text line-height recommendation, or weight-by-semantic-role mapping was found.",
+    "No current official Roblox casing rule for general on-screen UI was found.",
+    "No current official documentation of a Studio/runtime warning triggered solely by TextSize or MinTextSize below 9 was found; the API documentation instead presents 9 as a recommendation and permits lower values.",
+    "Official documentation establishes that family faces can be queried, but does not establish a universal fallback behavior when a requested FontWeight face is absent.",
+    "A direct equivalence between Roblox TextSize/MinTextSize numbers and Xbox's screenshot-measured ascender-to-descender pixel body height is not established and should not be inferred."
+  ]
+}

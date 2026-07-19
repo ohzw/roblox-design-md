@@ -1,0 +1,1448 @@
+{
+  "taste": "indigo-quartermaster",
+  "filesInspected": [
+    "design-md/indigo-quartermaster/DESIGN.roblox.md",
+    "e2e/indigo-quartermaster/src/Theme.luau",
+    "e2e/indigo-quartermaster/src/Components/Window.luau",
+    "e2e/indigo-quartermaster/src/Components/ButtonPrimary.luau",
+    "e2e/indigo-quartermaster/src/Components/ButtonCta.luau",
+    "e2e/indigo-quartermaster/src/Components/Tab.luau",
+    "e2e/indigo-quartermaster/src/Components/ButtonBuy.luau",
+    "e2e/indigo-quartermaster/src/Components/CurrencyBar.luau",
+    "e2e/indigo-quartermaster/src/Components/CardGrid.luau",
+    "e2e/indigo-quartermaster/src/Components/ListRow.luau",
+    "e2e/indigo-quartermaster/src/Components/ProgressBar.luau",
+    "e2e/indigo-quartermaster/src/Components/HudPill.luau",
+    "e2e/indigo-quartermaster/src/Components/CloseButton.luau",
+    "e2e/indigo-quartermaster/src/Components/Launcher.luau",
+    "e2e/indigo-quartermaster/src/Stories/HUD.story.luau",
+    "e2e/indigo-quartermaster/src/Stories/Shop.story.luau",
+    "e2e/indigo-quartermaster/src/Stories/Dialog.story.luau",
+    "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau"
+  ],
+  "typography": {
+    "roles": [
+      {
+        "name": "display",
+        "family": "BuilderSans",
+        "sizePx": 40,
+        "weight": "Bold",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "133-158"
+          },
+          {
+            "path": "e2e/indigo-quartermaster/src/Theme.luau",
+            "lines": "28-43"
+          }
+        ]
+      },
+      {
+        "name": "heading",
+        "family": "BuilderSans",
+        "sizePx": 24,
+        "weight": "Bold",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "133-158"
+          },
+          {
+            "path": "e2e/indigo-quartermaster/src/Theme.luau",
+            "lines": "28-43"
+          },
+          {
+            "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+            "lines": "164-180"
+          }
+        ]
+      },
+      {
+        "name": "timer",
+        "family": "RobotoMono",
+        "sizePx": 20,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "133-158"
+          },
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "357-361"
+          },
+          {
+            "path": "e2e/indigo-quartermaster/src/Components/HudPill.luau",
+            "lines": "37-47"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "family": "BuilderSans",
+        "sizePx": 18,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "133-158"
+          },
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "351-354"
+          },
+          {
+            "path": "e2e/indigo-quartermaster/src/Theme.luau",
+            "lines": "37-43"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "family": "BuilderSans",
+        "sizePx": 18,
+        "weight": "Bold",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "133-158"
+          },
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "354-357"
+          },
+          {
+            "path": "e2e/indigo-quartermaster/src/Theme.luau",
+            "lines": "37-43"
+          }
+        ]
+      },
+      {
+        "name": "caption",
+        "family": "BuilderSans",
+        "sizePx": 14,
+        "weight": "SemiBold",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "133-158"
+          },
+          {
+            "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+            "lines": "357-358"
+          },
+          {
+            "path": "e2e/indigo-quartermaster/src/Theme.luau",
+            "lines": "37-43"
+          },
+          {
+            "path": "e2e/indigo-quartermaster/src/Components/Launcher.luau",
+            "lines": "103-137"
+          }
+        ]
+      }
+    ],
+    "minimumAuthoredPx": 14,
+    "minimumRenderedPx": 14,
+    "adjacentRatios": [
+      {
+        "from": "display",
+        "to": "heading",
+        "ratio": 1.6667
+      },
+      {
+        "from": "heading",
+        "to": "body",
+        "ratio": 1.3333
+      },
+      {
+        "from": "body",
+        "to": "label",
+        "ratio": 1
+      },
+      {
+        "from": "label",
+        "to": "caption",
+        "ratio": 1.2857
+      },
+      {
+        "from": "heading",
+        "to": "timer",
+        "ratio": 1.2
+      },
+      {
+        "from": "timer",
+        "to": "body",
+        "ratio": 1.1111
+      }
+    ],
+    "rules": [
+      "All six authored roles use fixed numeric TextSize tokens in the inspected implementation; no TextScaled or UITextSizeConstraint is instantiated there, so the smallest authored and implementation-rendered token is the 14px caption.",
+      "No line-height value is authored for any typography role; lineHeight is null for display, heading, timer, body, label, and caption. Explicit TextLabel frame heights in components are container geometry, not authored line height.",
+      "BuilderSans is a nearest-match mapping rather than a verified source font; the extraction assigns typography medium confidence and names SourceSansPro as runner-up.",
+      "Hierarchy is carried by size, weight, and ink value: primary text is #FFFFFF, secondary clauses and placeholders use lavender #A9A9D0, and text strokes remain 0px.",
+      "Display and heading are sentence case by rule. Body is sentence case. Button labels may be caps or title case; card item names are forced ALL CAPS. Timer content preserves numeric/status casing.",
+      "The source permits TextScaled only for the mega-CTA and display banners, capped at the role token size, but the inspected ButtonCta uses fixed 24px heading text.",
+      "Computed from the authored sRGB hex values, white-to-surface contrast ratios are 7.508:1 on #4F5081, 5.490:1 on #5A65A3, 9.917:1 on #3D3F6A, 11.262:1 on #383660, 5.189:1 on #6467A8, and 11.689:1 on #1E3B50. These are measurements only, not readability or accessibility claims.",
+      "Computed from the authored sRGB hex values, muted lavender #A9A9D0 is 3.315:1 against #4F5081 and 2.291:1 against #6467A8; accent-info #5EACFE is 2.303:1 against #5A65A3."
+    ],
+    "exceptions": [
+      "RobotoMono Regular 20px is an orthogonal ticking/status role inside an otherwise single-family BuilderSans system.",
+      "CardGrid forces item names to uppercase even though the label token itself has uppercase=false.",
+      "Launcher forces its caption to uppercase and transplants the caption role onto a generator-required HUD launcher.",
+      "ButtonCta forces PLAY to uppercase at heading size; it does not use the 40px display role.",
+      "Dialog.story uses the generator-fixed title \"CONFIRM\" in all caps, explicitly overriding the taste's sentence-case window-title rule.",
+      "The divergent social overlay is described as leaning SourceSansPro and the forge/social screens use a near-black voice; neither is tokenized in Theme.",
+      "The 14px caption is rendered inside 18px hotbar keybind tags and 22px launcher badges; the visual text size and the surrounding interactive target size are separate.",
+      "No authored line-height values are available, so adjacent size ratios do not imply baseline or vertical-rhythm ratios."
+    ]
+  },
+  "hierarchy": [
+    {
+      "id": "DES-INDIGO-001",
+      "domain": "hierarchy",
+      "observed": "The authored type scale is 40px Bold display, 24px Bold heading, 20px Regular mono timer, 18px Regular body, 18px Bold label, and 14px SemiBold caption. Display-to-heading is 1.6667, heading-to-body is 1.3333, body-to-label is 1.0 with weight supplying the distinction, and label-to-caption is 1.2857.",
+      "designFunction": "The equal-size body/label pair separates explanation from action through weight instead of size; the timer branches into a monospaced status voice.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "displayPx": 40,
+        "headingPx": 24,
+        "timerPx": 20,
+        "bodyPx": 18,
+        "labelPx": 18,
+        "captionPx": 14,
+        "lineHeightPx": null,
+        "textStrokePx": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "89-112"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "133-158"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "338-365"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "28-43"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-002",
+      "domain": "hierarchy",
+      "observed": "Primary text is white and usually Bold; secondary clauses, subtitles, placeholders, and disabled labels use muted lavender. Text has no stroke. Window titles are left aligned; card names use ALL CAPS and accent-info blue.",
+      "designFunction": "Ink value and weight provide primary/secondary separation without adding another family or text outline.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "primaryInk": "#FFFFFF",
+        "secondaryInk": "#A9A9D0",
+        "cardNameInk": "#5EACFE",
+        "textStrokePx": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "330-347"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "348-361"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ListRow.luau",
+          "lines": "50-71"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/CardGrid.luau",
+          "lines": "86-95"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-003",
+      "domain": "hierarchy",
+      "observed": "The lobby PLAY slab is specified as exactly one per screen, centered, with a bright green horizontal gradient and a white all-caps 24px Bold label. The implementation defaults to 25% parent width and 72px height.",
+      "designFunction": "The unique gradient, large slab geometry, center placement, and one-per-screen count isolate the primary lobby CTA from repeated flat controls.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "primaryCtaCountPerLobbyScreen": 1,
+        "labelPx": 24,
+        "defaultWidthScale": 0.25,
+        "defaultHeightPx": 72,
+        "authoredApproxAspectRatio": 4,
+        "cornerRadiusPx": 4,
+        "gradientStops": [
+          "#31E856",
+          "#22DA34"
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "187-194"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "460-466"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonCta.luau",
+          "lines": "1-7"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonCta.luau",
+          "lines": "42-80"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/HUD.story.luau",
+          "lines": "87-95"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-004",
+      "domain": "hierarchy",
+      "observed": "Popup reading order is integrated header title and close control, then body content, then one green confirm action at bottom-right. Dialog.story renders a 420x220 panel, a 48px header, an 18px body question, and a 160x44 confirm button.",
+      "designFunction": "The header establishes context before the body, while the isolated bottom-right green action is the modal's strongest action signal.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "dialogWidthPx": 420,
+        "dialogHeightPx": 220,
+        "headerHeightPx": 48,
+        "bodyPx": 18,
+        "confirmWidthPx": 160,
+        "confirmHeightPx": 44,
+        "primaryActionCount": 1,
+        "dismissAffordances": [
+          "bare X",
+          "dim tap"
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "508-523"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Dialog.story.luau",
+          "lines": "34-62"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "120-145"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "223-258"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-005",
+      "domain": "hierarchy",
+      "observed": "A shop card reads top-to-bottom as a 50%-height art well, 18px all-caps accent-info item name, centered price pill, and a 6px full-width verdict band at the bottom. The standard card is 220x244 with aspect ratio 0.9.",
+      "designFunction": "Art leads, identity follows, purchase control follows identity, and persistent status is pinned to the terminal edge.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "cardWidthPx": 220,
+        "cardHeightPx": 244,
+        "aspectRatio": 0.9,
+        "artHeightScale": 0.5,
+        "namePx": 18,
+        "verdictBandPx": 6,
+        "horizontalInsetPx": 12
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "484-495"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/CardGrid.luau",
+          "lines": "35-112"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Shop.story.luau",
+          "lines": "99-127"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-006",
+      "domain": "hierarchy",
+      "observed": "The full-width row is the atomic grouping unit: a bold title and muted meta line occupy the left 60%, reward/status chips occupy a right-aligned 35%, and an optional 8px progress strip is pinned to the bottom of a 150px row.",
+      "designFunction": "The fixed spatial split keeps descriptive content and state/action metadata in consistent scanning zones while making the entire row the tap surface.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "rowHeightPx": 150,
+        "leftContentWidthScale": 0.6,
+        "rightChipWidthScale": 0.35,
+        "progressHeightPx": 8,
+        "contentPaddingHorizontalPx": 20,
+        "contentPaddingVerticalPx": 12,
+        "unusedWidthScale": 0.05
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "297-302"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "373-381"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ListRow.luau",
+          "lines": "17-99"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-007",
+      "domain": "color",
+      "observed": "The core semantic palette has 16 named tokens: six indigo/navy structural tokens including dim, five verdict/accent/progress tokens, two text inks, primary green, secondary blue, and two reds. The authored component vocabulary additionally introduces selected-tab #363E70, disabled #4D5076, CTA stops #31E856/#22DA34, prompt #26262B, transparent #00000000, and hairline #9C9ED7.",
+      "designFunction": "A one-hue value ladder carries structure while a small set of saturated fills communicates decisions and status.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "coreNamedTokenCount": 16,
+        "coreOpaqueRgbCount": 15,
+        "extendedAuthoredOpaqueRgbCount": 21,
+        "transparentEntryCount": 1,
+        "coreTokens": {
+          "primary": "#27AE60",
+          "secondary": "#597CBC",
+          "danger": "#FE383B",
+          "dangerSoft": "#E4696A",
+          "surface": "#4F5081",
+          "surfaceRaised": "#5A65A3",
+          "surfaceDeep": "#3D3F6A",
+          "surfaceDark": "#383660",
+          "header": "#6467A8",
+          "hudInk": "#1E3B50",
+          "onSurface": "#FFFFFF",
+          "onSurfaceMuted": "#A9A9D0",
+          "accentInfo": "#5EACFE",
+          "accentSoft": "#B9BCFF",
+          "progressTrack": "#787EC7",
+          "dim": "#4F5081AA"
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "115-131"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "163-212"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "249-275"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "7-26"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-008",
+      "domain": "color",
+      "observed": "Lobby depth follows the lightness order header #6467A8, surface-raised #5A65A3, surface #4F5081, surface-deep #3D3F6A, and surface-dark #383660. Computed sRGB relative luminances are 0.15237, 0.14125, 0.08985, 0.05588, and 0.04324 respectively.",
+      "designFunction": "Lighter values mark labeled or raised structure; darker values mark recessed wells and chrome.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "ladder": [
+          {
+            "role": "header",
+            "hex": "#6467A8",
+            "relativeLuminance": 0.15237
+          },
+          {
+            "role": "surfaceRaised",
+            "hex": "#5A65A3",
+            "relativeLuminance": 0.14125
+          },
+          {
+            "role": "surface",
+            "hex": "#4F5081",
+            "relativeLuminance": 0.08985
+          },
+          {
+            "role": "surfaceDeep",
+            "hex": "#3D3F6A",
+            "relativeLuminance": 0.05588
+          },
+          {
+            "role": "surfaceDark",
+            "hex": "#383660",
+            "relativeLuminance": 0.04324
+          }
+        ],
+        "adjacentContrastRatios": [
+          1.058,
+          1.368,
+          1.321,
+          1.136
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "307-320"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "395-415"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "11-17"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-009",
+      "domain": "color",
+      "observed": "Green means confirm, owned, active On, and premium-currency price; hot red means destructive/negative; soft red means Off, cost, or locked; light blue means information; periwinkle means progress, slider, or selected-tab underline. Red and green are prohibited within one control except toggle poles.",
+      "designFunction": "Saturated fills act as verdicts rather than general decoration.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "yes": "#27AE60",
+        "softCurrency": "#597CBC",
+        "destructive": "#FE383B",
+        "offOrCost": "#E4696A",
+        "information": "#5EACFE",
+        "progressOrSelection": "#B9BCFF"
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "321-329"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "289-297"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "561-571"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-010",
+      "domain": "color",
+      "observed": "Meaning does not rely on hue alone for selected tabs or toggles: selected tabs change fill, text ink, and add a 4px underline; toggles retain On/Off text while changing fill. Card verdict bands, however, are unlabeled 6px color strips, so their owned/cost/info meaning relies on hue and context alone.",
+      "designFunction": "State redundancy is present for tabs and toggles but absent in the compact card-edge verdict encoding.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "selectedTabSignals": [
+          "#363E70 fill",
+          "#FFFFFF text",
+          "4px #B9BCFF underline"
+        ],
+        "inactiveTabSignals": [
+          "transparent fill",
+          "#A9A9D0 text"
+        ],
+        "verdictBandSignals": [
+          "hue",
+          "bottom-edge position"
+        ],
+        "verdictBandHasText": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "470-490"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Tab.luau",
+          "lines": "20-56"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/CardGrid.luau",
+          "lines": "29-34"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/CardGrid.luau",
+          "lines": "102-111"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-011",
+      "domain": "color",
+      "observed": "Computed contrast ratios from the authored sRGB tokens are: white/surface 7.508:1, white/raised 5.490:1, white/deep 9.917:1, white/dark 11.262:1, white/header 5.189:1, white/primary 2.873:1, white/secondary 4.172:1, white/danger 3.594:1, white/dangerSoft 3.217:1, accentInfo/raised 2.303:1, and accentSoft/progressTrack 2.086:1.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "calculation": "WCAG relative-luminance contrast computed from authored sRGB hex values",
+        "ratios": {
+          "whiteOnSurface": 7.508,
+          "whiteOnRaised": 5.49,
+          "whiteOnDeep": 9.917,
+          "whiteOnDark": 11.262,
+          "whiteOnHeader": 5.189,
+          "whiteOnPrimary": 2.873,
+          "whiteOnSecondary": 4.172,
+          "whiteOnDanger": 3.594,
+          "whiteOnDangerSoft": 3.217,
+          "accentInfoOnRaised": 2.303,
+          "accentSoftOnProgressTrack": 2.086
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "115-131"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "7-26"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-012",
+      "domain": "color",
+      "observed": "The in-match HUD changes from lobby indigo to colder #1E3B50 navy; the interaction prompt uses estimated translucent #26262B. The green #8FBF6B world backdrop is story-only and explicitly not a taste token.",
+      "designFunction": "Darker, colder chrome preserves world visibility by reducing the HUD's value relative to the bright stand-in world.",
+      "confidence": "medium",
+      "origin": "implementation-addition",
+      "metrics": {
+        "hudInk": "#1E3B50",
+        "hudInkRelativeLuminance": 0.03983,
+        "promptFill": "#26262B",
+        "promptTransparency": 0.25,
+        "storyOnlyWorldBackdrop": "#8FBF6B"
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "330-337"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "90-101"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+          "lines": "109-125"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-013",
+      "domain": "shape-depth",
+      "observed": "The nominal radius ladder is 0px for full-bleed rows, tabs, toggles, progress strips, verdict bands, and full-screen hubs; 4px for buttons, chips, keybind tags, and hotbar slots; 8px for popups, cards, HUD pills, and interaction prompts; full rounding only for prices and counters.",
+      "designFunction": "Rectangles remain the default silhouette, with softness increasing for floating or numerically compact elements.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "radiiPx": {
+          "none": 0,
+          "sm": 4,
+          "md": 8,
+          "full": null
+        },
+        "fullRadiusMeaning": "price-or-counter-only"
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "159-165"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "418-435"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "46-58"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-014",
+      "domain": "shape-depth",
+      "observed": "Lobby containers have no drop shadows, bevels, or decorative outlines. The only authored strokes are a 1px #9C9ED7 hairline for discrete inset slots/featured rows and a 2px white selection frame; the latter was observed in the forge and only inferred for lobby grids.",
+      "designFunction": "Lightness steps carry elevation; strokes indicate containment or selection rather than depth.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "shadowCount": 0,
+        "bevelCount": 0,
+        "containerDecorativeStrokePx": 0,
+        "hairlinePx": 1,
+        "hairlineColor": "#9C9ED7",
+        "selectionPx": 2,
+        "selectionColor": "#FFFFFF"
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "163-165"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "395-415"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/CardGrid.luau",
+          "lines": "44-59"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-015",
+      "domain": "shape-depth",
+      "observed": "A popup is a flat 8px-radius panel with an integrated lighter header band. The 48px band is clipped by the panel's top corners but meets the body on a square edge; the close control is a bare 24px multiplication glyph inside a 44px transparent target.",
+      "designFunction": "The integrated band and value contrast establish anatomy without adding a separate floating title bar or circular close button.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "popupRadiusPx": 8,
+        "popupHeaderPx": 48,
+        "closeGlyphPx": 24,
+        "closeTouchPx": 44,
+        "closeVisibleFill": "transparent",
+        "shadow": null,
+        "bevel": null
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "508-523"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "45-47"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "132-164"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/CloseButton.luau",
+          "lines": "14-15"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/CloseButton.luau",
+          "lines": "42-77"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-016",
+      "domain": "shape-depth",
+      "observed": "Internal counterexample: the prose says full-bleed rows use 0px corners, while the front-matter list-row token and ListRow implementation use 4px corners.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "undetermined",
+      "metrics": {
+        "proseRadiusPx": 0,
+        "tokenRadiusPx": 4,
+        "implementationRadiusPx": 4
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "225-231"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "421-425"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ListRow.luau",
+          "lines": "1-8"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ListRow.luau",
+          "lines": "28-42"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-017",
+      "domain": "shape-depth",
+      "observed": "Internal counterexample: the prose assigns 0px corners to full-screen hub windows, but Window applies the 8px popup radius to both popup and hub variants; Shop.story uses that component at full-screen scale.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "proseHubRadiusPx": 0,
+        "implementedHubRadiusPx": 8,
+        "hubSizeScale": [
+          1,
+          1
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "421-428"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "132-145"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Shop.story.luau",
+          "lines": "146-166"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-018",
+      "domain": "spacing-density",
+      "observed": "The spacing ladder is 4, 8, 12, 20, and 32px. Adjacent ratios are 2.0, 1.5, 1.6667, and 1.6. The 12px step is the default row sibling gap, 20px is the card/row gutter, 32px is hub inner padding, and 4px is reserved for tight icon-label gaps.",
+      "designFunction": "The non-geometric ladder distinguishes tight icon groups from ordinary siblings, repeated cards/rows, and window boundaries.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "stepsPx": [
+          4,
+          8,
+          12,
+          20,
+          32
+        ],
+        "adjacentRatios": [
+          2,
+          1.5,
+          1.6667,
+          1.6
+        ],
+        "iconGapPx": 4,
+        "siblingGapPx": 12,
+        "gridGapPx": 20,
+        "windowPaddingPx": 32
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "159-159"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "369-374"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "46-46"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-019",
+      "domain": "spacing-density",
+      "observed": "The source describes utilitarian-medium density: up to 8 cards and 4 tabs are visible at once, with 4 desktop columns and 20px gutters. The implementation fixes Shop cells at 220x244 with 20px horizontal and vertical gaps and shows six catalog items in two rows, leaving two cells in the second row.",
+      "designFunction": "The grid favors simultaneous catalog scanning while retaining a 12px card inset and 20px separation.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "sourceVisibleCards": 8,
+        "sourceVisibleTabs": 4,
+        "desktopColumns": 4,
+        "cellWidthPx": 220,
+        "cellHeightPx": 244,
+        "cellAspectRatio": 0.9016,
+        "constraintAspectRatio": 0.9,
+        "cellGapPx": 20,
+        "standardItemCount": 6,
+        "standardRowCount": 2,
+        "lastRowItems": 2
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "367-388"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Shop.story.luau",
+          "lines": "1-18"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Shop.story.luau",
+          "lines": "99-127"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-020",
+      "domain": "spacing-density",
+      "observed": "Visual and touch targets are deliberately different in compact controls: the buy pill is 36px high inside a 44px transparent button root; the close glyph is 24px inside a 44px target; primary buttons are visibly 44px high; launcher tiles are visibly and interactively 72px.",
+      "designFunction": "The visible silhouette stays compact where the taste calls for chips or bare glyphs while the interactive frame meets the authored 44px minimum.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "minimumTouchPx": 44,
+        "buyVisiblePx": 36,
+        "buyTouchPx": 44,
+        "closeVisiblePx": 24,
+        "closeTouchPx": 44,
+        "primaryVisibleAndTouchPx": 44,
+        "launcherVisibleAndTouchPx": 72
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "389-393"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonBuy.luau",
+          "lines": "17-18"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonBuy.luau",
+          "lines": "45-78"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/CloseButton.luau",
+          "lines": "14-15"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Launcher.luau",
+          "lines": "39-70"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-021",
+      "domain": "spacing-density",
+      "observed": "Window content uses 32px left, right, and bottom padding and 20px top padding. A hub header is 130px; a popup header is 48px, a ratio of 2.7083. Dialog body-to-window horizontal inset is therefore 32/420 or 7.62% per side before child-specific layout.",
+      "designFunction": "The larger hub band accommodates title, subtitle, tabs, currency, and close control on one integrated structural region; the popup band carries only title and close.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "contentPaddingLeftPx": 32,
+        "contentPaddingRightPx": 32,
+        "contentPaddingTopPx": 20,
+        "contentPaddingBottomPx": 32,
+        "hubHeaderPx": 130,
+        "popupHeaderPx": 48,
+        "headerHeightRatio": 2.7083,
+        "dialogHorizontalInsetFraction": 0.0762
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "508-523"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "45-47"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "246-257"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-022",
+      "domain": "spacing-density",
+      "observed": "Internal counterexample: the authored CTA calls for an approximately 4:1 aspect ratio, but the implementation combines a fixed 72px height with 25% parent width and has no aspect constraint, so the rendered ratio varies with viewport width.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "authoredAspectRatio": 4,
+        "implementedWidthScale": 0.25,
+        "implementedHeightPx": 72,
+        "implementedAspectRatio": null
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "187-194"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonCta.luau",
+          "lines": "42-49"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-023",
+      "domain": "composition",
+      "observed": "The source in-match HUD occupies top-center with timer, kill count, and roster pills; top-left with team/objective health; center-right with an interaction prompt; and bottom-center with a hotbar. Bottom-left and bottom-right are reserved for joystick and jump, and corners otherwise stay quiet. Persistent element count is approximately six.",
+      "designFunction": "Centralized chrome and reserved lower corners keep world-facing controls away from mobile control zones.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "topCenterPillCount": 3,
+        "hotbarSlotCount": 5,
+        "persistentElementCountApprox": 6,
+        "reservedZones": [
+          "bottom-left",
+          "bottom-right"
+        ],
+        "interactionPromptPositionScale": [
+          0.62,
+          0.5
+        ],
+        "topHudWidthPx": 420,
+        "hotbarWidthPx": 312
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "525-534"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "386-391"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+          "lines": "75-107"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+          "lines": "174-198"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-024",
+      "domain": "composition",
+      "observed": "The event hub is a full-screen window with a 130px integrated header. The header reading order is title and muted subtitle on the left, tabs inline beside them, currency pill near the right, and bare close glyph flush right; the body begins below the band with either a four-column shop grid or stacked mission rows.",
+      "designFunction": "Navigation, account state, and dismissal share one structural band while the content region remains a single uninterrupted catalog or list plane.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "hubHeaderPx": 130,
+        "titleRegionWidthScale": 0.45,
+        "tabRegionWidthScale": 0.55,
+        "currencyDefaultWidthPx": 110,
+        "currencyImplementedHeightPx": 40,
+        "closeTargetPx": 44,
+        "desktopColumns": 4
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "508-523"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "534-538"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "164-234"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Shop.story.luau",
+          "lines": "146-176"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-025",
+      "domain": "composition",
+      "observed": "The modal world-visibility strategy is a tinted indigo wash at 0.33 transparency behind a flat panel, not a black overlay or shadow. In-match hotbar slots use 0.35 transparency and the interaction prompt uses 0.25 transparency so world color remains visible through chrome.",
+      "designFunction": "Tint and translucency separate interface layers without introducing shadow depth and preserve partial world context.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "dimColor": "#4F5081",
+        "dimTransparency": 0.33,
+        "hotbarTransparency": 0.35,
+        "promptColor": "#26262B",
+        "promptTransparency": 0.25,
+        "shadowCount": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "98-112"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "407-415"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "24-26"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+          "lines": "36-46"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+          "lines": "109-114"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-026",
+      "domain": "composition",
+      "observed": "HUD.story's lobby composition is generator-required rather than source-observed: a top-center currency pill, top-left SHOP/ITEMS/SETTINGS launchers, and a bottom-center PLAY CTA. The source documents no lobby icon toolbar, so Launcher is explicitly derived and its badge is transplanted from hotbar keybind tags.",
+      "designFunction": "The implementation preserves standard cross-taste showcase slots using the nearest available taste grammar.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "currencyCount": 1,
+        "launcherCount": 3,
+        "launcherSizePx": 72,
+        "launcherGapPx": 12,
+        "primaryCtaCount": 1,
+        "transplantedBadgeCount": 1
+      },
+      "evidence": [
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/HUD.story.luau",
+          "lines": "1-22"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/HUD.story.luau",
+          "lines": "52-95"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Launcher.luau",
+          "lines": "1-29"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-027",
+      "domain": "composition",
+      "observed": "Shop.story's six-item catalog and Dialog.story's CONFIRM wording are generator-fixed content. The implementation retains the taste's four-column grid, producing an orphan second row of two, and keeps CONFIRM all caps despite the taste's sentence-case title rule.",
+      "designFunction": "Standard content is fitted into taste-authored composition without changing the fixed comparison set.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "shopItemCount": 6,
+        "desktopColumns": 4,
+        "lastRowItems": 2,
+        "dialogTitle": "CONFIRM",
+        "dialogTitleCasing": "uppercase"
+      },
+      "evidence": [
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Shop.story.luau",
+          "lines": "1-18"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Shop.story.luau",
+          "lines": "56-73"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Dialog.story.luau",
+          "lines": "1-15"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/Dialog.story.luau",
+          "lines": "34-42"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-028",
+      "domain": "states-motion",
+      "observed": "Source-observed state evidence is limited to selected tabs and a disabled gray completion chip; pressed and hover states were never observed, and selection outside tab strips was not observed. The selected tab changes three signals; the disabled primary changes fill to #4D5076 and text to #A9A9D0.",
+      "designFunction": "Selection and disabled state remain flat and value-based rather than adding elevation or outline effects.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "observedSelectedContexts": [
+          "tab strip"
+        ],
+        "observedDisabledFill": "#4D5076",
+        "observedDisabledInk": "#A9A9D0",
+        "hoverObserved": false,
+        "pressedObserved": false,
+        "selectedOutsideTabsObserved": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "98-112"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "181-186"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "460-474"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonPrimary.luau",
+          "lines": "18-24"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonPrimary.luau",
+          "lines": "47-90"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-029",
+      "domain": "states-motion",
+      "observed": "Pressed colors are implementation additions: interactive fills darken by a precomputed 12% step. Press-in lasts 0.06s Linear Out; release/mouse-leave restoration lasts 0.12s Linear Out. There is no scale, squash, bevel, or shadow change.",
+      "designFunction": "A fast value change provides press feedback while preserving the flat material metaphor.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "darkenRatio": 0.12,
+        "pressInSeconds": 0.06,
+        "releaseSeconds": 0.12,
+        "easing": "Linear Out",
+        "primaryPressed": "#229954",
+        "secondaryPressed": "#4E6DA5",
+        "dangerPressed": "#E03134",
+        "surfaceDarkPressed": "#313054",
+        "scaleChange": null,
+        "shadowChange": null
+      },
+      "evidence": [
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "61-69"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Theme.luau",
+          "lines": "71-101"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonPrimary.luau",
+          "lines": "25-39"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonPrimary.luau",
+          "lines": "58-77"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-030",
+      "domain": "states-motion",
+      "observed": "No distinct hover or focus treatment is implemented in the inspected source. MouseLeave restores default fill, but no MouseEnter state exists; tabs are default or selected only; cards have activation without visual press/hover; no focus ring or selection navigation styling is authored.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "defaultState": true,
+        "hoverDistinct": false,
+        "focusDistinct": false,
+        "pressedDistinctOnButtons": true,
+        "disabledDistinctOnPrimary": true,
+        "selectedDistinctOnTabs": true,
+        "cardHoverDistinct": false,
+        "cardPressedDistinct": false
+      },
+      "evidence": [
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ButtonPrimary.luau",
+          "lines": "58-81"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Tab.luau",
+          "lines": "20-56"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/CardGrid.luau",
+          "lines": "35-50"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-031",
+      "domain": "states-motion",
+      "observed": "All motion values are generated from a competitive taste-family preset because no video input exists: 0.18s Quart Out entrance with 12-16px slide plus fade, 0.12s Quart In exit, 0.06s press darken, and 0.3s Linear progress settling. Motion was generated, not observed.",
+      "designFunction": "The preset favors short, non-overshooting transitions consistent with the source's flat still-image register.",
+      "confidence": "low",
+      "origin": "generator-default",
+      "metrics": {
+        "motionObserved": false,
+        "entranceSeconds": 0.18,
+        "entranceSlidePx": [
+          12,
+          16
+        ],
+        "entranceEasing": "Quart Out",
+        "exitSeconds": 0.12,
+        "exitEasing": "Quart In",
+        "pressSeconds": 0.06,
+        "progressSeconds": 0.3,
+        "progressEasing": "Linear Out",
+        "overshoot": false,
+        "bounce": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "89-112"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "167-172"
+        },
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "437-457"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "45-59"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ProgressBar.luau",
+          "lines": "14-32"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-032",
+      "domain": "states-motion",
+      "observed": "The source requires reduced-motion behavior to replace slides with fades, but Window always executes the 14px entrance/7px exit slide tweens and contains no reduced-motion branch in the inspected implementation.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "requiredReducedMotion": "fade-only",
+        "implementedEntranceSlidePx": 14,
+        "implementedExitSlidePx": 7,
+        "reducedMotionBranchPresent": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "439-457"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "45-59"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "74-87"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/Window.luau",
+          "lines": "89-118"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-033",
+      "domain": "states-motion",
+      "observed": "Internal counterexample: InMatchHUD.story accepts SelectedSlot and passes selected=true to one HotbarSlot, but HotbarSlot never reads the selected prop, so the documented selected-slot darkening and white tag-pop distinction is not rendered.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "selectedControlPresent": true,
+        "selectedPropPassed": true,
+        "selectedPropConsumed": false,
+        "renderedSelectedDistinction": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "527-533"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+          "lines": "34-59"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+          "lines": "69-74"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+          "lines": "174-198"
+        }
+      ]
+    },
+    {
+      "id": "DES-INDIGO-034",
+      "domain": "states-motion",
+      "observed": "Progress changes use a square-ended fill and track, clamp values to 0-1, and tween Size linearly over 0.3s. Timers use the mono role and do not tween by source rule.",
+      "designFunction": "Continuous values settle without bounce while ticking status remains instantaneous.",
+      "confidence": "low",
+      "origin": "generator-default",
+      "metrics": {
+        "progressRange": [
+          0,
+          1
+        ],
+        "heightPx": 8,
+        "durationSeconds": 0.3,
+        "easing": "Linear Out",
+        "cornerRadiusPx": 0,
+        "timerTween": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/indigo-quartermaster/DESIGN.roblox.md",
+          "lines": "449-455"
+        },
+        {
+          "path": "e2e/indigo-quartermaster/src/Components/ProgressBar.luau",
+          "lines": "14-51"
+        }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "The screenshots have no verified viewport. All px tokens were normalized by assuming a 1993px-wide event-hub capture corresponds to 1920px, so the absolute typography, row, header, and spacing values retain a constant-factor uncertainty.",
+    "BuilderSans is a nearest-match mapping and SourceSansPro is the documented runner-up; the exact source family and numeric font-axis values are unavailable.",
+    "No line-height metrics are authored or recoverable from the inspected files.",
+    "Hover, focus, and pressed appearance were not observed in source screenshots; the implementation supplies pressed darkening but leaves hover and focus visually unspecified.",
+    "No video input exists, so duration and easing tokens are generated presets rather than observations.",
+    "The dim wash and interaction-prompt fill/transparency were estimated through translucency; their undimmed source colors are unavailable.",
+    "The source conflicts on row corners: the front-matter token and implementation use 4px, while Shapes says full-bleed rows use 0px.",
+    "The source conflicts on full-screen hub corners: Shapes says 0px, while Window applies 8px to the hub variant.",
+    "The CTA's desired approximate 4:1 ratio is not enforced by the implementation; its actual ratio depends on parent width.",
+    "The selected hotbar state is documented and passed as a prop but not rendered by HotbarSlot.",
+    "The source calls for reduced-motion fades, but no user setting or reduced-motion hook exists in the inspected implementation.",
+    "Contrast over translucent dim, hotbar, and interaction-prompt surfaces cannot be determined without the underlying world pixels.",
+    "The divergent near-black social/forge voice is described but deliberately not tokenized, so its complete palette and typography scale remain unavailable."
+  ]
+}

@@ -1,0 +1,1106 @@
+{
+  "taste": "studded-toybox",
+  "filesInspected": [
+    "design-md/studded-toybox/DESIGN.roblox.md",
+    "e2e/studded-toybox/src/StuddedToybox.storybook.luau",
+    "e2e/studded-toybox/src/Theme.luau",
+    "e2e/studded-toybox/src/Components/Window.luau",
+    "e2e/studded-toybox/src/Components/GradientButton.luau",
+    "e2e/studded-toybox/src/Components/CloseButton.luau",
+    "e2e/studded-toybox/src/Components/SideButton.luau",
+    "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+    "e2e/studded-toybox/src/Components/ItemCard.luau",
+    "e2e/studded-toybox/src/Components/BadgeSlot.luau",
+    "e2e/studded-toybox/src/Components/StudField.luau",
+    "e2e/studded-toybox/src/Stories/HUD.story.luau",
+    "e2e/studded-toybox/src/Stories/Shop.story.luau",
+    "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+    "e2e/studded-toybox/src/Stories/Window.story.luau",
+    "e2e/studded-toybox/src/Stories/Buttons.story.luau",
+    "e2e/studded-toybox/src/Stories/Chrome.story.luau"
+  ],
+  "screens": [
+    "HUD",
+    "Toybox purchase window (Shop story)",
+    "Confirm dialog",
+    "Collection window component showcase",
+    "Gradient-button component showcase",
+    "Chrome component showcase"
+  ],
+  "components": [
+    "Window",
+    "GradientButton",
+    "CloseButton",
+    "SideButton",
+    "CurrencyBar",
+    "ItemCard",
+    "BadgeSlot",
+    "StudField"
+  ],
+  "observations": [
+    {
+      "id": "OBS-STUDDED-TOYBOX-001",
+      "category": "visual-style",
+      "subject": "Taste-defining visual grammar",
+      "observed": "The DESIGN source defines repeating stud emboss, squared slab silhouettes, white text with heavy near-black outlines, and whole-anatomy theme recoloring as the four defining traits.",
+      "inferredPurpose": "Make the interface read as molded interlocking toy bricks while preserving a consistent component anatomy across event hues.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "225-237",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-002",
+      "category": "hierarchy",
+      "subject": "Typography system",
+      "observed": "The DESIGN source specifies FredokaOne at display 46, heading 40, label 28, body 22, and caption 18; hierarchy is size and outline weight rather than family or font-weight changes, and all text is intended to remain outlined.",
+      "inferredPurpose": "Keep every text tier cartoon-heavy and legible over saturated or translucent surfaces without introducing a second typographic voice.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "27-47",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "263-283",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "26-36",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-003",
+      "category": "visual-style",
+      "subject": "StudField texture primitive",
+      "observed": "StudField renders Theme.assets.studTexture as a tiled ImageLabel at a 24 by 24 pixel tile size and default transparency 0.82, with content expected to render above it.",
+      "inferredPurpose": "Centralize the low-contrast stud emboss so textured components do not duplicate texture setup.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/StudField.luau",
+          "lines": "1-31",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "120-125",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "314-318",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-004",
+      "category": "structure",
+      "subject": "Window anatomy",
+      "observed": "Window composes a full-frame wrapper, optional backdrop, centered PanelGroup, clipped rounded frame, 84-pixel integrated gradient header, flush CloseButton, and a translucent surfaceDeep body well containing a large uppercase watermark plus padded content.",
+      "inferredPurpose": "Implement the source's toy-chest anatomy as one scalable unit whose body dims the world and whose header remains integrated with the frame.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "84-130",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "131-229",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "230-275",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "374-387",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-005",
+      "category": "layering",
+      "subject": "Window clipping and local z-order",
+      "observed": "The rounded window Frame sets ClipsDescendants=true; the header and well use ZIndex 2, header emboss 3 and header content 4, close 5, body watermark 3, and body content 4. The header therefore clips to the window's rounded top corners while its bottom edge meets the well at a square seam.",
+      "inferredPurpose": "Achieve partially rounded integrated chrome without extra masks or separate corner assets.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "114-130",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "131-163",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "230-269",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-006",
+      "category": "layering",
+      "subject": "Optional modal backdrop",
+      "observed": "When showDim is true, Window creates a full-screen black TextButton at transparency 0.45 and ZIndex 10 behind PanelGroup at ZIndex 11. This is a separate backdrop even though the DESIGN source explicitly says windows do not use a separate dim layer and says not to add a backdrop layer.",
+      "inferredPurpose": "Provide a modal-context veil and an optional backdrop activation target despite the source's self-dimming-well rule.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "88-104",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "319-324",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "451-457",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-007",
+      "category": "hierarchy",
+      "subject": "Window counter chip text exception",
+      "observed": "The optional counter chip is a white 96 by 40 frame whose TextLabel uses the near-black outline color as its text color and has no text UIStroke. This is an implementation exception to the source rule that every text element is white and outlined.",
+      "inferredPurpose": "Create dark-on-white counter contrast inside the header chip.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "190-220",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "230-233",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "278-283",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-008",
+      "category": "visual-style",
+      "subject": "GradientButton variant system",
+      "observed": "One GradientButton module defines primary green, primaryHero lime-green, secondary cyan, tierRare magenta, and buy purple variants. Variants select gradient, stroke, corner radius, aspect token, and pressed tint; all render a vertical gradient, StudField emboss, centered optional icon, and white outlined scaled label.",
+      "inferredPurpose": "Reuse one slab anatomy while hue, rim, and corner treatment communicate action tier or price role.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "35-76",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "138-190",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "389-406",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-009",
+      "category": "interaction",
+      "subject": "GradientButton press and disabled states",
+      "observed": "MouseButton1Down squashes enabled buttons to UIScale 0.94 and tweens the fill toward a pressed tint; MouseButton1Up or MouseLeave restores scale and fill. Activated invokes the callback only when not disabled. Disabled buttons instead use gray top and bottom colors and do not enter the press state.",
+      "inferredPurpose": "Supply the pressed and disabled states that the source says were not observed and should be derived, using squash as the primary physical feedback.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "78-108",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "110-136",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "106-118",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "418-420",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-010",
+      "category": "input",
+      "subject": "Button input event strategy",
+      "observed": "GradientButton, CloseButton, and SideButton wire held-state feedback through MouseButton1Down, MouseButton1Up, and MouseLeave, while semantic action dispatch uses React.Event.Activated. No explicit touch, keyboard, gamepad, selection, or focus event is present in these modules.",
+      "inferredPurpose": "Use Roblox's generalized Activated signal for action while retaining mouse-oriented held-state animation hooks.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "118-136",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/CloseButton.luau",
+          "lines": "49-58",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/SideButton.luau",
+          "lines": "59-68",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-011",
+      "category": "visual-style",
+      "subject": "CloseButton",
+      "observed": "CloseButton is a red rectangular TextButton with 6-pixel corners, 2-pixel near-black border, StudField emboss, a white outlined multiplication-sign glyph, and a default size derived from the 84-pixel header height times aspect 1.1.",
+      "inferredPurpose": "Make close unmistakable as the source's red, squared, full-header slab rather than a pill or circular icon.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/CloseButton.luau",
+          "lines": "38-68",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/CloseButton.luau",
+          "lines": "69-91",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "78-82",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "384-390",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-012",
+      "category": "motion",
+      "subject": "Window entrance and exit",
+      "observed": "On mount, Window sets its UIScale to 0.85 and tweens to 1 using the normal 0.25-second Back-Out preset. requestClose prevents repeat closing, tweens scale to 0.9 and header and well transparency to 1 with the fast 0.15-second Quad-In preset, then calls onClose after the scale tween completes.",
+      "inferredPurpose": "Give windows a slower overshooting arrival and a faster shrinking/fading departure.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "30-42",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "44-78",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "57-67",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "348-363",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-013",
+      "category": "motion",
+      "subject": "Motion provenance",
+      "observed": "The DESIGN source states that no video input was available and identifies its motion values and prose patterns as a low-confidence cartoon-chunky preset inferred from stills; the implementation nevertheless directly enacts those window, press, and value-change presets.",
+      "inferredPurpose": "Fill an evidence gap with a coherent motion register rather than leave components static.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "344-365",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "57-67",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "30-78",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "78-97",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-014",
+      "category": "structure",
+      "subject": "CurrencyBar anatomy and formatting",
+      "observed": "CurrencyBar has a fully transparent root containing a colored 44-pixel square icon, an automatically sized white outlined amount, and a smaller green square plus button. Amounts format as two-decimal millions, one-decimal thousands, or floored un-abbreviated integers.",
+      "inferredPurpose": "Keep currency visually attached to the world rather than boxed in another panel while preserving a direct purchase affordance.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+          "lines": "17-25",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+          "lines": "57-135",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "407-410",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-015",
+      "category": "motion",
+      "subject": "Currency value animation",
+      "observed": "When amount changes, CurrencyBar connects to RenderStepped and interpolates from the prior target to the new target over 0.4 seconds using a computed Quad-Out curve; it disconnects at completion or effect cleanup.",
+      "inferredPurpose": "Make earned-value changes readable without adding container motion.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+          "lines": "27-55",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "358-361",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-016",
+      "category": "hierarchy",
+      "subject": "SideButton information layers",
+      "observed": "SideButton renders a dark translucent square tile with stud emboss, a real ImageLabel or glyph fallback above a caption, and optional separate NEW flash and numeric badge layers pinned near the top-right. The image prop takes precedence over the glyph prop.",
+      "inferredPurpose": "Keep launcher identity dominant while allowing promotional and notification status to sit as corner annotations.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/SideButton.luau",
+          "lines": "44-76",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/SideButton.luau",
+          "lines": "77-119",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/SideButton.luau",
+          "lines": "120-182",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "411-417",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-017",
+      "category": "structure",
+      "subject": "ItemCard adaptation",
+      "observed": "ItemCard adapts the source card-grid into a vertical catalog card: 96-pixel render area with item image and BadgeSlot rarity tag, outlined item name, and an embedded buy-variant GradientButton. The Shop story supplies exactly six named and priced items, with Crown as legendary.",
+      "inferredPurpose": "Satisfy the showcase's fixed item catalog using the taste's square-cell and embedded-price-control vocabulary.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "1-20",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "52-113",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "1-36",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "99-106",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-018",
+      "category": "visual-style",
+      "subject": "Legendary ItemCard chrome",
+      "observed": "For legendary rarity, ItemCard changes the cell border from the normal 2-pixel near-black stroke to a 4-pixel gold stroke, tints the image gold, and fills the rarity tag gold. The border change conflicts with the source statement that rarity/status should read through content color rather than cell chrome.",
+      "inferredPurpose": "Make the single emphasized Crown card visually unmistakable in the showcase.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "39-61",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "74-90",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "414-416",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-019",
+      "category": "visual-style",
+      "subject": "Opaque fills without stud emboss",
+      "observed": "Several implemented opaque fills do not compose StudField: the CurrencyBar icon and plus tile, ItemCard cell, BadgeSlot, Window counter chip, SideButton NEW flash, and Dialog message well. This is narrower coverage than the source requirement to emboss every opaque fill.",
+      "inferredPurpose": null,
+      "inferenceConfidence": "none",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+          "lines": "69-84",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+          "lines": "99-132",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "39-67",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/BadgeSlot.luau",
+          "lines": "15-54",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "190-220",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/SideButton.luau",
+          "lines": "120-145",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "55-86",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "452-466",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-020",
+      "category": "structure",
+      "subject": "HUD composition",
+      "observed": "The HUD story renders three launcher tiles at upper-left, a two-row containerless currency stack at bottom-left, and one 320 by 90 primaryHero Play action near bottom-center. The launcher badge value is 3, and the currency amounts are story controls.",
+      "inferredPurpose": "Provide the required showcase HUD elements while leaving large portions of the world backdrop visible.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "1-14",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "25-33",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "55-85",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "92-114",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "125-133",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-021",
+      "category": "responsive",
+      "subject": "HUD launcher reflow",
+      "observed": "The source HUD pattern specifies a two-column launcher grid, but the story fixes three 140-pixel tiles into a three-column, one-row grid. Its comments identify a 667 by 375 overlap failure as the reason for changing column count while preserving tile size.",
+      "inferredPurpose": "Prevent the upper launcher rail from colliding vertically with the bottom-left currency stack in phone landscape.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "43-65",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "422-429",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-022",
+      "category": "responsive",
+      "subject": "HUD safe-area strategy",
+      "observed": "HUD queries GuiService:GetGuiInset().Y at render time and adds it to the launcher's vertical position. The source instead names ScreenGui.ScreenInsets=DeviceSafeInsets and GuiService:GetInsetArea(); neither ScreenGui configuration nor GetInsetArea appears in the assigned implementation.",
+      "inferredPurpose": "Compensate for the story harness being full-bleed under the Roblox top bar.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "35-42",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "55-59",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "294-304",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-023",
+      "category": "responsive",
+      "subject": "HUD collision-specific sizing",
+      "observed": "The story narrows each CurrencyBar allocation from the component default 220 pixels to 150 pixels and shifts the 320-pixel Play action 20 pixels right of center. Comments cite measured 667 by 375 overlaps as the reason for both values.",
+      "inferredPurpose": "Keep currency, Play, joystick, and jump regions disjoint at the documented narrow landscape size.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "86-114",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "115-133",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-024",
+      "category": "structure",
+      "subject": "Shop screen hierarchy",
+      "observed": "The Shop story labels its Window Toybox, supplies a square glyph and 6/6 counter, and places six item cards in fixed Acorn, Feather, Crystal, Lantern, Compass, Crown order. It uses cards rather than the source purchase pattern's two-column item rows with descriptions.",
+      "inferredPurpose": "Use the taste name as a shop-native title and adapt the mandated six-item showcase to the available card-grid component.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "1-16",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "25-36",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "72-106",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "430-434",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-025",
+      "category": "scrolling",
+      "subject": "Shop scrolling and canvas synchronization",
+      "observed": "The Shop content is a full-size ScrollingFrame with a 6-pixel white scroll bar at 0.3 transparency. An effect sets CanvasSize.Y to UIGridLayout.AbsoluteContentSize.Y immediately and whenever AbsoluteContentSize changes, disconnecting the listener on cleanup.",
+      "inferredPurpose": "Allow the grid to wrap to a viewport-dependent number of columns without stale hard-coded row counts or clipped lower items.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "42-69",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "90-106",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-026",
+      "category": "responsive",
+      "subject": "Shop window and grid sizing",
+      "observed": "The Shop Window uses Size 0.85 by 0.8 scale and an optional MaxSize of 1088 by 576. Its grid uses fixed 240 by 300 cells with 12-pixel padding, so column count changes with available width; the 240 by 300 laid-out cells are not square despite the card-grid source and Theme cardGridAspect both specifying aspect 1.",
+      "inferredPurpose": "Clamp desktop growth and trade square cells for enough vertical room to fit image, name, and buy control.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "72-89",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "97-101",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "102-118",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "78-89",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "336-341",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-027",
+      "category": "structure",
+      "subject": "Confirm dialog adaptation",
+      "observed": "Dialog renders a fixed 560 by 360 Window titled Confirm with checkmark status icon and showDim=true. Its body is a vertical centered column containing a 72-pixel outlined translucent message well with wrapped body copy and one 260 by 70 primary Confirm button. It reuses the source input-well anatomy for a message rather than a text input.",
+      "inferredPurpose": "Translate the source's compact input-dialog structure into the showcase's purchase-confirmation prompt.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "1-14",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "31-53",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "54-100",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "446-449",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-028",
+      "category": "interaction",
+      "subject": "Story-level action wiring",
+      "observed": "Window.requestClose returns immediately when onClose is absent. Shop and Dialog do not pass onClose, so their rendered close slabs and Dialog backdrop cannot close them; Dialog's Confirm button has no onActivated callback, Shop cards have no onBuy callbacks, and HUD launchers and Play action have no callbacks. The Window component story is the exception: it passes onClose, unmounts the Window after exit, and offers an Activated Reopen button.",
+      "inferredPurpose": "Most screen stories function as visual showcases, while the dedicated Window story demonstrates the close lifecycle.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "52-78",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "72-106",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "37-100",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "60-83",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "125-133",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Window.story.luau",
+          "lines": "18-50",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-029",
+      "category": "hierarchy",
+      "subject": "Shop card content hierarchy",
+      "observed": "Within each item card, the image and rarity tag occupy the first 96 pixels, the item name is a 32-pixel-high outlined label, and the 44-pixel buy control is last. The price is visible as the buy button text, but the source purchase-row description and coin/wave icon chip are not supplied.",
+      "inferredPurpose": "Prioritize collectible identity and rarity, then name, then price/action in a compact catalog cell.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "67-112",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "99-106",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "399-406",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "430-434",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-030",
+      "category": "verification",
+      "subject": "Responsive verification evidence",
+      "observed": "HUD and Shop comments record prior narrow-viewport failure modes and the resulting layout strategies, including launcher/currency overlap, currency/Play overlap, and stale canvas height after grid rewrap. There are no executable assertions in the assigned files that reproduce those checks.",
+      "inferredPurpose": "Preserve the rationale for otherwise non-obvious responsive constants and dynamic canvas binding.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "43-54",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "86-91",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "115-124",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "42-52",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-031",
+      "category": "verification",
+      "subject": "Asset verification record",
+      "observed": "Theme comments record a captured seamless stud texture and an in-engine verification pass in which original Acorn and Feather assets failed to load and were replaced by IDs described as verified loaded. These are prose records, not executable IsLoaded assertions in the assigned files.",
+      "inferredPurpose": "Keep asset provenance and known moderation/load failures adjacent to the canonical asset IDs.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "150-174",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "178-192",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-032",
+      "category": "layering",
+      "subject": "Global display-order plan versus local implementation",
+      "observed": "The DESIGN source specifies sibling ZIndex behavior with HUD DisplayOrder 0-9, windows 10-19, overlays 20-29, and toasts 30+. The assigned implementation defines local component ZIndex values but does not create a ScreenGui or set DisplayOrder or ZIndexBehavior; storybook only registers the Stories root.",
+      "inferredPurpose": null,
+      "inferenceConfidence": "none",
+      "origin": "undetermined",
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "326-327",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/studded-toybox/src/StuddedToybox.storybook.luau",
+          "lines": "1-4",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "84-118",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-033",
+      "category": "visual-style",
+      "subject": "No-shadow, low-radius geometry",
+      "observed": "The implementation uses 6-, 10-, and 14-pixel corner tokens and 2- or 4-pixel strokes; no component introduces a shadow element or bevel layer. Window, buttons, side tiles, tags, and cards remain rectangular rather than circular.",
+      "inferredPurpose": "Express depth through outline, gradient, transparency, and texture while retaining modular brick-like silhouettes.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "40-55",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "114-143",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "138-163",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "306-341",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-034",
+      "category": "responsive",
+      "subject": "Aspect-ratio enforcement",
+      "observed": "Theme records aspect numbers for close, primary, secondary, buy, side button, and card grid, and components use those numbers to compute default offset sizes. No UIAspectRatioConstraint is instantiated in the assigned implementation, despite the DESIGN source describing Scale-first sizing with UIAspectRatioConstraint.",
+      "inferredPurpose": "Use straightforward default dimension arithmetic rather than runtime constraints inside reusable components.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "78-89",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "110-117",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/CloseButton.luau",
+          "lines": "39-48",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/SideButton.luau",
+          "lines": "49-58",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "39-47",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "285-301",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-STUDDED-TOYBOX-035",
+      "category": "interaction",
+      "subject": "Component showcase controls",
+      "observed": "Buttons.story exposes Text and Disabled controls and renders all five GradientButton variants; Chrome.story exposes Amount and Badge controls and renders CurrencyBar, SideButton, common and legendary ItemCards, BadgeSlot, and CloseButton in one horizontal row.",
+      "inferredPurpose": "Make visual variants and state toggles inspectable without requiring navigation through full screens.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/Buttons.story.luau",
+          "lines": "1-69",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Chrome.story.luau",
+          "lines": "1-60",
+          "kind": "story"
+        }
+      ]
+    }
+  ],
+  "absences": [
+    {
+      "subject": "Spin overlay",
+      "evidence": "No spin-overlay component or story exists among e2e/studded-toybox/src/Components/* or e2e/studded-toybox/src/Stories/*, although the pattern is defined at design-md/studded-toybox/DESIGN.roblox.md:435-440; only unused spinGlow data remains at e2e/studded-toybox/src/Theme.luau:128-134."
+    },
+    {
+      "subject": "Banner-offer implementation",
+      "evidence": "No BannerOffer component or story exists in the inspected file set. Theme retains bannerOffer gradient and height tokens at e2e/studded-toybox/src/Theme.luau:68-85, while the source defines the component at design-md/studded-toybox/DESIGN.roblox.md:403-407."
+    },
+    {
+      "subject": "Store offer rows and cosmetic list rows",
+      "evidence": "No story or component implements either screen pattern; both are described at design-md/studded-toybox/DESIGN.roblox.md:441-447."
+    },
+    {
+      "subject": "HUD hotbar, toggle slab, and floating station labels",
+      "evidence": "HUD.story contains only LauncherGrid, CurrencyStack, and PlayAction at e2e/studded-toybox/src/Stories/HUD.story.luau:43-133. The source HUD additionally expects a toggle slab, bottom-center hotbar, and floating station labels at design-md/studded-toybox/DESIGN.roblox.md:422-429."
+    },
+    {
+      "subject": "Settings and inventory-management screens",
+      "evidence": "No Settings or inventory-management story exists. The source explicitly says these patterns were unobserved and undefined at design-md/studded-toybox/DESIGN.roblox.md:446-450; HUD only renders a Settings launcher at e2e/studded-toybox/src/Stories/HUD.story.luau:76-81."
+    },
+    {
+      "subject": "Selected state",
+      "evidence": "No selected-state prop or event appears in the inspected components. The source says selected state was not observed and should be derived at design-md/studded-toybox/DESIGN.roblox.md:418-420; only pressed and disabled derivations are present at e2e/studded-toybox/src/Theme.luau:106-118 and e2e/studded-toybox/src/Components/GradientButton.luau:98-136."
+    },
+    {
+      "subject": "Reduced-motion behavior",
+      "evidence": "No reduced-motion preference or alternate easing path appears in the implementation. The source requests replacing pop/bounce with settle under reduced motion at design-md/studded-toybox/DESIGN.roblox.md:362-365."
+    },
+    {
+      "subject": "Reward bounce motion",
+      "evidence": "Theme defines bounce easing at e2e/studded-toybox/src/Theme.luau:57-67, but no inspected component or story consumes it; the reserved reward behavior is described at design-md/studded-toybox/DESIGN.roblox.md:361-364."
+    },
+    {
+      "subject": "Executable verification assertions",
+      "evidence": "No assert/expect-style verification exists in the assigned files. Verification evidence is prose commentary only, principally e2e/studded-toybox/src/Stories/HUD.story.luau:43-54,86-91,115-124; e2e/studded-toybox/src/Stories/Shop.story.luau:42-52; and e2e/studded-toybox/src/Theme.luau:178-192."
+    },
+    {
+      "subject": "Explicit keyboard, gamepad, touch, or focus navigation",
+      "evidence": "The interactive modules expose MouseButton1Down/Up/MouseLeave plus Activated only: e2e/studded-toybox/src/Components/GradientButton.luau:118-136, e2e/studded-toybox/src/Components/CloseButton.luau:49-58, and e2e/studded-toybox/src/Components/SideButton.luau:59-68. No modality-specific navigation handling is present."
+    },
+    {
+      "subject": "ScreenGui display-order implementation",
+      "evidence": "No assigned file creates ScreenGui or sets DisplayOrder/ZIndexBehavior; e2e/studded-toybox/src/StuddedToybox.storybook.luau:1-4 only registers story roots. The intended plan exists only in design-md/studded-toybox/DESIGN.roblox.md:326-327."
+    },
+    {
+      "subject": "Purchase-row descriptions and buy icon chips",
+      "evidence": "ItemCard provides image, rarity, name, and a text-only buy control at e2e/studded-toybox/src/Components/ItemCard.luau:67-112. The source purchase row calls for two-line body descriptions and an icon-tile/price-pill anatomy at design-md/studded-toybox/DESIGN.roblox.md:430-434, and button-buy specifies a wave/coin icon chip at design-md/studded-toybox/DESIGN.roblox.md:399-403."
+    }
+  ],
+  "uncertainties": [
+    "The story harness that mounts these stories is outside the permitted target. Therefore actual ScreenGui.ScreenInsets, IgnoreGuiInset, DisplayOrder, and ZIndexBehavior cannot be determined from the inspected implementation; HUD.story's harness description is only a comment at e2e/studded-toybox/src/Stories/HUD.story.luau:35-39.",
+    "Comments report verified 667x375 failure modes and in-engine asset loading, but no capture, test artifact, or executable assertion is inside the allowed target. Those claims are recorded as comment evidence rather than independently re-executed facts (e2e/studded-toybox/src/Stories/HUD.story.luau:43-54,86-91,115-124; e2e/studded-toybox/src/Theme.luau:178-192).",
+    "The DESIGN document explicitly labels motion confidence low and says its motion preset was inferred without video at design-md/studded-toybox/DESIGN.roblox.md:344-365; whether the implemented motion matches the originally observed product cannot be determined.",
+    "The DESIGN source says HUD roots use GuiService:GetInsetArea(), while the implementation uses GetGuiInset().Y at e2e/studded-toybox/src/Stories/HUD.story.luau:35-39. Without the external mount harness and runtime viewport, equivalence of the resulting safe-area placement cannot be determined.",
+    "Roblox UIGridLayout controls child layout size, and Shop declares 240x300 CellSize at e2e/studded-toybox/src/Stories/Shop.story.luau:97-101, but no runtime capture inside the allowed target confirms the final visible ItemCard bounds after layout and clipping.",
+    "GradientButton uses mouse-specific down/up events for squash and Activated for action at e2e/studded-toybox/src/Components/GradientButton.luau:118-136. Whether held-state squash is emitted consistently for touch or gamepad through Roblox event synthesis is not established by these files.",
+    "Theme comments describe the Acorn image as full-color and not tintable at e2e/studded-toybox/src/Theme.luau:178-185, while ItemCard applies ImageColor3 at e2e/studded-toybox/src/Components/ItemCard.luau:74-80. The resulting rendered color treatment cannot be determined without loading the asset in Studio."
+  ]
+}

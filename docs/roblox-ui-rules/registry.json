@@ -1,0 +1,997 @@
+{
+  "decisions": [
+    {
+      "ruleId": "RUI-001",
+      "classification": "generator-convention",
+      "strength": "SHOULD",
+      "statement": "Use the repository's existing Theme convention for shared semantic colors, typography, and motion values, while adding taste-specific roles when the normalized core does not cover them.",
+      "rationale": "All eight implementations use Theme, but the shared extraction schema and generator policy substantially explain the recurrence. Centralization provides a maintainability benefit by preventing component-local drift; the normalized role names and five-tier typography taxonomy are not independently observed taste invariants.",
+      "appliesWhen": [
+        "Generating or maintaining catalog implementations in this repository",
+        "A visual value is shared by more than one component or represents a semantic role"
+      ],
+      "exceptions": [
+        "Component-local geometry or data-dependent values that are not reusable visual tokens",
+        "Taste-specific roles such as eyebrow, CTA, or timer that extend the normalized core",
+        "Values explicitly inlined by the source DESIGN document under repository policy"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-011",
+        "OBS-FROSTED-BASEPLATE-013",
+        "OBS-HONEY-LEDGER-013",
+        "OBS-INDIGO-002",
+        "OBS-LOUD-SLAB-002",
+        "OBS-OBSIDIAN-GACHA-002",
+        "OBS-PLANTER-002",
+        "OBS-STUDDED-TOYBOX-002",
+        "POLICY-003",
+        "POLICY-007",
+        "POLICY-010"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "none",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Statically inspect new or changed components for duplicated semantic visual literals and verify that shared values bind to Theme",
+        "If token propagation is automated, change a Theme value and verify every bound rendered role updates without a component-local override"
+      ]
+    },
+    {
+      "ruleId": "RUI-002",
+      "classification": "generator-convention",
+      "strength": "AVOID",
+      "statement": "Avoid promoting the Standard Showcase story names, labels, item order, prices, badge slots, dialog copy, or canonical assets into taste-specific or Roblox-platform rules.",
+      "rationale": "POLICY-023 and POLICY-024 directly prescribe the recurring showcase content and assets. The apparent 8/8 agreement is therefore one controlled comparison fixture, not eight independent design votes; additional source-native stories further disprove treating the showcase as a complete taste grammar.",
+      "appliesWhen": [
+        "Inferring design rules from catalog or e2e showcase implementations",
+        "Comparing tastes that were generated under the Standard Showcase policy"
+      ],
+      "exceptions": [
+        "Using the fixed content as a repository comparison fixture",
+        "Testing whether a generated implementation conforms to the repository's current showcase contract"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-001",
+        "OBS-FROSTED-BASEPLATE-001",
+        "OBS-HONEY-LEDGER-001",
+        "OBS-INDIGO-001",
+        "OBS-LOUD-SLAB-023",
+        "OBS-OBSIDIAN-GACHA-012",
+        "OBS-PLANTER-001",
+        "OBS-STUDDED-TOYBOX-024",
+        "POLICY-023",
+        "POLICY-024"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "none",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": []
+    },
+    {
+      "ruleId": "RUI-003",
+      "classification": "implementation-guideline",
+      "strength": "SHOULD",
+      "statement": "Reuse an established window shell for a compact confirmation when that shell can preserve content fit, focus order, dismissal semantics, and the task's required actions; otherwise use a confirmation-specific shell.",
+      "rationale": "Several implementations independently reuse window components, which reduces duplicate anatomy, but the mandated Dialog story inflates recurrence and the corpus supports single-action, paired-action, close-only, and backdrop-dismissal variants. Shell reuse is therefore a maintainability convention contingent on behavioral fit, not a universal modal anatomy.",
+      "appliesWhen": [
+        "Adding a compact confirmation to a taste that already has a window shell",
+        "The existing shell can accommodate localized prompt content and the required decision grammar"
+      ],
+      "exceptions": [
+        "Destructive or blocking decisions requiring explicit cancel behavior",
+        "Long localized content that does not fit the compact shell",
+        "Stacked confirmations needing different focus, layering, or backdrop ownership",
+        "Taste-native confirmation anatomy that materially differs from the base window"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-006",
+        "OBS-FROSTED-BASEPLATE-005",
+        "OBS-HONEY-LEDGER-012",
+        "OBS-INDIGO-020",
+        "OBS-LOUD-SLAB-027",
+        "OBS-OBSIDIAN-GACHA-031",
+        "OBS-PLANTER-012",
+        "OBS-STUDDED-TOYBOX-027",
+        "POLICY-012",
+        "POLICY-023"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "none",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Mount the base window and confirmation in the actual host and verify localized content fit, initial focus, directional focus order, close or cancel behavior, and action activation",
+        "Exercise each supported one-action or paired-action variant without forcing a common confirm/cancel count"
+      ]
+    },
+    {
+      "ruleId": "RUI-004",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "For content-bearing windows that support multiple viewports, use responsive sizing with intentional pixel bounds and provide scrolling or reflow whenever content can exceed the available region; keep headers and dismissal controls inside the supported safe area.",
+      "rationale": "Official Roblox guidance supports Scale-relative responsiveness, pixel constraints, safe areas, scrolling, and representative device testing, but it does not mandate one scale-plus-cap recipe. The corpus recurrence is heavily generator-controlled. The repository's 667x375 case is a regression baseline, not an official Roblox minimum; product-supported device categories and orientations define the real condition.",
+      "appliesWhen": [
+        "A content-bearing window is declared to support more than one viewport or device category",
+        "Content, localization, or text settings can exceed the available window region"
+      ],
+      "exceptions": [
+        "Single-viewport experiences with an explicit supported resolution contract",
+        "Fixed pixel chrome, padding, or minimum and maximum bounds within an otherwise responsive layout",
+        "Noninteractive full-bleed backgrounds using an intentional ScreenInsets configuration"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-008",
+        "OBS-FROSTED-BASEPLATE-010",
+        "OBS-HONEY-LEDGER-026",
+        "OBS-INDIGO-017",
+        "OBS-LOUD-SLAB-025",
+        "OBS-OBSIDIAN-GACHA-007",
+        "OBS-PLANTER-015",
+        "OBS-STUDDED-TOYBOX-026",
+        "POLICY-015",
+        "POLICY-018",
+        "ResponsiveResearch:SRC-001",
+        "ResponsiveResearch:SRC-002",
+        "ResponsiveResearch:SRC-003",
+        "ResponsiveResearch:SRC-004"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Exercise each declared device category and supported orientation in the actual host, including the repository's 667x375 regression baseline where required",
+        "Resize while open and verify header and close-control containment, safe-area clearance, text readability, reflow, and final-item reachability",
+        "Exercise elongated localized strings and larger supported text settings"
+      ]
+    },
+    {
+      "ruleId": "RUI-005",
+      "classification": "accepted-conditional",
+      "strength": "MUST",
+      "statement": "Keep every dialog contained and operable within the product's declared minimum viewport and safe area; do not rely on fixed Offset sizing plus MaxSize alone when the available parent can be smaller than the requested dialog.",
+      "rationale": "UISizeConstraint.MaxSize is an official pixel cap on growth, not a mechanism that shrinks an already smaller fixed request relative to the viewport. An oversized centered dialog can hide its title, actions, or only dismissal target, producing a concrete access failure. Responsive sizing, reflow, or an explicit minimum supported viewport are all valid remedies.",
+      "appliesWhen": [
+        "A dialog can mount in a parent or usable safe area narrower or shorter than its authored fixed dimensions",
+        "The product declares support for viewports below the dialog's fixed Offset size"
+      ],
+      "exceptions": [
+        "The product explicitly excludes all parent and viewport sizes below the fixed dialog dimensions and verifies that contract",
+        "A containing layout independently guarantees the required shrink or reflow behavior"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-009",
+        "OBS-FROSTED-BASEPLATE-011",
+        "OBS-HONEY-LEDGER-009",
+        "OBS-INDIGO-020",
+        "OBS-PLANTER-016",
+        "OBS-STUDDED-TOYBOX-027",
+        "OBS-LOUD-SLAB-028",
+        "OBS-OBSIDIAN-GACHA-007",
+        "ResponsiveResearch:SRC-002"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Mount each dialog at the product's minimum supported parent bounds and safe area, including supported portrait widths, and verify title, body, actions, and dismissal remain visible and operable",
+        "Exercise elongated localized copy and larger supported text settings to verify internal reflow rather than outer-panel containment alone"
+      ]
+    },
+    {
+      "ruleId": "RUI-006",
+      "classification": "generator-convention",
+      "strength": "MAY",
+      "statement": "Use GuiService:GetGuiInset().Y as an optional topbar-clearance adaptation in a full-bleed story harness only after accounting for the host ScreenGui's existing inset behavior; do not treat that Y offset as complete four-edge safe-area handling.",
+      "rationale": "The repeated call is substantially explained by shared story-harness policy, and Indigo provides a story-level counterexample. Current ScreenGui behavior defaults to CoreUISafeInsets, so adding a manual Y offset can double-apply clearance. A top-only snapshot also does not establish notch, bottom, console, rotation, or dynamic topbar handling.",
+      "appliesWhen": [
+        "A story harness deliberately occupies full screen and does not already provide the needed topbar clearance",
+        "The mount's ScreenInsets and IgnoreGuiInset behavior are known"
+      ],
+      "exceptions": [
+        "Production ScreenGuis whose default CoreUISafeInsets already provide the required clearance",
+        "Noninteractive full-bleed background layers using ScreenInsets.None",
+        "Layouts using DeviceSafeInsets, TopbarInset, or another verified host-level safe-area strategy"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-010",
+        "OBS-FROSTED-BASEPLATE-009",
+        "OBS-HONEY-LEDGER-007",
+        "OBS-INDIGO-031",
+        "OBS-LOUD-SLAB-020",
+        "OBS-OBSIDIAN-GACHA-006",
+        "OBS-PLANTER-017",
+        "OBS-STUDDED-TOYBOX-022",
+        "POLICY-018",
+        "POLICY-020",
+        "ResponsiveResearch:SRC-003"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Inspect the actual story and production ScreenGui inset configuration before adding a manual offset",
+        "Exercise Core UI visibility changes, cutout devices, rotation, console safe zones, and all four edges in each supported host configuration",
+        "Verify that clearance updates when the chosen inset source changes dynamically"
+      ]
+    },
+    {
+      "ruleId": "RUI-007",
+      "classification": "taste-pattern",
+      "strength": "MAY",
+      "statement": "Place a dominant contextual HUD action near bottom-center only when the gameplay view, hotbar, captions, platform controls, safe area, and taste-native HUD leave a verified collision budget; dock persistent status and launchers at edges only where that composition remains usable.",
+      "rationale": "The mandated PLAY slot and shared reserved-zone policy explain most recurrence, while several tastes legitimately occupy one or both lower corners. Bottom-center is a contextual layout option, not a stable invariant, and Roblox control customization prevents assuming fixed joystick and jump rectangles.",
+      "appliesWhen": [
+        "A HUD has one dominant contextual action",
+        "The supported layouts leave an unobstructed, reachable bottom-center region"
+      ],
+      "exceptions": [
+        "Games where bottom-center obscures aiming or critical world information",
+        "HUDs with a hotbar, captions, or platform controls in the same region",
+        "Taste-native compositions that intentionally use lower corners or shift the action off-center"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-002",
+        "OBS-FROSTED-BASEPLATE-006",
+        "OBS-HONEY-LEDGER-010",
+        "OBS-INDIGO-021",
+        "OBS-LOUD-SLAB-019",
+        "OBS-OBSIDIAN-GACHA-005",
+        "OBS-PLANTER-013",
+        "OBS-STUDDED-TOYBOX-020",
+        "POLICY-020",
+        "POLICY-023",
+        "InputResearch:SRC-003",
+        "ResponsiveResearch:SRC-003"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "medium",
+        "runtimeSupport": "none",
+        "overall": "low"
+      },
+      "requiredValidation": [
+        "Render actual Roblox touch controls, captions, hotbar, currency, and taste-native HUD regions together across supported layouts",
+        "Verify no overlap, clipping, gameplay obstruction, or unreachable gamepad focus, including customized touch-control arrangements"
+      ]
+    },
+    {
+      "ruleId": "RUI-008",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "Bound window content and make any region scrollable or reflowing when its worst-case content can exceed the available space; keep headers, details, or actions stationary only when their content fits and their interaction role calls for persistence.",
+      "rationale": "Overflow creates a clear reachability risk, but the durable condition is available space rather than semantic labels such as catalog, settings, detail, or confirmation. Generator policy inflates scrolling recurrence, and even nominally short dialogs can overflow after localization or viewport reduction.",
+      "appliesWhen": [
+        "Content count, wrapping, localization, text settings, or viewport changes can exceed a bounded window region",
+        "The last item or action must remain reachable"
+      ],
+      "exceptions": [
+        "Content whose count, dimensions, localization, and supported viewport are all verified invariant",
+        "Regions intentionally reflowed or expanded instead of scrolled",
+        "Headers or footer actions that must remain persistent and have separately verified fit"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-022",
+        "OBS-FROSTED-BASEPLATE-022",
+        "OBS-HONEY-LEDGER-026",
+        "OBS-INDIGO-018",
+        "OBS-LOUD-SLAB-025",
+        "OBS-OBSIDIAN-GACHA-010",
+        "OBS-PLANTER-019",
+        "OBS-STUDDED-TOYBOX-025",
+        "POLICY-015",
+        "POLICY-018",
+        "LayoutResearch:SRC-001",
+        "LayoutResearch:SRC-009"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "At minimum supported window height, reach the final item using every supported scrolling or navigation modality",
+        "Verify intended headers and footer actions remain stationary and focus-visible",
+        "Exercise elongated localized detail and confirmation content rather than assuming short English copy fits"
+      ]
+    },
+    {
+      "ruleId": "RUI-009",
+      "classification": "implementation-guideline",
+      "strength": "SHOULD",
+      "statement": "Synchronize a changing ScrollingFrame canvas with its effective content by using AutomaticCanvasSize or a correctly cleaned-up AbsoluteContentSize binding; use fixed arithmetic only when item count, item metrics, wrapping, and padding are invariant.",
+      "rationale": "Official documentation establishes AutomaticCanvasSize as a live descendant-driven option and AbsoluteContentSize as a valid layout measurement. It contradicts prescribing a manual listener universally. Manual bindings must respect deferred change delivery and cleanup; automatic sizing must avoid an unintended nonzero CanvasSize lower bound. Outer UIPadding inclusion remains insufficiently specified.",
+      "appliesWhen": [
+        "Scroll content count, row height, grid wrapping, localization, or viewport width can change",
+        "A layout's occupied size determines final-item reachability"
+      ],
+      "exceptions": [
+        "Immutable catalogs with fixed item count, metrics, wrapping, and padding",
+        "Explicit canvas formulas that intentionally include additional space and are verified against all mutations",
+        "Custom scroll behavior not represented by descendant bounds"
+      ],
+      "evidenceIds": [
+        "OBS-HONEY-LEDGER-026",
+        "OBS-INDIGO-018",
+        "OBS-LOUD-SLAB-025",
+        "OBS-OBSIDIAN-GACHA-011",
+        "OBS-STUDDED-TOYBOX-025",
+        "OBS-CANDLELIT-PARLOR-022",
+        "OBS-FROSTED-BASEPLATE-022",
+        "OBS-PLANTER-019",
+        "POLICY-015",
+        "POLICY-018",
+        "LayoutResearch:SRC-001",
+        "LayoutResearch:SRC-002",
+        "LayoutResearch:SRC-003",
+        "LayoutResearch:SRC-008",
+        "LayoutResearch:SRC-010"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "For the chosen strategy, mutate item count, row height, localized text length, and viewport width and verify final-item reachability with no stale blank canvas",
+        "Verify top and bottom outer padding explicitly because current official sources do not establish universal UIPadding inclusion",
+        "For manual bindings, unmount and remount repeatedly and verify signal cleanup and correct deferred updates"
+      ]
+    },
+    {
+      "ruleId": "RUI-010",
+      "classification": "taste-pattern",
+      "strength": "MAY",
+      "statement": "Use a separate dim backdrop when a modal context and taste need focus separation; omit it for intentional raw-on-world or self-dimming surfaces, and configure backdrop dismissal independently from backdrop appearance.",
+      "rationale": "Six implementations use a dim while Honey and Planter intentionally omit it, and Studded's implemented dim contradicts its source prohibition. The evidence establishes contextual variation, not a mandatory popup ingredient. Legibility, world awareness, stacking, and decision semantics determine whether the option is appropriate.",
+      "appliesWhen": [
+        "A modal needs stronger visual separation from a live 3D scene",
+        "The taste permits a dim layer and the loss of world visibility is acceptable"
+      ],
+      "exceptions": [
+        "Intentional raw-on-world presentations",
+        "Self-dimming or otherwise sufficiently separated surfaces",
+        "Gameplay-critical contexts where world awareness must remain high",
+        "Blocking decisions where backdrop activation must not dismiss the modal"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-024",
+        "OBS-FROSTED-BASEPLATE-023",
+        "OBS-INDIGO-007",
+        "OBS-LOUD-SLAB-007",
+        "OBS-OBSIDIAN-GACHA-029",
+        "OBS-STUDDED-TOYBOX-006",
+        "OBS-HONEY-LEDGER-028",
+        "OBS-PLANTER-029",
+        "POLICY-011",
+        "POLICY-017"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "none",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Render the modal against the actual 3D scene and verify text and control legibility alongside required world awareness",
+        "Exercise backdrop input interception, optional dismissal, and stacked-modal ownership"
+      ]
+    },
+    {
+      "ruleId": "RUI-011",
+      "classification": "generator-convention",
+      "strength": "MAY",
+      "statement": "Use local ZIndex values 10 for a modal dim and 11 for its panel only when those values fit the host's verified layering plan; do not infer the pair as a taste rule or universal Roblox layer contract.",
+      "rationale": "The exact 10/11 recurrence is directly explained by the generator's reserved bands and is absent where no dim exists. Under the current default Sibling behavior, effective order depends on hierarchy, not globally comparable descendant numbers; across ScreenGuis, DisplayOrder controls container order.",
+      "appliesWhen": [
+        "Implementing a modal within this generator's local layer-band convention",
+        "The dim and panel share a hierarchy where 10/11 produces the intended sibling order"
+      ],
+      "exceptions": [
+        "Hosts with a different local band allocation",
+        "Single surfaces with no separate dim",
+        "Overlays split across ScreenGuis, where DisplayOrder must be considered",
+        "Global ZIndexBehavior hosts with a separately verified descendant ordering plan"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-023",
+        "OBS-FROSTED-BASEPLATE-023",
+        "OBS-INDIGO-007",
+        "OBS-LOUD-SLAB-006",
+        "OBS-OBSIDIAN-GACHA-029",
+        "OBS-STUDDED-TOYBOX-006",
+        "POLICY-016",
+        "POLICY-017",
+        "LayeringResearch:SRC-001",
+        "LayeringResearch:SRC-002",
+        "LayeringResearch:SRC-003"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "In the actual host, render HUD, dim, panel, nested popup, tooltip, and overhanging chrome simultaneously and verify their effective order",
+        "Verify clipping separately because a higher ZIndex cannot escape an active ClipsDescendants boundary"
+      ]
+    },
+    {
+      "ruleId": "RUI-012",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "Define and verify the host's complete layering contract: rely on the current Sibling default or set ZIndexBehavior intentionally, and assign intentional DisplayOrder values whenever overlapping content spans multiple ScreenGuis.",
+      "rationale": "Current official documentation corrects stale generator prose: Sibling, not Global, is the LayerCollector default. Local component ZIndex values still do not establish cross-ScreenGui order, and Sibling hierarchy and clipping remain relevant. Ordinary custom shadows are siblings only when needed to render behind a parent or escape that parent's clipping branch; UIShadow is a current direct-parent alternative, so sibling shadows are conditional rather than universal.",
+      "appliesWhen": [
+        "A host renders overlapping HUDs, windows, popups, tooltips, custom shadows, or multiple ScreenGuis",
+        "An overlay must cross unrelated UI branches"
+      ],
+      "exceptions": [
+        "A single ScreenGui whose hierarchy and local order already produce the verified result without explicit DisplayOrder bands",
+        "An intentional Global configuration with unambiguous descendant ZIndex values",
+        "UIShadow when its feature set and verified clipping behavior satisfy the required drop shadow",
+        "Custom child shadows under Global when lower descendant ZIndex is sufficient and no relevant clipping boundary exists"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-023",
+        "OBS-FROSTED-BASEPLATE-023",
+        "OBS-HONEY-LEDGER-031",
+        "OBS-INDIGO-033",
+        "OBS-LOUD-SLAB-006",
+        "OBS-OBSIDIAN-GACHA-029",
+        "OBS-PLANTER-028",
+        "OBS-STUDDED-TOYBOX-032",
+        "POLICY-016",
+        "POLICY-017",
+        "LayeringResearch:SRC-001",
+        "LayeringResearch:SRC-002",
+        "LayeringResearch:SRC-003",
+        "LayeringResearch:SRC-004",
+        "LayeringResearch:SRC-006",
+        "LayeringResearch:SRC-007",
+        "LayeringResearch:SRC-008"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Inspect the actual mounting ScreenGui hierarchy and configuration rather than inferring it from component slices",
+        "Render competing HUD, window, popup, tooltip, shadow, and overhanging descendants together and verify ordering and clipping",
+        "If UIShadow is used where overflow matters, reproduce its interaction with parent and ancestor ClipsDescendants because official sources leave that interaction unresolved"
+      ]
+    },
+    {
+      "ruleId": "RUI-013",
+      "classification": "accepted-conditional",
+      "strength": "MUST",
+      "statement": "For every standard GuiButton primary action on supported devices, dispatch the semantic action through Activated and ensure each supported modality can reach, focus, activate exactly once, cancel, and receive visible feedback; use mouse-specific events only as optional pointer-held visual enhancement.",
+      "rationale": "Official Roblox sources identify Activated as the cross-platform primary GuiButton event for mouse, touch, and selected gamepad input. Activated does not itself make a control gamepad-reachable, provide focus styling, or define cancellation visuals. The repeated mouse down/up/leave wiring is generator-linked and cannot establish the full input contract.",
+      "appliesWhen": [
+        "A TextButton or ImageButton performs a standard primary action",
+        "Mouse, touch, keyboard, or gamepad is declared supported for the interface"
+      ],
+      "exceptions": [
+        "Secondary actions using SecondaryActivated",
+        "Holds, drags, gestures, continuous input, or device-specific actions requiring lower-level input APIs",
+        "Custom navigation systems with an equivalent verified activation contract"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-026",
+        "OBS-FROSTED-BASEPLATE-029",
+        "OBS-HONEY-LEDGER-035",
+        "OBS-INDIGO-030",
+        "OBS-LOUD-SLAB-029",
+        "OBS-OBSIDIAN-GACHA-015",
+        "OBS-PLANTER-027",
+        "OBS-STUDDED-TOYBOX-010",
+        "POLICY-014",
+        "POLICY-027",
+        "InputResearch:SRC-003",
+        "InputResearch:SRC-004"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Activate each action by every supported modality and assert exactly one semantic dispatch",
+        "Traverse the interface without a pointer and verify initial selection, directional reachability, visible focus, activation, cancellation, and restoration after release",
+        "Exercise pointer leave, touch cancellation, rapid re-entry, and disable-during-press paths for custom held visuals"
+      ]
+    },
+    {
+      "ruleId": "RUI-014",
+      "classification": "implementation-guideline",
+      "strength": "SHOULD",
+      "statement": "Keep interactive targets comfortably touchable, unobstructed, and separated across supported devices; treat 44 Roblox Offset pixels as this repository's baseline and 56 pixels as a chunky-taste preference, not as official Roblox minima.",
+      "rationale": "The exact 44 and 56 values are imposed by repository policy, so the 8/8 recurrence is not independent. Current Roblox guidance cites an approximate 9x9 mm mobile touch zone, not 44 Roblox pixels; the separate 44x44 value is a WCAG CSS-pixel criterion and cannot be relabeled as a Roblox unit. Effective hit area also depends on clipping, overlap, interception, and device density.",
+      "appliesWhen": [
+        "Implementing interactive catalog UI under this repository's generator policy",
+        "Supporting touch input on mobile devices"
+      ],
+      "exceptions": [
+        "Product-specific baselines that demonstrably satisfy supported physical devices through another sizing policy",
+        "Non-touch platforms, while still requiring reachable and visible focus for their supported input",
+        "Small visual pills nested inside larger nonoverlapping interactive roots"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-017",
+        "OBS-FROSTED-BASEPLATE-028",
+        "OBS-HONEY-LEDGER-006",
+        "OBS-INDIGO-029",
+        "OBS-LOUD-SLAB-020",
+        "OBS-OBSIDIAN-GACHA-017",
+        "OBS-PLANTER-021",
+        "OBS-STUDDED-TOYBOX-011",
+        "POLICY-019",
+        "InputResearch:SRC-002"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "medium",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Visualize AbsoluteSize and effective hit bounds for every interactive root at supported viewports",
+        "Exercise edge taps and adjacent controls on representative physical devices to detect clipping, overlap, interception, or wrong-action dispatch",
+        "Verify gamepad reachability and focus independently of touch-target size"
+      ]
+    },
+    {
+      "ruleId": "RUI-015",
+      "classification": "taste-pattern",
+      "strength": "MAY",
+      "statement": "Choose press feedback that reinforces the individual component's represented material and motion register; use bevel collapse, squash, color or stroke lift, or no deformation as contextual options rather than family invariants.",
+      "rationale": "The generator supplies the beveled and flat archetypes, substantially explaining the recurrence. Direct counterexamples cross the proposed split: Frosted's flat button squashes, while Honey mixes bevel collapse and color-only response within one taste. Material coherence is useful stylistic advice, not an engine or access invariant.",
+      "appliesWhen": [
+        "Designing custom visual feedback for an enabled interactive control",
+        "The source taste or verified motion evidence defines a material or motion register"
+      ],
+      "exceptions": [
+        "Controls whose source evidence specifies a different response",
+        "Reduced-motion paths that remove deformation",
+        "Interactions where an immediate nonanimated state change provides clearer feedback"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-019",
+        "OBS-FROSTED-BASEPLATE-026",
+        "OBS-HONEY-LEDGER-022",
+        "OBS-INDIGO-010",
+        "OBS-LOUD-SLAB-012",
+        "OBS-OBSIDIAN-GACHA-015",
+        "OBS-PLANTER-025",
+        "OBS-STUDDED-TOYBOX-009",
+        "POLICY-013",
+        "POLICY-021",
+        "POLICY-022",
+        "MotionResearch:SRC-005"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "medium",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Capture press-in, held, cancellation, release, disable-during-press, and rapid interruption for each adopted response",
+        "Verify equivalent visible feedback for every supported input modality and a non-stuck final state",
+        "Exercise the reduced-motion path for deforming feedback"
+      ]
+    },
+    {
+      "ruleId": "RUI-016",
+      "classification": "generator-convention",
+      "strength": "MAY",
+      "statement": "Select entrance motion from verified taste evidence and component context; use family-level Back-Out pops, settle transitions, fades, blur, or instant presentation only as labeled generator defaults when source motion was not observed.",
+      "rationale": "All source documents lacked video or marked motion low-confidence, while POLICY-008 injects family presets into still-image extractions. The family split is therefore default propagation, not independent observation. Honey and Obsidian also demonstrate valid component-level exceptions to their nominal family behavior.",
+      "appliesWhen": [
+        "Generating motion from a still-image taste with no verified motion source",
+        "A labeled default is needed to complete a catalog demonstration"
+      ],
+      "exceptions": [
+        "Video-observed or otherwise verified source motion",
+        "Components that intentionally open instantly",
+        "Contexts where CanvasGroup fidelity, concurrent blur ownership, interruption, or reduced motion requires another treatment"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-025",
+        "OBS-FROSTED-BASEPLATE-025",
+        "OBS-HONEY-LEDGER-032",
+        "OBS-INDIGO-009",
+        "OBS-LOUD-SLAB-010",
+        "OBS-OBSIDIAN-GACHA-030",
+        "OBS-PLANTER-024",
+        "OBS-STUDDED-TOYBOX-012",
+        "POLICY-008",
+        "POLICY-021",
+        "POLICY-022",
+        "MotionResearch:SRC-001",
+        "MotionResearch:SRC-004"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "medium",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "When motion is adopted, capture its actual trajectory, duration, endpoint, interruption behavior, and reduced-motion branch",
+        "Mount concurrent windows when using a global BlurEffect and verify ownership and cleanup",
+        "Do not claim source fidelity without a source-motion artifact against which to compare"
+      ]
+    },
+    {
+      "ruleId": "RUI-017",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "Observe GuiService.ReducedMotionEnabled for custom UI motion and reduce or remove substantial scale, translation, bounce, and blur while preserving visible state change, lifecycle completion, and effect cleanup.",
+      "rationale": "ReducedMotionEnabled has current official API and public accessibility backing, correcting the generator audit's earlier uncertainty. Roblox explicitly recommends reducing or removing custom UI tween motion and documents zero-duration snapping or a fade as options. The 0/8 corpus result identifies a shared implementation gap but is not eight independent absences.",
+      "appliesWhen": [
+        "The experience ships custom UI motion or blur transitions",
+        "GuiService.ReducedMotionEnabled is true for the current client"
+      ],
+      "exceptions": [
+        "Essential continuous feedback that cannot be removed without losing state comprehension, but must still be attenuated or replaced appropriately",
+        "Minor opacity feedback retained as a lower-motion alternative when it does not recreate the substantial motion being avoided"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-025",
+        "OBS-FROSTED-BASEPLATE-025",
+        "OBS-HONEY-LEDGER-032",
+        "OBS-INDIGO-009",
+        "OBS-LOUD-SLAB-010",
+        "OBS-OBSIDIAN-GACHA-030",
+        "OBS-PLANTER-024",
+        "OBS-STUDDED-TOYBOX-012",
+        "POLICY-008",
+        "POLICY-025",
+        "MotionResearch:SRC-006",
+        "MotionResearch:SRC-007"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Toggle ReducedMotionEnabled before mount and during each active custom transition and verify deterministic target state and completion callbacks",
+        "Cover every shipped custom motion category, including windows, presses, rewards, progress, currency, and blur",
+        "Verify concurrent BlurEffect cleanup and open-close-open interruption under reduced motion"
+      ]
+    },
+    {
+      "ruleId": "RUI-018",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "Within each self-contained catalog purchase unit, group item identity or artwork, supporting metadata, and the associated price or action in a predictable visual and focus order; define a separate verified order for master-detail and featured-offer layouts.",
+      "rationale": "Several independently shaped rows and cards keep identity before purchase, but standardized showcase data raises recurrence. Honey's split detail/CTA flow and Obsidian's featured offer disprove a universal per-card terminal action sequence. The reliable outcome is clear association and predictable focus within self-contained units, not one spatial template.",
+      "appliesWhen": [
+        "A row or card contains all information and activation needed to evaluate or purchase one item",
+        "Users must scan or compare multiple catalog units"
+      ],
+      "exceptions": [
+        "Master-detail catalogs whose price and action belong to a separately selected detail region",
+        "Featured offers with a distinct documented anatomy",
+        "Non-purchase collections without price or action"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-013",
+        "OBS-FROSTED-BASEPLATE-007",
+        "OBS-HONEY-LEDGER-011",
+        "OBS-INDIGO-014",
+        "OBS-LOUD-SLAB-016",
+        "OBS-PLANTER-008",
+        "OBS-STUDDED-TOYBOX-029",
+        "OBS-OBSIDIAN-GACHA-012",
+        "POLICY-012",
+        "POLICY-023",
+        "TextResearch:SRC-201",
+        "InputResearch:SRC-003"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "medium",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "At representative widths, exercise elongated localized names, currencies, and price formats and verify each metadata or action remains associated with the correct item",
+        "Traverse cards and nested actions by gamepad and keyboard and verify focus order matches the intended information sequence",
+        "If claiming faster recognition or comparison, run a timed item-finding and price-comparison study"
+      ]
+    },
+    {
+      "ruleId": "RUI-019",
+      "classification": "accepted-conditional",
+      "strength": "MUST",
+      "statement": "When an action is represented as disabled, prevent it from dispatching its semantic callback or playing enabled press feedback; if it remains visible, keep its unavailable treatment legible and give it intentional focus behavior.",
+      "rationale": "Preventing activation is a functional invariant: GuiObject.Active controls whether GuiButton.Activated fires, and a disabled-looking action that still dispatches creates a misleading functional failure. Continued visibility and one subdued style are not universal; hiding an unavailable action can be valid. Recurring disabled visuals are substantially generator-prescribed.",
+      "appliesWhen": [
+        "A control is rendered or announced as disabled or unavailable",
+        "A visible disabled control remains in an interface supporting one or more input modalities"
+      ],
+      "exceptions": [
+        "Unavailable actions intentionally hidden instead of represented as disabled",
+        "Focusable disabled controls that intentionally expose an explanation and still cannot dispatch the action"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-019",
+        "OBS-FROSTED-BASEPLATE-019",
+        "OBS-HONEY-LEDGER-022",
+        "OBS-INDIGO-010",
+        "OBS-LOUD-SLAB-012",
+        "OBS-OBSIDIAN-GACHA-016",
+        "OBS-PLANTER-021",
+        "OBS-STUDDED-TOYBOX-009",
+        "POLICY-014",
+        "InputResearch:SRC-004"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Attempt activation by every supported input modality while disabled and assert zero semantic callbacks and no enabled press tween",
+        "Disable during an active press, then re-enable, and verify restored visuals and exactly one callback on the next valid activation",
+        "Verify legibility and intentional inclusion in or exclusion from gamepad focus order"
+      ]
+    },
+    {
+      "ruleId": "RUI-020",
+      "classification": "accepted-conditional",
+      "strength": "MUST",
+      "statement": "Give every production dismissible window one owner-controlled, guarded close lifecycle shared by each enabled dismissal affordance; remove the window after its intended exit transition, handle interruption deterministically, and leave neither a visible inert affordance nor an invisible input-blocking window.",
+      "rationale": "The corpus contains distinct code-level failure modes rather than one copied pattern: early-return close controls, hide-without-owner behavior, and a completed fade leaving a mounted invisible CanvasGroup. These can mislead users, retain focus, or intercept input. Backdrop dismissal remains optional and must not bypass a required decision.",
+      "appliesWhen": [
+        "A production window exposes a close glyph, cancel action, back action, or enabled backdrop dismissal",
+        "An exit transition delays owner state removal"
+      ],
+      "exceptions": [
+        "Noninteractive visual-only story renders that expose no dismissal affordance",
+        "Blocking decisions where backdrop dismissal is intentionally disabled",
+        "Immediate owner removal when no exit transition is intended"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-021",
+        "OBS-CANDLELIT-PARLOR-025",
+        "OBS-FROSTED-BASEPLATE-017",
+        "OBS-HONEY-LEDGER-024",
+        "OBS-INDIGO-008",
+        "OBS-LOUD-SLAB-013",
+        "OBS-OBSIDIAN-GACHA-017",
+        "OBS-PLANTER-020",
+        "OBS-STUDDED-TOYBOX-028",
+        "POLICY-014",
+        "POLICY-021",
+        "MotionResearch:SRC-002",
+        "MotionResearch:SRC-003"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "medium",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Race close, backdrop, reopen, parent unmount, and close-during-entrance; assert one callback and the intended final owner state",
+        "After exit, verify removal from rendering, focus navigation, and hit testing",
+        "Verify focus restoration to the opener and cleanup of tweens, listeners, backdrops, and global effects"
+      ]
+    },
+    {
+      "ruleId": "RUI-021",
+      "classification": "implementation-guideline",
+      "strength": "SHOULD",
+      "statement": "Pair declarative stories, controls, comments, and provenance notes with reproducible runtime evidence targeted to the changed risks; treat 667x375 and the exact Standard Showcase matrix as repository baselines, not official Roblox minima.",
+      "rationale": "Stories and prose provide inspection surfaces but cannot prove mounting, interaction, motion endpoints, z-order, clipping, or current asset loading. Existing reports record missing in-engine and multi-resolution checks, so the distinction is established despite shared generator policy. Roblox officially recommends representative Phone, Tablet, Desktop, and Console testing rather than 667x375 specifically; verification scope should follow the changed observable contract rather than an indiscriminate full matrix.",
+      "appliesWhen": [
+        "Delivering production or catalog UI changes",
+        "A changed contract depends on runtime mounting, input, viewport composition, animation, layering, localization, or asset loading"
+      ],
+      "exceptions": [
+        "Source-only facts already settled by current official documentation",
+        "Changes whose risk is fully covered by an existing reproducible runtime artifact",
+        "Repository fixtures that intentionally require only a narrower documented regression baseline"
+      ],
+      "evidenceIds": [
+        "OBS-CANDLELIT-PARLOR-029",
+        "OBS-FROSTED-BASEPLATE-030",
+        "OBS-HONEY-LEDGER-036",
+        "OBS-LOUD-SLAB-031",
+        "OBS-OBSIDIAN-GACHA-033",
+        "OBS-PLANTER-031",
+        "OBS-STUDDED-TOYBOX-030",
+        "POLICY-024",
+        "POLICY-025",
+        "POLICY-026",
+        "ResponsiveResearch:SRC-004",
+        "TextResearch:SRC-201",
+        "MotionResearch:SRC-004"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "medium",
+        "runtimeSupport": "low",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Mount the changed surface in the actual host and exercise every supported input path affected by the change",
+        "Capture or assert the relevant repository baseline and representative supported device categories, orientations, safe areas, and localization pressures",
+        "For changed motion, verify numeric endpoints, cancellation, and reduced-motion behavior; for changed layering, verify effective order and clipping; for shipped image changes, confirm current asset loading",
+        "Persist captures or machine-readable assertions with enough provenance to reproduce the verified configuration"
+      ]
+    },
+    {
+      "ruleId": "RUI-022",
+      "classification": "accepted-universal",
+      "strength": "MUST",
+      "statement": "Treat direct GuiObject siblings controlled by UIListLayout as layout-owned for Position and Rotation, and direct GuiObject siblings controlled by UIGridLayout as layout-owned for Position and Size; when an item needs an independent value for an owned property, put the independently positioned, rotated, or sized object inside a laid-out wrapper, or remove the item from that layout's ownership.",
+      "rationale": "The engine documentation directly states that UIListLayout ignores or overrides sibling Position and Rotation and that UIGridLayout controls sibling Position and Size. That ownership is the engine invariant supporting MUST. A nested wrapper is a recommended way to create a descendant coordinate space that the parent layout does not own; removing or changing the layout is an equally valid alternative, so the rule does not mandate one wrapper architecture.",
+      "appliesWhen": [
+        "The affected GuiObject is a direct sibling of UIListLayout or UIGridLayout under the layout's parent.",
+        "Code or Studio configuration attempts to control a property that the active layout owns."
+      ],
+      "exceptions": [
+        "Descendants inside a laid-out sibling are not direct siblings of the parent layout and may use their own Position, Rotation, and Size within that wrapper.",
+        "A non-flex UIListLayout normally preserves sibling Size; flex settings, AutomaticSize interactions, and size constraints can alter that behavior.",
+        "A UIConstraint on an individual UIGridLayout item can determine its size instead of CellSize and can make the item span multiple cells.",
+        "Stored property values may remain readable even when the layout ignores or overrides their rendered effect."
+      ],
+      "evidenceIds": [
+        "LayoutResearch:SRC-004",
+        "LayoutResearch:SRC-005",
+        "LayoutResearch:SRC-006"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "In the target Studio/engine version, mutate Position and Rotation on a direct UIListLayout sibling and confirm that rendered placement remains layout-controlled.",
+        "Mutate Position and Size on a direct UIGridLayout sibling and confirm that rendered placement and unconstrained size remain grid-controlled.",
+        "Repeat the desired manual transform on a descendant inside a laid-out wrapper and confirm that the descendant retains the intended independent transform.",
+        "Exercise any relied-upon flex, AutomaticSize, UISizeConstraint, or UIAspectRatioConstraint combination because those mechanisms can change size ownership."
+      ]
+    },
+    {
+      "ruleId": "RUI-023",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "For text processed by Roblox localization that may outgrow its initial bounds, exercise Studio Locale emulation and Elongate, then choose and verify an explicit policy such as container expansion, wrapping with sufficient height, or deliberate truncation; use AutomaticSize and TextScaled as alternative sizing strategies rather than enabling both on the same TextLabel.",
+      "rationale": "Roblox provides Locale and Elongate specifically to expose length-pressure failures and identifies localization as an AutomaticSize use case, which supports a scoped SHOULD rather than a release-gating MUST. Fixed-size labels have observable fitting, wrapping, and truncation behavior, but the engine does not mandate one overflow policy. Roblox explicitly recommends avoiding TextScaled together with AutomaticSize because one scales text to the container while the other grows the container to the content; this is guidance, not an engine prohibition.",
+      "appliesWhen": [
+        "The text passes through Roblox's translation system and the UI is intended to support localization.",
+        "A localized string can exceed the label's originally designed width or height.",
+        "The implementation is selecting between growing the container, wrapping text, or intentionally hiding overflow."
+      ],
+      "exceptions": [
+        "Elongate does not affect hard-coded or otherwise unlocalized strings; use the separately documented pseudolocalization or direct inspection path for those strings.",
+        "Intentional truncation is valid when product requirements permit hidden content and the full value is available where necessary.",
+        "TextWrapped alone does not preserve all content in a fixed-height label; a line that exceeds the vertical bounds is omitted.",
+        "TextScaled can be appropriate for fixed containers, including some BillboardGui text, especially when UITextSizeConstraint bounds readability.",
+        "Combining TextScaled and AutomaticSize is not rejected by the engine; any intentional exception must be reproduced and constrained because Roblox recommends against it."
+      ],
+      "evidenceIds": [
+        "TextResearch:SRC-201",
+        "TextResearch:SRC-202",
+        "TextResearch:SRC-204",
+        "TextResearch:SRC-205"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Run Studio Player Emulator with representative supported Locales and the Elongate control, and inspect every affected layout at supported viewport sizes.",
+        "For expansion, verify final bounds and AnchorPoint-driven growth; for wrapping, verify that the available height renders every required line; for truncation, verify the selected AtEnd or SplitWord behavior.",
+        "Observe TextFits and TextBounds for representative longest strings rather than assuming that wrapping guarantees visibility.",
+        "Reproduce any TextWrapped plus TextTruncate combination before relying on it because the supplied official evidence does not establish their precedence.",
+        "Test real target-locale strings for shaping, line breaking, and translation quality because synthetic elongation validates length pressure only."
+      ]
+    },
+    {
+      "ruleId": "RUI-024",
+      "classification": "accepted-conditional",
+      "strength": "MUST",
+      "statement": "When ClipsDescendants is effective and true, treat the clipping GuiObject's rectangular bounds as an absolute descendant-rendering boundary: do not rely on ZIndex to render overflow outside it, do not expect UICorner to round the clipping shape, and account explicitly for the current rotated-descendant rollout and unsupported rotated-parent clipping.",
+      "rationale": "Official engine documentation defines ClipsDescendants as hiding descendant portions outside the parent's rectangle, while ZIndex only controls draw order; therefore a higher ZIndex cannot escape an effective clip. The same documentation states that UICorner does not define the clipping shape. Rotation requires conditional wording: the rollout can enable correct clipping of rotated descendants, but clipping by a rotated parent shape remains unsupported, and legacy behavior may ignore clipping when the clipping object or an ancestor has nonzero Rotation.",
+      "appliesWhen": [
+        "A descendant can render beyond an ancestor GuiObject whose ClipsDescendants property is true.",
+        "The clip is effective under the target client's StarterGui.ClipsDescendantsSupportsRotation rollout state.",
+        "An overlay, shadow, decoration, or scrolling child is expected to cross the ancestor's bounds."
+      ],
+      "exceptions": [
+        "Moving the visual outside the clipping ancestor's descendant branch can escape that particular boundary, although another shared clipping ancestor may still clip it.",
+        "Disabling ClipsDescendants permits overflow when doing so is acceptable for the entire affected descendant branch.",
+        "UICorner can round visible UI geometry, but it does not turn ClipsDescendants into a rounded mask.",
+        "With rotation support enabled, rotated descendants can be clipped; this does not make a rotated parent shape a supported clipping mask.",
+        "When the rotation rollout is not enabled, nonzero Rotation on the clipping GuiObject or an ancestor can cause ClipsDescendants to be ignored rather than applied."
+      ],
+      "evidenceIds": [
+        "LayeringResearch:SRC-004",
+        "LayeringResearch:SRC-005",
+        "LayoutResearch:SRC-009"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Inspect the effective StarterGui.ClipsDescendantsSupportsRotation state on each target client or rollout environment.",
+        "Render a high-ZIndex descendant beyond a ClipsDescendants boundary and confirm that the overflowing portion remains hidden.",
+        "Combine ClipsDescendants with UICorner and confirm that clipping remains rectangular.",
+        "Exercise separately a rotated descendant, a rotated clipping parent, and a rotated ancestor on the target engine version; record whether clipping applies or is ignored in each case."
+      ]
+    },
+    {
+      "ruleId": "RUI-025",
+      "classification": "implementation-guideline",
+      "strength": "SHOULD",
+      "statement": "For a stateful UI transition that can be superseded, assign transition ownership and define replacement behavior so that the final property values and callbacks are deterministic; distinguish Completed from Cancelled in Tween.Completed handlers, and use explicit Cancel only when the desired choreography is not already provided by automatic same-object, same-property replacement.",
+      "rationale": "The engine fact is precise: a newly played tween automatically cancels an older tween that targets the same property on the same object, while different-property tweens may coexist, and the cancelled tween's Completed event fires with PlaybackState.Cancelled. Roblox does not mandate an owner abstraction or universal explicit cancellation. Ownership, stale-callback prevention, and deterministic state commitment are therefore implementation guidance derived from documented interruption semantics, not a user-facing invariant.",
+      "appliesWhen": [
+        "A UI state change can start while an earlier transition is still playing.",
+        "A tween callback mutates state, visibility, interactivity, lifecycle, or another property whose value must correspond to the winning transition.",
+        "Several properties or several tweens collectively represent one logical transition."
+      ],
+      "exceptions": [
+        "Explicit cancellation is unnecessary solely to arbitrate two tweens on the same object and property because playing the newer tween already cancels and overwrites the older one.",
+        "Tweens targeting different properties may intentionally run concurrently.",
+        "A fire-and-forget decorative tween with no stateful callback or required terminal invariant may not need a dedicated ownership abstraction.",
+        "Cancel stops at the current interpolated property values and does not restore the start values; code that requires a snap, rollback, or commit must assign that end state itself.",
+        "Pause preserves progress and does not fire Completed, so pause/resume behavior is not interchangeable with cancellation behavior."
+      ],
+      "evidenceIds": [
+        "MotionResearch:SRC-002",
+        "MotionResearch:SRC-003"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Rapidly reverse or replace each interruptible transition and confirm that only the winning transition commits state.",
+        "Observe Tween.Completed for both the replaced tween and the winning tween, and verify branching on PlaybackState.Cancelled versus PlaybackState.Completed.",
+        "Test same-property overlap to confirm automatic cancellation and different-property overlap to confirm intended coexistence.",
+        "Exercise every explicit Cancel path and verify the immediate interpolated values, the assigned deterministic terminal values, callback count, visibility, and input state.",
+        "Replay a cancelled tween if that path is supported and confirm that the full-duration restart behavior matches the intended choreography."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "topic": "Roblox ZIndexBehavior, ZIndex, ClipsDescendants, GuiObject rendering, and shadow/overlay implications",
+  "claims": [
+    {
+      "id": "SRC-001",
+      "claim": "With LayerCollector.ZIndexBehavior set to Sibling (the default), children always render above their parents, and GuiObject.ZIndex orders children of the same UI object relative to one another; ZIndex is not a global ordering key across the entire descendant tree in this mode.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "All GuiObject descendants of a LayerCollector such as ScreenGui when ZIndexBehavior is Sibling.",
+      "limitations": [
+        "The official reference does not specify the tie-break rule for sibling GuiObjects that have equal ZIndex values.",
+        "This rule is scoped to one LayerCollector; ordering between separate ScreenGui containers is controlled by ScreenGui.DisplayOrder."
+      ],
+      "sources": [
+        {
+          "title": "LayerCollector API reference — ZIndexBehavior",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/LayerCollector",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that Sibling is the default, children always render above their parents, and ZIndex decides the order in which children of a single UI object render over each other."
+        },
+        {
+          "title": "Position and size UI objects — ZIndex",
+          "url": "https://create.roblox.com/docs/ui/position-and-size#zindex",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines ZIndex as the layer order for GuiObject overlap and reiterates that the default container behavior renders children above parents."
+        }
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "claim": "With LayerCollector.ZIndexBehavior set to Global, all descendants are sorted by GuiObject.ZIndex and ties are broken by hierarchy order; a descendant whose ZIndex is below its parent's can render underneath that parent.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "All GuiObject descendants within one LayerCollector configured with ZIndexBehavior.Global.",
+      "limitations": [
+        "The reference says ties use 'hierarchy order' but does not further define in this passage whether every equal-index case maps to creation order, Explorer order, or another internal traversal detail; code should avoid depending on ambiguous equal-index ties when visual order matters.",
+        "Global ordering does not override ScreenGui.DisplayOrder between different ScreenGui containers.",
+        "Global ordering does not cancel clipping by ClipsDescendants."
+      ],
+      "sources": [
+        {
+          "title": "LayerCollector API reference — ZIndexBehavior",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/LayerCollector",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Explicitly says Global sorts all descendants by ZIndex, breaks ties using hierarchy order, and requires descendants to have ZIndex at least as high as their parent to render above it."
+        },
+        {
+          "title": "ZIndexBehavior enum reference",
+          "url": "https://create.roblox.com/docs/reference/engine/enums/ZIndexBehavior",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Defines Global and Sibling as the two modes controlling descendant GuiObject ZIndex behavior."
+        }
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "claim": "GuiObject.ZIndex controls overlap within a UI container, while ScreenGui.DisplayOrder controls which of multiple ScreenGui containers is drawn above another; a higher DisplayOrder ScreenGui is drawn on top of a lower one.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "On-screen 2D UI in ScreenGui containers under PlayerGui.",
+      "limitations": [
+        "A high GuiObject.ZIndex in a lower-DisplayOrder ScreenGui does not establish a cross-ScreenGui global order; the container ordering is a separate property.",
+        "The cited documentation does not define the tie-break behavior for ScreenGui containers with equal DisplayOrder."
+      ],
+      "sources": [
+        {
+          "title": "ScreenGui API reference — DisplayOrder",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/ScreenGui",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that DisplayOrder controls the Z-index order of multiple ScreenGui containers and that higher values draw on top of lower values."
+        },
+        {
+          "title": "Position and size UI objects — ZIndex",
+          "url": "https://create.roblox.com/docs/ui/position-and-size#zindex",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines GuiObject.ZIndex as the layer order in which GuiObjects render and overlap."
+        }
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "claim": "When GuiObject.ClipsDescendants is effective and true, any portion of descendant GUI elements outside the clipping GuiObject's rectangular bounds is made invisible. Raising a descendant's ZIndex changes draw order but does not provide an escape from that clipping boundary.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Descendant GUI rendering under a GuiObject with ClipsDescendants=true, subject to the documented rotation rollout behavior.",
+      "limitations": [
+        "The clipping shape is the GuiObject's rectangle; clipping by rounded UICorner geometry is not supported.",
+        "Rotation behavior depends on StarterGui.ClipsDescendantsSupportsRotation; see SRC-005.",
+        "The statement that ZIndex cannot escape clipping follows from the official definitions: ClipsDescendants applies to any overflowing descendant portion, while ZIndex defines layer order. The docs do not present ZIndex as a clipping override."
+      ],
+      "sources": [
+        {
+          "title": "GuiObject API reference — ClipsDescendants",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject#ClipsDescendants",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that the property makes invisible any portion of descendant GUI elements that would otherwise render outside the rectangle's bounds."
+        },
+        {
+          "title": "Position and size UI objects — ZIndex",
+          "url": "https://create.roblox.com/docs/ui/position-and-size#zindex",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Limits ZIndex's documented role to layer order and overlap, not clipping control."
+        }
+      ]
+    },
+    {
+      "id": "SRC-005",
+      "claim": "Current clipping behavior for rotated descendants is conditional: when StarterGui.ClipsDescendantsSupportsRotation is enabled, rotated descendants can be clipped correctly; clipping by a rotated parent shape and clipping by rounded UICorner geometry remain unsupported. When the rollout is not enabled, a non-zero Rotation on the clipping GuiObject or any ancestor causes ClipsDescendants to be ignored.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "GuiObject.ClipsDescendants behavior in the current engine documentation as of 2026-07-19.",
+      "limitations": [
+        "StarterGui.ClipsDescendantsSupportsRotation is typed as RolloutState; the cited pages do not state its effective default for every published experience or client cohort.",
+        "Support for clipping a rotated descendant is distinct from using a rotated parent as the clipping shape."
+      ],
+      "sources": [
+        {
+          "title": "GuiObject API reference — ClipsDescendants rotation behavior",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject#ClipsDescendants",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents both the enabled-rollout behavior and the legacy behavior, and explicitly excludes clipping by rotated shapes and rounded corners."
+        },
+        {
+          "title": "StarterGui API reference — ClipsDescendantsSupportsRotation",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/StarterGui#ClipsDescendantsSupportsRotation",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that, when enabled, ClipsDescendants clips rotated descendants."
+        }
+      ]
+    },
+    {
+      "id": "SRC-006",
+      "claim": "A shadow implemented as an ordinary child GuiObject sometimes needs to be moved to a sibling or other non-descendant layer for two independent reasons: under default Sibling ZIndexBehavior a child always renders above its parent, so it cannot sit behind the parent's fill; and, if the shadow overflows a clipping parent, ClipsDescendants hides the overflow. A sibling shadow can be ordered behind the card and is not clipped by that card, although it can still be clipped by another shared ancestor.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "ImageLabel, Frame, or other GuiObject-based shadow implementations, especially legacy/custom shadows that extend beyond a card or panel.",
+      "limitations": [
+        "The engine documentation establishes the rendering and clipping causes; choosing a sibling is an architectural recommendation inferred from those falsifiable behaviors, not an official universal prescription.",
+        "A sibling only escapes the former parent's clipping boundary; any clipping ancestor that still contains both objects can clip it.",
+        "Under ZIndexBehavior.Global, a descendant with a lower ZIndex can render beneath its parent, removing the first reason for a sibling, but not the clipping reason.",
+        "A sibling shadow must track the target's position, size, visibility, rotation, and animation unless both are driven by a shared wrapper or binding."
+      ],
+      "sources": [
+        {
+          "title": "LayerCollector API reference — ZIndexBehavior",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/LayerCollector",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Establishes that Sibling mode forces children above parents, while Global mode can place a lower-ZIndex descendant underneath its parent."
+        },
+        {
+          "title": "GuiObject API reference — ClipsDescendants",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject#ClipsDescendants",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Establishes that overflowing descendant GUI portions are clipped, which explains why moving a custom shadow outside that descendant branch can be necessary."
+        }
+      ]
+    },
+    {
+      "id": "SRC-007",
+      "claim": "A sibling shadow pattern is not universally mandatory. Current Roblox provides UIShadow, a UIComponent parented directly to a UI instance that renders a drop shadow below that parent. Other conditional alternatives include using Global ZIndexBehavior with a lower-ZIndex child when clipping is not needed, disabling ClipsDescendants when overflow is acceptable, using an unclipped outer wrapper with a separately clipped content frame, or rendering the effect in a dedicated overlay ScreenGui ordered by DisplayOrder.",
+      "verdict": "contradicted",
+      "kind": "design-recommendation",
+      "scope": "Any proposed rule asserting that Roblox shadows must always be separate sibling GuiObjects.",
+      "limitations": [
+        "UIShadow does not support text-shaped shadows, inset shadows, Path2D, textures, or UIGradient; on TextLabel and TextButton it shadows the rectangular bounds rather than the glyphs.",
+        "The official UIShadow pages do not explicitly document how its blur/spread interacts with ClipsDescendants on the parent or ancestors; do not claim UIShadow universally escapes clipping without a reproduction or an explicit source.",
+        "An unclipped wrapper with a clipped inner content frame may still place a custom shadow as a sibling of the inner frame, but it demonstrates that the shadow need not be a sibling of the visible card GuiObject itself.",
+        "A separate ScreenGui is an architectural option, not official guidance that every shadow or overlay should use one; it adds synchronization and input/lifecycle considerations."
+      ],
+      "sources": [
+        {
+          "title": "UIShadow API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIShadow",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that UIShadow renders a drop shadow below its parent UI instance and supports blur, color, transparency, offset, spread, rotation inheritance, rounded-corner inheritance, and multiple-shadow ZIndex."
+        },
+        {
+          "title": "UI appearance modifiers — Shadow",
+          "url": "https://create.roblox.com/docs/ui/appearance-modifiers#shadow",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Officially documents adding UIShadow directly to a UI object as the platform's drop-shadow modifier and describes its configuration and text limitation."
+        },
+        {
+          "title": "LayerCollector API reference — ZIndexBehavior",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/LayerCollector",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Supports Global mode as an alternative for placing a lower-ZIndex descendant behind its parent."
+        },
+        {
+          "title": "ScreenGui API reference — DisplayOrder",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/ScreenGui",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Supports a separately ordered ScreenGui as a possible overlay layer because higher DisplayOrder containers draw above lower ones."
+        }
+      ]
+    },
+    {
+      "id": "SRC-008",
+      "claim": "For overlays that must cross unrelated UI branches, robust options are to place the overlay at an appropriate common ancestor as a sibling, switch the LayerCollector to Global and assign unambiguous ZIndex values, or use a separate ScreenGui with higher DisplayOrder. Merely assigning a very large ZIndex to a deeply nested object is not a universal cross-branch or cross-ScreenGui guarantee under Sibling behavior.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Modal backdrops, popovers, tooltips, menus, custom shadows, and other UI that must appear above or below content outside its immediate parent branch.",
+      "limitations": [
+        "The placement choice depends on desired clipping, input, lifecycle, and coordinate-space behavior; the engine sources establish ordering mechanisms but do not mandate one overlay architecture.",
+        "Within one Sibling-mode branch, children remain above their parent and ZIndex orders children of a single object; hierarchy must be considered rather than treating ZIndex as globally absolute.",
+        "Across ScreenGui containers, DisplayOrder is the controlling documented property; equal DisplayOrder tie behavior is not established by the cited source."
+      ],
+      "sources": [
+        {
+          "title": "LayerCollector API reference — ZIndexBehavior",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/LayerCollector",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Distinguishes local sibling ordering from global descendant sorting and explains the hierarchy consequences of each mode."
+        },
+        {
+          "title": "ScreenGui API reference — DisplayOrder",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/ScreenGui",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Establishes DisplayOrder as the ordering mechanism between ScreenGui containers."
+        },
+        {
+          "title": "GuiObject API reference — ClipsDescendants",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject#ClipsDescendants",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Establishes that an overlay remaining inside a clipping descendant branch can have its overflow hidden regardless of its intended layer order."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "The Context7 Roblox API result for ClipsDescendants reflected the older blanket rule that any non-zero Rotation on the object or an ancestor disables clipping. The live official GuiObject reference, last updated 2026-07-15, now documents StarterGui.ClipsDescendantsSupportsRotation: when enabled it permits clipping rotated descendants, while clipping by a rotated parent shape remains unsupported. The live official reference is treated as current.",
+    "Older shadow guidance that treats a sibling ImageLabel/Frame as mandatory conflicts with the current official UIShadow API. The sibling pattern remains conditionally useful for custom GuiObject shadows, especially under default Sibling ordering or clipping, but is no longer a universal requirement."
+  ],
+  "unresolved": [
+    "The official UIShadow documentation does not explicitly state whether UIShadow blur/spread outside its parent's rectangle is clipped by that parent's or an ancestor's ClipsDescendants. This interaction should remain unclaimed unless reproduced on the target engine version or documented by Roblox.",
+    "The effective default/rollout state of StarterGui.ClipsDescendantsSupportsRotation for every live client is not stated in the cited reference.",
+    "The precise tie-break semantics behind the phrase 'hierarchy order' for equal ZIndex values in Global mode, and equal DisplayOrder between ScreenGui containers, are not fully specified in the cited passages.",
+    "Firecrawl CLI and its npx fallback were unavailable in the workstation, so no Firecrawl result was used. Context7 was successfully resolved and queried first as required; current live Creator Hub official documentation was then read directly, and no community source was needed."
+  ]
+}

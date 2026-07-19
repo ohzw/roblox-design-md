@@ -1,0 +1,88 @@
+{
+  "candidates": [
+    {
+      "ruleId": "RUI-022",
+      "category": "responsive",
+      "candidateStatement": "Direct siblings controlled by UIListLayout or UIGridLayout must not rely on manual values for properties owned by that layout; use a nested wrapper or remove layout ownership for independent transforms.",
+      "provisionalKind": "engine-constraint",
+      "observedIn": [],
+      "absentIn": [],
+      "rawOccurrence": "external-only",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [],
+      "policyIds": [],
+      "externalClaimsNeeded": [
+        "Verify UIListLayout and UIGridLayout ownership of sibling Position, Rotation, and Size."
+      ],
+      "runtimeTestsNeeded": [
+        "Mutate owned properties on direct siblings and compare with a nested descendant wrapper."
+      ],
+      "ambiguities": [
+        "UIListLayout size ownership changes under flex, AutomaticSize, and constraints; UIGridLayout constraints can override CellSize."
+      ]
+    },
+    {
+      "ruleId": "RUI-023",
+      "category": "hierarchy",
+      "candidateStatement": "Localized text that can outgrow its bounds should be exercised with locale elongation and given an explicit expansion, wrapping, or truncation policy; TextScaled and AutomaticSize should not be combined by default on one TextLabel.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [],
+      "absentIn": [],
+      "rawOccurrence": "external-only",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [],
+      "policyIds": [],
+      "externalClaimsNeeded": [
+        "Verify Roblox Locale/Elongate guidance, AutomaticSize/TextScaled interaction, and fixed-label overflow behavior."
+      ],
+      "runtimeTestsNeeded": [
+        "Exercise target locales, elongation, wrapping height, truncation, TextFits, and TextBounds."
+      ],
+      "ambiguities": [
+        "Synthetic elongation does not validate shaping or every real locale; intentional truncation can be valid."
+      ]
+    },
+    {
+      "ruleId": "RUI-024",
+      "category": "layering",
+      "candidateStatement": "Effective ClipsDescendants creates a rectangular descendant-rendering boundary that ZIndex cannot escape and UICorner does not round; rotation behavior must account for the current rollout state.",
+      "provisionalKind": "engine-constraint",
+      "observedIn": [],
+      "absentIn": [],
+      "rawOccurrence": "external-only",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [],
+      "policyIds": [],
+      "externalClaimsNeeded": [
+        "Verify ClipsDescendants, ZIndex, UICorner, and rotated-descendant behavior."
+      ],
+      "runtimeTestsNeeded": [
+        "Render high-Z overflow, rounded parents, rotated descendants, and rotated clipping ancestors."
+      ],
+      "ambiguities": [
+        "Rotated descendant clipping and rotated parent clipping are different; rollout state may vary."
+      ]
+    },
+    {
+      "ruleId": "RUI-025",
+      "category": "motion",
+      "candidateStatement": "Supersedable stateful tweens should have deterministic ownership, terminal values, and callbacks; same-property automatic cancellation means explicit Cancel is conditional rather than universal.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [],
+      "absentIn": [],
+      "rawOccurrence": "external-only",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [],
+      "policyIds": [],
+      "externalClaimsNeeded": [
+        "Verify same-property replacement, different-property coexistence, Completed cancellation state, Cancel, and Pause semantics."
+      ],
+      "runtimeTestsNeeded": [
+        "Rapidly replace, cancel, pause, and replay transitions while asserting winning state and callback count."
+      ],
+      "ambiguities": [
+        "Roblox does not prescribe an ownership abstraction; decorative fire-and-forget tweens may not need one."
+      ]
+    }
+  ]
+}

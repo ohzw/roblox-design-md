@@ -1,0 +1,1336 @@
+{
+  "taste": "frosted-baseplate",
+  "filesInspected": [
+    "design-md/frosted-baseplate/DESIGN.roblox.md",
+    "e2e/frosted-baseplate/src/Theme.luau",
+    "e2e/frosted-baseplate/src/FrostedBaseplate.storybook.luau",
+    "e2e/frosted-baseplate/src/Components/Window.luau",
+    "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+    "e2e/frosted-baseplate/src/Components/SideButton.luau",
+    "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+    "e2e/frosted-baseplate/src/Components/Button.luau",
+    "e2e/frosted-baseplate/src/Components/CurrencyBar.luau",
+    "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+    "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+    "e2e/frosted-baseplate/src/Components/StudField.luau",
+    "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+    "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+    "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+    "e2e/frosted-baseplate/src/Stories/Settings.story.luau"
+  ],
+  "typography": {
+    "roles": [
+      {
+        "name": "display",
+        "family": "FredokaOne",
+        "sizePx": 44,
+        "weight": "Regular (400)",
+        "uppercase": false,
+        "strokePx": 3,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "31-34"
+          },
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "57-60"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Theme.luau",
+            "lines": "31-39"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Theme.luau",
+            "lines": "51-56"
+          }
+        ]
+      },
+      {
+        "name": "heading",
+        "family": "FredokaOne",
+        "sizePx": 34,
+        "weight": "Regular (400)",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "35-38"
+          },
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "300-301"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Theme.luau",
+            "lines": "31-39"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+            "lines": "221-237"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "family": "FredokaOne",
+        "sizePx": 26,
+        "weight": "Regular (400)",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "43-46"
+          },
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "302-303"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Theme.luau",
+            "lines": "31-39"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+            "lines": "90-108"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "family": "FredokaOne",
+        "sizePx": 24,
+        "weight": "Regular (400)",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "39-42"
+          },
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "303-304"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+            "lines": "109-123"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+            "lines": "80-97"
+          }
+        ]
+      },
+      {
+        "name": "caption",
+        "family": "FredokaOne",
+        "sizePx": 16,
+        "weight": "Regular (400)",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "47-50"
+          },
+          {
+            "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+            "lines": "304-305"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+            "lines": "125-139"
+          },
+          {
+            "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+            "lines": "109-124"
+          }
+        ]
+      }
+    ],
+    "minimumAuthoredPx": 16,
+    "minimumRenderedPx": null,
+    "adjacentRatios": [
+      {
+        "from": "display",
+        "to": "heading",
+        "ratio": 1.2941
+      },
+      {
+        "from": "heading",
+        "to": "label",
+        "ratio": 1.3077
+      },
+      {
+        "from": "label",
+        "to": "body",
+        "ratio": 1.0833
+      },
+      {
+        "from": "body",
+        "to": "caption",
+        "ratio": 1.5
+      }
+    ],
+    "rules": [
+      "All five authored roles use FredokaOne Regular; weight does not change between roles, so the authored hierarchy changes size and outline treatment instead.",
+      "The semantic order by authored size is display 44px, heading 34px, label 26px, body 24px, caption 16px.",
+      "Display text uses a 3px contextual frosty-blue #2C629B outline; heading, label, body, and caption use a 2px contextual near-black #26282B outline.",
+      "Authored casing is Title Case rather than all caps; short mode-name acronyms are the stated exception.",
+      "The authored contrast treatment is white #FFFFFF text over dark or colored fills plus a dark outline; display text on ice uses the frosty-blue outline. No source-measured contrast ratio is present.",
+      "Buttons, toggles, and some chrome use TextScaled with the role token as a maximum intended reference size; captions use fixed 16px. The implementation supplies only MaxTextSize constraints, not minimum constraints.",
+      "No line-height, letter-spacing, or minimum TextScaled size token is authored; those values are null/unavailable."
+    ],
+    "exceptions": [
+      "The label role is 26px while body is 24px, a small 1.0833 ratio; the source explicitly calls labels the row label's louder sibling.",
+      "Window titles are fixed at 34px in Window.luau even though the design prose says titles use TextScaled with a token-size bound.",
+      "The 22px notification/keybind badge in SideButton.luau uses TextScaled with neither UITextSizeConstraint nor UIStroke, so its rendered size can fall below the 16px authored caption minimum and it breaks the nominal every-text-has-a-stroke rule.",
+      "Decorative glyph labels in Window and SideButton are TextScaled without minimum constraints; they do not establish a measurable rendered-text minimum.",
+      "The 44px display role and its 3px frosty outline are not exercised by the inspected slab Window, HUD, Shop, Dialog, or Settings implementations because the celebration/ice window re-skin is explicitly not implemented."
+    ]
+  },
+  "hierarchy": [
+    {
+      "id": "DES-FROSTED-001",
+      "domain": "hierarchy",
+      "observed": "The source hierarchy is display 44px, heading 34px, action/label 26px, body 24px, and caption 16px, all one family and one weight. Adjacent size ratios are 1.2941, 1.3077, 1.0833, and 1.5 in that order.",
+      "designFunction": "[INFERENCE] Size changes carry most of the emphasis because family and weight remain constant; the larger 1.5 body-to-caption step isolates metadata more strongly than the 1.0833 label-to-body step separates actions from copy.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "primaryRole": "display",
+        "secondaryRole": "heading",
+        "tertiaryRoles": [
+          "label",
+          "body",
+          "caption"
+        ],
+        "sizesPx": {
+          "display": 44,
+          "heading": 34,
+          "label": 26,
+          "body": 24,
+          "caption": 16
+        },
+        "weightsUsed": 1,
+        "familyCount": 1
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "30-50"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "292-311"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "209-228"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-002",
+      "domain": "hierarchy",
+      "observed": "The source allocates one dominant green forward action per panel, keeps CTAs inline with their rows, and prohibits a footer action band. Floating title chrome precedes inset content, while the close cross remains separately salient at the opposite corner.",
+      "designFunction": "[INFERENCE] A single saturated green action avoids competition among primary actions, while inline placement preserves the row as the action's context.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "dominantGreenCtaPerPanel": 1,
+        "footerBands": 0,
+        "primaryFill": "#34CC33",
+        "closeFill": "#F8425A",
+        "titlePosition": "top-left-overlap",
+        "closePosition": "top-right-overlap"
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "269-274"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "399-409"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "414-419"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-003",
+      "domain": "hierarchy",
+      "observed": "The generated Dialog story orders a floating 34px Confirm title above a 64px inset body well, then one 240x68 green Confirm action below with a 24px vertical gap. Dismissal is available through the 70px corner cross and dim-overlay tap.",
+      "designFunction": "[INFERENCE] The saturated action and isolated lower position make confirmation the sole primary CTA, while the cross and backdrop tap remain secondary dismissal paths.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "primaryCtaCount": 1,
+        "dismissAffordanceCount": 2,
+        "panelPx": {
+          "width": 520,
+          "height": 300
+        },
+        "bodyWellHeightPx": 64,
+        "verticalGapPx": 24,
+        "confirmPx": {
+          "width": 240,
+          "height": 68,
+          "aspectRatio": 3.5294
+        }
+      },
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "1-13"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "47-69"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "71-103"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "113-123"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-004",
+      "domain": "hierarchy",
+      "observed": "Shop rows read left-to-right as 72px item art, name plus rarity in the center, then one or two 96px-wide purchase touch roots on the right. The legendary Crown changes its name and art-chip stroke to gold and is the only inspected row with both soft and hard price pills.",
+      "designFunction": "[INFERENCE] The row order moves from recognition to classification to transaction; the limited gold allocation creates a single exceptional item without changing row anatomy.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "rowHeightPx": 96,
+        "artSizePx": 72,
+        "artToRowHeightRatio": 0.75,
+        "singlePriceTouchWidthPx": 96,
+        "dualPriceWidthPx": 200,
+        "priceGapPx": 8,
+        "emphasizedRows": 1,
+        "shopRows": 6
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "469-473"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "43-54"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "68-85"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "94-163"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "38-46"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "74-84"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-005",
+      "domain": "hierarchy",
+      "observed": "The generated HUD story contains five main persistent elements—one currency bar, three launchers, and one Play button—rather than the source-observed roughly nine. It adds the bottom-center Play CTA even though the source HUD keeps bottom-center clear and does not define that action.",
+      "designFunction": "[INFERENCE] The story satisfies a standardized showcase slot rather than reproducing the taste's native gameplay hierarchy.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "implementedMainElements": 5,
+        "sourceApproximatePersistentElements": 9,
+        "implementedLaunchers": 3,
+        "sourceLauncherGridCapacity": 4,
+        "addedPrimaryCtaCount": 1,
+        "playPx": {
+          "width": 260,
+          "height": 80
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "455-462"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "1-30"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "88-130"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "132-140"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-006",
+      "domain": "color",
+      "observed": "The authored core palette has 12 semantic colors: primary #34CC33, secondary #1FA5DE, danger #F8425A, surface #545D61, surface-deep #45494C, surface-ice #D6F4FD, on-surface #FFFFFF, currency-soft #5FD9F7, currency-hard #83EB39, accent-rare #FEC81F, outline #26282B, and dim #0E1A2233. Counting authored gradient stops, stroke colors, state fills, progress fill, badge fill, and the black shadow yields 25 distinct source-authored hex values.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "coreSemanticColorCount": 12,
+        "distinctSourceAuthoredHexCountIncludingStopsAndShadow": 25,
+        "coreColors": {
+          "primary": "#34CC33",
+          "secondary": "#1FA5DE",
+          "danger": "#F8425A",
+          "surface": "#545D61",
+          "surfaceDeep": "#45494C",
+          "surfaceIce": "#D6F4FD",
+          "onSurface": "#FFFFFF",
+          "currencySoft": "#5FD9F7",
+          "currencyHard": "#83EB39",
+          "accentRare": "#FEC81F",
+          "outline": "#26282B",
+          "dim": "#0E1A2233"
+        },
+        "dimOpacity": 0.2
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "16-28"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "56-60"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "70-154"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "11-29"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "51-56"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "71-89"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-007",
+      "domain": "color",
+      "observed": "Color allocation is semantic: green is forward action and ON; cyan-blue is utility, tabs, and neutral choices; pink-red is close, OFF, locked, and expired; ice-cyan and lime are reserved for soft and hard money; gold is limited to one rare/featured emphasis; charcoal pairs with darker charcoal for slab and inset depth; white outlined text is the standard ink.",
+      "designFunction": "[INFERENCE] Restricting the two currency hues and rare gold preserves their recognition across HUD, shop, and reward contexts.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "forwardActionHueCount": 1,
+        "currencyRoleCount": 2,
+        "rareGoldElementsPerScreen": 1,
+        "surfacePair": {
+          "raised": "#545D61",
+          "inset": "#45494C"
+        },
+        "ink": "#FFFFFF",
+        "inkOutline": "#26282B"
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "264-290"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "252-263"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-008",
+      "domain": "color",
+      "observed": "Meaning does not rely on hue alone for the inspected toggle, purchase, launcher, and close controls: toggle color changes together with the On/Off word; purchase pills include an icon and amount; launcher hues retain icon and caption; the danger close action has a unique cross silhouette. The disabled primary state changes from green to gray and suppresses activation, but no separate authored disabled icon or opacity treatment exists.",
+      "designFunction": "[INFERENCE] Text, icon, silhouette, and behavior provide redundant state or purpose cues alongside hue, while the disabled state remains comparatively dependent on the fill change and interaction suppression.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "toggleRedundantChannels": [
+          "fill",
+          "state word"
+        ],
+        "purchaseRedundantChannels": [
+          "fill",
+          "icon",
+          "amount"
+        ],
+        "launcherRedundantChannels": [
+          "fill",
+          "icon",
+          "caption"
+        ],
+        "closeRedundantChannels": [
+          "fill",
+          "cross silhouette"
+        ],
+        "disabledFill": "#A2A2A2"
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "414-437"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "69-123"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "97-139"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "38-41"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "57-84"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-009",
+      "domain": "color",
+      "observed": "The implementation adds #2E6B8F only as a story-world backdrop, derives #FF9635 for the fourth launcher hue, and computes pressed fills by mixing four source colors 12% toward white. None is a source-observed semantic UI token.",
+      "designFunction": "[INFERENCE] These values make isolated stories legible and provide still-frame press feedback without expanding the source semantic palette.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "storyBackdrop": "#2E6B8F",
+        "derivedLauncherOrange": "#FF9635",
+        "pressedWhiteMix": 0.12,
+        "computedPressedFillCount": 4
+      },
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "103-113"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "123-137"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-010",
+      "domain": "shape-depth",
+      "observed": "The authored radius ladder is 8px, 14px, 20px, and full. Insets, progress tracks, and badges use 8px; buttons, launcher squares, currency bars, and cards use 14px; slabs and large arcade pills use 20px; only toggles and price controls use full pills.",
+      "designFunction": "[INFERENCE] The silhouette vocabulary distinguishes ordinary controls, containers, and switch/price interactions without introducing additional corner scales.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "radiiPx": {
+          "sm": 8,
+          "md": 14,
+          "lg": 20,
+          "full": null
+        },
+        "adjacentRadiusRatios": [
+          1.75,
+          1.4286
+        ],
+        "fullPillRoles": [
+          "toggle",
+          "price"
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "52-60"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "359-368"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "42-56"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-011",
+      "domain": "shape-depth",
+      "observed": "Depth uses molded-material cues: approximately 10% stud emboss on charcoal slabs, darker unstroked inset rows, selective 3px near-black strokes on arcade controls, 4px pale-blue strokes on ice cards, and a 6px downward black shadow at 25% opacity on the slab. The world, not the UI slab, is intended to blur.",
+      "designFunction": "[INFERENCE] Surface texture and value steps establish plastic depth, while selective strokes reserve stronger edge separation for controls and ice objects.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "studContrastApprox": 0.1,
+        "arcadeStrokePx": 3,
+        "iceStrokePx": 4,
+        "windowShadowOffsetPx": 6,
+        "windowShadowOpacity": 0.25,
+        "rowOuterStrokePx": 0,
+        "slabOuterStrokePx": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "336-357"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "127-140"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "51-56"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "79-89"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-012",
+      "domain": "shape-depth",
+      "observed": "The material metaphor is explicitly molded plastic and ice rather than glass or paper. Utility windows are studded charcoal slabs; celebration windows retain the same anatomy but substitute pale ice, snow caps, icicles, and pale-blue card chrome.",
+      "designFunction": "[INFERENCE] A shared anatomy allows utility and celebration surfaces to change material without changing interaction grammar.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "materialCount": 2,
+        "materials": [
+          "molded plastic",
+          "ice"
+        ],
+        "utilitySurface": "#545D61",
+        "celebrationSurface": "#D6F4FD"
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "236-263"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "399-412"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-013",
+      "domain": "shape-depth",
+      "observed": "Silhouettes are consistent: windows are landscape rounded slabs, titles are floating sticker tabs, the close target is a free four-armed cross with no circle, and only ice banners use deliberately irregular snow-cap and icicle edges. The 70px implemented cross uses two bars whose thickness is 32% of size, or 22.4px at the default size, each rounded by the 8px token and outlined 3px.",
+      "designFunction": "[INFERENCE] The free cross and overlapping chrome make window controls recognizable independently of a conventional header bar.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "closeSizePx": 70,
+        "armThicknessRatio": 0.32,
+        "armThicknessPx": 22.4,
+        "barCornerRadiusPx": 8,
+        "barStrokePx": 3,
+        "barRotationsDeg": [
+          45,
+          -45
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "370-374"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "414-416"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "30-54"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "69-106"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-014",
+      "domain": "shape-depth",
+      "observed": "The source specifies a tiled stud texture at approximately 10% contrast but does not specify stud geometry. The implementation adds 10px circular studs on 34px grid cells, 24px inter-stud gaps, 55% transparency, and a fixed pool of 400 generated studs.",
+      "designFunction": "[INFERENCE] The procedural geometry supplies a repeatable emboss without a texture asset; the exact diameter, spacing, transparency, and count are implementation choices rather than observed design measurements.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "studDiameterPx": 10,
+        "cellSizePx": 34,
+        "gapPx": 24,
+        "studTransparency": 0.55,
+        "studCount": 400,
+        "diameterToCellRatio": 0.2941
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "341-342"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "115-122"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/StudField.luau",
+          "lines": "1-21"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/StudField.luau",
+          "lines": "22-53"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-015",
+      "domain": "spacing-density",
+      "observed": "The authored spacing ladder is 4, 8, 12, 24, and 48px. Adjacent ratios are 2.0, 1.5, 2.0, and 2.0. Source allocation is 12px for grid siblings, 24px between window rows, 48px on all four window content edges, and 4–8px for icon/label or pill-internal gaps.",
+      "designFunction": "[INFERENCE] The 48px apron exposes the studded material around content while the 12px and 24px steps separate siblings and row groups.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "ladderPx": [
+          4,
+          8,
+          12,
+          24,
+          48
+        ],
+        "adjacentRatios": [
+          2,
+          1.5,
+          2,
+          2
+        ],
+        "gridGapPx": 12,
+        "rowGapPx": 24,
+        "windowPaddingPx": 48
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "52-54"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "314-335"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "166-177"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-016",
+      "domain": "spacing-density",
+      "observed": "Implemented density differs by context: Settings uses 64px rows with 24px gaps; Shop uses 96px rows with 12px gaps, 72px art, and 12px horizontal padding; Dialog uses a 64px body well and 24px gap; HUD uses 100px square launcher cells with 12px gaps beneath a 52px currency bar.",
+      "designFunction": "[INFERENCE] Utility settings prioritize fewer larger gaps, while the six-row catalog tightens inter-row spacing and uses scrolling to fit more information.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "settingsRowHeightPx": 64,
+        "settingsRowGapPx": 24,
+        "shopRowHeightPx": 96,
+        "shopRowGapPx": 12,
+        "shopHorizontalPaddingPx": 12,
+        "shopArtPx": 72,
+        "dialogWellHeightPx": 64,
+        "dialogGapPx": 24,
+        "hudLauncherPx": 100,
+        "hudLauncherGapPx": 12,
+        "currencyBarHeightPx": 52
+      },
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "23-42"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "76-99"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "43-66"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "66-84"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "60-76"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "77-104"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "92-101"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-017",
+      "domain": "spacing-density",
+      "observed": "The authored minimum tap target is 44px. Visible toggle and buy pills remain 40px tall inside 44px transparent TextButton roots; the close target is 70px and launcher targets are 100px. Thus the implementation explicitly separates visual and touch size for the two small pill types.",
+      "designFunction": "[INFERENCE] The invisible 4px height expansion preserves the authored 40px pill silhouette while meeting the separate interaction-target floor.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "minimumTouchPx": 44,
+        "toggleVisibleHeightPx": 40,
+        "toggleTouchHeightPx": 44,
+        "buyVisibleHeightPx": 40,
+        "buyTouchHeightPx": 44,
+        "touchToVisibleRatio": 1.1,
+        "closeTouchPx": 70,
+        "launcherTouchPx": 100
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "329-335"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "1-10"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "69-101"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "63-98"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "92-101"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-018",
+      "domain": "spacing-density",
+      "observed": "The primary button token has aspect ratio 2.8 and defaults to 220x78.57px, but explicit story sizes bypass its aspect constraint: HUD Play is 260x80px, ratio 3.25, and Dialog Confirm is 240x68px, ratio 3.5294. These are counterexamples to the nominal primary-button silhouette.",
+      "designFunction": "[INFERENCE] Story-specific widths increase label presence, but they create a second and third primary-button proportion beside the authored 2.8 ratio.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "tokenAspectRatio": 2.8,
+        "defaultPx": {
+          "width": 220,
+          "height": 78.5714
+        },
+        "hudAspectRatio": 3.25,
+        "dialogAspectRatio": 3.5294,
+        "hudDeviationPercent": 16.0714,
+        "dialogDeviationPercent": 26.0504
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "71-77"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "57-89"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "135-140"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "98-103"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-019",
+      "domain": "composition",
+      "observed": "The source-observed desktop HUD reserves top-center for an ice status banner and round pill, top-right for a timed offer, and the left rail for currency plus a 2x2 launcher grid. A settings/emote cluster sits bottom-left; bottom-center and bottom-right remain empty for gameplay; the total is approximately nine persistent elements.",
+      "designFunction": "[INFERENCE] Controls stay at the perimeter so the center and lower-right gameplay view remain unobstructed.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "persistentElementsApprox": 9,
+        "launcherGrid": {
+          "columns": 2,
+          "rows": 2
+        },
+        "reservedEmptyZones": [
+          "bottom-center",
+          "bottom-right"
+        ],
+        "occupiedZones": [
+          "top-center",
+          "top-right",
+          "left-rail",
+          "bottom-left"
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "455-462"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "316-317"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "329-335"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-020",
+      "domain": "composition",
+      "observed": "Window anatomy is world, faint dim, shadowed slab, inset content, then floating title and close chrome. There is no integrated header bar or footer. The implementation uses a default 42% by 50% scale panel capped at 600x600px, 48px content padding, a 56px title tab offset 45% above the slab, a 44px circular badge, and the 70px cross offset beyond the top-right corner.",
+      "designFunction": "[INFERENCE] Floating chrome preserves the toy-sticker composition while the large internal apron makes the slab texture remain visible around content.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "defaultPanelScale": {
+          "width": 0.42,
+          "height": 0.5
+        },
+        "maxPanelPx": {
+          "width": 600,
+          "height": 600
+        },
+        "contentPaddingPx": 48,
+        "titleTabHeightPx": 56,
+        "titleTabTopOverlapPx": 25.2,
+        "titleBadgePx": 44,
+        "titleBadgeGapPx": 8,
+        "closePx": 70,
+        "layerZ": {
+          "dim": 10,
+          "panelGroup": 11,
+          "titleAndClose": 20
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "399-413"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "107-139"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "143-177"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "184-205"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "221-245"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-021",
+      "domain": "composition",
+      "observed": "The generated Shop uses a top-anchored slab at 50% viewport width with a 600x600px cap, 40px top-inset margin, and 24px bottom margin. Six 96px rows plus five 12px gaps create a 636px canvas, so the content is a single-column scrolling list with a 6px scrollbar. The source Shop text mentions a currency pill in a header row, but the implementation omits that pill and uses the generic floating title/cross anatomy.",
+      "designFunction": "[INFERENCE] Scrolling preserves the source's one-column row grammar at small heights, while the omitted currency/header-row treatment resolves an internal source tension in favor of the global no-header-bar rule.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "windowWidthScale": 0.5,
+        "windowMaxPx": {
+          "width": 600,
+          "height": 600
+        },
+        "topMarginPx": 40,
+        "bottomMarginPx": 24,
+        "rowCount": 6,
+        "rowHeightPx": 96,
+        "rowGapPx": 12,
+        "canvasHeightPx": 636,
+        "scrollbarPx": 6,
+        "internalCurrencyBarCount": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "399-413"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "469-473"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "6-26"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "65-84"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "90-119"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-022",
+      "domain": "composition",
+      "observed": "The generated Dialog reuses Window at 520x300px, top-anchored 68px from the root to keep the floating cross on-screen. It has one full-width inset well and one centered action, and both the corner cross and full-screen dim layer request dismissal.",
+      "designFunction": "[INFERENCE] Reusing the same floating chrome and inset-content anatomy keeps modal focus within the taste instead of inventing a bespoke dialog shell.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "panelPx": {
+          "width": 520,
+          "height": 300
+        },
+        "panelTopPx": 68,
+        "crossClearanceAbovePanelPxApprox": 59.5,
+        "crossMarginPxApprox": 8.5,
+        "bodyRows": 1,
+        "primaryActions": 1,
+        "dismissPaths": 2
+      },
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "1-13"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "35-58"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "60-103"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "73-103"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "113-123"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-023",
+      "domain": "composition",
+      "observed": "Source modal focus uses a strong camera BlurEffect plus #0E1A22 at 20% opacity so the world remains visible. Window implements the clickable 20%-opacity tint but explicitly delegates camera blur to the caller; the inspected HUD, Shop, Dialog, and Settings stories render only the derived #2E6B8F stand-in backdrop and do not instantiate a BlurEffect. This is a counterexample to the nominal world-visibility strategy.",
+      "designFunction": "[INFERENCE] The faint tint alone preserves world color but does not reproduce the source's stated blur-based separation.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "dimColor": "#0E1A22",
+        "dimOpacity": 0.2,
+        "dimTransparency": 0.8,
+        "implementedBlurEffectCountInInspectedStories": 0,
+        "storyBackdrop": "#2E6B8F"
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "288-290"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "350-352"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "25-29"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "123-127"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "113-123"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "70-80"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "86-88"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "47-58"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "72-78"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-024",
+      "domain": "states-motion",
+      "observed": "Source-observed state differentiation is limited to claimed/disabled gray and toggle ON/OFF. The toggle changes both fill and word: mint #75FE99 plus On versus red #FA5055 plus Off. Claimed/disabled primary buttons use #A2A2A2 and keep a label. Hover, tooltip, notification-badge, and other pressed/disabled states were not observed.",
+      "designFunction": null,
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "observedStateFamilies": [
+          "toggle on/off",
+          "claimed/disabled"
+        ],
+        "toggleOnFill": "#75FE99",
+        "toggleOffFill": "#FA5055",
+        "disabledFill": "#A2A2A2",
+        "hoverDefined": false,
+        "focusDefined": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "118-126"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "417-437"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "449-451"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "218-231"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-025",
+      "domain": "states-motion",
+      "observed": "No motion was observed from source video. The authored motion block is explicitly a low-confidence cartoon-chunky generator preset: entrance 0.8 to 1.0 over 0.25s Back-Out, exit to 0.9 plus fade over 0.15s Quad-In, press to approximately 0.93 over 0.08s, and reward Elastic-Out over 0.4s. Settle transitions use Quad-Out; reduced motion is specified to replace pop and bounce with settle while keeping blur.",
+      "designFunction": "[INFERENCE] Entrance overshoot and short squash feedback match the stated chunky register, while faster exits reduce waiting.",
+      "confidence": "low",
+      "origin": "generator-default",
+      "metrics": {
+        "sourceVideoObserved": false,
+        "durationsSec": {
+          "instant": 0.08,
+          "fast": 0.15,
+          "normal": 0.25,
+          "slow": 0.4
+        },
+        "entranceScale": {
+          "from": 0.8,
+          "to": 1
+        },
+        "exitScale": 0.9,
+        "pressedScale": 0.93,
+        "entranceEasing": "Back-Out",
+        "exitEasing": "Quad-In",
+        "settleEasing": "Quad-Out",
+        "rewardEasing": "Elastic-Out"
+      },
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "62-68"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "218-231"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "376-395"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "59-68"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-026",
+      "domain": "states-motion",
+      "observed": "The implementation generates pressed states for Button, BuyPill, SideButton, and CloseCross by combining 0.93 scale with a 12% white brightness lift, then restoring over 0.15s. TogglePill squashes but does not apply the brightness lift; its On/Off fill transition tweens over 0.15s Quad-Out. These brightness changes and exact transition mechanics are implementation additions, not captured states.",
+      "designFunction": "[INFERENCE] Scale plus brightness supplies two simultaneous press channels for otherwise flat fills; TogglePill reserves its color channel for state value.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "pressedScale": 0.93,
+        "pressInSec": 0.08,
+        "restoreSec": 0.15,
+        "pressedWhiteMix": 0.12,
+        "brightnessLiftComponents": [
+          "Button",
+          "BuyPill",
+          "SideButton",
+          "CloseCross"
+        ],
+        "squashOnlyComponents": [
+          "TogglePill"
+        ],
+        "toggleFlipSec": 0.15
+      },
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "103-114"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "19-30"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "68-82"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "23-37"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "77-91"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "21-33"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "65-79"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "17-27"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "81-95"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "24-38"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "57-67"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "81-95"
+        }
+      ]
+    },
+    {
+      "id": "DES-FROSTED-027",
+      "domain": "states-motion",
+      "observed": "Button disables activation and press feedback when disabled, but the other inspected interactive components expose no disabled prop. All set AutoButtonColor false and define press/release/MouseLeave behavior without a distinct hover or focus treatment. No inspected code implements the authored reduced-motion branch, and no focus-ring token exists.",
+      "designFunction": "[INFERENCE] The implemented state register prioritizes pointer press feedback; keyboard/controller focus, hover, cross-component disabled behavior, and motion preference remain unspecified or absent.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "buttonDisabledImplemented": true,
+        "buyPillDisabledImplemented": false,
+        "sideButtonDisabledImplemented": false,
+        "toggleDisabledImplemented": false,
+        "closeDisabledImplemented": false,
+        "distinctHoverVisualImplemented": false,
+        "distinctFocusVisualImplemented": false,
+        "reducedMotionBranchImplemented": false
+      },
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "38-41"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "57-84"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "68-92"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "54-80"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "72-96"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "69-96"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "394-395"
+        }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "What is the actual minimum rendered text size at each supported viewport? TextScaled roles have maximum constraints but no minimum constraints, and the SideButton badge has no UITextSizeConstraint at all.",
+    "What line heights and letter spacing should each role use? Neither the design source nor Theme defines them.",
+    "What are the measured contrast ratios after text-stroke compositing over slab, colored pills, ice, and the blurred world? The source defines colors but provides no contrast measurements.",
+    "What are the intended hover, keyboard/controller focus, loading, error, and cross-component disabled treatments? Hover and most state variants were not source-observed, and the inspected implementation has no distinct hover/focus visuals.",
+    "Should the reduced-motion source rule be implemented in Window and reward components? The source specifies it, but the inspected implementation has no preference branch.",
+    "How should the celebration ice-window variant realize display typography, snow-cap/icicle silhouettes, and 4px ice chrome? Window.luau explicitly leaves that source-defined variant unimplemented.",
+    "Should Shop follow the screen-pattern sentence that places currency, title, and close in a header row, or the stronger global rule prohibiting integrated header bars? The generated Shop resolves the conflict by omitting the internal currency pill and using floating chrome.",
+    "Should the actual camera BlurEffect be owned by each story/screen or a scene-level window manager? Window delegates blur to callers, but none of the inspected stories instantiates it.",
+    "Is the standard-showcase HUD's bottom-center Play action acceptable for taste-faithful use? It conflicts with the source-observed empty bottom-center gameplay zone and reduces the roughly nine-element native HUD to five main elements.",
+    "What should the rendered text and visual treatment be for disabled buttons: an unchanged action label or an explicit state word such as Claimed? The source says the gray state keeps its label, while the implementation merely preserves whatever caller text is supplied."
+  ]
+}

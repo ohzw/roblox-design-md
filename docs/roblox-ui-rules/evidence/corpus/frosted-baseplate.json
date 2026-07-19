@@ -1,0 +1,1310 @@
+{
+  "taste": "frosted-baseplate",
+  "filesInspected": [
+    "design-md/frosted-baseplate/DESIGN.roblox.md",
+    "e2e/frosted-baseplate/src/Theme.luau",
+    "e2e/frosted-baseplate/src/FrostedBaseplate.storybook.luau",
+    "e2e/frosted-baseplate/src/Components/Window.luau",
+    "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+    "e2e/frosted-baseplate/src/Components/SideButton.luau",
+    "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+    "e2e/frosted-baseplate/src/Components/Button.luau",
+    "e2e/frosted-baseplate/src/Components/CurrencyBar.luau",
+    "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+    "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+    "e2e/frosted-baseplate/src/Components/StudField.luau",
+    "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+    "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+    "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+    "e2e/frosted-baseplate/src/Stories/Dialog.story.luau"
+  ],
+  "screens": [
+    "HUD",
+    "Settings",
+    "Shop",
+    "Dialog / Confirm"
+  ],
+  "components": [
+    "Window",
+    "StudField",
+    "CloseCross",
+    "Button",
+    "TogglePill",
+    "CurrencyBar",
+    "SideButton",
+    "BuyPill",
+    "ItemRow"
+  ],
+  "observations": [
+    {
+      "id": "OBS-FROSTED-BASEPLATE-001",
+      "category": "structure",
+      "subject": "Storybook registration",
+      "observed": "The UI-Labs storybook is named Frosted Baseplate and registers the Stories directory as its only story root; that directory contains HUD, Settings, Shop, and Dialog stories.",
+      "inferredPurpose": "Provide four visual showcase surfaces for the implementation.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/FrostedBaseplate.storybook.luau",
+          "lines": "1-5",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "58-64",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "60-67",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "47-53",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "28-34",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-002",
+      "category": "structure",
+      "subject": "Window anatomy",
+      "observed": "Window renders a full-screen transparent root containing an optional dim TextButton and a separate PanelGroup. PanelGroup contains a shadow, clipped charcoal panel, padded content, floating automatic-width title tab, and floating CloseCross; there is no integrated header or footer child.",
+      "inferredPurpose": "Preserve the source document's floating-chrome slab anatomy while keeping content inside the slab.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "399-414",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "107-139",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "143-178",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "184-244",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-003",
+      "category": "structure",
+      "subject": "Settings screen",
+      "observed": "Settings composes one 560 by 320 Window containing exactly two 64px full-width surfaceDeep rows, Background Music and Sound Effects, each with a left-aligned body label and right-anchored TogglePill. There are no tabs or footer controls.",
+      "inferredPurpose": "Implement the source's two-to-three-row settings pattern in its minimal observed form.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "467-468",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "22-54",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "76-98",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-004",
+      "category": "structure",
+      "subject": "Shop catalog content",
+      "observed": "Shop defines six rows in fixed order: Acorn 25/common, Feather 40/common, Crystal 120/rare, Lantern 150/rare, Compass 600/epic, and Crown 2500/legendary with a hard-currency price of 99. Each table entry supplies an image asset from Theme.assets.",
+      "inferredPurpose": "Satisfy the story's stated standard showcase catalog set rather than a count specified by the taste source.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "1-7",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "38-45",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "74-84",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-005",
+      "category": "structure",
+      "subject": "Dialog screen",
+      "observed": "Dialog does not introduce a bespoke dialog component. It reuses Window at 520 by 300 with title Confirm, a single 64px surfaceDeep text well containing the configurable purchase question, and one 240 by 68 primary Confirm button.",
+      "inferredPurpose": "Reuse the taste's established window grammar at a smaller size for confirmation.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "1-14",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "31-58",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "60-103",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-006",
+      "category": "structure",
+      "subject": "HUD composition",
+      "observed": "HUD places a formatted soft-currency bar above a nominal 2 by 2 grid containing only three launchers—Shop, Items, and Settings—and adds a 260 by 80 Play button at bottom center. The Items launcher receives a configurable badge defaulting to 3.",
+      "inferredPurpose": "Adapt the source's left rail to the story's stated standard showcase slots; the fourth grid cell remains empty.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "1-32",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "60-63",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "88-130",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "132-140",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-007",
+      "category": "structure",
+      "subject": "ItemRow layout",
+      "observed": "ItemRow is a 96px-high surfaceDeep row with horizontal UIListLayout. It orders a 72px ice-gradient art chip first, a flexible name-and-rarity column second, and a right-aligned 44px price area third; the row itself has no UIStroke.",
+      "inferredPurpose": "Realize the source's shop hierarchy of art left, variant information center, and prices right using inset rows.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "469-472",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "52-94",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "98-159",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-008",
+      "category": "responsive",
+      "subject": "Window sizing strategy",
+      "observed": "Window defaults to 42% viewport width by 50% viewport height at center-ish position and applies a UISizeConstraint with default MaxSize 600 by 600 to the complete PanelGroup, including its floating chrome.",
+      "inferredPurpose": "Keep the slab scale-first on ordinary viewports and cap its desktop dimensions while shrinking title and close chrome in lockstep.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "327-331",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "125-139",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-009",
+      "category": "responsive",
+      "subject": "HUD top inset handling",
+      "observed": "HUD queries GuiService:GetGuiInset().Y at render time and positions its 230 by 280 left rail at x=24 and y=24 plus that inset. It does not instantiate a ScreenGui or set ScreenInsets in the story.",
+      "inferredPurpose": "Compensate for a full-bleed story harness whose mount root ignores Roblox's top inset.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "329-334",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "65-80",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-010",
+      "category": "responsive",
+      "subject": "Shop viewport adaptation",
+      "observed": "Shop queries the top inset, top-anchors its window at topInset plus 40, gives it 50% viewport width and viewport height minus top offset and a 24px bottom margin, and caps it at 600 by 600.",
+      "inferredPurpose": "Keep the overhanging title and close cross clear of the top bar and retain a bottom margin on short landscape viewports.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "53-67",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "90-107",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-011",
+      "category": "responsive",
+      "subject": "Dialog position clamp",
+      "observed": "Dialog uses a fixed panel top of 68px and top-center anchoring rather than Window's centered default. Its source comment calculates this from the close cross overhang for a 667 by 375 phone-landscape case.",
+      "inferredPurpose": "Prevent the free-floating close cross from clipping above the viewport.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "35-48",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "52-58",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-012",
+      "category": "responsive",
+      "subject": "Mixed scale and offset sizing",
+      "observed": "Although the source prescribes scale-first sizing, the implementation mixes scale-sized windows with many fixed-offset controls and screens: Settings is 560 by 320, Dialog 520 by 300, side buttons default to 100px squares, and item rows are fixed at 96px height.",
+      "inferredPurpose": null,
+      "inferenceConfidence": "none",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "324-331",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "76-81",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "52-58",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "56-60",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "52-55",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-013",
+      "category": "hierarchy",
+      "subject": "Typography system",
+      "observed": "Theme uses FredokaOne Regular for display 44, heading 34, body 24, label 26, and caption 16. Window titles use heading type, settings labels and item names use body type, and item rarity and side-button captions use caption type; text is Title Case in the supplied stories.",
+      "inferredPurpose": "Create hierarchy through size rather than font-weight changes, matching the single-weight source system.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "292-312",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "31-39",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "221-238",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "109-140",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "110-124",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-014",
+      "category": "hierarchy",
+      "subject": "Text outlining",
+      "observed": "Visible text in the inspected components is white or accent-colored and generally receives the contextual 2px near-black textOutline stroke. Scaled button, toggle, and currency labels are capped by UITextSizeConstraint; caption labels use fixed TextSize.",
+      "inferredPurpose": "Keep labels legible over saturated and textured surfaces while preserving the source's size hierarchy.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "308-312",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "51-56",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "90-110",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "109-130",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CurrencyBar.luau",
+          "lines": "43-62",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "110-124",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-015",
+      "category": "hierarchy",
+      "subject": "Legendary item emphasis",
+      "observed": "ItemRow treats rarity equal to legendary as emphasized by changing both the item name and art-chip stroke to accentRare gold. Shop applies this branch only to Crown.",
+      "inferredPurpose": "Use the source's one-per-screen rare gold garnish as the catalog's limited-item emphasis.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "286-287",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "47-50",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "71-84",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "79-84",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-016",
+      "category": "interaction",
+      "subject": "Settings toggle state",
+      "observed": "Settings owns separate React state for Music and Sfx and passes each setter to TogglePill. Activated calls onToggle with the negated current value, changing label between On and Off and fill between mint and red.",
+      "inferredPurpose": "Provide directly manipulable binary settings without a separate switch knob.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "434-436",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "38-70",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "72-105",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "68-70",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "87-97",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-017",
+      "category": "interaction",
+      "subject": "Window dismissal contract",
+      "observed": "Window's dim layer and CloseCross both call requestClose. requestClose returns immediately when no onClose callback is supplied, otherwise latches, runs the exit animation, and invokes onClose after the scale tween completes.",
+      "inferredPurpose": "Make both backdrop tap and cross activation share one guarded close transition.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "73-104",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "116-124",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "241-245",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-018",
+      "category": "interaction",
+      "subject": "Story window dismissal",
+      "observed": "Settings, Shop, and Dialog instantiate Window without an onClose prop. Consequently, their visible close crosses and dim backdrops call requestClose but return without changing story state.",
+      "inferredPurpose": null,
+      "inferenceConfidence": "none",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "73-83",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "76-81",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "90-107",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "52-58",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-019",
+      "category": "interaction",
+      "subject": "Primary button disabled state",
+      "observed": "Button selects gray disabledFill instead of green when disabled, suppresses press squash/lift, and suppresses onActivated while keeping the same label subtree visible.",
+      "inferredPurpose": "Represent claimed or unavailable actions without removing their explanatory label.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "417-419",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "34-41",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "57-84",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "90-110",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-020",
+      "category": "interaction",
+      "subject": "Story CTA and launcher callbacks",
+      "observed": "The HUD's Play and three SideButton instances, Dialog's Confirm button, and Shop's BuyPill instances are not passed activation callbacks. Only Settings toggles have story-owned behavioral state.",
+      "inferredPurpose": "The stories appear intended primarily as visual showcases, with toggle state retained as the one interactive demonstration.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "106-140",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "99-103",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "143-168",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "68-70",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "87-97",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-021",
+      "category": "interaction",
+      "subject": "HUD notification badge",
+      "observed": "SideButton conditionally renders a 22 by 22 purple, stroked badge overlapping its top-right corner. HUD passes the value 3 to the Items launcher even though the design source explicitly says notification counters were not observed or defined.",
+      "inferredPurpose": "Meet the story's standard showcase badge requirement by reusing the source's keybind badge styling.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "445-450",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "126-148",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "114-124",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-022",
+      "category": "scrolling",
+      "subject": "Shop scrolling",
+      "observed": "Shop is the only inspected story with a ScrollingFrame. It computes a fixed vertical canvas height from six 96px rows plus five md gaps, uses a 6px white scrollbar at 0.3 transparency, and lays rows vertically with 12px padding.",
+      "inferredPurpose": "Keep all six fixed catalog rows reachable when the responsive window is shorter than the content.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "65-84",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "108-119",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-023",
+      "category": "layering",
+      "subject": "Window z-order",
+      "observed": "The dim overlay is ZIndex 10 and PanelGroup is 11. Within PanelGroup, shadow is 1, panel 2, title chrome 20-22, and CloseCross 20, implementing shadow below slab and floating chrome above it.",
+      "inferredPurpose": "Encode the source's dim-to-slab-to-content-to-floating-chrome layer stack without a CanvasGroup.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "354-357",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "116-150",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "157-169",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "184-244",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-024",
+      "category": "layering",
+      "subject": "Clipping boundaries",
+      "observed": "The charcoal Panel and StudField roots both set ClipsDescendants true. The title tab and close cross are siblings of Panel inside an unclipped plain Frame, so their negative top offsets are not clipped by the slab.",
+      "inferredPurpose": "Confine emboss and content to rounded slab bounds while allowing defining chrome to overhang those bounds.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "125-139",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "157-178",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "184-244",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/StudField.luau",
+          "lines": "37-50",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-025",
+      "category": "motion",
+      "subject": "Window entrance and exit",
+      "observed": "On mount, Window sets UIScale to 0.8 and tweens to 1 using the normal 0.25s Back-Out preset. On close, it tweens scale to 0.9 while fading the panel and shadow to full transparency using the fast 0.15s Quad-In preset, then invokes onClose.",
+      "inferredPurpose": "Implement the source's overshooting entrance and faster shrinking/fading exit.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "381-385",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "59-66",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "47-55",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "64-71",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "86-104",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-026",
+      "category": "motion",
+      "subject": "Press feedback",
+      "observed": "Button, SideButton, BuyPill, TogglePill, and CloseCross respond to MouseButton1Down by tweening UIScale to 0.93; all restore to 1 on MouseButton1Up or MouseLeave. Flat-fill controls other than TogglePill also brighten their fill while pressed.",
+      "inferredPurpose": "Turn the source's inferred pill squash preset into a consistent implementation-wide press response.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "386-388",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "23-31",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "67-79",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "65-75",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "77-87",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "81-89",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "81-91",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-027",
+      "category": "motion",
+      "subject": "Toggle value transition",
+      "observed": "After the first render, a TogglePill prop-value change tweens BackgroundColor3 to the new state color over the fast 0.15s Quad-Out FLIP tween rather than snapping.",
+      "inferredPurpose": "Give setting value changes a short settling transition while avoiding an initial mount tween.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "32-36",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "43-67",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-028",
+      "category": "input",
+      "subject": "Touch target sizing",
+      "observed": "TogglePill keeps its visible pill at the source token's 40px height but places it in an invisible TextButton at least 44px high. BuyPill uses the same at-least-44px invisible root strategy. SideButton defaults to 100px square and CloseCross to 70px square.",
+      "inferredPurpose": "Preserve the taste's visible pill proportions while meeting the source's minimum tap target.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "118-126",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "331-334",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "69-76",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "96-105",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "63-72",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "95-104",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "56-60",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "52-54",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-029",
+      "category": "input",
+      "subject": "Input event strategy",
+      "observed": "Interactive components combine mouse-specific down/up/leave events for visual press state with Activated for semantic action. No inspected component declares explicit keyboard, gamepad, touch-device, focus-navigation, or keybind listeners; the HUD badge is visual data only.",
+      "inferredPurpose": "Use Roblox Activated as the cross-modality action event while retaining mouse events for transient squash feedback.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "67-84",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "65-81",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "77-93",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/TogglePill.luau",
+          "lines": "81-94",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "81-97",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-030",
+      "category": "verification",
+      "subject": "Story controls",
+      "observed": "The stories expose only presentation controls: HUD Currency and Badge; Settings Title, Music, Sfx, and ShowDim; Shop Title; Dialog Body. No story defines a verification assertion or expected-state expression.",
+      "inferredPurpose": "Support manual visual and interaction inspection in UI-Labs rather than automated contract checking.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "58-64",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "60-67",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "47-53",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "28-34",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-031",
+      "category": "verification",
+      "subject": "Asset verification record",
+      "observed": "Theme comments state that asset picks were fetched through thumbnail URLs and read as pixels before recording, and label the asset table as in-engine arbitrated on 2026-07-13. These are provenance comments, not executable assertions in the inspected target.",
+      "inferredPurpose": "Document manual asset selection and pixel-review evidence alongside the IDs.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "141-154",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "155-220",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-032",
+      "category": "visual-style",
+      "subject": "Core color and shape tokens",
+      "observed": "Theme transcribes the source palette for green primary, cyan secondary, pink-red danger, charcoal surface, deeper charcoal rows, pale ice, white text, soft and hard currency hues, gold accent, and near-black outline. It also defines radii 8, 14, 20, and full plus 3px outline, 4px ice outline, and 2px contextual text outline.",
+      "inferredPurpose": "Centralize the two-material toy-slab palette and one rounded family used by all components.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "14-30",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "49-56",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "11-29",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "42-56",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-033",
+      "category": "visual-style",
+      "subject": "Stud emboss implementation",
+      "observed": "StudField procedurally creates 400 small circular Frames. Studs are 10px, laid out in 34px cells, use a color 10% toward white from the base surface, and have 0.55 background transparency. This differs from the source's specified tiled ImageLabel strategy while preserving its repeating, subtle emboss description.",
+      "inferredPurpose": "Avoid a texture image asset while retaining the source's visible stud rhythm.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "341-342",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "115-123",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/StudField.luau",
+          "lines": "16-34",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/StudField.luau",
+          "lines": "37-50",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-034",
+      "category": "visual-style",
+      "subject": "Slab depth treatment",
+      "observed": "Window renders a 20px-rounded charcoal slab with no outer UIStroke, a same-size black shadow offset downward by 6px at 0.75 transparency, and a full 48px padding on all content edges. Inset settings and shop rows use the darker surfaceDeep fill and no row stroke.",
+      "inferredPurpose": "Make depth read through emboss, inset fill, and a soft molded shadow rather than borders.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "341-352",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Theme.luau",
+          "lines": "78-80",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+          "lines": "143-178",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+          "lines": "22-32",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "52-67",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-035",
+      "category": "visual-style",
+      "subject": "Close cross silhouette",
+      "observed": "CloseCross is a transparent 70px TextButton whose visible mark consists of two danger-colored rounded bars rotated plus and minus 45 degrees, each with the 3px near-black outline. There is no circle or filled button container behind it.",
+      "inferredPurpose": "Make the cross silhouette itself the dismiss control, as required by the source.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "88-91",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "415-416",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "28-44",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "47-80",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CloseCross.luau",
+          "lines": "99-112",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-036",
+      "category": "visual-style",
+      "subject": "Currency bar",
+      "observed": "CurrencyBar is a non-interactive 180 by 52 rounded-md frame with a vertical pale-to-cyan gradient, right-aligned outlined amount, and a 64px pale-ice rotated square icon that overflows the left edge and carries a 4px ice outline.",
+      "inferredPurpose": "Keep money chrome visually separate from action cyan and reinforce the source's floating-edge motif.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "104-110",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "427-429",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CurrencyBar.luau",
+          "lines": "17-41",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/CurrencyBar.luau",
+          "lines": "43-81",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-037",
+      "category": "visual-style",
+      "subject": "Side launchers",
+      "observed": "SideButton defaults to a 100px rounded-md square with no outer stroke, a white image or glyph occupying the upper area, a fixed-size outlined caption along the bottom edge, and an optional overlapping purple badge. HUD colors Shop purple, Items green, and Settings cyan.",
+      "inferredPurpose": "Use saturated destination color and icon/caption pairing as the launcher hierarchy.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "430-433",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "56-86",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/SideButton.luau",
+          "lines": "86-148",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "106-129",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-038",
+      "category": "visual-style",
+      "subject": "Price pills",
+      "observed": "BuyPill provides soft ice-cyan and hard lime variants, each full-rounded with a procedural white diamond icon on the left and an outlined amount on the right. ItemRow always renders the soft pill and conditionally adds hard only when hardPrice exists; in the Shop story only Crown has the pair.",
+      "inferredPurpose": "Differentiate earned and premium prices while maintaining an icon-plus-amount pill grammar.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "92-103",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "424-426",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "34-39",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/BuyPill.luau",
+          "lines": "95-139",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/ItemRow.luau",
+          "lines": "143-168",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+          "lines": "38-44",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-FROSTED-BASEPLATE-039",
+      "category": "visual-style",
+      "subject": "Primary buttons",
+      "observed": "Button is a flat green rounded-md TextButton with a white outlined, TextScaled label capped at label size 26. Its default dimensions are derived from aspect ratio 2.8; HUD and Dialog override those dimensions to 260 by 80 and 240 by 68 respectively.",
+      "inferredPurpose": "Provide one dominant forward-action voice across screens.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/frosted-baseplate/DESIGN.roblox.md",
+          "lines": "71-79",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+          "lines": "57-110",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/HUD.story.luau",
+          "lines": "135-140",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+          "lines": "99-103",
+          "kind": "story"
+        }
+      ]
+    }
+  ],
+  "absences": [
+    {
+      "subject": "Camera blur",
+      "evidence": "The design requires a strong BlurEffect with the faint dim tint (design-md/frosted-baseplate/DESIGN.roblox.md:288-290,350-352,447-447), but Window explicitly delegates blur to its caller and renders only the tint (e2e/frosted-baseplate/src/Components/Window.luau:112-124); none of the four inspected story composition ranges creates a BlurEffect (HUD.story.luau:69-140; Settings.story.luau:68-99; Shop.story.luau:53-120; Dialog.story.luau:34-104)."
+    },
+    {
+      "subject": "Functional window closing in stories",
+      "evidence": "Window refuses to close without onClose (e2e/frosted-baseplate/src/Components/Window.luau:73-83), and Settings, Shop, and Dialog omit that prop (e2e/frosted-baseplate/src/Stories/Settings.story.luau:76-81; e2e/frosted-baseplate/src/Stories/Shop.story.luau:90-107; e2e/frosted-baseplate/src/Stories/Dialog.story.luau:52-58)."
+    },
+    {
+      "subject": "Celebration and ice-frame component family",
+      "evidence": "The source requires celebration windows to re-skin the same grammar with surfaceIce, snow cap, icicles, and ice card chrome (design-md/frosted-baseplate/DESIGN.roblox.md:409-412), while Window's own implementation comment states that re-skin is not implemented (e2e/frosted-baseplate/src/Components/Window.luau:13-18); the inspected Components directory contains no celebration-window module."
+    },
+    {
+      "subject": "Declared component coverage",
+      "evidence": "The source defines button-secondary, card-grid, progress-bar, badge-slot, and dim-overlay as named components (design-md/frosted-baseplate/DESIGN.roblox.md:80-87,138-152,445-447), but the inspected component set contains only Window, StudField, CloseCross, Button, TogglePill, CurrencyBar, SideButton, BuyPill, and ItemRow. Badge styling exists only inline in SideButton (e2e/frosted-baseplate/src/Components/SideButton.luau:126-148), and dim exists only inline in Window (e2e/frosted-baseplate/src/Components/Window.luau:116-124)."
+    },
+    {
+      "subject": "Source-native HUD chrome",
+      "evidence": "The source-native HUD includes a top-center ice status banner and round counter, top-right timed-offer chip, bottom-left settings/emote cluster, and about nine persistent elements (design-md/frosted-baseplate/DESIGN.roblox.md:455-463). The HUD story renders only the left currency/three-launcher rail and a bottom-center Play button (e2e/frosted-baseplate/src/Stories/HUD.story.luau:74-140)."
+    },
+    {
+      "subject": "Shop header currency pill",
+      "evidence": "The source's Shop pattern describes a header row with currency pill, title, and close control (design-md/frosted-baseplate/DESIGN.roblox.md:469-472). The Shop story supplies only Window's floating title and cross and starts its content with the scrolling item list (e2e/frosted-baseplate/src/Stories/Shop.story.luau:90-119); its introductory comment explicitly records the decision not to redraw currency inside the window (e2e/frosted-baseplate/src/Stories/Shop.story.luau:9-23)."
+    },
+    {
+      "subject": "Reduced-motion behavior",
+      "evidence": "The source directs reduced motion to replace pop/bounce with settle while retaining blur (design-md/frosted-baseplate/DESIGN.roblox.md:394-395), but Window always constructs and plays Back-Out ENTRANCE (e2e/frosted-baseplate/src/Components/Window.luau:47-55,64-71), and the inspected implementation has no reduced-motion branch."
+    },
+    {
+      "subject": "Safe-area ScreenGui and DisplayOrder bands",
+      "evidence": "The source specifies DeviceSafeInsets and ScreenGui DisplayOrder bands (design-md/frosted-baseplate/DESIGN.roblox.md:329-330,354-357). Stories return Frames, not ScreenGui roots (e2e/frosted-baseplate/src/Stories/HUD.story.luau:69-80; e2e/frosted-baseplate/src/Stories/Shop.story.luau:86-107), and Window uses local ZIndex values without DisplayOrder (e2e/frosted-baseplate/src/Components/Window.luau:107-150)."
+    },
+    {
+      "subject": "Keyboard, gamepad, and explicit touch adaptation",
+      "evidence": "The source warns that keybind badges cannot be the only affordance and calls for moving the bottom-left cluster on touch (design-md/frosted-baseplate/DESIGN.roblox.md:331-334,505-506). The implemented controls expose Activated plus mouse press events but no explicit key, focus-navigation, gamepad, TouchEnabled, or virtual-joystick logic (e2e/frosted-baseplate/src/Components/SideButton.luau:65-81; e2e/frosted-baseplate/src/Components/Button.luau:67-84), and the HUD omits the touch-sensitive cluster entirely (e2e/frosted-baseplate/src/Stories/HUD.story.luau:74-140)."
+    },
+    {
+      "subject": "Hover, tooltip, and source-observed notification-counter variants",
+      "evidence": "The design source explicitly says tooltip, notification counters, and hover variants were not observed or defined (design-md/frosted-baseplate/DESIGN.roblox.md:449-451). The implementation introduces one notification badge in HUD (e2e/frosted-baseplate/src/Stories/HUD.story.luau:114-124) but contains no tooltip or hover-entry behavior; MouseLeave is used only to restore press state (for example e2e/frosted-baseplate/src/Components/Button.luau:73-79)."
+    },
+    {
+      "subject": "Automated verification assertions",
+      "evidence": "No assertion or expected-state construct appears in the inspected target. The only verification surfaces are the registered UI-Labs stories (e2e/frosted-baseplate/src/FrostedBaseplate.storybook.luau:1-5) and provenance/verification comments in Theme (e2e/frosted-baseplate/src/Theme.luau:141-154)."
+    },
+    {
+      "subject": "Codes, quests, rewards, emote wheel, prize wheel, event, bundle, and index screens",
+      "evidence": "The source documents these screen patterns and extracted references (design-md/frosted-baseplate/DESIGN.roblox.md:173-205,464-478), but the registered target stories are limited to HUD, Settings, Shop, and Dialog (e2e/frosted-baseplate/src/FrostedBaseplate.storybook.luau:1-5 and the four files under e2e/frosted-baseplate/src/Stories)."
+    }
+  ],
+  "uncertainties": [
+    "The source states that motion values are a low-confidence cartoon-chunky preset because no video input existed (design-md/frosted-baseplate/DESIGN.roblox.md:218-231,376-380). The implementation hardcodes those values, but no runtime capture in the inspected target establishes their rendered feel.",
+    "The source simultaneously says the Shop has a header row with currency pill, title, and cross (design-md/frosted-baseplate/DESIGN.roblox.md:469-472) and says Window has no header band and floating chrome (design-md/frosted-baseplate/DESIGN.roblox.md:399-414). The implementation resolves this by omitting the window-internal currency pill (e2e/frosted-baseplate/src/Stories/Shop.story.luau:9-23); the source does not unambiguously settle that conflict.",
+    "The source specifically describes emboss as a tiled ImageLabel (design-md/frosted-baseplate/DESIGN.roblox.md:341-342), while the implementation uses 400 procedural Frames (e2e/frosted-baseplate/src/Components/StudField.luau:16-50). The target does not establish whether this substitution is source-required or generator-policy-driven.",
+    "The source prescribes ScreenGui.ScreenInsets = DeviceSafeInsets and GuiService:GetInsetArea() (design-md/frosted-baseplate/DESIGN.roblox.md:329-330), while HUD and Shop use GetGuiInset().Y inside story Frames (e2e/frosted-baseplate/src/Stories/HUD.story.luau:65-80; e2e/frosted-baseplate/src/Stories/Shop.story.luau:53-65). Without the out-of-scope mount harness, equivalence across devices cannot be determined.",
+    "Story comments attribute the exact catalog set, launcher count, notification badge, Play CTA, and Dialog content to standard-showcase requirements (e2e/frosted-baseplate/src/Stories/HUD.story.luau:1-32; e2e/frosted-baseplate/src/Stories/Shop.story.luau:1-7; e2e/frosted-baseplate/src/Stories/Dialog.story.luau:1-14). The external skill/policy files were outside this observer's allowed target, so required-by-skill origins rely on those in-target comments.",
+    "Activated can cover multiple Roblox input modalities, but no runtime device exercise or focus configuration is present in the inspected target; keyboard, gamepad, and touch operability beyond the presence of Activated and 44px hit roots cannot be confirmed.",
+    "Theme comments claim pixel verification and in-engine arbitration of image assets (e2e/frosted-baseplate/src/Theme.luau:141-220), but this read-only source inspection did not render the assets; their current moderation state, visual legibility, and FredokaOne availability remain unverified.",
+    "Window comments say a no-handler responsiveness bug was caught by a Studio verification pass (e2e/frosted-baseplate/src/Components/Window.luau:73-83), but no verification artifact or assertion for that pass exists inside the allowed target.",
+    "Shop uses a fixed CanvasSize computed from known row constants (e2e/frosted-baseplate/src/Stories/Shop.story.luau:65-72,108-119), not AutomaticCanvasSize; behavior after runtime font, content, or row-height changes is not established by the target."
+  ]
+}

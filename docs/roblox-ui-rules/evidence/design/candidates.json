@@ -1,0 +1,2298 @@
+{
+  "corpus": {
+    "tasteCount": 8,
+    "typographyRoles": 43
+  },
+  "distributions": [
+    {
+      "metric": "canonical authored typography role size (px)",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "display",
+          "value": 40
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "window-heading",
+          "value": 40
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "primary-cta",
+          "value": 36
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "section-eyebrow",
+          "value": 28
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "label",
+          "value": 24
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "body",
+          "value": 16
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "caption",
+          "value": 16
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "display",
+          "value": 44
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "heading",
+          "value": 34
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "label",
+          "value": 26
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "body",
+          "value": 24
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "caption",
+          "value": 16
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "display",
+          "value": 40
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "heading",
+          "value": 24
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "timer",
+          "value": 20
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "body",
+          "value": 18
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "label",
+          "value": 18
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "caption",
+          "value": 14
+        },
+        {
+          "taste": "loud-slab",
+          "role": "display",
+          "value": 52
+        },
+        {
+          "taste": "loud-slab",
+          "role": "heading",
+          "value": 36
+        },
+        {
+          "taste": "loud-slab",
+          "role": "label",
+          "value": 28
+        },
+        {
+          "taste": "loud-slab",
+          "role": "body",
+          "value": 26
+        },
+        {
+          "taste": "loud-slab",
+          "role": "caption",
+          "value": 18
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "display",
+          "value": 40
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "heading",
+          "value": 26
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "label",
+          "value": 22
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "body",
+          "value": 18
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "caption",
+          "value": 14
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "display",
+          "value": 40
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "heading",
+          "value": 30
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "label",
+          "value": 20
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "body",
+          "value": 18
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "caption",
+          "value": 16
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "display",
+          "value": 46
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "heading",
+          "value": 40
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "label",
+          "value": 28
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "body",
+          "value": 22
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "caption",
+          "value": 18
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "heading",
+          "value": 30
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "label",
+          "value": 26
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "utility",
+          "value": 24
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "body",
+          "value": 17
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "caption",
+          "value": 14
+        }
+      ],
+      "min": 14,
+      "median": 24,
+      "max": 52,
+      "notes": [
+        "These are canonical authored role tokens, not guaranteed rendered sizes.",
+        "Implementation overrides below the canonical scales include 14px tier/badge ceilings in candlelit-parlor, loud-slab, and planter-box-pop.",
+        "TextScaled roles commonly have only a maximum constraint, so this distribution cannot establish a rendered or safety minimum."
+      ]
+    },
+    {
+      "metric": "canonical authored minimum role size per taste (px)",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "canonical minimum",
+          "value": 16
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "canonical minimum",
+          "value": 16
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "canonical minimum",
+          "value": 14
+        },
+        {
+          "taste": "loud-slab",
+          "role": "canonical minimum",
+          "value": 18
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "canonical minimum",
+          "value": 14
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "canonical minimum",
+          "value": 16
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "canonical minimum",
+          "value": 18
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "canonical minimum",
+          "value": 14
+        }
+      ],
+      "min": 14,
+      "median": 16,
+      "max": 18,
+      "notes": [
+        "Corpus range only; it is not an accessibility or readability threshold.",
+        "Only indigo-quartermaster establishes a fixed 14px implementation token as a measurable rendered minimum among the inspected roles; the other tastes include unconstrained TextScaled text.",
+        "Candlelit, Loud, and Planter have smaller implementation-specific ceilings than their canonical minimum."
+      ]
+    },
+    {
+      "metric": "adjacent canonical role size ratio, larger divided by smaller",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "40:40",
+          "value": 1
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "40:36",
+          "value": 1.1111
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "36:28",
+          "value": 1.2857
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "28:24",
+          "value": 1.1667
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "24:16",
+          "value": 1.5
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "16:16",
+          "value": 1
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "44:34",
+          "value": 1.2941
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "34:26",
+          "value": 1.3077
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "26:24",
+          "value": 1.0833
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "24:16",
+          "value": 1.5
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "40:24",
+          "value": 1.6667
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "24:20",
+          "value": 1.2
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "20:18",
+          "value": 1.1111
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "18:18",
+          "value": 1
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "18:14",
+          "value": 1.2857
+        },
+        {
+          "taste": "loud-slab",
+          "role": "52:36",
+          "value": 1.4444
+        },
+        {
+          "taste": "loud-slab",
+          "role": "36:28",
+          "value": 1.2857
+        },
+        {
+          "taste": "loud-slab",
+          "role": "28:26",
+          "value": 1.0769
+        },
+        {
+          "taste": "loud-slab",
+          "role": "26:18",
+          "value": 1.4444
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "40:26",
+          "value": 1.5385
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "26:22",
+          "value": 1.1818
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "22:18",
+          "value": 1.2222
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "18:14",
+          "value": 1.2857
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "40:30",
+          "value": 1.3333
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "30:20",
+          "value": 1.5
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "20:18",
+          "value": 1.1111
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "18:16",
+          "value": 1.125
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "46:40",
+          "value": 1.15
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "40:28",
+          "value": 1.4286
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "28:22",
+          "value": 1.2727
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "22:18",
+          "value": 1.2222
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "30:26",
+          "value": 1.1538
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "26:24",
+          "value": 1.0833
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "24:17",
+          "value": 1.4118
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "17:14",
+          "value": 1.2143
+        }
+      ],
+      "min": 1,
+      "median": 1.2222,
+      "max": 1.6667,
+      "notes": [
+        "Ratios were recomputed from role sizes and do not use observer adjacentRatios.",
+        "Equal and near-equal sizes are deliberate in several tastes, so a ratio alone is not a complete hierarchy test.",
+        "Ordering is descending by numeric size; it does not claim that every adjacent numeric tier is semantically adjacent."
+      ]
+    },
+    {
+      "metric": "canonical full-scale ratio, largest role divided by smallest role",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "40:16",
+          "value": 2.5
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "44:16",
+          "value": 2.75
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "40:14",
+          "value": 2.8571
+        },
+        {
+          "taste": "loud-slab",
+          "role": "52:18",
+          "value": 2.8889
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "40:14",
+          "value": 2.8571
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "40:16",
+          "value": 2.5
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "46:18",
+          "value": 2.5556
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "30:14",
+          "value": 2.1429
+        }
+      ],
+      "min": 2.1429,
+      "median": 2.6528,
+      "max": 2.8889,
+      "notes": [
+        "Corpus range, not a required universal modular scale.",
+        "The narrow Honey scale is dense/utility-led; Loud and Obsidian sit near the broad end for different aesthetic reasons."
+      ]
+    },
+    {
+      "metric": "distinct canonical font-weight names per taste",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": null,
+          "value": 3
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": null,
+          "value": 1
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": null,
+          "value": 3
+        },
+        {
+          "taste": "loud-slab",
+          "role": null,
+          "value": 2
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": null,
+          "value": 1
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": null,
+          "value": 1
+        },
+        {
+          "taste": "studded-toybox",
+          "role": null,
+          "value": 1
+        },
+        {
+          "taste": "honey-ledger",
+          "role": null,
+          "value": 2
+        }
+      ],
+      "min": 1,
+      "median": 1.5,
+      "max": 3,
+      "notes": [
+        "Regular in a single-weight display family is counted as one concrete weight even when the face appears visually heavy.",
+        "Four tastes use one concrete weight across canonical roles; weight contrast is therefore not a universal hierarchy mechanism."
+      ]
+    },
+    {
+      "metric": "distinct canonical font families per taste",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": null,
+          "value": 3
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": null,
+          "value": 1
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": null,
+          "value": 2
+        },
+        {
+          "taste": "loud-slab",
+          "role": null,
+          "value": 2
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": null,
+          "value": 1
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": null,
+          "value": 1
+        },
+        {
+          "taste": "studded-toybox",
+          "role": null,
+          "value": 1
+        },
+        {
+          "taste": "honey-ledger",
+          "role": null,
+          "value": 2
+        }
+      ],
+      "min": 1,
+      "median": 1.5,
+      "max": 3,
+      "notes": [
+        "Additional families are role-bound: serif narrative versus condensed action in Candlelit, mono timer in Indigo, engine chrome in Loud, and utility/system text in Honey.",
+        "This is a corpus range, not a recommendation to maximize family count."
+      ]
+    },
+    {
+      "metric": "canonical roles forced uppercase fraction per taste",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": null,
+          "value": 0.7143
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": null,
+          "value": 0
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": null,
+          "value": 0
+        },
+        {
+          "taste": "loud-slab",
+          "role": null,
+          "value": 0.2
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": null,
+          "value": 0
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": null,
+          "value": 0.2
+        },
+        {
+          "taste": "studded-toybox",
+          "role": null,
+          "value": 0
+        },
+        {
+          "taste": "honey-ledger",
+          "role": null,
+          "value": 0
+        }
+      ],
+      "min": 0,
+      "median": 0,
+      "max": 0.7143,
+      "notes": [
+        "Role-token casing is distinct from content overrides: item names, rarity labels, launcher captions, LIMITED, PLAY, and generator-fixed CONFIRM introduce additional uppercase instances.",
+        "Candlelit is the uppercase-led cluster; most other tastes reserve uppercase for localized actions or metadata rather than all roles."
+      ]
+    },
+    {
+      "metric": "maximum canonical text-stroke thickness per taste (px)",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "contextual display rim",
+          "value": 1
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "display",
+          "value": 3
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "all canonical roles",
+          "value": 0
+        },
+        {
+          "taste": "loud-slab",
+          "role": "canonical roles",
+          "value": 3
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "canonical chrome roles",
+          "value": 0
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "display",
+          "value": 4
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "display",
+          "value": 3
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "contextual saturated text",
+          "value": 2
+        }
+      ],
+      "min": 0,
+      "median": 2.5,
+      "max": 4,
+      "notes": [
+        "Two clusters are visible: unstroked restrained chrome at 0px and contextual/chunky outlined text at 1-4px.",
+        "Honey and Candlelit are context-dependent rather than globally stroked; implementation exceptions also remove strokes from nominally outlined systems."
+      ]
+    },
+    {
+      "metric": "authored spacing token value (px)",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "xs",
+          "value": 4
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "sm",
+          "value": 8
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "md",
+          "value": 16
+        },
+        {
+          "taste": "candlelit-parlor",
+          "role": "lg",
+          "value": 28
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "xs",
+          "value": 4
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "sm",
+          "value": 8
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "md",
+          "value": 12
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "lg",
+          "value": 24
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "xl",
+          "value": 48
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "xs",
+          "value": 4
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "sm",
+          "value": 8
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "md",
+          "value": 12
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "lg",
+          "value": 20
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "xl",
+          "value": 32
+        },
+        {
+          "taste": "loud-slab",
+          "role": "xs",
+          "value": 4
+        },
+        {
+          "taste": "loud-slab",
+          "role": "sm",
+          "value": 8
+        },
+        {
+          "taste": "loud-slab",
+          "role": "md",
+          "value": 12
+        },
+        {
+          "taste": "loud-slab",
+          "role": "lg",
+          "value": 20
+        },
+        {
+          "taste": "loud-slab",
+          "role": "xl",
+          "value": 32
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "xs",
+          "value": 4
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "sm",
+          "value": 8
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "md",
+          "value": 12
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "lg",
+          "value": 20
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "xl",
+          "value": 32
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "xs",
+          "value": 4
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "sm",
+          "value": 8
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "md",
+          "value": 12
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "lg",
+          "value": 20
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "xl",
+          "value": 32
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "xs",
+          "value": 4
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "sm",
+          "value": 8
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "md",
+          "value": 12
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "lg",
+          "value": 20
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "xl",
+          "value": 32
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "xs",
+          "value": 4
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "sm",
+          "value": 8
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "md",
+          "value": 12
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "lg",
+          "value": 20
+        }
+      ],
+      "min": 4,
+      "median": 12,
+      "max": 48,
+      "notes": [
+        "The exact 4/8/12/20/32 ladder recurs in five tastes and is low-independence evidence likely shaped by the shared DESIGN schema or generator.",
+        "Candlelit, Frosted, and Honey provide negative evidence against treating that five-step ladder as universal."
+      ]
+    },
+    {
+      "metric": "representative immediate sibling or repeated-row gap (px)",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "default sibling gap",
+          "value": 16
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "grid/shop row gap",
+          "value": 12
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "default sibling gap",
+          "value": 12
+        },
+        {
+          "taste": "loud-slab",
+          "role": "grid gap",
+          "value": 12
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "grid gap",
+          "value": 12
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "row gap",
+          "value": 12
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "row/grid gap",
+          "value": 12
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "ledger row gap",
+          "value": 4
+        }
+      ],
+      "min": 4,
+      "median": 12,
+      "max": 16,
+      "notes": [
+        "Corpus clusters include dense edge-to-edge Honey at 4px, the common 12px repeated-unit cluster, and airier Candlelit at 16px.",
+        "These are context-specific gaps, not universal minimum spacing."
+      ]
+    },
+    {
+      "metric": "group separation divided by immediate sibling gap",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "28 section / 16 sibling",
+          "value": 1.75
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "24 row-group / 12 sibling",
+          "value": 2
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "20 grid-group / 12 sibling",
+          "value": 1.6667
+        },
+        {
+          "taste": "loud-slab",
+          "role": "20 group / 12 sibling",
+          "value": 1.6667
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "20 window-group / 12 sibling",
+          "value": 1.6667
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "20 group / 12 row",
+          "value": 1.6667
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "32 major-group / 12 sibling",
+          "value": 2.6667
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "8 padding / 4 ledger-row",
+          "value": 2
+        }
+      ],
+      "min": 1.6667,
+      "median": 1.7084,
+      "max": 2.6667,
+      "notes": [
+        "Corpus relational range: larger separation is consistently greater than local repeated-unit spacing.",
+        "The semantic meaning of the numerator differs by taste, so the range is a cluster rather than a universal numeric threshold."
+      ]
+    },
+    {
+      "metric": "representative window content padding (px)",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "window padding",
+          "value": 28
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "window padding",
+          "value": 48
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "hub horizontal padding",
+          "value": 32
+        },
+        {
+          "taste": "loud-slab",
+          "role": "window padding",
+          "value": 20
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "window horizontal/bottom padding",
+          "value": 20
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "window body padding",
+          "value": 32
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "standard window padding",
+          "value": 20
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "ledger content padding",
+          "value": 8
+        }
+      ],
+      "min": 8,
+      "median": 24,
+      "max": 48,
+      "notes": [
+        "Clear density clusters exist: Honey dense at 8px; Loud/Obsidian/Studded at 20px; Candlelit/Indigo/Planter at 28-32px; Frosted at 48px.",
+        "The median mixes unlike material and density intentions and should not become a token."
+      ]
+    },
+    {
+      "metric": "maximum finite authored radius per taste (px)",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "launcher radius",
+          "value": 20
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "large slab radius",
+          "value": 20
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "popup/card radius",
+          "value": 8
+        },
+        {
+          "taste": "loud-slab",
+          "role": "prompt radius",
+          "value": 10
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "Roll hero radius",
+          "value": 20
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "window radius",
+          "value": 14
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "hero radius",
+          "value": 14
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "beveled close radius",
+          "value": 10
+        }
+      ],
+      "min": 8,
+      "median": 14,
+      "max": 20,
+      "notes": [
+        "Full rounding is excluded because it is a shape class rather than a finite pixel radius.",
+        "Hard-edged Indigo/Loud/Honey and rounded display-led Frosted/Candlelit/Obsidian form distinct clusters."
+      ]
+    },
+    {
+      "metric": "maximum authored structural stroke thickness per taste (px)",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "tiny-tag/ambient edge",
+          "value": 3
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "ice chrome",
+          "value": 4
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "selection frame",
+          "value": 2
+        },
+        {
+          "taste": "loud-slab",
+          "role": "selected frame",
+          "value": 3
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "semantic stroke/brackets",
+          "value": 3
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "window/card/rim system",
+          "value": 2
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "window frame",
+          "value": 4
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "selection frame",
+          "value": 3
+        }
+      ],
+      "min": 2,
+      "median": 3,
+      "max": 4,
+      "notes": [
+        "Standard containment strokes are often thinner than the listed maximum; maxima are reserved for selection, windows, tags, or special material chrome.",
+        "No threshold here is official guidance."
+      ]
+    },
+    {
+      "metric": "distinct core palette RGB values per taste",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": null,
+          "value": 14
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": null,
+          "value": 12
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": null,
+          "value": 15
+        },
+        {
+          "taste": "loud-slab",
+          "role": null,
+          "value": 17
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": null,
+          "value": 13
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": null,
+          "value": 17
+        },
+        {
+          "taste": "studded-toybox",
+          "role": null,
+          "value": 10
+        },
+        {
+          "taste": "honey-ledger",
+          "role": null,
+          "value": 16
+        }
+      ],
+      "min": 10,
+      "median": 14.5,
+      "max": 17,
+      "notes": [
+        "Counts normalize duplicate core-role hex values and ignore alpha as a separate hue; component-local literals and gradients can raise totals substantially.",
+        "Palette size is not accent budget: multiple values often belong to one surface family, currency pair, or rarity system.",
+        "Obsidian's per-aura spectrum and Planter's six rarity hues are counterexamples to a universal small accent-count cap."
+      ]
+    },
+    {
+      "metric": "dominant forward primary actions in a representative screen or panel",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "HUD/window context",
+          "value": 1
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "panel context",
+          "value": 1
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "lobby/dialog context",
+          "value": 1
+        },
+        {
+          "taste": "loud-slab",
+          "role": "window commitment action",
+          "value": 1
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "HUD Roll context",
+          "value": 1
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "header/dialog region",
+          "value": 1
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "HUD/dialog context",
+          "value": 1
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "HUD/dialog affirmative context",
+          "value": 1
+        }
+      ],
+      "min": 1,
+      "median": 1,
+      "max": 1,
+      "notes": [
+        "This counts the dominant forward action, not every interactive or purchase control.",
+        "Repeated row-local buy controls are explicit counterexamples to a one-button-per-screen interpretation.",
+        "Obsidian and Honey dialogs expose a secondary Cancel/No action alongside one semantic primary."
+      ]
+    },
+    {
+      "metric": "source-authored separate modal backdrop opacity",
+      "samples": [
+        {
+          "taste": "frosted-baseplate",
+          "role": "dim tint",
+          "value": 0.2
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "indigo wash",
+          "value": 0.67
+        },
+        {
+          "taste": "loud-slab",
+          "role": "estimated black dim",
+          "value": 0.35
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "authored dark dim",
+          "value": 0.8
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "no separate backdrop",
+          "value": 0
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "no separate backdrop",
+          "value": 0
+        },
+        {
+          "taste": "honey-ledger",
+          "role": "no separate backdrop",
+          "value": 0
+        }
+      ],
+      "min": 0,
+      "median": 0.2,
+      "max": 0.8,
+      "notes": [
+        "Candlelit confirms source dimming but has no recoverable source opacity and is excluded.",
+        "Zero-opacity cases use direct-on-world or self-dimming panel strategies; they are not missing data.",
+        "Blur is orthogonal: Frosted, Loud, and Obsidian pair or intend blur with dim, while other tastes do not."
+      ]
+    },
+    {
+      "metric": "source-reported persistent HUD element count where comparable",
+      "samples": [
+        {
+          "taste": "frosted-baseplate",
+          "role": "approximate persistent elements",
+          "value": 9
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "approximate persistent elements",
+          "value": 6
+        },
+        {
+          "taste": "loud-slab",
+          "role": "reported floor",
+          "value": 10
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "approximate persistent elements",
+          "value": 10
+        }
+      ],
+      "min": 6,
+      "median": 9.5,
+      "max": 10,
+      "notes": [
+        "Counts are approximate and only included where observers reported a comparable screen-level quantity.",
+        "Loud's implemented showcase reaches 17 primary groups, demonstrating that the source floor is not a cap.",
+        "Other tastes provide zone, slot, or group evidence that is not numerically comparable and is intentionally excluded."
+      ]
+    },
+    {
+      "metric": "authored interaction-target floor where explicitly stated (px)",
+      "samples": [
+        {
+          "taste": "candlelit-parlor",
+          "role": "minimum touch target",
+          "value": 44
+        },
+        {
+          "taste": "frosted-baseplate",
+          "role": "minimum tap target",
+          "value": 44
+        },
+        {
+          "taste": "indigo-quartermaster",
+          "role": "minimum touch target",
+          "value": 44
+        },
+        {
+          "taste": "loud-slab",
+          "role": "minimum action target",
+          "value": 44
+        },
+        {
+          "taste": "obsidian-gacha",
+          "role": "minimum touch target",
+          "value": 44
+        },
+        {
+          "taste": "planter-box-pop",
+          "role": "minimum interactive target",
+          "value": 44
+        },
+        {
+          "taste": "studded-toybox",
+          "role": "minimum touch target",
+          "value": 44
+        }
+      ],
+      "min": 44,
+      "median": 44,
+      "max": 44,
+      "notes": [
+        "Exact recurrence is likely a shared schema/repository baseline and is low-independence evidence, not a newly established official safety threshold.",
+        "Honey uses 44px reference actions and paddles but does not contribute an explicit floor sample here.",
+        "Several implementations violate the authored floor or preserve a smaller visual control inside a 44px transparent root."
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "ruleId": "RUD-001",
+      "domain": "typography",
+      "candidateStatement": "Do not derive a readability or accessibility minimum from this corpus. Canonical authored minima span 14-18px, while the rendered minimum is unresolved wherever TextScaled lacks a minimum constraint; establish any safety floor from external guidance and verify it at runtime across supported viewports and strings.",
+      "provisionalStrength": "UNRESOLVED",
+      "kind": "external-guidance-needed",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "indigo-quartermaster"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-002",
+        "DES-FROSTED-001",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "DES-OBSIDIAN-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014"
+      ],
+      "numericBasis": {
+        "metric": "canonical authored minimum role size",
+        "range": "14-18px; median 16px",
+        "interpretation": "Corpus range only; safety threshold is unresolved and external-guidance-needed. Indigo is the lone inspected fixed-token case with a known 14px implementation minimum."
+      },
+      "externalClaimsNeeded": [
+        "Official Roblox/platform guidance for minimum readable text under supported devices, viewing distances, localization, and scaling.",
+        "Evidence-based treatment of outlined text and small HUD microcopy before setting a safety floor."
+      ],
+      "runtimeOrVisualTestsNeeded": [
+        "Measure actual TextBounds for every TextScaled role at minimum supported viewport, longest localized strings, and maximum UI scale.",
+        "Check captions, badges, close glyphs, and tier labels over representative world backgrounds rather than token previews alone."
+      ],
+      "risksOfOvergeneralizing": [
+        "Turning the 14px corpus minimum into a safety minimum would convert descriptive evidence into an unsupported accessibility claim.",
+        "Authored maxima can shrink at runtime; token sizes are not rendered sizes.",
+        "HUD microcopy, modal body copy, and display text have different viewing contexts."
+      ]
+    },
+    {
+      "ruleId": "RUD-002",
+      "domain": "hierarchy",
+      "candidateStatement": "When two adjacent hierarchy roles differ by 1.15x or less in size, distinguish them with at least one additional authored channel such as weight, casing, family, ink, stroke, placement, or container salience; equal-sized semantic peers may remain equal when no visual ordering is intended.",
+      "provisionalStrength": "SHOULD",
+      "kind": "cross-taste-pattern",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "frosted-baseplate",
+        "candlelit-parlor"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-002",
+        "DES-FROSTED-001",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014"
+      ],
+      "numericBasis": {
+        "metric": "recomputed adjacent role-size ratio",
+        "range": "Corpus range 1.0-1.6667; median 1.2222; proposed near-equal cluster cutoff 1.15",
+        "interpretation": "The 1.15 value is a corpus cluster boundary, not official guidance. Full scales span 2.1429-2.8889."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Render hierarchy-only specimens with color removed, then with size removed, to confirm that near-equal roles remain distinguishable.",
+        "Check Frosted's 26/24 pair and Candlelit's equal-size roles in their real container and placement contexts."
+      ],
+      "risksOfOvergeneralizing": [
+        "Equal-sized roles can be semantic peers rather than a failed hierarchy.",
+        "A single numeric ratio ignores face x-height, baked-in weight, outlines, and TextScaled shrinkage.",
+        "Forcing every role to differ would damage restrained or dense systems."
+      ]
+    },
+    {
+      "ruleId": "RUD-003",
+      "domain": "hierarchy",
+      "candidateStatement": "Treat weight contrast as optional rather than mandatory: a single-weight type system may carry hierarchy through size, stroke, case, color, and component scale, while multi-weight systems should assign weight changes to explicit semantic roles rather than decoration.",
+      "provisionalStrength": "MAY",
+      "kind": "taste-cluster",
+      "supportingTastes": [
+        "frosted-baseplate",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "counterexampleTastes": [
+        "candlelit-parlor",
+        "indigo-quartermaster",
+        "loud-slab",
+        "honey-ledger"
+      ],
+      "evidenceIds": [
+        "DES-FROSTED-001",
+        "DES-OBSIDIAN-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "DES-CANDLELIT-002",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "OBS-HONEY-LEDGER-014"
+      ],
+      "numericBasis": {
+        "metric": "distinct canonical weight names per taste",
+        "range": "Corpus range 1-3; median 1.5; single-weight cluster 4/8 tastes",
+        "interpretation": "Taste cluster, not a threshold. Concrete token weight is used even when a display face has visually heavy baked-in forms."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Compare body/label pairs at equal or near-equal sizes and confirm another channel establishes their intended order.",
+        "Verify that fallback font substitution does not erase baked-in weight differences."
+      ],
+      "risksOfOvergeneralizing": [
+        "Adding artificial Bold to a single-weight display face can distort its intended voice.",
+        "Removing weight distinctions from Indigo or Candlelit would erase authored semantic assignments.",
+        "Weight names are not perceptually comparable across families."
+      ]
+    },
+    {
+      "ruleId": "RUD-004",
+      "domain": "typography",
+      "candidateStatement": "Use one core family unless an additional family has a named functional assignment; valid corpus assignments include narrative versus action, mono timer/status, engine chrome, and utility/system text. Avoid introducing a second or third family solely for variety.",
+      "provisionalStrength": "SHOULD",
+      "kind": "taste-cluster",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "indigo-quartermaster",
+        "loud-slab",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "frosted-baseplate",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-002",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "DES-OBSIDIAN-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014",
+        "OBS-HONEY-LEDGER-015"
+      ],
+      "numericBasis": {
+        "metric": "distinct canonical font families per taste",
+        "range": "Corpus range 1-3; median 1.5",
+        "interpretation": "Corpus range with two valid clusters: single-family systems and role-bound multi-family systems."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Verify family availability and fallback behavior in Roblox for every declared weight.",
+        "Check numeric alignment and width stability for timer/utility roles under localization and fallback."
+      ],
+      "risksOfOvergeneralizing": [
+        "A mandatory single-family rule would erase Candlelit's narrative/action split and Indigo's mono timer.",
+        "A mandatory multi-family rule would add noise to coherent single-face systems.",
+        "Honey's implementation demonstrates drift: its info title reuses the heading family despite a utility-family source assignment."
+      ]
+    },
+    {
+      "ruleId": "RUD-005",
+      "domain": "typography",
+      "candidateStatement": "Avoid global uppercase. Preserve sentence or Title Case for prose and most window titles, and reserve uppercase for locally authored action labels, eyebrows, rarity/status metadata, acronyms, or an explicitly uppercase-led taste.",
+      "provisionalStrength": "AVOID",
+      "kind": "cross-taste-pattern",
+      "supportingTastes": [
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "candlelit-parlor",
+        "loud-slab"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-002",
+        "DES-FROSTED-001",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "DES-OBSIDIAN-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014"
+      ],
+      "numericBasis": {
+        "metric": "canonical roles forced uppercase fraction",
+        "range": "Corpus range 0-0.7143; median 0; uppercase-led Candlelit cluster versus localized-uppercase majority cluster",
+        "interpretation": "Taste cluster. No universal percentage threshold is proposed."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Audit generator-fixed CONFIRM, PLAY, launcher, and item-name strings against each taste's title and label casing rules.",
+        "Check localized uppercase expansion and whether all-caps labels remain inside their controls."
+      ],
+      "risksOfOvergeneralizing": [
+        "Candlelit intentionally uses uppercase to separate display/action roles from serif narration.",
+        "Loud uses uppercase headings as part of painted-signage hierarchy.",
+        "Content casing overrides can make role-token statistics undercount uppercase use."
+      ]
+    },
+    {
+      "ruleId": "RUD-006",
+      "domain": "typography",
+      "candidateStatement": "Choose a text-contrast cluster per taste instead of averaging stroke thickness: restrained chrome may use 0px strokes with surface/ink contrast, while outlined systems use contextual 1-4px rims tied to family, role, and background. Do not apply a global stroke to every glyph unless the taste explicitly requires it.",
+      "provisionalStrength": "SHOULD",
+      "kind": "taste-cluster",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "loud-slab",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-009",
+        "DES-FROSTED-001",
+        "DES-INDIGO-002",
+        "DES-LOUD-SLAB-009",
+        "DES-OBSIDIAN-006",
+        "DES-PLANTER-011",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014",
+        "OBS-HONEY-LEDGER-029"
+      ],
+      "numericBasis": {
+        "metric": "maximum canonical text-stroke thickness",
+        "range": "Corpus range 0-4px; median 2.5px; unstroked cluster at 0px and outlined cluster at 1-4px",
+        "interpretation": "Taste clusters, not a recommended average. Display strokes may be 1-2px thicker than ordinary roles inside the outlined cluster."
+      },
+      "externalClaimsNeeded": [
+        "Composited contrast or legibility guidance for outlined text over changing world content before claiming a safety benefit."
+      ],
+      "runtimeOrVisualTestsNeeded": [
+        "Test actual stroke compositing on light, dark, saturated, translucent, and moving world backgrounds.",
+        "Inspect exceptions such as Loud leaderboard values, Planter info glyph, Studded watermark/counter chip, and Honey dark-on-light ledger rows."
+      ],
+      "risksOfOvergeneralizing": [
+        "A 2.5px average corresponds to no actual system.",
+        "Thick strokes can close counters and reduce small-text clarity.",
+        "Unstroked exceptions may be intentional inversions rather than defects."
+      ]
+    },
+    {
+      "ruleId": "RUD-007",
+      "domain": "hierarchy",
+      "candidateStatement": "Give each screen, panel, or header/footer decision region at most one dominant forward primary action; repeated row-local purchase controls and a secondary Cancel/No action may coexist when they remain subordinate through color, geometry, placement, or repetition.",
+      "provisionalStrength": "SHOULD",
+      "kind": "cross-taste-pattern",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "obsidian-gacha",
+        "honey-ledger",
+        "loud-slab"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-001",
+        "DES-FROSTED-002",
+        "DES-INDIGO-003",
+        "DES-LOUD-SLAB-002",
+        "DES-OBSIDIAN-002",
+        "DES-PLANTER-002",
+        "DES-STUDDED-005",
+        "OBS-HONEY-LEDGER-010",
+        "OBS-HONEY-LEDGER-012"
+      ],
+      "numericBasis": {
+        "metric": "dominant forward actions in representative context",
+        "range": "Corpus pattern 1 in all 8 tastes",
+        "interpretation": "Cross-taste corpus pattern. This is not a one-button-per-screen rule; local repeated commerce controls are excluded."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Run salience ranking with color removed and with labels removed to confirm the intended primary still dominates.",
+        "Check dialogs with two equal-size actions and shops with six or seven purchase CTAs for accidental competing primaries."
+      ],
+      "risksOfOvergeneralizing": [
+        "Counting every buy button as a primary would falsely reject catalog designs.",
+        "A unique hue alone may not establish salience if geometry and placement conflict.",
+        "Generator-added bottom-center PLAY actions can create a false primary not present in the taste source."
+      ]
+    },
+    {
+      "ruleId": "RUD-008",
+      "domain": "spacing-density",
+      "candidateStatement": "Use proximity relationally: immediate siblings or repeated rows should use a smaller gap than the separation between semantic groups, with the corpus group-to-local ratio cluster spanning about 1.67-2.67. Choose the taste-local value rather than copying the median.",
+      "provisionalStrength": "SHOULD",
+      "kind": "cross-taste-pattern",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "honey-ledger",
+        "frosted-baseplate"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-013",
+        "DES-FROSTED-015",
+        "DES-INDIGO-018",
+        "DES-LOUD-SLAB-014",
+        "DES-OBSIDIAN-015",
+        "DES-PLANTER-014",
+        "DES-STUDDED-014",
+        "OBS-HONEY-LEDGER-002"
+      ],
+      "numericBasis": {
+        "metric": "group separation / immediate sibling gap",
+        "range": "Corpus cluster 1.6667-2.6667; median 1.7084",
+        "interpretation": "Corpus relational cluster, not a safety or universal layout threshold. Honey's 8/4 dense ledger and Studded's 32/12 major-group separation anchor opposite ends."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Blur or grayscale each screen and confirm that intended groups remain perceptually recoverable from spacing alone.",
+        "Verify wrapping and localization do not collapse group gaps into local gaps."
+      ],
+      "risksOfOvergeneralizing": [
+        "The numerator represents section gap, group gap, or shell padding depending on taste.",
+        "Dense ledgers use color bands and edge alignment in addition to proximity.",
+        "Applying 2.67x everywhere would over-space compact HUDs and catalogs."
+      ]
+    },
+    {
+      "ruleId": "RUD-009",
+      "domain": "spacing-density",
+      "candidateStatement": "The 4/8/12/20/32 spacing ladder may be used as a repository baseline when a taste lacks stronger evidence, but it must not be cited as an independently validated cross-taste rule; preserve authored alternatives such as 4/8/16/28, 4/8/12/24/48, and 4/8/12/20.",
+      "provisionalStrength": "MAY",
+      "kind": "generator-convention",
+      "supportingTastes": [
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "counterexampleTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-013",
+        "DES-FROSTED-015",
+        "DES-INDIGO-018",
+        "DES-LOUD-SLAB-014",
+        "DES-OBSIDIAN-015",
+        "DES-PLANTER-014",
+        "DES-STUDDED-014",
+        "OBS-HONEY-LEDGER-002"
+      ],
+      "numericBasis": {
+        "metric": "authored spacing-token ladder",
+        "range": "Generator convention / repository baseline 4/8/12/20/32 in 5 tastes; total corpus token range 4-48px",
+        "interpretation": "Low-independence generator convention, not official guidance. Three counterexample ladders prevent universalization."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Compare generated DESIGN files against pre-generator source measurements to determine how much recurrence is schema-induced.",
+        "Visually test each taste's authored alternative before falling back to the repository ladder."
+      ],
+      "risksOfOvergeneralizing": [
+        "Five recurrences are not five independent design decisions.",
+        "Replacing Frosted's 48px material apron or Honey's 4px ledger rhythm would erase taste-defining density.",
+        "A token ladder does not prove every component uses only those values."
+      ]
+    },
+    {
+      "ruleId": "RUD-010",
+      "domain": "color",
+      "candidateStatement": "Assign every saturated accent a named semantic or content role, keep broad structural surfaces within the taste's base material/value family, and budget exceptional rarity or promotional accents locally. Do not impose a universal accent-color count.",
+      "provisionalStrength": "SHOULD",
+      "kind": "cross-taste-pattern",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "obsidian-gacha",
+        "planter-box-pop"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-004",
+        "DES-FROSTED-007",
+        "DES-INDIGO-009",
+        "DES-LOUD-SLAB-007",
+        "DES-OBSIDIAN-008",
+        "DES-PLANTER-007",
+        "DES-STUDDED-008",
+        "OBS-HONEY-LEDGER-013"
+      ],
+      "numericBasis": {
+        "metric": "distinct core palette RGB count",
+        "range": "Corpus range 10-17; median 14.5",
+        "interpretation": "Corpus range only. Palette count is not accent budget; Obsidian's open aura spectrum and Planter's six rarity hues form content-driven counterexample clusters."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Inventory actual on-screen accent coverage by semantic role and screen area, not token count alone.",
+        "Check that rare, currency, danger, and primary-action accents remain distinguishable when multiple systems appear together."
+      ],
+      "risksOfOvergeneralizing": [
+        "A small token count can still produce excessive accent coverage.",
+        "A hard cap would break content-driven rarity systems.",
+        "Generator-fixed Crown emphasis can make one-item accent recurrence look more independent than it is."
+      ]
+    },
+    {
+      "ruleId": "RUD-011",
+      "domain": "states-motion",
+      "candidateStatement": "Pair color changes for state or meaning with at least one non-color cue such as a label, glyph, knob movement, outline, geometry, placement, or blocked behavior; treat hue-only verdict bands and currency markers as unresolved exceptions rather than templates.",
+      "provisionalStrength": "SHOULD",
+      "kind": "cross-taste-pattern",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "indigo-quartermaster",
+        "studded-toybox",
+        "planter-box-pop"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-006",
+        "DES-FROSTED-008",
+        "DES-INDIGO-010",
+        "DES-LOUD-SLAB-008",
+        "DES-OBSIDIAN-007",
+        "DES-PLANTER-007",
+        "DES-STUDDED-009",
+        "OBS-HONEY-LEDGER-020",
+        "OBS-HONEY-LEDGER-022"
+      ],
+      "numericBasis": {
+        "metric": "non-color signal count",
+        "range": "Qualitative corpus pattern; most inspected major states use at least 1 non-color cue",
+        "interpretation": "Cross-taste pattern. Elevating this to an accessibility MUST requires external guidance; no numeric safety threshold is proposed."
+      },
+      "externalClaimsNeeded": [
+        "Official guidance on use of color as the sole means of conveying state or meaning.",
+        "Roblox-specific focus and selection communication requirements for keyboard/gamepad input."
+      ],
+      "runtimeOrVisualTestsNeeded": [
+        "Exercise default, pressed, selected, disabled, On/Off, owned, sold-out, and rarity states in grayscale.",
+        "Verify Indigo verdict bands, Studded currency kinds, and Planter's behavior-only disabled primary with labels and interaction enabled/disabled."
+      ],
+      "risksOfOvergeneralizing": [
+        "Blocked behavior is not visible before activation and may be insufficient by itself.",
+        "Content identity such as aura rarity may intentionally depend more heavily on hue.",
+        "Adding redundant text to microcopy can damage HUD density unless another cue is chosen."
+      ]
+    },
+    {
+      "ruleId": "RUD-012",
+      "domain": "shape-depth",
+      "candidateStatement": "Keep each taste to a small, named silhouette ladder—typically two or three finite radius steps—and reserve full pills or circles for explicitly assigned functions. Do not import a full-radius token into a hard-edged taste merely because the generator exposes one.",
+      "provisionalStrength": "SHOULD",
+      "kind": "taste-cluster",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "loud-slab",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-010",
+        "DES-FROSTED-010",
+        "DES-INDIGO-013",
+        "DES-LOUD-SLAB-010",
+        "DES-LOUD-SLAB-011",
+        "DES-OBSIDIAN-011",
+        "DES-PLANTER-010",
+        "DES-PLANTER-013",
+        "DES-STUDDED-010",
+        "OBS-HONEY-LEDGER-016"
+      ],
+      "numericBasis": {
+        "metric": "maximum finite authored radius",
+        "range": "Corpus range 8-20px; median 14px; hard-edged cluster 8-10px and rounded/display-led cluster 14-20px",
+        "interpretation": "Taste clusters, not a universal radius threshold. Full rounding is role-based and excluded from the numeric range."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Audit every UICorner use against a named component role, including notification badges and generator-added full tokens.",
+        "Compare responsive overrides to ensure aspect changes do not accidentally turn rectangles into pills."
+      ],
+      "risksOfOvergeneralizing": [
+        "Maximum radius does not describe how frequently that radius is used.",
+        "Planter's generated notification badge creates an extra circle class; Loud exposes an unused full token.",
+        "Indigo has internal prose/token disagreements for rows and full-screen hubs."
+      ]
+    },
+    {
+      "ruleId": "RUD-013",
+      "domain": "shape-depth",
+      "candidateStatement": "Select one coherent depth metaphor per taste—flat value steps and selective strokes, molded texture, bevel depression, translucent self-dimming surfaces, or emitted glow—and apply it consistently. Avoid mixing drop shadows, bevels, gloss, and glow unless each has an authored material role.",
+      "provisionalStrength": "SHOULD",
+      "kind": "taste-cluster",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "frosted-baseplate",
+        "obsidian-gacha",
+        "honey-ledger"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-009",
+        "DES-FROSTED-011",
+        "DES-INDIGO-014",
+        "DES-LOUD-SLAB-012",
+        "DES-OBSIDIAN-012",
+        "DES-OBSIDIAN-013",
+        "DES-PLANTER-011",
+        "DES-STUDDED-011",
+        "OBS-HONEY-LEDGER-016",
+        "OBS-HONEY-LEDGER-028"
+      ],
+      "numericBasis": {
+        "metric": "maximum authored structural stroke and shadow occurrence",
+        "range": "Structural stroke maxima 2-4px; drop shadows absent in 7/8 tastes; Frosted is the authored 6px shadow exception",
+        "interpretation": "Taste cluster. The absence rate is a corpus pattern, not a prohibition on all Roblox UI shadows."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Inspect depth cues on the real world background, not only flat story backdrops.",
+        "Verify Frosted's shadow/studs, Planter's bevel collapse, Obsidian's glow/gloss, and Honey's single beveled close remain internally consistent."
+      ],
+      "risksOfOvergeneralizing": [
+        "A no-shadow universal would erase Frosted's molded slab.",
+        "Obsidian intentionally combines gradients and emission but not cast shadows.",
+        "Generated implementations omit some authored glows and blurs, so code recurrence understates source depth."
+      ]
+    },
+    {
+      "ruleId": "RUD-014",
+      "domain": "composition",
+      "candidateStatement": "Choose HUD density by context rather than a universal item cap: use a restrained cluster around six persistent elements for match/status HUDs and a dense cluster around nine to ten or more for simulator/toolbox HUDs, while grouping by zones and preserving the central world view and platform control corners.",
+      "provisionalStrength": "SHOULD",
+      "kind": "taste-cluster",
+      "supportingTastes": [
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger",
+        "candlelit-parlor"
+      ],
+      "counterexampleTastes": [
+        "loud-slab",
+        "candlelit-parlor",
+        "honey-ledger"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-016",
+        "DES-FROSTED-019",
+        "DES-INDIGO-023",
+        "DES-LOUD-SLAB-017",
+        "DES-LOUD-SLAB-019",
+        "DES-OBSIDIAN-018",
+        "DES-PLANTER-020",
+        "DES-STUDDED-019",
+        "OBS-HONEY-LEDGER-010"
+      ],
+      "numericBasis": {
+        "metric": "source-reported persistent HUD element count where comparable",
+        "range": "Corpus cluster 6-10+; median 9.5 across four comparable reports; Loud implementation reaches 17 groups",
+        "interpretation": "Taste clusters, not a cap. Zone/slot evidence from the remaining tastes is not forced into the count distribution."
+      },
+      "externalClaimsNeeded": [
+        "Platform-specific safe-area and control-zone guidance before converting clear-corner patterns into mandatory dimensions."
+      ],
+      "runtimeOrVisualTestsNeeded": [
+        "Render HUDs at target phone landscape, tablet, and desktop viewports with live top/safe insets.",
+        "Measure center occlusion, control overlap, microcopy bounds, and scanability while the world is visually busy.",
+        "Check whether generator-added bottom-center PLAY actions collide with source hotbars or intentionally empty gameplay zones."
+      ],
+      "risksOfOvergeneralizing": [
+        "Element counts use different granularity: a hotbar may be one group or many slots.",
+        "A low count can still occlude the world if poorly placed.",
+        "Source captures are desktop-heavy and several mobile layouts are implementation substitutions."
+      ]
+    },
+    {
+      "ruleId": "RUD-015",
+      "domain": "composition",
+      "candidateStatement": "Make modal/world focus taste-specific: valid corpus strategies include no separate overlay, a self-dimming panel, a tinted wash, dim plus blur, and strong dark dimming. Do not automatically add a black backdrop or remove an authored blur merely to normalize showcase stories.",
+      "provisionalStrength": "SHOULD",
+      "kind": "taste-cluster",
+      "supportingTastes": [
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger",
+        "candlelit-parlor"
+      ],
+      "counterexampleTastes": [
+        "studded-toybox",
+        "frosted-baseplate",
+        "loud-slab",
+        "candlelit-parlor"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-020",
+        "DES-FROSTED-023",
+        "DES-INDIGO-025",
+        "DES-LOUD-SLAB-023",
+        "DES-OBSIDIAN-010",
+        "DES-OBSIDIAN-019",
+        "DES-PLANTER-021",
+        "DES-STUDDED-018",
+        "DES-STUDDED-023",
+        "OBS-HONEY-LEDGER-028"
+      ],
+      "numericBasis": {
+        "metric": "source-authored separate modal backdrop opacity",
+        "range": "Corpus range 0-0.8; median 0.2 among seven measurable tastes; Candlelit source opacity unresolved",
+        "interpretation": "Taste clusters, not a recommended opacity. Zero is an authored direct-on-world or self-dimming strategy, not a missing value."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Compare panel focus and body-text contrast over bright, dark, high-frequency, and moving world scenes.",
+        "Confirm blur ownership and cleanup for Frosted, Loud, and Obsidian.",
+        "Verify dismissal behavior independently from whether a visual backdrop exists."
+      ],
+      "risksOfOvergeneralizing": [
+        "A median 0.2 overlay would be too weak for Obsidian and wrong for no-overlay Honey/Planter/Studded.",
+        "Story-only flat backdrops cannot validate source blur strategies.",
+        "Backdrop opacity, panel transparency, tint hue, and blur are interacting variables."
+      ]
+    },
+    {
+      "ruleId": "RUD-016",
+      "domain": "composition",
+      "candidateStatement": "Avoid treating the recurring showcase composition—top currency, three launchers, bottom-center PLAY, six catalog items, and a CONFIRM dialog—as independent taste evidence. When source anatomy conflicts, preserve the source HUD zones, catalog structure, and casing, and label any normalized showcase as generator convention.",
+      "provisionalStrength": "AVOID",
+      "kind": "generator-convention",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "indigo-quartermaster",
+        "obsidian-gacha",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-017",
+        "DES-FROSTED-005",
+        "DES-FROSTED-021",
+        "DES-INDIGO-026",
+        "DES-INDIGO-027",
+        "DES-LOUD-SLAB-005",
+        "DES-OBSIDIAN-004",
+        "DES-OBSIDIAN-020",
+        "DES-PLANTER-005",
+        "DES-STUDDED-020",
+        "DES-STUDDED-021",
+        "OBS-HONEY-LEDGER-001",
+        "OBS-HONEY-LEDGER-011"
+      ],
+      "numericBasis": {
+        "metric": "normalized showcase recurrence",
+        "range": "Generator convention / repository baseline: 3 stories, commonly 3 launchers, 6 catalog items, and 1 global CTA",
+        "interpretation": "Low-independence generator convention; no design threshold is proposed."
+      },
+      "externalClaimsNeeded": [],
+      "runtimeOrVisualTestsNeeded": [
+        "Compare every generated story against source screen-pattern evidence before promoting composition to a rule.",
+        "Test source-native alternatives: Indigo four-column hub, Obsidian banner stack, Studded descriptive rows, Honey catalog/detail/action split, and source HUD hotbars."
+      ],
+      "risksOfOvergeneralizing": [
+        "Shared fixtures can create false consensus across all eight tastes.",
+        "Generator additions often occupy zones the source deliberately leaves empty.",
+        "Fixed content can introduce casing and orphan-grid artifacts unrelated to taste."
+      ]
+    },
+    {
+      "ruleId": "RUD-017",
+      "domain": "states-motion",
+      "candidateStatement": "Do not infer that hover, keyboard/gamepad focus, or selected-state styling is unnecessary because it is absent from these stories. Define and validate a distinct focus path externally; use taste-consistent non-color geometry, outline, value, or label changes rather than copying generated pointer-press feedback.",
+      "provisionalStrength": "UNRESOLVED",
+      "kind": "external-guidance-needed",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "counterexampleTastes": [
+        "indigo-quartermaster",
+        "honey-ledger",
+        "obsidian-gacha"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-023",
+        "DES-FROSTED-027",
+        "DES-INDIGO-030",
+        "DES-LOUD-SLAB-026",
+        "DES-OBSIDIAN-022",
+        "DES-PLANTER-022",
+        "DES-STUDDED-025",
+        "OBS-HONEY-LEDGER-020",
+        "OBS-HONEY-LEDGER-035"
+      ],
+      "numericBasis": {
+        "metric": "distinct hover/focus implementation",
+        "range": "Observed implementation cluster: 0 distinct hover and 0 distinct focus treatments across inspected representative controls",
+        "interpretation": "Unresolved absence, not a zero requirement. External guidance is needed before setting focus thresholds or mandatory visuals."
+      },
+      "externalClaimsNeeded": [
+        "Official Roblox keyboard/gamepad selection behavior and focus-visibility requirements.",
+        "Platform expectations for hover versus focus versus pressed feedback across input modalities."
+      ],
+      "runtimeOrVisualTestsNeeded": [
+        "Navigate every representative screen using keyboard and gamepad without a pointer and verify visible focus order and activation.",
+        "Check focus against selected, disabled, and pressed states so signals do not collide.",
+        "Verify Indigo's unconsumed selected hotbar prop and Honey's mouse-oriented feedback paths."
+      ],
+      "risksOfOvergeneralizing": [
+        "Absence in showcase code may reflect harness scope rather than product intent.",
+        "Pointer press animations do not substitute for persistent focus.",
+        "Adding a generic bright ring can conflict with taste-authored selection strokes or rarity chrome."
+      ]
+    },
+    {
+      "ruleId": "RUD-018",
+      "domain": "spacing-density",
+      "candidateStatement": "Treat 44px as a repository interaction-target baseline, not as newly proven official guidance. Compact visible controls may sit inside a larger transparent target, but every implementation must verify the actual activated bounds; do not assume a 44px token is honored merely because it exists.",
+      "provisionalStrength": "UNRESOLVED",
+      "kind": "generator-convention",
+      "supportingTastes": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "counterexampleTastes": [
+        "obsidian-gacha",
+        "studded-toybox",
+        "honey-ledger"
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-014",
+        "DES-FROSTED-017",
+        "DES-INDIGO-020",
+        "DES-LOUD-SLAB-016",
+        "DES-OBSIDIAN-016",
+        "DES-OBSIDIAN-017",
+        "DES-PLANTER-016",
+        "DES-STUDDED-015",
+        "OBS-HONEY-LEDGER-006"
+      ],
+      "numericBasis": {
+        "metric": "explicit authored interaction-target floor",
+        "range": "Repository baseline 44px in 7/7 explicitly stated tastes; Honey has 44px reference actions but no explicit floor sample",
+        "interpretation": "Generator convention / repository baseline with low independence. Official safety status is unresolved and external-guidance-needed."
+      },
+      "externalClaimsNeeded": [
+        "Official Roblox/platform minimum target-size and target-spacing guidance by input modality and device density."
+      ],
+      "runtimeOrVisualTestsNeeded": [
+        "Inspect AbsoluteSize and activated hit regions for toggle tracks, tabs, currency plus buttons, buy pills, close glyphs, and overlapping controls.",
+        "Exercise touch input at minimum supported resolution and verify no neighboring target captures the tap."
+      ],
+      "risksOfOvergeneralizing": [
+        "Exact recurrence may come from the shared schema rather than eight independent observations.",
+        "Obsidian tabs/toggle and Studded currency plus fall below the authored baseline.",
+        "A transparent 44px root can still overlap or be clipped, so nominal size alone is insufficient."
+      ]
+    }
+  ]
+}

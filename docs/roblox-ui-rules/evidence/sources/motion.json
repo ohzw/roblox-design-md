@@ -1,0 +1,195 @@
+{
+  "topic": "Roblox TweenService and UI animation guidance: numeric specifications, interruption, input feedback, and reduced motion (verified 2026-07-19)",
+  "claims": [
+    {
+      "id": "SRC-001",
+      "claim": "TweenService motion is parameterized by a numeric duration and by easing style/direction through TweenInfo.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Tweens created with TweenService:Create() and configured with TweenInfo.",
+      "limitations": [
+        "TweenInfo.Time is measured in seconds; the documented defaults are 1 second, Enum.EasingStyle.Quad, and Enum.EasingDirection.Out.",
+        "TweenInfo also carries repeat count, reversal, and delay, and its properties cannot be changed after creation.",
+        "This API capability does not establish product-specific or universal UI timing/easing values."
+      ],
+      "sources": [
+        {
+          "title": "TweenInfo datatype reference",
+          "url": "https://create.roblox.com/docs/reference/engine/datatypes/TweenInfo",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents TweenInfo.new(time, easingStyle, easingDirection, repeatCount, reverses, delayTime), including numeric duration in seconds, easing enums, defaults, and immutability after creation."
+        },
+        {
+          "title": "UI animation/tweens",
+          "url": "https://create.roblox.com/docs/ui/animation",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Shows GuiObject tweens configured with TweenInfo and explains that easing style controls interpolation rate while easing direction controls how that curve is applied."
+        }
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "claim": "When two tweens on the same object attempt to animate the same property, playing the newer tween automatically cancels and overwrites the earlier tween; tweens on different properties may run simultaneously.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "TweenBase playback conflicts on one Instance, distinguished by the properties each tween writes.",
+      "limitations": [
+        "The automatic conflict rule is property-specific, not a blanket one-tween-per-object rule.",
+        "The cancelled tween's Completed event fires with Enum.PlaybackState.Cancelled.",
+        "The reference does not promise ordering or arbitration beyond the documented most-recent same-property tween winning."
+      ],
+      "sources": [
+        {
+          "title": "TweenBase class reference — Play and Completed",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TweenBase",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that multiple tweens can play on the same object if they do not animate the same property; a newer conflicting tween cancels and overwrites the initial tween. Its conflict sample observes Cancelled for the first tween and Completed for the second."
+        }
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "claim": "Overlapping UI motion may warrant explicit cancellation and per-motion ownership so interruption behavior is deterministic.",
+      "verdict": "partially-supported",
+      "kind": "design-recommendation",
+      "scope": "Application architecture for stateful UI that can issue a replacement transition while another transition is active.",
+      "limitations": [
+        "Roblox officially provides Cancel() and documents automatic same-property cancellation, but does not prescribe an ownership abstraction, active-tween registry, or universal explicit-cancel rule.",
+        "Explicit cancellation is not required merely to resolve a same-object, same-property conflict because Play() already cancels the older tween in that case.",
+        "Different-property tweens are allowed to coexist, so whether they should be cancelled together is a product/choreography decision.",
+        "Cancel() stops at the current interpolated property values; it does not restore starting values. Replaying that cancelled tween restarts its full duration rather than resuming progress.",
+        "Pause(), unlike Cancel(), preserves progress and does not fire Completed; Cancel() fires Completed with a cancellation state."
+      ],
+      "sources": [
+        {
+          "title": "TweenBase class reference — Cancel, Pause, Play, and Completed",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TweenBase",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Provides falsifiable interruption semantics: Cancel resets tween progress but not target-instance properties, Pause preserves progress, same-property replacement auto-cancels, and Completed distinguishes cancellation."
+        }
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "claim": "Pressed and entrance motion states can be specified numerically through TweenInfo values and target UI property values, but treating those numbers as acceptance checks is an implementation/verification guideline rather than official Roblox design guidance.",
+      "verdict": "partially-supported",
+      "kind": "design-recommendation",
+      "scope": "Numeric review or testing of a particular UI's pressed and enter/exit transitions.",
+      "limitations": [
+        "The official pressed-button tutorial happens to use 0.2 seconds, Exponential easing, a 0.1 scale-position shift, and explicit Color3 targets; these are sample values, not platform requirements.",
+        "The UI animation guide demonstrates numeric targets for position, size, rotation, transparency, color, and stroke and mentions sliding menus in and out, but it does not define an official test method, tolerance, or pass/fail threshold.",
+        "No official universal duration, easing curve, displacement, or scale factor was found for pressed or entrance states.",
+        "The pressed-button tutorial's visual state follows AudioPlayer.IsPlaying, so it is an example of sensory feedback, not a canonical pointer-down/pointer-up state machine."
+      ],
+      "sources": [
+        {
+          "title": "Add 2D audio — UI interaction",
+          "url": "https://create.roblox.com/docs/tutorials/use-case-tutorials/audio/add-2D-audio",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Official tutorial numerically defines a pressed/unpressed button tween, including TweenInfo.new(.2, Exponential), a UDim2.fromScale(0, .1) position shift, and explicit colors."
+        },
+        {
+          "title": "UI animation/tweens",
+          "url": "https://create.roblox.com/docs/ui/animation",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Shows TweenInfo plus numeric target values for GuiObject motion and appearance, and identifies sliding menus in/out and button state changes as tweening use cases."
+        }
+      ]
+    },
+    {
+      "id": "SRC-005",
+      "claim": "Official Roblox guidance says important UI interactions should provide instant feedback, and recommends multiple sensory forms of feedback when a visual change or animation alone may not be accessible.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Important UI interactions such as focus, hover, selection, and activation, especially flows where misunderstanding the state would block the user.",
+      "limitations": [
+        "This is guidance in an official audio tutorial, not engine enforcement.",
+        "The tutorial demonstrates visual and auditory feedback for its important sample interactions, but explicitly notes that a use case may require only auditory feedback; it does not require every interaction to animate and play sound.",
+        "The guidance does not prescribe universal animation numbers or a specific visual effect.",
+        "Separate accessibility guidance warns against conveying information only with sound, so sensory redundancy should not be interpreted as replacing visual feedback with audio-only feedback."
+      ],
+      "sources": [
+        {
+          "title": "Add 2D audio — UI interaction",
+          "url": "https://create.roblox.com/docs/tutorials/use-case-tutorials/audio/add-2D-audio",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Says instant feedback is important for UI interactions and recommends multiple sensory forms where color changes or animations alone may be difficult to perceive; demonstrates focus, hover, selected, and pressed feedback."
+        },
+        {
+          "title": "Accessibility guidelines — sound non-reliance",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Explains that events conveyed only with sound can confuse hearing-impaired players or players with sound disabled, supporting redundant rather than single-channel feedback."
+        }
+      ]
+    },
+    {
+      "id": "SRC-006",
+      "claim": "GuiService.ReducedMotionEnabled is an official boolean player-preference signal that maps to Roblox's Reduce Motion setting and indicates that motion effects and animations should be reduced or completely removed.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Reading the current player's Roblox/in-experience Reduce Motion preference for UI behavior.",
+      "limitations": [
+        "The GuiService class is documented as NotReplicated, so this should be treated as a client-side player preference rather than a replicated gameplay state.",
+        "The generated API page currently labels ReducedMotionEnabled as hidden even though Roblox's public accessibility guide explicitly directs creators to use it.",
+        "The signal conveys preference; it does not automatically rewrite an experience's custom tweens."
+      ],
+      "sources": [
+        {
+          "title": "GuiService class reference — ReducedMotionEnabled",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiService",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents ReducedMotionEnabled as a boolean mapping to the Roblox and in-experience Reduce Motion toggle, meaning the player wants motion effects and animations reduced or removed."
+        },
+        {
+          "title": "Accessibility guidelines — player preferences and reduced motion",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Publicly directs UI to accommodate player visual preferences and specifically maps Reduce Motion to GuiService.ReducedMotionEnabled."
+        }
+      ]
+    },
+    {
+      "id": "SRC-007",
+      "claim": "Roblox officially recommends reducing or removing UI tween motion when ReducedMotionEnabled is true; documented implementation options include setting TweenInfo.Time to 0 so the UI snaps to its target, or replacing positional motion with a fade.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Custom UI animations and tweens when the player's reduced-motion preference is enabled.",
+      "limitations": [
+        "The snap and fade implementations are presented as a basic approach and an alternative, not an exhaustive or mandatory algorithm.",
+        "A fade still animates opacity; the example reduces positional movement rather than eliminating every temporal transition.",
+        "Roblox does not publish a universal reduced-motion duration threshold, permitted displacement, or easing list in this guidance.",
+        "Creators must apply the preference to their own custom UI; the source does not state that TweenService changes behavior automatically."
+      ],
+      "sources": [
+        {
+          "title": "Accessibility guidelines — reduced motion",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "States that true means the player wants UI tween motion reduced or removed and provides official code for zero-duration snapping and a fade-in alternative to positional tweening."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "A blanket rule that every overlapping tween MUST be explicitly cancelled would conflict with the official same-property behavior: playing the newer tween already cancels the older one, while different-property tweens are expressly allowed to coexist.",
+    "The GuiService API reference labels ReducedMotionEnabled as hidden, while the public accessibility guide explicitly recommends the property and gives production-facing examples. This is a documentation-surface inconsistency, not a behavioral contradiction."
+  ],
+  "unresolved": [
+    "Roblox provides no official universal numeric specification for pressed or entrance duration, easing, displacement, scale, or verification tolerance; sample numbers cannot be promoted to platform MUSTs.",
+    "Roblox official sources do not define a per-component tween owner, animation channel registry, or other application-level interruption architecture. Such ownership remains an implementation recommendation.",
+    "Context7 resolved Roblox to /websites/create_roblox_reference_engine and /websites/create_roblox and supplied relevant TweenBase, TweenInfo, input-feedback, and reduced-motion material. It did not supply normative material for numeric acceptance criteria or tween ownership, so direct Creator Hub reads and web-search fallback were used for those gaps; no additional official mandate was found.",
+    "Firecrawl fallback was attempted but unavailable in the environment (the firecrawl executable was absent and npx firecrawl could not resolve an executable); the available web-search tool and direct official Creator Hub pages were used instead."
+  ]
+}

@@ -1,0 +1,1231 @@
+{
+  "taste": "honey-ledger",
+  "filesInspected": [
+    "design-md/honey-ledger/DESIGN.roblox.md",
+    "e2e/honey-ledger/src/HoneyLedger.storybook.luau",
+    "e2e/honey-ledger/src/Theme.luau",
+    "e2e/honey-ledger/src/Components/ButtonBuy.luau",
+    "e2e/honey-ledger/src/Components/ButtonPrimary.luau",
+    "e2e/honey-ledger/src/Components/CloseButton.luau",
+    "e2e/honey-ledger/src/Components/CurrencyBar.luau",
+    "e2e/honey-ledger/src/Components/LauncherButton.luau",
+    "e2e/honey-ledger/src/Components/ListRow.luau",
+    "e2e/honey-ledger/src/Components/ProgressBar.luau",
+    "e2e/honey-ledger/src/Components/Window.luau",
+    "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+    "e2e/honey-ledger/src/Stories/HUD.story.luau",
+    "e2e/honey-ledger/src/Stories/Shop.story.luau"
+  ],
+  "screens": [
+    "HUD",
+    "Shop",
+    "Dialog"
+  ],
+  "components": [
+    "Window",
+    "ButtonPrimary",
+    "ButtonBuy",
+    "CloseButton",
+    "CurrencyBar",
+    "ProgressBar",
+    "ListRow",
+    "LauncherButton"
+  ],
+  "observations": [
+    {
+      "id": "OBS-HONEY-LEDGER-001",
+      "category": "structure",
+      "subject": "Story surface",
+      "observed": "The storybook registers the Stories folder, and the inspected implementation supplies exactly three story modules: HUD, Shop, and Dialog.",
+      "inferredPurpose": "Expose a standard three-screen component showcase rather than every screen pattern described by the design source.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/HoneyLedger.storybook.luau",
+          "lines": "1-5",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "1-14",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "1-14",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "1-12",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-002",
+      "category": "structure",
+      "subject": "Window content model",
+      "observed": "Window renders a fixed 56px full-width header followed by a content Frame or ScrollingFrame. Content has 8px padding on every side and a vertical UIListLayout with 4px row gaps.",
+      "inferredPurpose": "Implement the design source's dense, nearly edge-to-edge ledger-column anatomy.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "331-342",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "455-471",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "42-42",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "139-206",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-003",
+      "category": "structure",
+      "subject": "Window family variants",
+      "observed": "The honey variant uses a mustard panel, yellow header, centered dark title, and right-side beveled close; the info variant uses a royal-blue panel with a 2px frame, blue header, left-aligned white stroked title, and a left-docked flat close.",
+      "inferredPurpose": "Encode the source document's two distinct panel families without treating their similarly named headers as behaviorally identical.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "284-301",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "455-475",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "122-185",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-004",
+      "category": "layering",
+      "subject": "Honey close geometry",
+      "observed": "Window's header is 56px high, but its honey close uses CloseButton's default beveled size of 64x64 and is vertically centered at the header's right edge. Window does not set ClipsDescendants on the header or panel.",
+      "inferredPurpose": "The implementation appears to pursue the source's large floating honey close, but the 64px control is mathematically 4px taller above and below the 56px band rather than wholly inside it.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "83-89",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "461-466",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "42-42",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "176-185",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CloseButton.luau",
+          "lines": "24-28",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-005",
+      "category": "responsive",
+      "subject": "Shop screen composition",
+      "observed": "Shop uses two 42%-wide columns: a left honey Window sized 42% by 93% with a 360x560 maximum, and right-side info and CTA regions sized 42% wide with 380x300 and 360x72 maxima. Positions are expressed as root-relative scale values.",
+      "inferredPurpose": "Keep all three shop regions visible and separated across desktop and phone-landscape viewports.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "503-509",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "49-76",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "101-109",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "162-175",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-006",
+      "category": "responsive",
+      "subject": "Shop CTA intrinsic width",
+      "observed": "The CTA row contains two fixed 44px paddles, a default 230px primary button, two 12px layout gaps, for 342px of intrinsic child width. The enclosing CTA is only 42% of the viewport with a 360px maximum and has no alternative narrow-layout sizing.",
+      "inferredPurpose": "The row preserves desktop-sized 44px targets and the source button's approximately 230x44 size, but it can exceed its container below about 814px viewport width.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "69-76",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ButtonPrimary.luau",
+          "lines": "43-52",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "167-218",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-007",
+      "category": "responsive",
+      "subject": "HUD top inset handling",
+      "observed": "HUD reads GuiService:GetGuiInset().Y at render time and offsets both the centered resource stack and top-left toolbar by that value plus 12px. It does not hardcode a topbar height.",
+      "inferredPurpose": "Clear the Roblox topbar in the full-bleed story harness.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "344-349",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "35-40",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "46-71",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-008",
+      "category": "responsive",
+      "subject": "Safe-area API divergence",
+      "observed": "The design source specifies ScreenGui.ScreenInsets = DeviceSafeInsets and GuiService:GetInsetArea(), while the inspected HUD story uses GetGuiInset().Y on a Frame and contains no ScreenGui configuration.",
+      "inferredPurpose": "The story compensates for the harness topbar, but responsibility for device-safe left/right/bottom insets may be delegated to the external mount harness.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "344-346",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "35-43",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-009",
+      "category": "responsive",
+      "subject": "Dialog sizing",
+      "observed": "Dialog is a fixed 420x260 info Window centered at 50%/50%; it supplies neither maxSize nor scrollable.",
+      "inferredPurpose": "Present a compact confirmation panel that does not need internal scrolling at the showcased body length.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "31-43",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-010",
+      "category": "hierarchy",
+      "subject": "HUD information hierarchy",
+      "observed": "HUD places a 190px-wide two-row stack of currency and progress at top center, a three-item white-glyph toolbar at top left, and a 230x44 Play action at bottom center, leaving the bottom corners unused.",
+      "inferredPurpose": "Prioritize persistent resources first, subsystem launchers second, and keep joystick/jump zones clear around the contextual action.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "492-502",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "45-96",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-011",
+      "category": "hierarchy",
+      "subject": "Shop information hierarchy",
+      "observed": "Shop's left region is a selectable six-row catalog; its right info Window contains one price well and one descriptive stat well; its lower-right CTA frame contains previous, Craft, and next controls.",
+      "inferredPurpose": "Follow the source's catalog-to-detail-to-action reading order using color-family changes instead of card elevation.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "503-514",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "25-32",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "70-159",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "162-218",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-012",
+      "category": "hierarchy",
+      "subject": "Dialog information hierarchy",
+      "observed": "Dialog uses an accent-blue framed info Window, a 96px darker-blue body well, and a horizontal No/Yes pair with both actions visible; No is danger red and Yes is the primary green component.",
+      "inferredPurpose": "Make the decision legible through adjacent saturated semantic colors, as specified by the source.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "190-192",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "294-299",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "31-110",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-013",
+      "category": "visual-style",
+      "subject": "Core palette translation",
+      "observed": "Theme mechanically defines the honey, info, action, danger, progress, selection, text, and HUD colors from the source, including surfaceDark as #404040 with Transparency 0.35 derived from the source's estimated #404040A6 alpha.",
+      "inferredPurpose": "Centralize hard color steps as the principal grouping and hierarchy mechanism.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "14-30",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Theme.luau",
+          "lines": "9-35",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-014",
+      "category": "visual-style",
+      "subject": "Typography system",
+      "observed": "Theme defines ComicNeueAngular Bold 30 for heading, Regular 17 for body, Bold 26 for label, Regular 14 for caption, and SourceSansPro Bold 24 for utility text. The implementation uses white contextual 2px dark strokes on saturated labels and no stroke on dark text over light list rows.",
+      "inferredPurpose": "Maintain separate game-content and system-plumbing voices while giving world/saturated text its contrast.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "32-50",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "304-325",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Theme.luau",
+          "lines": "37-47",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Theme.luau",
+          "lines": "57-66",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ListRow.luau",
+          "lines": "28-30",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ButtonPrimary.luau",
+          "lines": "74-91",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-015",
+      "category": "visual-style",
+      "subject": "Info-window title font divergence",
+      "observed": "Window uses Theme.typography.heading (ComicNeueAngular Bold, 30) for both honey and info titles. The source's window-header-info token and prose assign blue header bands to utility/SourceSansPro Bold system typography.",
+      "inferredPurpose": "The shared Window implementation reuses one title construction across variants even though color/alignment/stroke branch by family.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "127-136",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "304-314",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Theme.luau",
+          "lines": "37-47",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "143-164",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-016",
+      "category": "visual-style",
+      "subject": "Shape rationing",
+      "observed": "Primary, buy, list-row, window panels, header bands, info wells, and pager controls instantiate no UICorner. Currency/progress bars use 6px corners, and only the beveled close uses 10px corners.",
+      "inferredPurpose": "Preserve square ledger geometry while rationing curvature to HUD bars and the one fake-3D close control.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "378-391",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ButtonPrimary.luau",
+          "lines": "43-74",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ButtonBuy.luau",
+          "lines": "39-64",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ListRow.luau",
+          "lines": "30-44",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CurrencyBar.luau",
+          "lines": "43-49",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ProgressBar.luau",
+          "lines": "43-60",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CloseButton.luau",
+          "lines": "62-69",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-017",
+      "category": "visual-style",
+      "subject": "ButtonBuy fill mismatch",
+      "observed": "The source specifies ButtonBuy background #F05850, but ButtonBuy rests on Theme.derived.closeBeveledFill, which is #E9594A. The inline ButtonBuy comment labels that expression as #F05850 even though the referenced value differs.",
+      "inferredPurpose": null,
+      "inferenceConfidence": "none",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "90-97",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Theme.luau",
+          "lines": "86-97",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ButtonBuy.luau",
+          "lines": "39-44",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-018",
+      "category": "visual-style",
+      "subject": "Currency-bar anatomy",
+      "observed": "CurrencyBar is 190x34 by default, with a 46px light chip, a translucent dark track, 6px rounding, and a 10px-wide dark sliver rotated 12 degrees at the seam. Primary amounts use cream-gold; kind='secondary' uses white.",
+      "inferredPurpose": "Reproduce the HUD's label-chip/track signature and its one decorative skew without an image asset.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "103-110",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "434-440",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CurrencyBar.luau",
+          "lines": "17-27",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CurrencyBar.luau",
+          "lines": "29-97",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-019",
+      "category": "hierarchy",
+      "subject": "Currency value formatting",
+      "observed": "CurrencyBar formats values at or above 1,000,000 with one-decimal M, at or above 10,000 with one-decimal K, and smaller values as integers.",
+      "inferredPurpose": "Keep large resource values within the fixed-width HUD track.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/Components/CurrencyBar.luau",
+          "lines": "20-27",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CurrencyBar.luau",
+          "lines": "82-95",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-020",
+      "category": "interaction",
+      "subject": "List-row selection",
+      "observed": "ListRow is an Activatable TextButton. When selected it adds a square 3px bright-blue Border UIStroke without changing shape; Shop updates selectedKey when a row activates and derives the right-hand detail content from that state.",
+      "inferredPurpose": "Use outline rather than shape change for selection and keep catalog/detail views synchronized.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "379-390",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ListRow.luau",
+          "lines": "30-41",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ListRow.luau",
+          "lines": "117-126",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "41-47",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "83-94",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-021",
+      "category": "structure",
+      "subject": "Unrendered shop buy tags",
+      "observed": "Shop passes a ButtonBuy as the third child argument to each ListRow, but ListRow renders a fixed children table and never reads or inserts props.children. Consequently the price-tag controls passed by Shop are not part of ListRow's returned element tree.",
+      "inferredPurpose": null,
+      "inferenceConfidence": "none",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "83-100",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ListRow.luau",
+          "lines": "30-127",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-022",
+      "category": "interaction",
+      "subject": "Primary-button states",
+      "observed": "ButtonPrimary darkens its fill over 0.08s on mouse-down and returns over 0.15s on mouse-up or mouse-leave, with no squash. A disabled prop substitutes the desaturated toggle-on color and guards all activation callbacks.",
+      "inferredPurpose": "Fill an unobserved pressed/disabled-state gap using the source's inferred one-step darken and existing disabled-color convention.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "228-236",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "407-409",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ButtonPrimary.luau",
+          "lines": "17-40",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ButtonPrimary.luau",
+          "lines": "43-72",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-023",
+      "category": "interaction",
+      "subject": "Close-button states",
+      "observed": "Both close variants track mouse-down/up/leave and call onActivated. The flat close switches to a darker red while held; the beveled close removes its 10px face-height subtraction while held, visually collapsing the bevel.",
+      "inferredPurpose": "Provide immediate press feedback without squash, reserving bevel motion for the sole beveled component.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "402-409",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CloseButton.luau",
+          "lines": "16-45",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CloseButton.luau",
+          "lines": "47-69",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CloseButton.luau",
+          "lines": "98-116",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-024",
+      "category": "interaction",
+      "subject": "Story action callbacks",
+      "observed": "Shop rows are the only story controls with a supplied onActivated callback. HUD LauncherButton instances and Play omit onActivated; Shop pager, Craft, and ButtonBuy instances omit effective callbacks; Dialog's No and Yes omit callbacks; every story Window also omits onClose.",
+      "inferredPurpose": "The stories demonstrate visual and selection states rather than complete transaction, navigation, or dismissal flows.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "71-96",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "83-98",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "184-218",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "31-43",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "71-110",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "94-106",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-025",
+      "category": "interaction",
+      "subject": "Launcher feedback and badge",
+      "observed": "LauncherButton is a transparent 64x64 TextButton whose icon changes instantly from white to cream-gold while mouse-held. Its optional badge is overlapping stroked danger-red text with no background, capped at '99+'.",
+      "inferredPurpose": "Create a bare-glyph toolbar variant in a token gap without introducing new container chrome.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "492-494",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/LauncherButton.luau",
+          "lines": "1-11",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/LauncherButton.luau",
+          "lines": "19-25",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/LauncherButton.luau",
+          "lines": "27-105",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-026",
+      "category": "scrolling",
+      "subject": "Scrollable Window behavior",
+      "observed": "When scrollable is true, Window changes Content to ScrollingFrame, subscribes to the inner UIListLayout.AbsoluteContentSize, and writes that Y value to CanvasSize. It shows a 6px near-black scrollbar at 0.2 transparency.",
+      "inferredPurpose": "Make dense fixed-height ledger rows scroll when their accumulated height exceeds the responsive window.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "329-342",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "72-92",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "187-197",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-027",
+      "category": "scrolling",
+      "subject": "Screen use of scrolling",
+      "observed": "Only ShopWindow opts into Window's scrolling behavior; its six 64px rows are laid out vertically. InfoCard and Dialog remain non-scrolling fixed content.",
+      "inferredPurpose": "Scroll the catalog column while keeping short detail and confirmation content stationary.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "70-81",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ListRow.luau",
+          "lines": "23-34",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "101-109",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "31-43",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-028",
+      "category": "layering",
+      "subject": "World-to-window composition",
+      "observed": "All three stories render one full-screen sky-blue worldBackdrop Frame and place HUD/window elements directly over it. None inserts a dim overlay or drop-shadow element.",
+      "inferredPurpose": "Demonstrate the source's declared raw-on-world window stack.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "298-301",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "359-369",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Theme.luau",
+          "lines": "103-108",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "41-45",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "65-70",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "27-32",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-029",
+      "category": "layering",
+      "subject": "Info frames and text strokes",
+      "observed": "The only container strokes instantiated in the showcased screens are the 2px info-window/CTA frame strokes, including Dialog's accentSelect override. Other UIStroke instances are contextual text outlines or the selected-row outline.",
+      "inferredPurpose": "Use the source's explicit blue-frame and text/selection exceptions without adding general container chrome.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "359-362",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Theme.luau",
+          "lines": "57-66",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "127-137",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "38-43",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "167-179",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-030",
+      "category": "layering",
+      "subject": "Progress clipping",
+      "observed": "ProgressBar sets ClipsDescendants=true on its rounded dark track, and its green fill uses matching 6px corners beneath a higher-Z white stroked label.",
+      "inferredPurpose": "Keep the animated fill inside the rounded 34px track while maintaining label legibility.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/Components/ProgressBar.luau",
+          "lines": "43-76",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-031",
+      "category": "layering",
+      "subject": "Display-order plan not represented locally",
+      "observed": "The design source calls for ScreenGui ZIndexBehavior Sibling and DisplayOrder bands, while the inspected implementation defines component-local ZIndex values only and supplies no ScreenGui or DisplayOrder property in its story roots.",
+      "inferredPurpose": "Global GUI ordering is likely left to the external UI-Labs mount harness, but that cannot be established from the assigned files.",
+      "inferenceConfidence": "low",
+      "origin": "undetermined",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "374-376",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "561-565",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/HoneyLedger.storybook.luau",
+          "lines": "1-5",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "108-139",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-032",
+      "category": "motion",
+      "subject": "Window entrance and exit",
+      "observed": "Non-instant Window instances set UIScale to 0.95 and tween to 1 over 0.15s Quad-Out. Close requests tween back to 0.95 over 0.08s Quad-In and call onClose only after completion. Shop's two Window instances set instant=true; Dialog uses the animated default.",
+      "inferredPurpose": "Implement the source's restrained scale-settle option and faster exit while avoiding Back-Out overshoot.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "395-404",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "44-70",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "94-103",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "70-81",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "101-109",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "31-43",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-033",
+      "category": "motion",
+      "subject": "Progress fill motion",
+      "observed": "ProgressBar freezes its initial ratio in a ref and tweens subsequent fill sizes to current/max over 0.4s Quad-Out; current/max is clamped to [0,1], and max is floored at 1.",
+      "inferredPurpose": "Prevent React from snapping the fill and satisfy the source's requirement that progress changes settle rather than jump.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "409-412",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ProgressBar.luau",
+          "lines": "17-41",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ProgressBar.luau",
+          "lines": "54-60",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-034",
+      "category": "motion",
+      "subject": "Motion provenance",
+      "observed": "The design source explicitly records no video input and low motion confidence; its motion values are described as family presets rather than observed animation. Theme still defines Back, Quad, and Elastic easings, while the implemented windows use only Quad settle/exit and reserve Back/Elastic in comments.",
+      "inferredPurpose": "Keep uncertain celebratory motion available as tokens while avoiding it in the actual standard stories.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "216-236",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/honey-ledger/DESIGN.roblox.md",
+          "lines": "393-415",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Theme.luau",
+          "lines": "68-77",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/Window.luau",
+          "lines": "44-57",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-035",
+      "category": "input",
+      "subject": "Input modality",
+      "observed": "Press-state handling is expressed through MouseButton1Down, MouseButton1Up, and MouseLeave, while final actions use React.Event.Activated. ListRow uses Activated only. No inspected component configures Selectable, NextSelection properties, key bindings, ContextActionService, or UserInputService.",
+      "inferredPurpose": "Activated permits Roblox's generic activation path, but explicit feedback and navigation are mouse-oriented and no keyboard/gamepad focus strategy is locally defined.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/Components/ButtonPrimary.luau",
+          "lines": "53-71",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ButtonBuy.luau",
+          "lines": "48-60",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/CloseButton.luau",
+          "lines": "30-44",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/LauncherButton.luau",
+          "lines": "40-53",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Components/ListRow.luau",
+          "lines": "30-41",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-036",
+      "category": "verification",
+      "subject": "Story controls",
+      "observed": "HUD exposes Coins, Progress, and ItemsBadge controls; Shop exposes Selected; Dialog exposes Body. These values drive displayed currency/progress/badge, selected catalog state, and dialog copy respectively.",
+      "inferredPurpose": "Allow manual visual exercise of representative data and selection states in UI-Labs.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "25-31",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "58-67",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "34-47",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "22-25",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "52-61",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-037",
+      "category": "verification",
+      "subject": "Asset provenance comments",
+      "observed": "Theme records Creator Store provenance and resolved rbxassetid values for three toolbar icons and six catalog items; comments state that Acorn and Compass IDs were corrected after in-engine load/render checks.",
+      "inferredPurpose": "Use real image assets and preserve the rationale for replacing known-bad IDs.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/Theme.luau",
+          "lines": "113-166",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-HONEY-LEDGER-038",
+      "category": "verification",
+      "subject": "Verification assertions",
+      "observed": "The assigned stories and components contain declarative story controls and implementation comments but no test module, expect/assert call, screenshot comparison, or runtime verification assertion.",
+      "inferredPurpose": null,
+      "inferenceConfidence": "none",
+      "origin": "undetermined",
+      "evidence": [
+        {
+          "path": "e2e/honey-ledger/src/HoneyLedger.storybook.luau",
+          "lines": "1-5",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+          "lines": "22-31",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+          "lines": "34-39",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+          "lines": "19-25",
+          "kind": "story"
+        }
+      ]
+    }
+  ],
+  "absences": [
+    {
+      "subject": "Quest, Settings, and Premium screens",
+      "evidence": "The source specifies Quest, Settings, and Premium patterns at design-md/honey-ledger/DESIGN.roblox.md:506-521, but the registered story root at e2e/honey-ledger/src/HoneyLedger.storybook.luau:1-5 has only the inspected HUD.story, Shop.story, and Dialog.story modules; no matching story or implementation component is present among filesInspected."
+    },
+    {
+      "subject": "Tablet/mobile HUD features",
+      "evidence": "The source expects hamburger/chat controls, a leaderboard, circular bottom-center hotbar, selected-slot outline, labels, and slot counts at design-md/honey-ledger/DESIGN.roblox.md:495-502. HUD.story renders only TopBars, a three-launcher toolbar, and Play at e2e/honey-ledger/src/Stories/HUD.story.luau:45-96; no leaderboard, joystick/jump UI, or circular hotbar is rendered."
+    },
+    {
+      "subject": "Desktop HUD event and world-info layers",
+      "evidence": "The source lists a right-edge event/chat log and world-anchored info cards at design-md/honey-ledger/DESIGN.roblox.md:492-495. HUD.story's complete child set at e2e/honey-ledger/src/Stories/HUD.story.luau:45-96 contains neither."
+    },
+    {
+      "subject": "Proximity prompts",
+      "evidence": "The source specifies red/blue full-width prompt bands and a keycap at design-md/honey-ledger/DESIGN.roblox.md:501-502. None appears in HUD.story's rendered children at e2e/honey-ledger/src/Stories/HUD.story.luau:45-96."
+    },
+    {
+      "subject": "Shop center-world selected-item view and ingredients card",
+      "evidence": "The source shop pattern calls for a visible selected item in the center and a separate ingredients card at design-md/honey-ledger/DESIGN.roblox.md:503-509. Shop.story renders only the backdrop, left ShopWindow, right InfoCard, and right CtaFrame at e2e/honey-ledger/src/Stories/Shop.story.luau:65-218; no selected-item render or ingredients card is present."
+    },
+    {
+      "subject": "Visible per-row buy price tags",
+      "evidence": "Shop passes ButtonBuy children at e2e/honey-ledger/src/Stories/Shop.story.luau:83-100, but ListRow never renders props.children anywhere in its returned tree at e2e/honey-ledger/src/Components/ListRow.luau:30-127. The intended red price tags are therefore absent from the rendered catalog rows."
+    },
+    {
+      "subject": "Functional dialog decision and dismissal",
+      "evidence": "Dialog supplies no onClose to Window and no callbacks to No or Yes at e2e/honey-ledger/src/Stories/Dialog.story.luau:31-43 and 71-110. Window only invokes a close result when props.onClose exists at e2e/honey-ledger/src/Components/Window.luau:94-106; the showcased dialog cannot commit Yes/No or disappear through its local story state."
+    },
+    {
+      "subject": "Hard-currency HUD bar",
+      "evidence": "The source explicitly records no observed hard-currency accent at design-md/honey-ledger/DESIGN.roblox.md:228-233 and HUD.story intentionally renders only Coins and Quest at e2e/honey-ledger/src/Stories/HUD.story.luau:45-67."
+    },
+    {
+      "subject": "Currency count-up animation",
+      "evidence": "The source calls count-up numerals mandatory at design-md/honey-ledger/DESIGN.roblox.md:566-567, but CurrencyBar directly assigns formatted props.amount to Text at e2e/honey-ledger/src/Components/CurrencyBar.luau:82-95 and contains no TweenService, effect, binding, or interpolation."
+    },
+    {
+      "subject": "Explicit reduced-motion branch",
+      "evidence": "The source says instant motion is on-taste and reduced motion is trivially satisfiable at design-md/honey-ledger/DESIGN.roblox.md:413-415. Window exposes a manual instant prop at e2e/honey-ledger/src/Components/Window.luau:62-70, but no inspected file detects a user reduced-motion setting or changes behavior from input/accessibility state."
+    },
+    {
+      "subject": "Keyboard/gamepad navigation and focus styling",
+      "evidence": "The interactive components only define mouse press events and Activated handlers in e2e/honey-ledger/src/Components/ButtonPrimary.luau:53-71, ButtonBuy.luau:48-60, CloseButton.luau:30-44, LauncherButton.luau:40-53, and ListRow.luau:30-41. No Selectable/NextSelection configuration or focus-specific style is present."
+    },
+    {
+      "subject": "Global ScreenGui layering configuration",
+      "evidence": "The source requires ZIndexBehavior Sibling and DisplayOrder bands at design-md/honey-ledger/DESIGN.roblox.md:374-376 and 561-565. The local storybook only registers story roots at e2e/honey-ledger/src/HoneyLedger.storybook.luau:1-5, and Window supplies local ZIndex only at e2e/honey-ledger/src/Components/Window.luau:108-139; no local ScreenGui, DisplayOrder, or ZIndexBehavior assignment exists."
+    },
+    {
+      "subject": "Dim overlay, drop shadows, and gradients",
+      "evidence": "These are intentionally absent, consistent with the source prohibitions at design-md/honey-ledger/DESIGN.roblox.md:359-369 and 539-542. The three story roots place content directly over worldBackdrop at e2e/honey-ledger/src/Stories/HUD.story.luau:41-45, Shop.story.luau:65-70, and Dialog.story.luau:27-32; the only pseudo-depth is CloseButton's explicit bevel at e2e/honey-ledger/src/Components/CloseButton.luau:47-69."
+    },
+    {
+      "subject": "Automated verification assertions",
+      "evidence": "The story definitions expose manual controls at e2e/honey-ledger/src/Stories/HUD.story.luau:25-31, Shop.story.luau:34-39, and Dialog.story.luau:22-25, but no inspected target file is a test and no assert/expect or screenshot assertion is present."
+    }
+  ],
+  "uncertainties": [
+    "The design source itself labels Typography as medium confidence, Layout as medium, Motion as low, and Components as medium at design-md/honey-ledger/DESIGN.roblox.md:212-220; observations tied to those source judgments inherit that evidence limitation even when the code is unambiguous.",
+    "The source says surface-dark alpha was estimated without an undimmed comparison pair at design-md/honey-ledger/DESIGN.roblox.md:226-230; Theme's Transparency 0.35 at e2e/honey-ledger/src/Theme.luau:30-35 is a faithful implementation of an uncertain source estimate, not independently verified opacity.",
+    "No runtime render, screenshot, or assertion is included in the assigned target, so the calculated 64px-close/header overlap and narrow CTA overflow are established from declared geometry but not visually verified in these files.",
+    "It cannot be determined from the assigned files whether the UI-Labs mount harness supplies DeviceSafeInsets, ZIndexBehavior, DisplayOrder, gamepad selection, or other ScreenGui-level behavior; the storybook file only registers roots at e2e/honey-ledger/src/HoneyLedger.storybook.luau:1-5.",
+    "ButtonBuy's actual resting color and its inline comment disagree at e2e/honey-ledger/src/Components/ButtonBuy.luau:39-44 because Theme.derived.closeBeveledFill is #E9594A at e2e/honey-ledger/src/Theme.luau:91-96, while the design token is #F05850 at design-md/honey-ledger/DESIGN.roblox.md:90-97; the intended implementation value cannot be determined from implementation alone.",
+    "The design front matter assigns list-row typography to the regular body token at design-md/honey-ledger/DESIGN.roblox.md:137-142, while component prose says a list row has a bold title line at design-md/honey-ledger/DESIGN.roblox.md:445-449. ListRow uses the regular body font at e2e/honey-ledger/src/Components/ListRow.luau:91-100, so the source is internally inconsistent about title weight.",
+    "Theme comments claim the listed asset IDs were in-engine arbitrated and two corrected at e2e/honey-ledger/src/Theme.luau:113-166, but the assigned files include no executable assertion or captured render proving current load success."
+  ]
+}

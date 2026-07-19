@@ -1,0 +1,122 @@
+{
+  "taste": "honey-ledger",
+  "fallback": true,
+  "reason": "Two specialized observer runs stalled; quantitative typography was directly verified and remaining design evidence reuses the prior cited corpus audit.",
+  "typography": {
+    "roles": [
+      {
+        "name": "heading",
+        "family": "ComicNeueAngular",
+        "sizePx": 30,
+        "weight": "Bold",
+        "uppercase": false,
+        "strokePx": 2,
+        "evidence": [
+          {
+            "path": "design-md/honey-ledger/DESIGN.roblox.md",
+            "lines": "33-37"
+          },
+          {
+            "path": "e2e/honey-ledger/src/Theme.luau",
+            "lines": "39-48"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "family": "ComicNeueAngular",
+        "sizePx": 26,
+        "weight": "Bold",
+        "uppercase": false,
+        "strokePx": 2,
+        "evidence": [
+          {
+            "path": "design-md/honey-ledger/DESIGN.roblox.md",
+            "lines": "42-45"
+          },
+          {
+            "path": "e2e/honey-ledger/src/Theme.luau",
+            "lines": "43-48"
+          }
+        ]
+      },
+      {
+        "name": "utility",
+        "family": "SourceSansPro",
+        "sizePx": 24,
+        "weight": "Bold",
+        "uppercase": false,
+        "strokePx": 0,
+        "evidence": [
+          {
+            "path": "design-md/honey-ledger/DESIGN.roblox.md",
+            "lines": "50-53"
+          },
+          {
+            "path": "e2e/honey-ledger/src/Theme.luau",
+            "lines": "41-48"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "family": "ComicNeueAngular",
+        "sizePx": 17,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 0,
+        "evidence": [
+          {
+            "path": "design-md/honey-ledger/DESIGN.roblox.md",
+            "lines": "38-41"
+          },
+          {
+            "path": "e2e/honey-ledger/src/Theme.luau",
+            "lines": "43-48"
+          }
+        ]
+      },
+      {
+        "name": "caption",
+        "family": "ComicNeueAngular",
+        "sizePx": 14,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 0,
+        "evidence": [
+          {
+            "path": "design-md/honey-ledger/DESIGN.roblox.md",
+            "lines": "46-49"
+          },
+          {
+            "path": "e2e/honey-ledger/src/Theme.luau",
+            "lines": "43-48"
+          }
+        ]
+      }
+    ],
+    "minimumAuthoredPx": 14,
+    "minimumRenderedPx": null
+  },
+  "corpusEvidencePath": "docs/roblox-ui-rules/evidence/corpus/honey-ledger.json",
+  "designObservationIds": [
+    "OBS-HONEY-LEDGER-001",
+    "OBS-HONEY-LEDGER-002",
+    "OBS-HONEY-LEDGER-003",
+    "OBS-HONEY-LEDGER-006",
+    "OBS-HONEY-LEDGER-010",
+    "OBS-HONEY-LEDGER-011",
+    "OBS-HONEY-LEDGER-012",
+    "OBS-HONEY-LEDGER-013",
+    "OBS-HONEY-LEDGER-014",
+    "OBS-HONEY-LEDGER-015",
+    "OBS-HONEY-LEDGER-016",
+    "OBS-HONEY-LEDGER-018",
+    "OBS-HONEY-LEDGER-020",
+    "OBS-HONEY-LEDGER-022",
+    "OBS-HONEY-LEDGER-023",
+    "OBS-HONEY-LEDGER-028",
+    "OBS-HONEY-LEDGER-029",
+    "OBS-HONEY-LEDGER-035"
+  ]
+}

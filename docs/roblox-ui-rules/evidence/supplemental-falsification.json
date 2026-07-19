@@ -1,0 +1,277 @@
+{
+  "reviews": [
+    {
+      "ruleId": "RUI-022",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Moderate: the candidate is external-only with no repository observations, and its support comes from one official-source research synthesis rather than independent corpus recurrence. The property-ownership facts are documented, but the proposed implementation choices and target-runtime behavior were not independently exercised.",
+      "counterexamples": [
+        {
+          "description": "A non-flex UIListLayout normally preserves each direct sibling's defined Size. Therefore Size cannot be treated as universally list-owned; flex is the boundary, and flex may be enabled by HorizontalFlex, VerticalFlex, non-Automatic ItemLineAlignment, Wraps, or UIFlexItem.",
+          "evidence": [
+            {
+              "path": "agent://LayoutResearch",
+              "lines": "124-145"
+            }
+          ]
+        },
+        {
+          "description": "UI constraints can override layout-controlled size. In a grid, a constrained item can differ from CellSize and may span cells, so a blanket prohibition on manually specified or constraint-derived size would reject supported behavior.",
+          "evidence": [
+            {
+              "path": "agent://LayoutResearch",
+              "lines": "147-170"
+            }
+          ]
+        },
+        {
+          "description": "UIListLayout ownership of Position and Rotation applies to its direct GuiObject siblings, not to descendants inside a laid-out item; a descendant remains a valid independent transform coordinate space.",
+          "evidence": [
+            {
+              "path": "agent://LayoutResearch",
+              "lines": "95-106"
+            }
+          ]
+        },
+        {
+          "description": "The official grid evidence establishes ownership of sibling Position and Size, not Rotation. The list's Rotation rule must not be generalized to UIGridLayout without separate evidence.",
+          "evidence": [
+            {
+              "path": "agent://LayoutResearch",
+              "lines": "147-170"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Tweening or manually assigning Position or Rotation on a direct UIListLayout sibling can appear ignored or be overwritten by the next layout pass.",
+        "Assigning Position or Size directly to a UIGridLayout sibling can produce no normal rendered effect because the grid controls those properties.",
+        "Over-broadly treating Size as always owned by UIListLayout would forbid legitimate non-flex item sizing.",
+        "Ignoring AutomaticSize, UIFlexItem, UISizeConstraint, UIAspectRatioConstraint, or UIScale interactions can make the declared ownership matrix disagree with the rendered result.",
+        "Animating a nested wrapper without considering ancestor clipping can preserve transform independence but still clip the visual overflow."
+      ],
+      "missingBoundaries": [
+        "UIListLayout non-flex versus every documented flex-enabling configuration",
+        "UIListLayout Position/Rotation versus conditionally controlled Size",
+        "UIGridLayout Position/Size versus unestablished Rotation ownership",
+        "AutomaticSize and flex-basis or cross-axis sizing",
+        "UISizeConstraint, UIAspectRatioConstraint, and UIScale precedence",
+        "Direct sibling versus nested descendant wrapper",
+        "Wraps and responsive reflow in small-landscape and tall/mobile viewports",
+        "Scrolling containers and clipping of independently transformed descendants",
+        "Interrupted tweens of layout-owned properties versus wrapper-owned properties",
+        "Target-runtime mutation test; none was supplied"
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "For a direct GuiObject sibling, do not depend on writes to properties the active layout actually controls: UIListLayout controls Position and Rotation, and controls Size only in the applicable flex/AutomaticSize/constraint configuration; UIGridLayout controls Position and Size except where a supported constraint determines size. For an independent per-item transform, move that transform to an unconstrained descendant or change/configure the layout hierarchy. Treat the wrapper/removal choice as recommended implementation, not as the engine invariant itself.",
+      "reason": "The engine failure mode supports a MUST only after defining the property matrix. The original wording is directionally correct but can be misread as making Size universally list-owned or Rotation grid-owned, and it presents wrapper/removal as if they were the only remedies. Constraints and layout configuration are valid alternatives. The stable invariant is that a direct sibling cannot reliably use a property currently owned by its layout; the architecture used to obtain independence is a recommendation."
+    },
+    {
+      "ruleId": "RUI-023",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Moderate: the candidate is external-only and has no independent repository observations. Official documentation supports locale emulation, elongation as a diagnostic aid, the TextScaled/AutomaticSize recommendation, and concrete overflow semantics, but not a universal release gate or a single mandatory overflow policy.",
+      "counterexamples": [
+        {
+          "description": "Studio Elongate affects only strings processed by Roblox's translation system. Hard-coded or otherwise unlocalized strings are not covered, and synthetic length pressure does not validate real-locale shaping, line breaking, bidirectionality, or translation quality.",
+          "evidence": [
+            {
+              "path": "agent://TextResearch",
+              "lines": "4-16"
+            }
+          ]
+        },
+        {
+          "description": "TextWrapped alone is not a complete preservation policy in a fixed-height label: any additional line whose height exceeds the container is omitted. A rule that lists wrapping without requiring vertical expansion, scrolling, or intentional loss can still hide content.",
+          "evidence": [
+            {
+              "path": "agent://TextResearch",
+              "lines": "142-157"
+            }
+          ]
+        },
+        {
+          "description": "Truncation is a valid intentional policy for expendable text, but it deliberately hides graphemes and can split a word under SplitWord. It is unsuitable where the full string is functionally required unless another access path exposes it.",
+          "evidence": [
+            {
+              "path": "agent://TextResearch",
+              "lines": "150-158"
+            }
+          ]
+        },
+        {
+          "description": "Avoiding TextScaled with AutomaticSize is official guidance, not an engine prohibition. TextScaled also has documented uses such as BillboardGui text, so the recommendation should be scoped primarily to ordinary on-screen TextLabels rather than treated as an invariant across all text UI.",
+          "evidence": [
+            {
+              "path": "agent://TextResearch",
+              "lines": "113-127"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Elongation-only testing can pass while a real target locale still fails due to script shaping, bidirectional layout, word segmentation, or font coverage.",
+        "A fixed-height wrapped label can silently omit later lines even though TextWrapped is enabled.",
+        "TextScaled without a suitable UITextSizeConstraint can shrink important text below readable size.",
+        "Combining TextScaled and AutomaticSize can create unstable or unintended scaling because they solve opposite sizing problems.",
+        "AutomaticSize can preserve the text but expand into adjacent controls, beyond a small-landscape viewport, or outside a scrolling canvas if container behavior is not specified.",
+        "Truncating critical instructions, prices, consent text, or error recovery information can remove functionally necessary content.",
+        "Pseudolocalization/elongation can miss hard-coded strings that do not pass through the translation system."
+      ],
+      "missingBoundaries": [
+        "Small-landscape width and tall/mobile width-height extremes",
+        "Actual supported locales, including bidirectional and non-Latin shaping, in addition to synthetic elongation",
+        "Hard-coded strings versus strings processed by the translation system",
+        "TextLabel versus TextButton, TextBox, and BillboardGui text",
+        "Fixed-height wrapping versus AutomaticSize Y/XY or a scrolling container",
+        "TextTruncate combined with TextWrapped; official precedence is unresolved",
+        "AnchorPoint, parent constraints, minimum Size, and maximum expansion behavior",
+        "UITextSizeConstraint and a readable minimum text size",
+        "Critical text that must remain fully available versus expendable labels that may truncate",
+        "Gamepad-focus and touch layouts where focused/pressed affordances reduce available text space"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "For user-visible localized on-screen text whose complete or meaningful representation can exceed its available bounds, exercise supported target locales and Studio elongation, then define a content-appropriate policy: expand on the necessary axis, wrap with sufficient vertical growth or scrolling, or intentionally truncate only when loss is acceptable. Treat elongation as length-pressure coverage, not proof for every locale. On ordinary on-screen TextLabels, avoid combining TextScaled and AutomaticSize by default; use a documented exception only with bounded text size and verified layout behavior.",
+      "reason": "The candidate survives as guidance, not an invariant. Official sources say elongation helps find problems rather than mandating it as a universal release check, and overflow handling depends on whether complete content is required. The original list also overstates wrapping unless vertical capacity is addressed. The TextScaled/AutomaticSize clause is well supported as a default recommendation, with valid exceptions and a narrower on-screen TextLabel scope."
+    },
+    {
+      "ruleId": "RUI-024",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Moderate-high for the documented, effective non-rotated clipping invariant; unresolved for any claim about the rollout state actually experienced by a target client. Evidence is external-only and synthesized in one official-source artifact, with no repository observation or runtime render test.",
+      "counterexamples": [
+        {
+          "description": "Clipping is conditional under rotation. When ClipsDescendantsSupportsRotation is enabled, rotated descendants can be clipped, but a rotated parent shape remains unsupported; when it is not enabled, non-zero Rotation on the clipping GuiObject or any ancestor causes ClipsDescendants to be ignored.",
+          "evidence": [
+            {
+              "path": "agent://LayeringResearch",
+              "lines": "118-140"
+            }
+          ]
+        },
+        {
+          "description": "ClipsDescendants is a descendant boundary, not a global screen boundary. Reparenting an overlay to an appropriate common ancestor or separate ScreenGui can place it outside the clipping branch; high ZIndex alone cannot do so while it remains a descendant.",
+          "evidence": [
+            {
+              "path": "agent://LayeringResearch",
+              "lines": "212-236"
+            }
+          ]
+        },
+        {
+          "description": "UICorner changes the visible corner treatment but does not make the ClipsDescendants boundary rounded. A rounded card can therefore still use rectangular clipping, creating corner leakage or unexpectedly square cuts.",
+          "evidence": [
+            {
+              "path": "agent://LayeringResearch",
+              "lines": "91-100"
+            }
+          ]
+        },
+        {
+          "description": "A sibling shadow can escape one card's clipping boundary but can still be clipped by a shared ancestor. Thus moving an effect one level is not a universal escape from effective ancestor clipping.",
+          "evidence": [
+            {
+              "path": "agent://LayeringResearch",
+              "lines": "142-154"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A tooltip, popover, modal ornament, or shadow kept in a clipping branch is cut off despite a very high ZIndex.",
+        "A rounded container clips descendants to a rectangle rather than its UICorner silhouette, causing content to show in or be cut at square corners.",
+        "Assuming rotation support is enabled can produce unclipped overflow on clients where the rollout is not effective.",
+        "Assuming the legacy behavior can produce unnecessary workarounds where rotated descendants are supported.",
+        "Conflating a rotated descendant with a rotated clipping ancestor can encode the wrong behavior: the documented support does not make a rotated parent shape a supported clip geometry.",
+        "During a Rotation tween, legacy behavior can switch effective clipping off for any non-zero ancestor rotation and expose overflow.",
+        "Moving an overlay to a separate ScreenGui without coordinating DisplayOrder, input capture, and modal lifecycle can fix clipping while breaking stacking or interaction."
+      ],
+      "missingBoundaries": [
+        "Actual ClipsDescendantsSupportsRotation rollout state on the target engine/client cohort",
+        "Rotated descendant versus rotated clipping GuiObject versus rotated ancestor",
+        "Rotation animation through zero and interruption mid-tween",
+        "Nested clipping ancestors and which ancestor establishes the effective boundary",
+        "UICorner radius versus rectangular clipping geometry",
+        "ScrollingFrame content, popovers, and shadows extending outside the viewport",
+        "UIShadow blur/spread interaction with parent or ancestor clipping; official research leaves it unresolved",
+        "Sibling/global ZIndex behavior versus cross-ScreenGui DisplayOrder",
+        "Modal stacking and input capture after reparenting outside the clipped branch",
+        "Small-landscape and tall/mobile placements that force overlays against viewport edges",
+        "Target-runtime render test for high-Z overflow, rounded parents, and rotation; none was supplied"
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "When a GuiObject's ClipsDescendants is actually effective, descendant overflow outside that GuiObject's rectangular bounds is invisible; ZIndex only changes draw order and cannot bypass the boundary, and UICorner does not round the clip geometry. State rotation separately and conditionally: distinguish rotated descendants from rotated clipping ancestors, and make no assertion about the target client's rollout state without a target-runtime check.",
+      "reason": "The rectangular descendant-boundary behavior is a concrete engine constraint and supports a MUST. Rotation cannot be folded into that invariant as unconditional support or unconditional failure: official documentation describes two rollout branches and does not establish the effective state for every client. This review therefore retains the stable core, narrows the rotation clause, and explicitly does not claim runtime support."
+    },
+    {
+      "ruleId": "RUI-025",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Moderate: same-property replacement, different-property coexistence, Cancel, Pause, and Completed states are documented engine semantics, but deterministic ownership is an application recommendation from one external research synthesis. There are no repository observations or rapid-interruption runtime results.",
+      "counterexamples": [
+        {
+          "description": "A newer tween on the same object and same property already cancels and overwrites the older tween, while different-property tweens may coexist. Therefore explicit Cancel is neither universally necessary nor equivalent to one-tween-per-object ownership.",
+          "evidence": [
+            {
+              "path": "agent://MotionResearch",
+              "lines": "34-51"
+            }
+          ]
+        },
+        {
+          "description": "Cancel does not move the instance to a start or target terminal value; it leaves properties at their current interpolated values. Replaying the cancelled tween restarts its full duration, so 'terminal values' must be supplied by application state rather than inferred from Cancel.",
+          "evidence": [
+            {
+              "path": "agent://MotionResearch",
+              "lines": "53-69"
+            }
+          ]
+        },
+        {
+          "description": "Pause is not interchangeable with Cancel: Pause preserves progress and does not fire Completed, whereas Cancel fires Completed with a cancellation state. A callback policy that assumes every interruption has identical completion behavior is false.",
+          "evidence": [
+            {
+              "path": "agent://MotionResearch",
+              "lines": "61-69"
+            }
+          ]
+        },
+        {
+          "description": "Roblox does not prescribe an owner registry or ownership abstraction, and decorative fire-and-forget motion need not pay that complexity when no later state or callback depends on the outcome.",
+          "evidence": [
+            {
+              "path": "agent://MotionResearch",
+              "lines": "53-64"
+            },
+            {
+              "path": "agent://MotionResearch",
+              "lines": "190-193"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A cancelled tween's Completed callback can run with PlaybackState.Cancelled and apply stale state if the callback does not discriminate playback state or generation.",
+        "An older different-property tween can continue after a replacement state transition and produce a hybrid visual state.",
+        "Calling Cancel and assuming it restores the start or commits the target leaves the object at an intermediate value.",
+        "Using Pause where terminal cleanup is expected can leave cleanup callbacks unfired; using Cancel where resume is expected loses progress semantics.",
+        "Replaying a cancelled tween can take the full original duration from an intermediate visual value and create unexpected velocity or timing.",
+        "Multiple input sources such as mouse hover, touch press, gamepad selection, disabled-state changes, and modal teardown can supersede one another unless they converge on one authoritative visual state.",
+        "Reduced-motion snapping or replacement fades can bypass assumptions made by callbacks written only for nonzero-duration motion.",
+        "An over-engineered universal owner can incorrectly cancel intentional, compatible tweens on different properties."
+      ],
+      "missingBoundaries": [
+        "Same object/same property versus same object/different properties",
+        "One tween targeting multiple properties when any target property conflicts",
+        "Callback behavior for Completed versus Cancelled and protection against stale generations",
+        "Pause/resume versus Cancel/replay semantics",
+        "Rapid reversal and animation interruption before the first rendered frame",
+        "Zero-duration or reduced-motion transitions",
+        "Instance destruction, unmount, modal close, and disabled-state changes during playback",
+        "Mouse hover, touch press, and gamepad focus issuing competing visual states",
+        "Intentional concurrent choreography versus state transitions that require atomic visual ownership",
+        "Decorative fire-and-forget motion versus correctness-bearing stateful motion",
+        "Target-runtime assertions for winning values and callback count; none were supplied"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "For correctness-bearing UI state that can be superseded before its transition finishes, use one authoritative state/generation and define the winning target values plus callback behavior for Completed and Cancelled outcomes. Rely on automatic cancellation only for documented same-object, same-property conflicts; explicitly cancel or otherwise invalidate older work when different properties, stale callbacks, teardown, or atomic choreography require it. Exclude decorative fire-and-forget tweens that have no state or callback dependency.",
+      "reason": "The deterministic-outcome goal is sound, but Roblox supplies semantics rather than a mandated ownership architecture. Same-property replacement already resolves one class of conflict; different-property coexistence, stale callbacks, Cancel's intermediate values, and Pause's no-Completed behavior require scoped application policy. The rule should remain a SHOULD for correctness-bearing supersedable transitions, not become a universal tween abstraction or explicit-Cancel requirement."
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "topic": "Roblox mouse, touch, and gamepad GUI interaction guidance/APIs",
+  "claims": [
+    {
+      "id": "SRC-001",
+      "claim": "Hover cannot be the only carrier of essential GUI state or information for a Roblox experience intended to support mouse, touch, and gamepad input.",
+      "verdict": "partially-supported",
+      "kind": "design-recommendation",
+      "scope": "Cross-device Roblox GUI design. Treat mouse hover as optional enhancement; any state, information, or action needed to use the interface must also be available without mouse hover, including through persistent presentation, touch activation, or gamepad selection/focus.",
+      "limitations": [
+        "Roblox Creator Hub does not state the exact normative rule \"hover cannot be the only carrier of essential state.\"",
+        "The engine fact is narrower: GuiObject.MouseEnter and MouseLeave are documented in terms of mouse movement, while gamepad focus has separate SelectionGained and SelectionLost events. The no-hover-only rule is therefore a design inference from the documented input model and Roblox's official instruction to support UI interaction across devices.",
+        "This claim concerns essential information and operability, not decorative hover feedback such as a color, image, or scale change that merely reinforces an already visible control.",
+        "The official sources reviewed do not explicitly document whether any particular touch platform may synthesize mouse-hover events; code must not assume such synthesis as a portable Roblox contract."
+      ],
+      "sources": [
+        {
+          "title": "GuiObject API reference — MouseEnter, MouseLeave, SelectionGained, and SelectionLost",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "MouseEnter and MouseLeave are defined as the user moving a mouse into or out of a GuiObject; SelectionGained and SelectionLost separately describe gamepad-selector focus. This establishes that mouse hover and gamepad focus are distinct documented interaction paths."
+        },
+        {
+          "title": "Mobile input",
+          "url": "https://create.roblox.com/docs/input/mobile",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox says cross-platform development should respond to PreferredInput so UI elements such as on-screen buttons and menus work elegantly and support interaction across devices; touch and a connected gamepad may both remain valid inputs."
+        },
+        {
+          "title": "Choose an art style — Establish an interaction order",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style#establish-an-interaction-order",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox recommends at least one form of visual feedback for interactable UI elements when they are in focus and instructs creators to review interactable-element sizing on various screen sizes. It supports input-independent focus feedback, but does not explicitly prohibit hover-only content."
+        }
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "claim": "Touch targets have an official Roblox minimum size, specifically 44 px.",
+      "verdict": "partially-supported",
+      "kind": "design-recommendation",
+      "scope": "Mobile touch zones for interactive Roblox UI elements. Roblox publishes an official curriculum recommendation to target at least 9 mm by 9 mm, but does not establish 44 Roblox pixels as an engine rule or platform-wide minimum.",
+      "limitations": [
+        "The Roblox-backed number found is at least 9 mm high by 9 mm wide, not 44 px by 44 px.",
+        "The 9×9 mm recommendation appears in one official Roblox UI curriculum lesson and is framed as a way to help meet an external Web Content Accessibility Guidelines recommendation; it is not documented as an engine-enforced constraint or a publishing requirement.",
+        "The Roblox lesson imports the value from a non-Roblox W3C Mobile Accessibility Task Force Editor's Draft. That draft explicitly says it provides informative guidance, does not set requirements, is a work in progress, and publication does not imply W3C Membership endorsement.",
+        "The separate 44×44 value comes from non-Roblox WCAG 2.1 Success Criterion 2.5.5, Target Size (Enhanced), which is Level AAA and measures CSS pixels. CSS pixels are not established by the reviewed Roblox sources as equivalent to Roblox GUI offset pixels.",
+        "No current Roblox Creator Hub or API source reviewed states a 44×44 px touch-target rule."
+      ],
+      "sources": [
+        {
+          "title": "Choose an art style — Establish an interaction order",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style#establish-an-interaction-order",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox says UIAspectRatioConstraint can help meet the Web Content Accessibility Guidelines' Touch Target Size and Spacing recommendation to create a touch zone for interactive UI elements of at least 9×9 mm on mobile devices. This is official Roblox design guidance, but it expressly imports an external recommendation."
+        },
+        {
+          "title": "Mobile Accessibility: How WCAG 2.0 and Other W3C/WAI Guidelines Apply to Mobile — Touch Target Size and Spacing",
+          "url": "https://w3c.github.io/Mobile-A11y-TF-Note/#targetSize",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "The non-Roblox W3C Editor's Draft recommends touch targets at least 9 mm high by 9 mm wide and spacing near-minimum targets. Its status section says the document is informative and does not set requirements."
+        },
+        {
+          "title": "Understanding WCAG 2.1 Success Criterion 2.5.5: Target Size (Enhanced)",
+          "url": "https://www.w3.org/WAI/WCAG21/Understanding/target-size.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "The non-Roblox W3C source specifies 44×44 CSS pixels for WCAG 2.1 SC 2.5.5 and labels the criterion Level AAA. This identifies 44 px as an imported web-accessibility value, not a Roblox-backed pixel minimum."
+        },
+        {
+          "title": "Mobile input",
+          "url": "https://create.roblox.com/docs/input/mobile",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox's current general mobile-input guide emphasizes cross-platform design but states no numerical minimum touch-target size, supporting the limitation that the number is curriculum guidance rather than a general engine constraint."
+        }
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "claim": "Gamepad GUI selection requires explicit reachability and navigation consideration.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Custom Roblox menus and other GuiObjects operated through the default controller GUI navigator. Every intended control must be eligible for selection, navigation must start on a reachable object, directional paths must lead to expected controls, and the result should be tested with a gamepad or Controller Emulator.",
+      "limitations": [
+        "Selectable controls are governed by GuiObject.Selectable; cosmetic GuiObjects should generally not be selectable.",
+        "GuiService.AutoSelectGuiEnabled can automatically choose an initial GUI when the player invokes selection. If it is disabled, the creator must set GuiService.SelectedObject manually to start navigation.",
+        "GuiService.GuiNavigationEnabled controls the default controller GUI navigator. Custom navigation systems have their own contract and are outside these API facts.",
+        "The NextSelectionUp, NextSelectionDown, NextSelectionLeft, and NextSelectionRight references say that an empty directional property does not change the selected GUI in that direction. Explicit consideration can therefore be manual links or code that generates links; it does not require hand-authoring every property.",
+        "A GuiButton can receive gamepad Activated only when it is selected and A/cross is activated in UI navigation mode, tying reachability directly to action availability."
+      ],
+      "sources": [
+        {
+          "title": "GuiObject API reference — Selectable and NextSelection properties",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Selectable determines whether a GuiObject can be selected during gamepad GUI navigation. Directional NextSelection properties set the object selected in each direction; the reference says an empty value does not change selection and warns that a linked target which is not Selectable will not be selected."
+        },
+        {
+          "title": "GuiService API reference — AutoSelectGuiEnabled, GuiNavigationEnabled, and SelectedObject",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiService",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "AutoSelectGuiEnabled can automatically set a selected GUI; when disabled, SelectedObject must be set manually to start navigation. GuiNavigationEnabled enables or disables default controller GUI navigation, and SelectedObject is the object currently focused by the GUI navigator."
+        },
+        {
+          "title": "Gamepad input",
+          "url": "https://create.roblox.com/docs/input/gamepad",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox instructs creators to make UI elements such as buttons and menus support interaction across devices, identifies ButtonA as the common accept/GUI-selection input, and says to test gamepad support frequently with a connected gamepad or Controller Emulator."
+        }
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "claim": "GuiButton.Activated is the appropriate event for a standard primary GUI action across mouse, touch, and gamepad.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Primary activation of TextButton and ImageButton on the client: desktop left-click press-and-release, mobile touch release, and console A/cross activation while the button is selected in UI navigation mode.",
+      "limitations": [
+        "Activated is a GuiButton event, so this guidance applies directly to TextButton and ImageButton, not arbitrary GuiObjects unless they are modeled as buttons.",
+        "The event does not fire on the server; use a LocalScript or a client-context Script.",
+        "GuiObject.Active controls whether Activated fires for GuiButtons.",
+        "For mouse, activation requires the press-and-release contract documented by GuiButton; releasing after leaving the button does not satisfy the normal activation path. For gamepad, the button must be selected and UI navigation mode active.",
+        "Use SecondaryActivated for a cross-platform secondary action such as right-click on desktop or long press on mobile. Holds, drags, continuous input, gestures, and device-specific actions require other events or the Input Action System.",
+        "The API calls Activated multi-platform and useful for a single user input; it does not claim it replaces every lower-level input event."
+      ],
+      "sources": [
+        {
+          "title": "GuiButton API reference — Activated",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiButton#Activated",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "The class description calls Activated the most important GuiButton event and a multi-platform event. It documents mouse click-and-release, touch press/release, and selected-gamepad A-button activation; the event entry specifies desktop left click, mobile touch release, and console A/cross in UI navigation mode."
+        },
+        {
+          "title": "Text & image buttons — Script buttons",
+          "url": "https://create.roblox.com/docs/ui/buttons#script-buttons",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox's button guide tells creators to script a button action by connecting GuiButton.Activated, demonstrates Activated in a LocalScript, and separately identifies SecondaryActivated for cross-platform secondary input."
+        },
+        {
+          "title": "GuiObject API reference — Active",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject#Active",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "For GuiButton objects, Active determines whether Activated fires; InputBegan, InputChanged, and InputEnded are documented separately for lower-level handling."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "The official Roblox curriculum recommends at least 9×9 mm by importing a W3C mobile Editor's Draft, while the separate non-Roblox WCAG 2.1 Level AAA Target Size (Enhanced) criterion specifies 44×44 CSS pixels. These values have different units, scopes, and standards status; 44×44 CSS px must not be relabeled as a Roblox pixel requirement.",
+    "There is no conflict between Activated's cross-input contract and gamepad reachability: Activated supports gamepad activation only after the button is reachable and selected in UI navigation mode."
+  ],
+  "unresolved": [
+    "Context7 was resolved first to /websites/create_roblox_reference_engine and /websites/create_roblox. Its returned material covered GuiObject gamepad selection but did not surface relevant Roblox material for the touch-target provenance, the hover-only recommendation, or the Activated event in the combined queries, so current Creator Hub/API pages were fetched through the required web fallback.",
+    "No current Roblox source was found that states the exact sentence \"hover cannot be the only carrier of essential state\"; that verdict remains a scoped design inference from documented mouse-only hover events and official cross-device interaction guidance.",
+    "No current Roblox source was found that defines 44×44 px as a Roblox touch-target minimum or engine/publishing requirement."
+  ]
+}

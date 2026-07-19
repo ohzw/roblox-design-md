@@ -1,0 +1,1057 @@
+{
+  "taste": "loud-slab",
+  "filesInspected": [
+    "design-md/loud-slab/DESIGN.roblox.md",
+    "e2e/loud-slab/src/Theme.luau",
+    "e2e/loud-slab/src/Components/Window.luau",
+    "e2e/loud-slab/src/Components/ButtonPrimary.luau",
+    "e2e/loud-slab/src/Components/ButtonClose.luau",
+    "e2e/loud-slab/src/Components/SideButton.luau",
+    "e2e/loud-slab/src/Components/ItemCard.luau",
+    "e2e/loud-slab/src/Components/CurrencyDisplay.luau",
+    "e2e/loud-slab/src/Stories/HUD.story.luau",
+    "e2e/loud-slab/src/Stories/Shop.story.luau",
+    "e2e/loud-slab/src/Stories/Dialog.story.luau"
+  ],
+  "typography": {
+    "roles": [
+      {
+        "name": "display",
+        "family": "FredokaOne",
+        "sizePx": 52,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 3,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/loud-slab/DESIGN.roblox.md",
+            "lines": "33-36"
+          },
+          {
+            "path": "e2e/loud-slab/src/Theme.luau",
+            "lines": "39-49"
+          },
+          {
+            "path": "e2e/loud-slab/src/Components/CurrencyDisplay.luau",
+            "lines": "50-63"
+          }
+        ]
+      },
+      {
+        "name": "heading",
+        "family": "FredokaOne",
+        "sizePx": 36,
+        "weight": "Regular",
+        "uppercase": true,
+        "strokePx": 3,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/loud-slab/DESIGN.roblox.md",
+            "lines": "37-41"
+          },
+          {
+            "path": "e2e/loud-slab/src/Theme.luau",
+            "lines": "39-49"
+          },
+          {
+            "path": "e2e/loud-slab/src/Components/Window.luau",
+            "lines": "135-152"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "family": "FredokaOne",
+        "sizePx": 28,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 3,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/loud-slab/DESIGN.roblox.md",
+            "lines": "46-49"
+          },
+          {
+            "path": "e2e/loud-slab/src/Theme.luau",
+            "lines": "39-49"
+          },
+          {
+            "path": "e2e/loud-slab/src/Components/ItemCard.luau",
+            "lines": "54-69"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "family": "FredokaOne",
+        "sizePx": 26,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 3,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/loud-slab/DESIGN.roblox.md",
+            "lines": "42-45"
+          },
+          {
+            "path": "e2e/loud-slab/src/Theme.luau",
+            "lines": "39-49"
+          },
+          {
+            "path": "e2e/loud-slab/src/Stories/Dialog.story.luau",
+            "lines": "55-69"
+          }
+        ]
+      },
+      {
+        "name": "caption",
+        "family": "BuilderSans",
+        "sizePx": 18,
+        "weight": "Medium",
+        "uppercase": false,
+        "strokePx": 3,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/loud-slab/DESIGN.roblox.md",
+            "lines": "50-53"
+          },
+          {
+            "path": "e2e/loud-slab/src/Theme.luau",
+            "lines": "40-49"
+          },
+          {
+            "path": "design-md/loud-slab/DESIGN.roblox.md",
+            "lines": "267-278"
+          },
+          {
+            "path": "e2e/loud-slab/src/Components/SideButton.luau",
+            "lines": "85-101"
+          }
+        ]
+      }
+    ],
+    "minimumAuthoredPx": 14,
+    "minimumRenderedPx": null,
+    "adjacentRatios": [
+      {
+        "from": "display",
+        "to": "heading",
+        "ratio": 0.6923
+      },
+      {
+        "from": "heading",
+        "to": "label",
+        "ratio": 0.7778
+      },
+      {
+        "from": "label",
+        "to": "body",
+        "ratio": 0.9286
+      },
+      {
+        "from": "body",
+        "to": "caption",
+        "ratio": 0.6923
+      }
+    ],
+    "rules": [
+      "The nominal size hierarchy in descending order is display 52px, heading 36px, label 28px, body 26px, caption 18px; label is 2px larger than body despite appearing after body in the source token list.",
+      "FredokaOne Regular is the authored family and weight for display, heading, label, and body; BuilderSans Medium is reserved for engine-adjacent caption chrome such as leaderboards, slot numbers, and timers.",
+      "Headings are authored uppercase; labels and buttons are Title Case; the source says nothing is lowercase. Display, body, label, and caption tokens do not force uppercase.",
+      "The authored contrast treatment is a 3px pure-black Contextual outline around FredokaOne text. Caption instances vary in implementation between 3px, 2px, and no outline.",
+      "No global line-height or line-height ratio is authored. CurrencyDisplay uses measured line boxes of 52px for display text and 18px for caption text inside a 74px wrapper; other text boxes are component-specific rather than a typography line-height token.",
+      "The smallest nominal typography token is 18px, but the smallest explicit authored text ceiling is 14px for a 26px notification badge. TextScaled labels have only maximum constraints and no authored minimum, so the minimum rendered size is unavailable.",
+      "Typography px values are estimates reconciled from mixed-scale captures; the design source rates typography confidence medium."
+    ],
+    "exceptions": [
+      "Seasonal event-shop display lettering uses a pixel-arcade face rather than FredokaOne; the exact family is unavailable and the source treats it as a skin, not a core role.",
+      "SideButton notification count is BuilderSans with MaxTextSize 14 and a 2px outline, below the nominal 18px caption role and 3px nominal outline.",
+      "HUD timer text is TextScaled with MaxTextSize 16, below the nominal 18px caption role.",
+      "Item-card names use the 28px label token but TextScaled inside a 24px-high box with only MaxTextSize 28, so actual rendering may shrink below the role size.",
+      "Shop section heading uses TextSize 36 inside a 32px-high label box, breaking a one-to-one size/line-box assumption.",
+      "Leaderboard Player uses a 2px outline, while Steals, Rebirths, and Cash use the 18px caption role with no UIStroke, counter to the taste's nominal universal outlined-text treatment.",
+      "HUD side-button captions retain a 20px text box and MaxTextSize 18 while the source-nominal 90px-square slab is overridden to 90x44; the icon-height formula then has zero remaining offset height at that override."
+    ]
+  },
+  "hierarchy": [
+    {
+      "id": "DES-LOUD-SLAB-001",
+      "domain": "hierarchy",
+      "observed": "The authored emphasis ladder uses a 52px colored currency display, 36px outlined window headings and commitment CTA labels, 28px action/item labels, 26px body copy, and 18px engine-chrome captions. Window headers are described as the loudest color on screen.",
+      "designFunction": "Makes large semantic numbers and header/action shouts primary, body and item labels secondary, and engine chrome tertiary through size, family, casing, color, and outline differences.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "primaryTextPx": [
+          52,
+          36
+        ],
+        "secondaryTextPx": [
+          28,
+          26
+        ],
+        "tertiaryTextPx": 18,
+        "headingToHeaderHeightRatio": 0.5,
+        "textOutlinePx": 3
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "32-60"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "267-278"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "353-359"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-002",
+      "domain": "hierarchy",
+      "observed": "A window orders a full-width header title before content, then ends with either one centered mustard commitment CTA, a full-width progress dock, or no footer. The mustard commitment CTA is limited to at most one per window; repeatable green buy actions may appear multiple times.",
+      "designFunction": "Separates a single high-commitment decision from repeated affirmative commerce actions and from passive progress.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "commitmentCtaMaxPerWindow": 1,
+        "headerHeightPx": 72,
+        "commitmentTextPx": 36,
+        "repeatableActionTextPx": 28
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "77-119"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "337-351"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "360-366"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-003",
+      "domain": "hierarchy",
+      "observed": "The dialog reads CONFIRM in the 72px header, then 26px body text, then one green buy action. Its content uses a 60px body box, a 20px gap, and a 52px action inside a 340x260 maximum panel.",
+      "designFunction": "Places context before the single purchase action while retaining the close square and dim-tap as dismissal paths.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "panelMaxWidthPx": 340,
+        "panelMaxHeightPx": 260,
+        "headerHeightPx": 72,
+        "bodyTextPx": 26,
+        "bodyBoxHeightPx": 60,
+        "bodyToActionGapPx": 20,
+        "actionHeightPx": 52,
+        "actionWidthFraction": 0.8,
+        "purchaseActionCount": 1
+      },
+      "evidence": [
+        {
+          "path": "e2e/loud-slab/src/Stories/Dialog.story.luau",
+          "lines": "29-47"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/Dialog.story.luau",
+          "lines": "49-77"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/Window.luau",
+          "lines": "130-181"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-004",
+      "domain": "hierarchy",
+      "observed": "The Shop story reads window title, yellow uppercase FEATURED section heading, scrolling item grid, then each card reads name, art, uppercase rarity, and green buy control. Six green repeatable buy controls are present and no mustard commitment CTA is present.",
+      "designFunction": "Uses a section shout to group a dense catalog while repeating a consistent top-to-bottom card scan path.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "sectionHeadingPx": 36,
+        "sectionHeadingBoxHeightPx": 32,
+        "itemNameMaxPx": 28,
+        "rarityPx": 18,
+        "buyHeightPx": 44,
+        "repeatableBuyActionCount": 6,
+        "commitmentCtaCount": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "387-396"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/Shop.story.luau",
+          "lines": "78-113"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/ItemCard.luau",
+          "lines": "54-108"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-005",
+      "domain": "hierarchy",
+      "observed": "The HUD story adds one mustard PLAY commitment slab above the ten-slot hotbar even though the taste source names no standalone HUD PLAY action; the story comments identify it as a standard-showcase requirement.",
+      "designFunction": "Introduces a single screen-level commitment focal point above the persistent inventory row.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "addedCommitmentCtaCount": 1,
+        "ctaWidthPx": 220,
+        "ctaHeightPx": 52,
+        "hotbarSlotCount": 10,
+        "ctaToHotbarGapPx": 8
+      },
+      "evidence": [
+        {
+          "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+          "lines": "9-15"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+          "lines": "291-321"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-006",
+      "domain": "color",
+      "observed": "The source palette has 17 named RGBA roles: primary #519E56, secondary #C2C2C2, danger #922626, warning #FF1715, surface #1B2123, surface-deep #0C1011, surface-dark #3F3B3C, on-surface #FFFFFF, chrome #557080, CTA #826B1A, currency-soft #73FF00, accent-value #FFED1F, accent-rare #FFDE59, positive #10A031, progress #F0BB7B, outline #000000, and dim #00000059. The implementation additionally promotes source-prose cyan #26C3FE to accentEpic.",
+      "designFunction": "Keeps three dark surface steps and muted default chrome available while allocating saturated accents to actions, values, rarity, warnings, and progress.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "sourceNamedPaletteSize": 17,
+        "surfaceToneCount": 3,
+        "neutralInkCount": 2,
+        "sourceProseAdditionalHexCount": 1,
+        "palette": {
+          "primary": "#519E56",
+          "secondary": "#C2C2C2",
+          "danger": "#922626",
+          "warning": "#FF1715",
+          "surface": "#1B2123",
+          "surfaceDeep": "#0C1011",
+          "surfaceDark": "#3F3B3C",
+          "onSurface": "#FFFFFF",
+          "chrome": "#557080",
+          "cta": "#826B1A",
+          "currencySoft": "#73FF00",
+          "accentValue": "#FFED1F",
+          "accentRare": "#FFDE59",
+          "positive": "#10A031",
+          "progress": "#F0BB7B",
+          "outline": "#000000",
+          "dim": "#00000059",
+          "accentEpicFromProse": "#26C3FE"
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "13-30"
+        },
+        {
+          "path": "e2e/loud-slab/src/Theme.luau",
+          "lines": "11-37"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-007",
+      "domain": "color",
+      "observed": "Action allocation is behavioral: green marks repeatable yes/buy/toggle-on, light gray marks utilities, brick red is close chrome, neon red is warning text, and mustard is a one-off commitment CTA. Default window chrome is slate and event windows may retheme only the header band while retaining the charcoal body.",
+      "designFunction": "Differentiates repeated affirmative actions, secondary utilities, dismissal, destructive warning copy, and singular commitment without recoloring the window body.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "repeatableYes": "#519E56",
+        "utility": "#C2C2C2",
+        "closeChrome": "#922626",
+        "warningText": "#FF1715",
+        "commitment": "#826B1A",
+        "defaultHeader": "#557080",
+        "windowBody": "#1B2123"
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "242-263"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "89-119"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-008",
+      "domain": "color",
+      "observed": "Cash amounts use yellow-green, rates/prices and section headings use yellow, and rarity uses green/gold/cyan/rainbow text without recoloring card fills. Meaning is not carried by hue alone in the representative components: rarity is also an uppercase word, cash is numeric and zone-specific, close is a square X in the header, and emphasized legendary cards add a thicker white outline.",
+      "designFunction": "Pairs semantic hue with text content, silhouette, placement, or outline so the named categories have redundant non-hue signals.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "cash": "#73FF00",
+        "rateAndSection": "#FFED1F",
+        "commonRarity": "#10A031",
+        "goldRarity": "#FFDE59",
+        "higherTierRarity": "#26C3FE",
+        "normalCardStrokePx": 2,
+        "emphasizedCardStrokePx": 3,
+        "panelRarityRecoloring": false,
+        "hueOnly": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "259-263"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "367-375"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/ItemCard.luau",
+          "lines": "21-45"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/ItemCard.luau",
+          "lines": "84-99"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-009",
+      "domain": "color",
+      "observed": "The HUD leaderboard breaks the nominal outlined-text treatment: Player has a 2px black outline, but the adjacent Steals, Rebirths, and Cash values have no UIStroke despite using white, yellow, and yellow-green text.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "playerOutlinePx": 2,
+        "stealsOutlinePx": 0,
+        "rebirthsOutlinePx": 0,
+        "cashOutlinePx": 0,
+        "nominalTextOutlinePx": 3
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "248-251"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+          "lines": "86-132"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-010",
+      "domain": "shape-depth",
+      "observed": "The authored radius set is 0px, 6px, and 10px. Windows, header bands, close buttons, cards, filters, toggles, CTAs, and side buttons use 0px; only price pills use 6px and floating prompt plates use 10px. The source says there are no circles or full-pill silhouettes.",
+      "designFunction": "Maintains a hard-edged permanent-furniture silhouette and reserves small rounding for temporary or purchase-oriented conveniences.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "radiusNonePx": 0,
+        "radiusSmallPx": 6,
+        "radiusMediumPx": 10,
+        "circleCountInObservedSource": 0,
+        "fullPillCountInObservedSource": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "55-60"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "311-320"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "70-159"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-011",
+      "domain": "shape-depth",
+      "observed": "Theme.luau adds rounded.full = UDim.new(1,0), although the source token set stops at 10px and explicitly says no full-pill shapes; no inspected representative component consumes rounded.full.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "addedFullRadiusScale": 1,
+        "sourceFullRadiusToken": false,
+        "inspectedUsageCount": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "55-56"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "313-318"
+        },
+        {
+          "path": "e2e/loud-slab/src/Theme.luau",
+          "lines": "52-59"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-012",
+      "domain": "shape-depth",
+      "observed": "Depth uses no shadows, bevels, gloss, or gradients. It uses a 15%-transparent charcoal window over a blurred world, an estimated 35%-opaque black dim layer, contrast among three surface tones, 2px white borders around wells/cards, 3px white selected borders, and 3px black text outlines.",
+      "designFunction": "Makes flat slabs separate from the live world and from nested wells using occlusion, transparency, tone steps, and outlines rather than simulated extrusion.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "windowTransparency": 0.15,
+        "dimOpacityEstimated": 0.35,
+        "dimTransparencyImplementation": 0.65,
+        "surfaceToneCount": 3,
+        "slotStrokePx": 2,
+        "selectedStrokePx": 3,
+        "textOutlinePx": 3,
+        "shadow": false,
+        "bevel": false,
+        "gradient": false,
+        "gloss": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "297-309"
+        },
+        {
+          "path": "e2e/loud-slab/src/Theme.luau",
+          "lines": "31-37"
+        },
+        {
+          "path": "e2e/loud-slab/src/Theme.luau",
+          "lines": "61-69"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-013",
+      "domain": "shape-depth",
+      "observed": "The source describes the material as painted street-market crates or a hand-painted taquería menu board: hard-edged charcoal slabs, flat color bands, heavy outlined lettering, and separately colored prices.",
+      "designFunction": "Frames the interface as painted signage and stacked slab furniture rather than glossy, soft, or toy-like material.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "hardEdgeMaterial": true,
+        "flatPaintedBands": true,
+        "softShadow": false,
+        "gloss": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "228-238"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-014",
+      "domain": "spacing-density",
+      "observed": "The spacing ladder is 4, 8, 12, 20, and 32px. Successive ratios are 2.0, 1.5, 1.6667, and 1.6. Window content uses 20px padding; list/grid cells use 12px gaps; authored HUD rails use 8px gaps.",
+      "designFunction": "Provides a non-geometric but monotonically increasing ladder for compact internal offsets, ordinary gaps, window padding, and large header/title inset.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "spacingPx": {
+          "xs": 4,
+          "sm": 8,
+          "md": 12,
+          "lg": 20,
+          "xl": 32
+        },
+        "successiveRatios": [
+          2,
+          1.5,
+          1.6667,
+          1.6
+        ],
+        "windowPaddingPx": 20,
+        "gridGapPx": 12,
+        "authoredRailGapPx": 8
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "55-55"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "281-295"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/Window.luau",
+          "lines": "162-176"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-015",
+      "domain": "spacing-density",
+      "observed": "The implemented item card is 200x240 with 8px padding, a 24px name box, 118px art band, 20px rarity box, and 44px buy control. Shop grid gaps are 12px. The card height/width ratio is 1.2, grid-gap/card-width ratio is 0.06, padding/card-width ratio is 0.04, and buy-height/card-height ratio is 0.1833.",
+      "designFunction": "Fits name, dominant art, rarity, and a full-width action into a dense repeated catalog unit.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "cardWidthPx": 200,
+        "cardHeightPx": 240,
+        "cardHeightToWidthRatio": 1.2,
+        "paddingPx": 8,
+        "nameBoxHeightPx": 24,
+        "artBandHeightPx": 118,
+        "rarityBoxHeightPx": 20,
+        "buyHeightPx": 44,
+        "gridGapPx": 12,
+        "gapToCardWidthRatio": 0.06,
+        "paddingToCardWidthRatio": 0.04,
+        "buyHeightToCardHeightRatio": 0.1833
+      },
+      "evidence": [
+        {
+          "path": "e2e/loud-slab/src/Components/ItemCard.luau",
+          "lines": "36-76"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/ItemCard.luau",
+          "lines": "84-108"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/Shop.story.luau",
+          "lines": "100-114"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-016",
+      "domain": "spacing-density",
+      "observed": "The source distinguishes a 44px minimum action target from the nominal approximately 90px square side-button slab. ButtonPrimary defaults to 220x56. The HUD responsive story overrides each nominal 90x90 side button to 90x44 and reduces rail gaps from 8px to 4px, producing a 2.045:1 rectangle rather than a square.",
+      "designFunction": "The source uses oversized slabs as both visual furniture and action targets; the responsive implementation preserves only the 44px height floor when vertical space is constrained.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "sourceActionFloorPx": 44,
+        "sourceSideButtonWidthPxApprox": 90,
+        "sourceSideButtonHeightPxApprox": 90,
+        "defaultPrimaryWidthPx": 220,
+        "defaultPrimaryHeightPx": 56,
+        "hudSideButtonWidthPx": 90,
+        "hudSideButtonHeightPx": 44,
+        "hudSideButtonAspectRatio": 2.0455,
+        "sourceRailGapPx": 8,
+        "hudRailGapPx": 4
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "283-295"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/ButtonPrimary.luau",
+          "lines": "59-64"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/SideButton.luau",
+          "lines": "46-50"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+          "lines": "153-196"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-017",
+      "domain": "spacing-density",
+      "observed": "The source calls for 10+ persistent HUD elements. The representative HUD contains three left-rail actions, one leaderboard plate, one cash group, one timer, one added PLAY CTA, and ten hotbar slots: 17 primary persistent groups before counting leaderboard cells or captions.",
+      "designFunction": "Keeps navigation, status, currency, timing, action, and inventory simultaneously present rather than serializing them into one window.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "sourcePersistentElementFloor": 10,
+        "leftRailActions": 3,
+        "leaderboardPlates": 1,
+        "cashGroups": 1,
+        "timers": 1,
+        "addedCtas": 1,
+        "hotbarSlots": 10,
+        "representativePrimaryGroupCount": 17,
+        "hotbarSlotSizePx": 52,
+        "hotbarGapPx": 8
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "281-289"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+          "lines": "28-55"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+          "lines": "168-321"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-018",
+      "domain": "spacing-density",
+      "observed": "The source collection pattern calls for four columns in an approximately 0.7-wide window, but the Shop story fixes cells at 200x240 and states that three columns fit at its 832px desktop maximum while only one fits at a roughly 433px mobile panel width.",
+      "designFunction": "Adapts catalog density through wrapping and scrolling while retaining fixed-size card anatomy.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "sourceColumnCount": 4,
+        "sourceWindowWidthScaleApprox": 0.7,
+        "shopDesktopColumnCount": 3,
+        "shopMobileColumnCount": 1,
+        "shopWindowWidthScale": 0.65,
+        "shopMaxWidthPx": 832,
+        "cellWidthPx": 200,
+        "cellHeightPx": 240
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "135-139"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/Shop.story.luau",
+          "lines": "31-49"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/Shop.story.luau",
+          "lines": "78-79"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/Shop.story.luau",
+          "lines": "100-114"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-019",
+      "domain": "composition",
+      "observed": "Desktop HUD zones are edge-docked: left full menu rail, shorter mirrored right rail, naked cash display bottom-left, ten-slot hotbar bottom-center, leaderboard top-right, and timer bottom-right. The source reserves the top strip for platform chrome and declares bottom touch-control zones that should remain clear, while noting that no mobile capture was observed.",
+      "designFunction": "Leaves the center world view visible while distributing persistent functions around the perimeter.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "leftRailNominalButtonPx": 90,
+        "hotbarSlotCount": 10,
+        "edgeDockMarginTokens": [
+          "md",
+          "lg"
+        ],
+        "mobileEvidence": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "281-295"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "379-396"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+          "lines": "168-321"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-020",
+      "domain": "composition",
+      "observed": "Window anatomy is world, blur+dim, centered translucent charcoal slab, flush full-width colored header band, left-aligned title, and square brick-red close control docked inside the band's right end, followed by clipped padded content. The slab has no outer stroke or radius; the band/body seam is the frame.",
+      "designFunction": "Creates modal focus with world suppression and a single strong band while preserving world context through transparency.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "windowWidthScaleRange": [
+          0.45,
+          0.7
+        ],
+        "defaultImplementationWidthScale": 0.6,
+        "defaultImplementationHeightScale": 0.75,
+        "headerHeightPx": 72,
+        "titleLeftInsetPx": 32,
+        "contentPaddingPx": 20,
+        "windowTransparency": 0.15,
+        "dimOpacityEstimated": 0.35,
+        "closeAspectRatio": 1
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "337-351"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/Window.luau",
+          "lines": "88-176"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-021",
+      "domain": "composition",
+      "observed": "The intended z-order is world, blur+dim, slab, band and close square, then banners/toasts; source DisplayOrder bands are HUD 10, windows 20, promotional banners 30, and toasts/alerts 40.",
+      "designFunction": "Keeps transient promotion and alert layers above windows while windows remain above the persistent HUD and world.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "displayOrder": {
+          "hud": 10,
+          "windows": 20,
+          "promotions": 30,
+          "toasts": 40
+        },
+        "layerCount": 5
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "297-309"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-022",
+      "domain": "composition",
+      "observed": "The Shop story uses a 0.65x0.8 centered window capped at 832x576, a fixed 40px heading zone, and a scrolling grid whose canvas follows layout content. It is dimmed but non-dismissible by backdrop; the Dialog is dimmed and backdrop-dismissible.",
+      "designFunction": "Keeps catalog content scrollable within a fixed modal frame while making purchase confirmation easier to dismiss than the shop surface.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "shopWindowScale": [
+          0.65,
+          0.8
+        ],
+        "shopMaxSizePx": [
+          832,
+          576
+        ],
+        "shopHeadingZonePx": 40,
+        "scrollBarThicknessPx": 6,
+        "shopBackdropDismissible": false,
+        "dialogBackdropDismissible": true
+      },
+      "evidence": [
+        {
+          "path": "e2e/loud-slab/src/Stories/Shop.story.luau",
+          "lines": "31-65"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/Shop.story.luau",
+          "lines": "78-113"
+        },
+        {
+          "path": "e2e/loud-slab/src/Stories/Dialog.story.luau",
+          "lines": "29-47"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/Window.luau",
+          "lines": "93-106"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-023",
+      "domain": "composition",
+      "observed": "The source world-visibility strategy is live-world blur plus black dimming and 15%-transparent window surfaces. The stories do not reproduce the blur; Theme adds a flat #6FA8C9 worldBackdrop solely as a story stand-in.",
+      "designFunction": "The source retains contextual world visibility behind modals; the implementation stand-in isolates contrast behavior without recreating the observed world material.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "sourceBlur": true,
+        "sourceWindowTransparency": 0.15,
+        "sourceDimOpacityEstimated": 0.35,
+        "storyBlur": false,
+        "storyBackdrop": "#6FA8C9"
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "297-305"
+        },
+        {
+          "path": "e2e/loud-slab/src/Theme.luau",
+          "lines": "84-94"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/Window.luau",
+          "lines": "93-124"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-024",
+      "domain": "states-motion",
+      "observed": "Source captures show toggle off and sold-out states, and both gray Off and green On toggle states are specified. Pressed and disabled button states were not observed. No hover or focus appearance is specified in the design source.",
+      "designFunction": "Uses fill plus visible state labels for the observed toggle state and a red uppercase caption plus gray utility treatment for sold-out inventory.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "toggleOff": "#7D6F6F",
+        "toggleOn": "#519E56",
+        "toggleStatesObserved": 2,
+        "soldOutObserved": true,
+        "pressedObserved": false,
+        "disabledObserved": false,
+        "hoverSpecified": false,
+        "focusSpecified": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "210-220"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "120-130"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "360-369"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-025",
+      "domain": "states-motion",
+      "observed": "No motion was observed because there was no video. The authored motion register is explicitly a low-confidence generator default: 0.25s Back-Out entrance from scale 0.8 to 1.0, 0.15s Quad-In exit, 0.08s press squash, and Elastic-Out reserved for rewards. Slow 0.4s exists as a duration token but has no inspected representative use.",
+      "designFunction": "Supplies a chunky overshoot register consistent with oversized still-frame celebration text without claiming that the source product was observed moving this way.",
+      "confidence": "low",
+      "origin": "generator-default",
+      "metrics": {
+        "motionObserved": false,
+        "entranceDurationS": 0.25,
+        "entranceScaleFrom": 0.8,
+        "entranceScaleTo": 1,
+        "entranceEasing": "Back-Out",
+        "exitDurationS": 0.15,
+        "exitEasing": "Quad-In",
+        "pressDurationS": 0.08,
+        "rewardEasing": "Elastic-Out",
+        "slowDurationS": 0.4
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "62-68"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "210-218"
+        },
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "322-333"
+        },
+        {
+          "path": "e2e/loud-slab/src/Theme.luau",
+          "lines": "71-79"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-026",
+      "domain": "states-motion",
+      "observed": "The implementation distinguishes default and pressed buttons without a fill shift: press scales to 0.92 over 0.08s and release or pointer leave restores 1.0 over 0.15s. ButtonPrimary adds a disabled state using BackgroundTransparency 0.4 and blocks press and activation. It has no distinct hover or focus visual.",
+      "designFunction": "Adds mechanical press and disabled feedback where the source captures left those states undefined.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "defaultScale": 1,
+        "pressedScale": 0.92,
+        "pressDurationS": 0.08,
+        "releaseDurationS": 0.15,
+        "defaultBackgroundTransparency": 0,
+        "disabledBackgroundTransparency": 0.4,
+        "fillShiftOnPress": false,
+        "hoverDistinct": false,
+        "focusDistinct": false,
+        "disabledBlocksActivation": true
+      },
+      "evidence": [
+        {
+          "path": "e2e/loud-slab/src/Components/ButtonPrimary.luau",
+          "lines": "30-38"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/ButtonPrimary.luau",
+          "lines": "59-82"
+        }
+      ]
+    },
+    {
+      "id": "DES-LOUD-SLAB-027",
+      "domain": "states-motion",
+      "observed": "Window implementation runs the generated entrance at scale 0.8 to 1.0 and exits to scale 0.9 while fading the panel background to transparency 1. The design source requests reduced-motion fades at the same durations, but no reduced-motion branch is present in the inspected Window or button implementations.",
+      "designFunction": "Applies the generator motion register to modal state transitions; reduced-motion behavior remains source guidance rather than an implemented state.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "entranceScaleFrom": 0.8,
+        "entranceScaleTo": 1,
+        "exitScaleTo": 0.9,
+        "exitBackgroundTransparency": 1,
+        "reducedMotionImplementationObserved": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/loud-slab/DESIGN.roblox.md",
+          "lines": "324-333"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/Window.luau",
+          "lines": "35-45"
+        },
+        {
+          "path": "e2e/loud-slab/src/Components/Window.luau",
+          "lines": "53-84"
+        }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "The minimum rendered text size is unavailable: several labels use TextScaled with only MaxTextSize and no MinTextSize, so their lower bound depends on runtime bounds and content.",
+    "The exact core font match remains medium confidence; FredokaOne was selected from screenshots and a Baloo-like family was the runner-up.",
+    "The seasonal event-shop pixel font and rainbow highest-rarity gradient stops are not specified numerically.",
+    "Mobile composition is not source-observed; the 90x44 HUD rail and one-column Shop grid are implementation responses rather than extracted taste decisions.",
+    "Pressed and disabled button states are implementation additions because source captures did not observe them; hover and focus visuals remain unspecified.",
+    "The source asks for reduced-motion fades, but the inspected implementation contains no reduced-motion preference branch.",
+    "The live-world blur is not reproduced in stories; only a flat story backdrop and dim overlay are implemented.",
+    "Dim opacity is estimated from a single dimmed capture without an undimmed comparison."
+  ]
+}

@@ -1,0 +1,376 @@
+{
+  "topic": "Roblox color, contrast, and non-color state communication guidance",
+  "claims": [
+    {
+      "id": "SRC-001",
+      "claim": "Roblox officially recommends sufficient contrast between text and its background and specifically warns against light text on light backgrounds and dark text on dark backgrounds.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "In-experience Roblox UI text and backgrounds; qualitative accessibility guidance.",
+      "limitations": [
+        "The Roblox page gives no contrast-ratio formula or numeric minimum.",
+        "This is platform guidance, not an engine-enforced requirement.",
+        "The examples establish the direction of the guidance but do not define a conformance test."
+      ],
+      "sources": [
+        {
+          "title": "Accessibility guidelines — Color contrast",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility#color-contrast",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox says players may struggle with light-on-light or dark-on-dark text and recommends text/background colors with sufficient color contrast."
+        },
+        {
+          "title": "Cross-platform development — Accessibility",
+          "url": "https://create.roblox.com/docs/projects/cross-platform#accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox says all text should be legible on all screens and all UI should have sufficient contrast."
+        }
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "claim": "The WCAG 2.2 Level AA thresholds are 4.5:1 for normal text and 3:1 for large-scale text; these are imported external web-accessibility thresholds, not Roblox engine requirements.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "W3C WCAG 2.2 Success Criterion 1.4.3 for web content; usable as an external design target for Roblox UI only when a project intentionally adopts it.",
+      "limitations": [
+        "Roblox Creator Hub's current color-contrast section does not state, incorporate, or enforce these ratios.",
+        "WCAG defines large-scale text in web typography terms, including 18 pt regular or 14 pt bold in its explanatory material; direct conversion to Roblox TextSize is not established by the cited Roblox sources.",
+        "Inactive UI components, incidental text, and logotypes have exceptions under WCAG SC 1.4.3.",
+        "A computed ratio must not be rounded up to pass a threshold.",
+        "No evidence was found that the Roblox engine automatically evaluates these ratios."
+      ],
+      "sources": [
+        {
+          "title": "Understanding Success Criterion 1.4.3: Contrast (Minimum)",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "External W3C guidance states at least 4.5:1 for text and images of text, with at least 3:1 for large-scale text, and documents the exceptions and threshold handling."
+        },
+        {
+          "title": "Accessibility guidelines — Color contrast",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility#color-contrast",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "The current Roblox source recommends only 'sufficient color contrast' and supplies no numeric ratio, establishing that the WCAG numbers should not be relabeled as Roblox requirements."
+        }
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "claim": "WCAG 2.2 Level AA uses a 3:1 threshold for visual information needed to identify active UI components and states, and for meaningful graphical objects; this is also an imported external threshold rather than a Roblox requirement.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "W3C WCAG 2.2 Success Criterion 1.4.11 for web content; potentially adoptable as an external design target for active Roblox controls and meaningful graphics.",
+      "limitations": [
+        "Inactive UI components are excluded by WCAG SC 1.4.11.",
+        "The criterion applies to visual information required to identify a component or state, not necessarily every pixel, border, decoration, or state-to-state color pair.",
+        "Roblox's cited guidance does not state this 3:1 minimum or claim engine enforcement."
+      ],
+      "sources": [
+        {
+          "title": "Understanding Success Criterion 1.4.11: Non-text Contrast",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "External W3C guidance requires at least 3:1 against adjacent colors for visual information required to identify active UI components, their states, and meaningful graphical objects, with exceptions."
+        },
+        {
+          "title": "Cross-platform development — Accessibility",
+          "url": "https://create.roblox.com/docs/projects/cross-platform#accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox provides only the qualitative instruction that UI have sufficient contrast; it does not supply the WCAG non-text ratio."
+        }
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "claim": "Roblox officially advises creators not to rely on color alone to communicate information, actions, or outcomes for players with color-vision deficiencies, and recommends pairing color with non-color cues such as symbols, icons, shapes, or patterns.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Gameplay and in-experience UI distinctions that communicate meaning to sighted players, including players with color blindness.",
+      "limitations": [
+        "The general accessibility page specifically demonstrates symbols alongside color; the UI curriculum also mentions icons, shapes, and animations.",
+        "Roblox does not prescribe one universal alternate cue for every state.",
+        "An animation-only alternate may introduce separate motion-accessibility considerations; the cited color sections do not resolve that interaction."
+      ],
+      "sources": [
+        {
+          "title": "Accessibility guidelines — Color non-reliance",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility#color-non-reliance",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox uses a grayscale example and recommends different symbols alongside colors so more players can distinguish gameplay and other information."
+        },
+        {
+          "title": "Cross-platform development — Accessibility",
+          "url": "https://create.roblox.com/docs/projects/cross-platform#accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox says nothing should rely solely on color to distinguish an action or outcome."
+        },
+        {
+          "title": "Choose an art style — Select a color theme",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style#select-a-color-theme",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox recommends combining colors with icons, shapes, and/or animations instead of always relying on color alone, specifically for colorblind players."
+        }
+      ]
+    },
+    {
+      "id": "SRC-005",
+      "claim": "The external WCAG rule likewise prohibits using color as the only visual means of conveying information or state; a hue-only status distinction is therefore insufficient under that web standard.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "W3C WCAG 2.2 Success Criterion 1.4.1 for web content; separate from Roblox-specific guidance, although directionally consistent with it.",
+      "limitations": [
+        "WCAG explains that a luminance difference of at least 3:1 can count as an additional visual distinction in some cases, but not when users must identify the particular color itself, such as green-valid versus red-invalid.",
+        "This WCAG rule must not be presented as a Roblox engine requirement.",
+        "Roblox independently publishes similar qualitative guidance, so WCAG is corroboration and a separable external standard rather than the sole basis for the Roblox recommendation."
+      ],
+      "sources": [
+        {
+          "title": "Understanding Success Criterion 1.4.1: Use of Color",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "External W3C guidance says color must not be the only visual means of conveying information, indicating action, prompting a response, or distinguishing an element, and explains the hue-versus-lightness nuance."
+        },
+        {
+          "title": "Accessibility guidelines — Color non-reliance",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility#color-non-reliance",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox independently recommends symbols alongside colors, showing aligned Roblox-specific guidance without importing WCAG's numeric details."
+        }
+      ]
+    },
+    {
+      "id": "SRC-006",
+      "claim": "For on-screen text that may overlay a changing 3D scene, Roblox recommends placing text on a contrasting color or giving it a stroke so it does not blend into the background.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "In-experience UI text, especially screen overlays with potentially variable underlying 3D content.",
+      "limitations": [
+        "Roblox presents a contrasting backing surface and a text stroke as alternatives, not as a rule that every text element must have both.",
+        "The source gives no required stroke thickness, stroke opacity, or numeric contrast ratio.",
+        "The recommendation is about legibility; it is not an engine rendering guarantee that a stroke will succeed against every possible scene."
+      ],
+      "sources": [
+        {
+          "title": "Choose an art style — Determine a text system",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style#determine-a-text-system",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox identifies the possible underlying background behind on-screen text and recommends displaying text on a contrasting color or with a stroke when background noise would reduce legibility."
+        }
+      ]
+    },
+    {
+      "id": "SRC-007",
+      "claim": "Roblox recommends a limited color theme whose colors maintain consistent, quickly learned associations with UI functions, but does not publish a universal semantic mapping such as red always meaning error or green always meaning success.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Color semantics within an individual Roblox experience and its genre conventions.",
+      "limitations": [
+        "The tutorial's bright-color/selectable and green-plus/health examples are illustrative and contextual, not mandatory platform tokens.",
+        "The source recommends consistency and limited key associations but does not define named semantic roles or fixed RGB values.",
+        "Genre conventions may affect appropriate associations, so the guidance is not a universal palette specification."
+      ],
+      "sources": [
+        {
+          "title": "Choose an art style — Select a color theme",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style#select-a-color-theme",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox defines a color theme as colors that each communicate a message through consistent application, gives bright color as a selectable-state example, and recommends limiting the palette to key functional associations."
+        },
+        {
+          "title": "Choose an art style — Identify your UI elements",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style#identify-your-ui-elements",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox discusses categorizing UI by purpose and making semantic design choices; green and/or plus icons for health are presented as an example rather than a platform-wide rule."
+        }
+      ]
+    },
+    {
+      "id": "SRC-008",
+      "claim": "Roblox recommends that overlay UI colors remain readable over both light and dark elements in the 3D world.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Screen-space UI composited over variable in-experience 3D imagery.",
+      "limitations": [
+        "This guidance concerns robustness against changing scene luminance; it does not require a separate user-selectable dark theme and light theme.",
+        "The sample uses black and white neutral colors for most overlay UI, but that sample choice is not a universal mandatory palette.",
+        "No numeric worst-case contrast test is specified."
+      ],
+      "sources": [
+        {
+          "title": "Choose an art style — Select a color theme",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style#select-a-color-theme",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox says to prioritize simple UI with color readable over both light and dark elements in the 3D world, and explains that the sample uses black and white overlays against a colorful 3D environment."
+        }
+      ]
+    },
+    {
+      "id": "SRC-009",
+      "claim": "An official Roblox requirement that every in-experience UI provide separate dark and light surface themes was not found in the reviewed Creator Hub accessibility, cross-platform, UI-art-style, and styling sources.",
+      "verdict": "not-found",
+      "kind": "design-recommendation",
+      "scope": "User-selectable light/dark theming for creator-built, in-experience UI.",
+      "limitations": [
+        "Roblox's platform applications or Studio may have their own themes; that does not establish a requirement for creator-built in-experience UI.",
+        "The official guidance instead addresses sufficient contrast, readability over both light and dark world content, and the player's preferred background transparency.",
+        "Absence is limited to the current official sources reviewed and the Context7/web-search queries recorded for this assignment."
+      ],
+      "sources": [
+        {
+          "title": "Accessibility guidelines",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "The current Roblox accessibility page covers contrast and player preferences but does not prescribe dual light/dark experience themes."
+        },
+        {
+          "title": "Choose an art style — Select a color theme",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style#select-a-color-theme",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "The current Roblox design curriculum requires readability over light and dark 3D content but does not turn that into a dual-theme requirement."
+        }
+      ]
+    },
+    {
+      "id": "SRC-010",
+      "claim": "Roblox officially recommends respecting the player's Preferred Transparency setting so UI backgrounds become more opaque when the player requests it, improving readability and contrast.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "In-experience GUI backgrounds with transparency; player accessibility preference exposed through GuiService.PreferredTransparency.",
+      "limitations": [
+        "This is about background opacity, not a numeric foreground/background contrast guarantee.",
+        "The documented implementation multiplies each element's authored BackgroundTransparency by PreferredTransparency; creators must identify and apply it to relevant UI elements.",
+        "It does not replace testing color contrast across scene and device conditions."
+      ],
+      "sources": [
+        {
+          "title": "Accessibility guidelines — Preferred transparency",
+          "url": "https://create.roblox.com/docs/production/publishing/accessibility#preferred-transparency",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox states that PreferredTransparency of 0 indicates a preference for fully opaque backgrounds for readability and contrast and recommends multiplying BackgroundTransparency by this value."
+        }
+      ]
+    },
+    {
+      "id": "SRC-011",
+      "claim": "Roblox provides an engine-level non-interactable GUI state that can be targeted by UI state styling: when GuiObject.Interactable is false, its GuiState is NonInteractable, and Roblox style state selectors correspond to GuiState values.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Roblox GuiObject interaction state and StyleRule state selectors.",
+      "limitations": [
+        "This establishes a state and styling hook, not a prescribed disabled appearance.",
+        "The cited API does not say that setting Interactable=false automatically greys, fades, or desaturates an element.",
+        "GuiObject.Active has different input/event semantics and should not be treated as identical to Interactable based on these sources."
+      ],
+      "sources": [
+        {
+          "title": "GuiObject.Interactable and GuiObject.GuiState",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject#Interactable",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "The official API states that Interactable controls whether the GuiObject can be interacted with and that false keeps GuiState at NonInteractable."
+        },
+        {
+          "title": "GuiState enum",
+          "url": "https://create.roblox.com/docs/reference/engine/enums/GuiState",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "The official enum lists NonInteractable as the state in which the GUI cannot be interacted with."
+        },
+        {
+          "title": "CSS Comparisons — Pseudo-classes",
+          "url": "https://create.roblox.com/docs/ui/styling/css-comparisons#pseudo-classes",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox documents state selectors as the styling equivalent of CSS pseudo-classes and ties them to GuiState values."
+        }
+      ]
+    },
+    {
+      "id": "SRC-012",
+      "claim": "No official Roblox visual-design rule was found that disabled controls must use a fixed opacity, desaturation amount, grey palette, or reduced-contrast treatment.",
+      "verdict": "not-found",
+      "kind": "design-recommendation",
+      "scope": "Appearance of disabled/non-interactable controls in creator-built Roblox UI.",
+      "limitations": [
+        "Roblox exposes NonInteractable as an engine state, so creators can style it, but the reviewed official sources do not prescribe how.",
+        "The UI curriculum recommends visual feedback for interactable elements, but its examples concern focus/interaction feedback and do not define a disabled-state recipe.",
+        "A project may adopt its own accessible disabled-state tokens, but that would be a project design recommendation rather than an official Roblox requirement."
+      ],
+      "sources": [
+        {
+          "title": "GuiObject.Interactable",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject#Interactable",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "The API defines the functional NonInteractable state without specifying opacity, desaturation, grey, or contrast values."
+        },
+        {
+          "title": "Choose an art style — Establish an interaction order",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style#establish-an-interaction-order",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Roblox recommends at least one form of visual feedback for interactable UI and gives outline, size, color, or animation examples, but does not prescribe disabled-state treatment."
+        }
+      ]
+    },
+    {
+      "id": "SRC-013",
+      "claim": "WCAG 2.2 exempts inactive UI components from its minimum text and non-text contrast criteria; this external exception does not require or recommend making disabled Roblox controls low contrast.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "W3C WCAG 2.2 web-content conformance, not Roblox engine behavior or Roblox-specific visual styling.",
+      "limitations": [
+        "The exception means the cited WCAG success criteria impose no minimum on inactive controls; it is permission, not a design instruction.",
+        "A disabled control still needs to be understandable in its product context, but no Roblox-specific numeric or visual treatment was found.",
+        "This exception must not be generalized into a Roblox rule that disabled elements should be faint, grey, or invisible."
+      ],
+      "sources": [
+        {
+          "title": "Understanding Success Criterion 1.4.3: Contrast (Minimum) — Inactive User Interface Components",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html#inactive-user-interface-components",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "External W3C guidance says text that is part of an inactive UI component has no SC 1.4.3 contrast requirement and illustrates, rather than mandates, a low-contrast disabled browser button."
+        },
+        {
+          "title": "Understanding Success Criterion 1.4.11: Non-text Contrast",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "External W3C guidance excludes inactive UI components from the 3:1 non-text contrast requirement."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "Roblox's current official contrast guidance is qualitative ('sufficient contrast'), while WCAG supplies numeric 4.5:1 and 3:1 thresholds. The numeric thresholds are compatible external targets but are not Roblox engine requirements or stated Roblox minima.",
+    "Roblox exposes NonInteractable as an engine state but gives no official disabled appearance. WCAG's inactive-component contrast exception removes a web-conformance minimum; it does not fill that design gap or mandate low-contrast disabled styling.",
+    "Roblox's green-plus/health and bright-color/selectable examples illustrate contextual semantic associations. Treating them as universal Roblox meanings would overstate the source.",
+    "Roblox's instruction to remain readable over light and dark 3D content is not the same as requiring separate light-mode and dark-mode surface themes."
+  ],
+  "unresolved": [
+    "No official Roblox numeric contrast threshold, contrast-calculation method, or engine enforcement mechanism was found in the current sources.",
+    "No official Roblox opacity, desaturation, greyscale, or contrast prescription for disabled controls was found.",
+    "No official Roblox requirement for separate user-selectable light and dark themes in creator-built in-experience UI was found.",
+    "Context7-first resolution selected /websites/create_roblox and returned relevant Roblox material for contrast, color non-reliance, strokes, semantic color associations, light/dark 3D backgrounds, and NonInteractable state. Context7 did not supply prescriptive Roblox material for disabled appearance or separate experience themes, so direct current Creator Hub retrieval and web-search fallback were used; no such official prescription was verified. The Firecrawl CLI was unavailable in this environment, so the fallback used the available direct URL reader and web search."
+  ]
+}

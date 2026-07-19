@@ -1,0 +1,308 @@
+{
+  "topic": "Roblox visual hierarchy and interaction-order guidance",
+  "claims": [
+    {
+      "id": "SRC-301",
+      "claim": "Roblox's official UI curriculum recommends identifying a primary interaction as the action a player is most likely to perform, then giving primary, secondary, and tertiary interactions different visual emphasis according to their likelihood and intended sequence.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Official Roblox Creator Hub curriculum guidance for creator-designed UI workflows; illustrated with the sample laser-tag blaster-selection flow, not an engine constraint.",
+      "limitations": [
+        "The curriculum's primary/secondary/tertiary taxonomy is a design recommendation, not an API behavior or enforced rule.",
+        "The example makes the two blaster-choice buttons much larger, places the SELECT action below them, and makes arrow alternatives smaller; those particular placements and proportions are sample-specific.",
+        "No numeric size ratio, color delta, spacing value, or salience score is prescribed."
+      ],
+      "sources": [
+        {
+          "title": "Choose an art style — Establish an interaction order",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines primary, secondary, and tertiary interactions; says each type must have a different level of visual emphasis based on likelihood; explains the sample's larger primary choices, directly-below secondary confirmation, and smaller subtle tertiary arrows."
+        }
+      ]
+    },
+    {
+      "id": "SRC-302",
+      "claim": "Official Roblox guidance supports using size, color, spatial placement, negative space, and proximity to direct attention and communicate relative importance, while using these tools in moderation.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Roblox Creator Hub game-design guidance and UI curriculum; applies as general creator guidance, with examples drawn from particular Roblox experiences and an FPS curriculum sample.",
+      "limitations": [
+        "Roblox lists these as available attention and hierarchy tools; it does not require every dominant action to use all of them.",
+        "The curriculum's top/middle/sides arrangement is explicitly tied to the sample laser-tag game's objective, blaster, and player-state categories and is not a universal screen-position rule.",
+        "No official Roblox numeric minimum or fixed formula for size, brightness, padding, or proximity was found.",
+        "The statement that large elements are perceived as important is design guidance, not a documented engine fact or cited Roblox user-study result."
+      ],
+      "sources": [
+        {
+          "title": "UI and UX design — Attention",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Lists color, size, space, proximity, and movement as tools to capture and guide attention; says larger elements are more conspicuous, bright colors attract more attention, grouped elements imply connection, and excessive bright or moving elements can overwhelm or confuse."
+        },
+        {
+          "title": "Wireframe your layouts — Plan a visual hierarchy",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines visual hierarchy by order of importance and explains the sample-specific use of top, middle, and side positions to prioritize objective, gameplay, and peripheral state information."
+        },
+        {
+          "title": "Choose an art style — Establish an interaction order",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Uses relative size and placement to give the most likely action the greatest emphasis and guide the expected decision sequence."
+        }
+      ]
+    },
+    {
+      "id": "SRC-303",
+      "claim": "Roblox's curriculum recommends at least one visible feedback treatment when an interactable UI element is in focus, such as an outline or a change in size, color, or animation.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Official Roblox creator curriculum recommendation for interactable UI; WCAG separately establishes visible keyboard focus for web content, not a Roblox-engine-specific conformance rule.",
+      "limitations": [
+        "“At least one form” is an explicit numeric Roblox curriculum recommendation, but it is not an engine-enforced minimum and does not prescribe contrast, thickness, area, duration, or animation magnitude.",
+        "The listed outline, size, color, and animation treatments are examples, not a required exhaustive set.",
+        "WCAG 2.4.7 requires a visible indicator for keyboard-operable web UI; applying that success criterion to an in-experience Roblox GUI is imported accessibility guidance, not proof of Roblox platform conformance.",
+        "Color-only focus feedback can be insufficient when color conveys information; Roblox's own color guidance and WCAG 1.4.1 both support adding another cue."
+      ],
+      "sources": [
+        {
+          "title": "Choose an art style — Establish an interaction order",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends at least one form of visual feedback for interactable elements, naming outline and changes to size, color, or animation when focused."
+        },
+        {
+          "title": "Understanding WCAG 2.2 Success Criterion 2.4.7: Focus Visible",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "States that keyboard-operable web UI must have a mode where the keyboard focus indicator is visible and remain visible while focus is shown."
+        },
+        {
+          "title": "Understanding WCAG 2.2 Success Criterion 1.4.1: Use of Color",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "States that color must not be the only visual means of conveying information, indicating an action, prompting a response, or distinguishing an element."
+        }
+      ]
+    },
+    {
+      "id": "SRC-304",
+      "claim": "Roblox officially recommends grouping UI elements that belong to the same information category or function, and using proximity to communicate their association.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Roblox Creator Hub curriculum and game-design guidance for visual organization.",
+      "limitations": [
+        "Grouping is recommended where items are meaningfully related; the sources do not support grouping unrelated items merely to make a composition look balanced.",
+        "No numeric spacing or proximity threshold is specified.",
+        "The warning that users “won't know where to look” when categories are mixed is curriculum prose, not a quantified user-testing result."
+      ],
+      "sources": [
+        {
+          "title": "Wireframe your layouts — Plan a visual hierarchy",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Says to group UI elements from the same category together and warns that mixing categories throughout the screen makes navigation harder."
+        },
+        {
+          "title": "UI and UX design — Attention",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Explains that proximity and grouping imply a connection and help players understand associations and locate related features."
+        },
+        {
+          "title": "Choose an art style — Identify your UI elements",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends categorizing UI needs by functional purpose so the art style can reinforce what each grouping teaches players."
+        }
+      ]
+    },
+    {
+      "id": "SRC-305",
+      "claim": "Roblox guidance recommends reducing cognitive load by prioritizing contextually relevant information, limiting simultaneous categories and elements, and avoiding excessive visual emphasis or clutter.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Official Roblox creator guidance; recommendations vary by genre and workflow, and the curriculum explicitly notes that an FPS may need multiple categories visible simultaneously.",
+      "limitations": [
+        "The sources do not define a maximum number of categories, controls, colors, animations, or decisions.",
+        "The curriculum does not say “always show only one category”; it explicitly allows multiple categories when players need them at the same time.",
+        "“Overwhelmed,” “confused,” “distracted,” and “low friction” are qualitative design assessments in the guidance, not measured cognitive-load thresholds or published Roblox study results."
+      ],
+      "sources": [
+        {
+          "title": "Wireframe your layouts — Plan a visual hierarchy",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends contextual display when too many categories would overwhelm players, and visual emphasis for ideal interaction order when too many elements within a category would distract from completing an action."
+        },
+        {
+          "title": "UI and UX design — Prioritization and Attention",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends presenting only what matters contextually to avoid clutter and says excessive use of bright or moving attention tools may overwhelm and confuse."
+        },
+        {
+          "title": "UI and UX design — Design flows",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines friction as effort required to reach a goal and describes straightforward flows with few required actions or decisions as low-friction."
+        }
+      ]
+    },
+    {
+      "id": "SRC-306",
+      "claim": "Roblox official guidance recommends making interaction states perceptibly different and providing feedback for actions; color may participate in state differentiation but should not be the only cue when it carries meaning.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Roblox creator guidance for UI states and feedback, reinforced by general WCAG web accessibility guidance.",
+      "limitations": [
+        "The production guide's color-changing button is an example of hover, depressed, and released/selected feedback, not a rule that every state must use color.",
+        "The curriculum's color-plus-icon/shape/animation recommendation specifically addresses communicating effectively to players with colorblindness.",
+        "No numeric state contrast or animation threshold is provided by Roblox in these sources.",
+        "WCAG 1.4.1 is external web accessibility guidance; it is not a Roblox engine fact."
+      ],
+      "sources": [
+        {
+          "title": "UI and UX design — Feedback",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines feedback as communication from game to player, explains why missing feedback is confusing, and gives a button changing color across hover, depressed, and released/selected states as an example."
+        },
+        {
+          "title": "Choose an art style — Select a color theme",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Says not to rely on color alone to distinguish UI elements and recommends combining color with icons, shapes, and/or animations."
+        },
+        {
+          "title": "Understanding WCAG 2.2 Success Criterion 1.4.1: Use of Color",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Requires an additional visual means when color conveys information, indicates an action, prompts a response, or distinguishes an element in web content."
+        }
+      ]
+    },
+    {
+      "id": "SRC-307",
+      "claim": "A proposed Roblox rule that every screen must have exactly one primary action, or that multiple primary-looking actions are universally prohibited, is only partially supported: Roblox asks for a clear prioritized interaction order, but the exact one-primary-per-screen maximum comes from general design-system guidance rather than the Roblox curriculum.",
+      "verdict": "partially-supported",
+      "kind": "design-recommendation",
+      "scope": "The supported Roblox portion is hierarchy and differential emphasis within a workflow; the exact one-primary limit is external web/page guidance from the New York State Design System.",
+      "limitations": [
+        "No reviewed Roblox Creator Hub page stated “only one primary action per screen/page” or prohibited multiple primary interactions.",
+        "The Roblox sample itself treats choosing between two blaster buttons as the primary interaction, showing that a primary interaction may encompass multiple same-level controls.",
+        "The New York State Design System says one primary action per page, but a web page is not necessarily equivalent to a Roblox game screen, HUD, modal, or composite workflow.",
+        "Therefore “avoid competing emphasis and preserve a clear ideal order” is a defensible Roblox design inference; “exactly one primary button per Roblox screen” is not an official Roblox MUST.",
+        "The number one in the external NYS rule is imported external guidance, not an official Roblox numeric threshold or engine limit."
+      ],
+      "sources": [
+        {
+          "title": "Choose an art style — Establish an interaction order",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/choose-an-art-style",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Requires different emphasis for primary, secondary, and tertiary interaction types and a visual hierarchy that guides the intended decision order, but does not set a one-primary maximum."
+        },
+        {
+          "title": "Wireframe your layouts — Plan a visual hierarchy",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Warns that too many simultaneous categories or elements can overwhelm or distract and recommends contextual display and ideal interaction-order emphasis; it does not prohibit multiple primary actions."
+        },
+        {
+          "title": "Button — New York State Design System",
+          "url": "https://designsystem.ny.gov/components/button/",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "General web design-system guidance says to use the filled treatment for the primary action and that there should be only one primary action per page, with outline and ghost variants for lower-order actions."
+        }
+      ]
+    },
+    {
+      "id": "SRC-308",
+      "claim": "Roblox officially recommends validating layouts and flows with players and experiments rather than treating hierarchy recommendations as self-proving outcomes.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Official Roblox curriculum and production guidance about design validation; it recommends methods but does not publish results for the claimed hierarchy rules.",
+      "limitations": [
+        "The curriculum recommends testing layouts with multiple types of players to understand the paths they actually take; it does not state a sample size, protocol, confidence level, or success threshold.",
+        "The production page recommends Roblox Experiments to test button placement or HUD layout impact on engagement; that is a testing recommendation, not evidence that a particular placement has already improved engagement.",
+        "No reviewed source provides user-study data establishing that larger primary controls, grouped categories, or one-primary-per-screen rules universally improve task completion or retention."
+      ],
+      "sources": [
+        {
+          "title": "Wireframe your layouts — Develop user flows",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends testing layouts with multiple types of players because intended and actual paths may differ, and recommends device-specific user flows to identify pain points."
+        },
+        {
+          "title": "UI and UX design",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Advises using Roblox Experiments to test how different button placements or HUD layouts affect player engagement."
+        }
+      ]
+    },
+    {
+      "id": "SRC-309",
+      "claim": "A claim that Roblox user testing has proven these hierarchy and interaction-order rules to increase retention, engagement, or conversion is not established by the reviewed sources.",
+      "verdict": "not-found",
+      "kind": "design-recommendation",
+      "scope": "Causal or empirical outcome claims about dominant actions, grouping, cognitive load, state differentiation, and single-primary layouts.",
+      "limitations": [
+        "Roblox's curriculum says intuitive, unobtrusive, and convenient tasks make players more likely to spend time and return, and its production guide warns poor UI can hurt retention; these are broad design assertions, not reported experiments.",
+        "No study design, participant count, effect size, confidence interval, conversion metric, or replicated result was found.",
+        "Experience-specific A/B-test results may exist privately or elsewhere, but they are not supplied by the reviewed official guidance."
+      ],
+      "sources": [
+        {
+          "title": "Wireframe your layouts — Develop user flows",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Contains the qualitative “more likely” retention statement and recommends testing, but supplies no empirical result."
+        },
+        {
+          "title": "UI and UX design",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Connects UI quality to retention, engagement, and monetization in broad prose and recommends experiments, but supplies no study or quantified outcome."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "No direct source contradiction was found. The main scope tension is that the external New York State Design System prescribes one primary action per web page, while Roblox's curriculum does not set that maximum and its sample represents one primary interaction with two same-level blaster-choice controls.",
+    "Roblox recommends at least one visible focus-feedback form, while WCAG 2.4.7 requires visible keyboard focus for keyboard-operable web UI. These differ in authority and scope rather than contradicting each other: one is Roblox curriculum guidance; the other is a web accessibility success criterion.",
+    "Roblox uses color-change as one example of interaction-state feedback, while both Roblox's color section and WCAG 1.4.1 warn against relying on color alone when it conveys meaning. The sources are compatible if color is paired with another perceptible cue."
+  ],
+  "unresolved": [
+    "Context7 resolved Roblox to /websites/create_roblox and returned only sparse relevant curriculum material; direct current Creator Hub retrieval and web-search fallback were used to complete the assigned coverage.",
+    "No official Roblox numeric thresholds were found for hierarchy strength, relative action size, color emphasis, position, grouping distance, cognitive load, or state separation. “At least one form” of focus feedback is official Roblox curriculum wording but not an engine minimum. The 9x9 mm touch-zone value mentioned on the curriculum page is explicitly attributed there to external W3C mobile accessibility guidance and is outside this hierarchy assignment.",
+    "No official Roblox source reviewed establishes exactly one primary action per screen or page. If that rule is adopted, it should be labeled a general design recommendation or project convention, not official Roblox guidance.",
+    "No published Roblox user-testing evidence was found that quantifies the causal effect of these hierarchy rules on retention, engagement, conversion, or task performance."
+  ]
+}

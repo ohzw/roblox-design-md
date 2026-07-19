@@ -1,0 +1,1107 @@
+{
+  "corpus": {
+    "tasteCount": 8,
+    "observationCount": 280
+  },
+  "candidates": [
+    {
+      "ruleId": "RUI-001",
+      "category": "hierarchy",
+      "candidateStatement": "Generated taste implementations centralize semantic color roles and a named typography hierarchy in Theme rather than defining a second visual-token convention in components.",
+      "provisionalKind": "generator-convention",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "low",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-011",
+        "OBS-CANDLELIT-PARLOR-015",
+        "OBS-FROSTED-BASEPLATE-013",
+        "OBS-FROSTED-BASEPLATE-032",
+        "OBS-HONEY-LEDGER-013",
+        "OBS-HONEY-LEDGER-014",
+        "OBS-INDIGO-002",
+        "OBS-INDIGO-003",
+        "OBS-LOUD-SLAB-002",
+        "OBS-LOUD-SLAB-003",
+        "OBS-OBSIDIAN-GACHA-002",
+        "OBS-OBSIDIAN-GACHA-003",
+        "OBS-PLANTER-002",
+        "OBS-STUDDED-TOYBOX-002"
+      ],
+      "policyIds": [
+        "POLICY-003",
+        "POLICY-004",
+        "POLICY-007",
+        "POLICY-010"
+      ],
+      "externalClaimsNeeded": [
+        "No external product claim is needed; recurrence must be interpreted against the shared extraction and generation schema."
+      ],
+      "runtimeTestsNeeded": [
+        "Inspect rendered components after changing a Theme token and verify that semantic roles update without component-local color or typography overrides."
+      ],
+      "ambiguities": [
+        "The five-tier names and semantic palette keys are policy-normalized, so their recurrence is not independent evidence that the source tastes use identical conceptual systems.",
+        "Some tastes add legitimate typography roles, such as CTA or timer, and those differences should not be erased by the shared five-tier core."
+      ]
+    },
+    {
+      "ruleId": "RUI-002",
+      "category": "structure",
+      "candidateStatement": "Catalog comparison surfaces use the fixed HUD, Shop, and Dialog showcase, including the same launcher roles, six ordered products, prices, badge slot, dominant action, and confirmation prompt; these similarities should not be promoted to taste rules.",
+      "provisionalKind": "generator-convention",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "low",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-001",
+        "OBS-CANDLELIT-PARLOR-002",
+        "OBS-CANDLELIT-PARLOR-003",
+        "OBS-CANDLELIT-PARLOR-006",
+        "OBS-CANDLELIT-PARLOR-028",
+        "OBS-FROSTED-BASEPLATE-001",
+        "OBS-FROSTED-BASEPLATE-004",
+        "OBS-FROSTED-BASEPLATE-005",
+        "OBS-FROSTED-BASEPLATE-006",
+        "OBS-FROSTED-BASEPLATE-021",
+        "OBS-HONEY-LEDGER-001",
+        "OBS-INDIGO-001",
+        "OBS-INDIGO-015",
+        "OBS-INDIGO-020",
+        "OBS-INDIGO-022",
+        "OBS-LOUD-SLAB-019",
+        "OBS-LOUD-SLAB-023",
+        "OBS-LOUD-SLAB-024",
+        "OBS-LOUD-SLAB-027",
+        "OBS-OBSIDIAN-GACHA-005",
+        "OBS-OBSIDIAN-GACHA-012",
+        "OBS-OBSIDIAN-GACHA-031",
+        "OBS-PLANTER-001",
+        "OBS-PLANTER-011",
+        "OBS-PLANTER-012",
+        "OBS-PLANTER-014",
+        "OBS-PLANTER-023",
+        "OBS-STUDDED-TOYBOX-017",
+        "OBS-STUDDED-TOYBOX-020",
+        "OBS-STUDDED-TOYBOX-024",
+        "OBS-STUDDED-TOYBOX-027"
+      ],
+      "policyIds": [
+        "POLICY-023",
+        "POLICY-024"
+      ],
+      "externalClaimsNeeded": [
+        "No external claim is needed; the shared generator policy directly specifies this controlled comparison content."
+      ],
+      "runtimeTestsNeeded": [
+        "Render all three required stories and verify exact labels, ordering, prices, badge data, and dialog copy separately from taste-native screens."
+      ],
+      "ambiguities": [
+        "Some tastes add extra stories or taste-native HUD regions, while others reduce source-native screens to the fixed showcase.",
+        "The fixed Crown emphasis and shared assets are generator-controlled and do not establish independent agreement about rarity treatment."
+      ]
+    },
+    {
+      "ruleId": "RUI-003",
+      "category": "structure",
+      "candidateStatement": "A compact confirmation surface reuses the taste's established window shell rather than introducing a separate modal anatomy, while the number and placement of confirm/cancel affordances remain taste-specific.",
+      "provisionalKind": "cross-taste-pattern",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "medium",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-006",
+        "OBS-FROSTED-BASEPLATE-005",
+        "OBS-HONEY-LEDGER-012",
+        "OBS-INDIGO-020",
+        "OBS-LOUD-SLAB-027",
+        "OBS-OBSIDIAN-GACHA-031",
+        "OBS-PLANTER-012",
+        "OBS-STUDDED-TOYBOX-027"
+      ],
+      "policyIds": [
+        "POLICY-012",
+        "POLICY-023"
+      ],
+      "externalClaimsNeeded": [
+        "No external engine claim is needed; whether shell reuse improves user recognition would require user evidence."
+      ],
+      "runtimeTestsNeeded": [
+        "Render the base window and confirmation side by side and verify shared shell anatomy, focus order, close behavior, and content fit.",
+        "Exercise tastes with one confirm action, paired confirm/cancel actions, and backdrop dismissal to ensure the rule does not force one decision grammar."
+      ],
+      "ambiguities": [
+        "The standard showcase mandates a Dialog story and therefore inflates recurrence.",
+        "Candlelit and Indigo omit a textual Cancel action, Honey and Obsidian show paired actions, and other tastes rely on the close control; these differences are meaningful."
+      ]
+    },
+    {
+      "ruleId": "RUI-004",
+      "category": "responsive",
+      "candidateStatement": "Content-bearing windows use viewport-relative sizing with a desktop maximum, keep header and close chrome within the viewport, and put potentially overflowing collections in a ScrollingFrame.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "low",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-008",
+        "OBS-CANDLELIT-PARLOR-022",
+        "OBS-FROSTED-BASEPLATE-008",
+        "OBS-FROSTED-BASEPLATE-010",
+        "OBS-FROSTED-BASEPLATE-022",
+        "OBS-HONEY-LEDGER-005",
+        "OBS-HONEY-LEDGER-026",
+        "OBS-HONEY-LEDGER-027",
+        "OBS-INDIGO-017",
+        "OBS-INDIGO-018",
+        "OBS-LOUD-SLAB-008",
+        "OBS-LOUD-SLAB-025",
+        "OBS-LOUD-SLAB-026",
+        "OBS-OBSIDIAN-GACHA-007",
+        "OBS-OBSIDIAN-GACHA-010",
+        "OBS-OBSIDIAN-GACHA-011",
+        "OBS-OBSIDIAN-GACHA-012",
+        "OBS-PLANTER-015",
+        "OBS-PLANTER-019",
+        "OBS-STUDDED-TOYBOX-025",
+        "OBS-STUDDED-TOYBOX-026"
+      ],
+      "policyIds": [
+        "POLICY-015",
+        "POLICY-018"
+      ],
+      "externalClaimsNeeded": [
+        "Confirm Roblox UISizeConstraint, ScrollingFrame, and layout behavior from current engine documentation."
+      ],
+      "runtimeTestsNeeded": [
+        "Render each content window at desktop and 667x375 landscape, verifying header visibility, close-target containment, bottom margin, and reachability of the last item.",
+        "Resize while open and verify that wrapping and canvas bounds remain correct."
+      ],
+      "ambiguities": [
+        "The recurrence is directly required by generator policy rather than independently inferred from screenshots.",
+        "Implementations mix scale and offset sizing, and several secondary surfaces do not satisfy the same responsive contract."
+      ]
+    },
+    {
+      "ruleId": "RUI-005",
+      "category": "responsive",
+      "candidateStatement": "A fixed-offset dialog combined with only a maximum-size constraint does not establish narrow-viewport containment; such dialogs need scale sizing, a minimum supported viewport, or explicit reflow.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [
+        "loud-slab",
+        "obsidian-gacha"
+      ],
+      "rawOccurrence": "6/8",
+      "independenceAdjustedSupport": "medium",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-009",
+        "OBS-FROSTED-BASEPLATE-011",
+        "OBS-FROSTED-BASEPLATE-012",
+        "OBS-HONEY-LEDGER-009",
+        "OBS-INDIGO-020",
+        "OBS-PLANTER-016",
+        "OBS-STUDDED-TOYBOX-027",
+        "OBS-LOUD-SLAB-028",
+        "OBS-OBSIDIAN-GACHA-007"
+      ],
+      "policyIds": [
+        "POLICY-015",
+        "POLICY-018"
+      ],
+      "externalClaimsNeeded": [
+        "Confirm that UISizeConstraint.MaxSize caps growth but does not shrink an already fixed offset size below that requested size."
+      ],
+      "runtimeTestsNeeded": [
+        "Mount each fixed dialog below its authored width and height, including portrait widths below 420px, and assert that title, close control, body, and actions remain visible and operable."
+      ],
+      "ambiguities": [
+        "Indigo's popup is described as fixed 420x220, but behavior may still depend on how Window applies its supplied size.",
+        "Loud Slab and Obsidian use scale-plus-cap dialog sizing and are recorded as absences from the fixed/max-only variant, not as proof that every small viewport works."
+      ]
+    },
+    {
+      "ruleId": "RUI-006",
+      "category": "responsive",
+      "candidateStatement": "Story-level HUDs consistently use GuiService:GetGuiInset().Y for topbar clearance, but this is not equivalent evidence for complete device-safe left, right, and bottom inset handling.",
+      "provisionalKind": "generator-convention",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "low",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-010",
+        "OBS-FROSTED-BASEPLATE-009",
+        "OBS-HONEY-LEDGER-007",
+        "OBS-HONEY-LEDGER-008",
+        "OBS-INDIGO-031",
+        "OBS-LOUD-SLAB-020",
+        "OBS-OBSIDIAN-GACHA-006",
+        "OBS-PLANTER-017",
+        "OBS-STUDDED-TOYBOX-022"
+      ],
+      "policyIds": [
+        "POLICY-018",
+        "POLICY-020"
+      ],
+      "externalClaimsNeeded": [
+        "Verify current semantics and return shapes of GuiService:GetGuiInset, GuiService:GetInsetArea, ScreenGui.ScreenInsets, and DeviceSafeInsets across supported devices."
+      ],
+      "runtimeTestsNeeded": [
+        "Exercise desktop topbar, phone notch, tablet, console overscan, and rotated landscape/portrait configurations; inspect all four edges, not only Y.",
+        "Repeat in the actual mounting ScreenGui because the story slices do not reveal host inset configuration."
+      ],
+      "ambiguities": [
+        "The identical GetGuiInset pattern may reflect the shared UI-Labs harness rather than production guidance.",
+        "An out-of-scope mount may supply ScreenInsets, so the local absence does not prove the composed application lacks safe-area handling."
+      ]
+    },
+    {
+      "ruleId": "RUI-007",
+      "category": "hierarchy",
+      "candidateStatement": "HUDs place a dominant contextual action at or near bottom-center and dock status/launcher chrome toward edges, but whether both lower corners must remain empty depends on the taste's source-native HUD and collision budget.",
+      "provisionalKind": "cross-taste-pattern",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "low",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-002",
+        "OBS-FROSTED-BASEPLATE-006",
+        "OBS-HONEY-LEDGER-010",
+        "OBS-INDIGO-021",
+        "OBS-LOUD-SLAB-019",
+        "OBS-LOUD-SLAB-022",
+        "OBS-OBSIDIAN-GACHA-005",
+        "OBS-OBSIDIAN-GACHA-006",
+        "OBS-PLANTER-013",
+        "OBS-PLANTER-014",
+        "OBS-PLANTER-018",
+        "OBS-STUDDED-TOYBOX-020",
+        "OBS-STUDDED-TOYBOX-023"
+      ],
+      "policyIds": [
+        "POLICY-020",
+        "POLICY-023"
+      ],
+      "externalClaimsNeeded": [
+        "Validate actual Roblox mobile control zones and customizable control layouts rather than assuming fixed joystick and jump rectangles.",
+        "User testing is needed to establish whether bottom-center remains reachable without obscuring gameplay in each genre."
+      ],
+      "runtimeTestsNeeded": [
+        "Render with Roblox touch controls visible and verify no overlap among the dominant action, currency, hotbar, joystick, and jump controls.",
+        "Test tastes that intentionally occupy bottom-left with currency against tastes that leave both corners clear."
+      ],
+      "ambiguities": [
+        "PLAY is generator-mandated in several tastes and Roll is source-native in Obsidian, so recurrence is not wholly independent.",
+        "Loud Slab, Planter, Studded, and Obsidian place meaningful content in or near the bottom-left; the corpus does not support an unconditional empty-corners rule."
+      ]
+    },
+    {
+      "ruleId": "RUI-008",
+      "category": "scrolling",
+      "candidateStatement": "Long catalogs and settings lists are bounded inside their window and made vertically scrollable, while short detail and confirmation content remains stationary.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "medium",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-022",
+        "OBS-FROSTED-BASEPLATE-022",
+        "OBS-HONEY-LEDGER-026",
+        "OBS-HONEY-LEDGER-027",
+        "OBS-INDIGO-018",
+        "OBS-LOUD-SLAB-025",
+        "OBS-LOUD-SLAB-036",
+        "OBS-OBSIDIAN-GACHA-010",
+        "OBS-OBSIDIAN-GACHA-011",
+        "OBS-OBSIDIAN-GACHA-012",
+        "OBS-PLANTER-019",
+        "OBS-STUDDED-TOYBOX-025"
+      ],
+      "policyIds": [
+        "POLICY-015",
+        "POLICY-018"
+      ],
+      "externalClaimsNeeded": [
+        "Confirm ScrollingFrame clipping, input, and scrollbar behavior across mouse, touch, and gamepad."
+      ],
+      "runtimeTestsNeeded": [
+        "At minimum and maximum window heights, scroll to the final row/card using mouse wheel, touch drag, and gamepad navigation.",
+        "Verify that fixed headers, detail panels, and footer actions remain stationary where intended."
+      ],
+      "ambiguities": [
+        "Scrolling is required by generator policy for overflow, but the placement of headers, banners, and footers inside or outside the scroll region differs by taste.",
+        "The corpus does not establish that every list should scroll; only content exceeding its bounded region does."
+      ]
+    },
+    {
+      "ruleId": "RUI-009",
+      "category": "scrolling",
+      "candidateStatement": "When content height or grid wrapping can change, CanvasSize should track UIListLayout or UIGridLayout AbsoluteContentSize and clean up listeners; fixed arithmetic is defensible only for truly fixed catalogs and row metrics.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "studded-toybox"
+      ],
+      "absentIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "planter-box-pop"
+      ],
+      "rawOccurrence": "5/8",
+      "independenceAdjustedSupport": "medium",
+      "observationIds": [
+        "OBS-HONEY-LEDGER-026",
+        "OBS-INDIGO-018",
+        "OBS-LOUD-SLAB-025",
+        "OBS-OBSIDIAN-GACHA-011",
+        "OBS-STUDDED-TOYBOX-025",
+        "OBS-CANDLELIT-PARLOR-022",
+        "OBS-FROSTED-BASEPLATE-022",
+        "OBS-PLANTER-019"
+      ],
+      "policyIds": [
+        "POLICY-015",
+        "POLICY-018"
+      ],
+      "externalClaimsNeeded": [
+        "Verify current UIListLayout.AbsoluteContentSize, UIGridLayout.AbsoluteContentSize, AutomaticCanvasSize, and property-signal behavior in Roblox."
+      ],
+      "runtimeTestsNeeded": [
+        "Resize a wrapping grid repeatedly and mutate item count, text length, and row height; assert that the last item remains reachable and no stale blank canvas remains.",
+        "Unmount and remount repeatedly to detect leaked AbsoluteContentSize listeners."
+      ],
+      "ambiguities": [
+        "Obsidian uses dynamic measurement for Settings but fixed canvas heights for Shop and Aura Storage, demonstrating that one taste may legitimately use both strategies.",
+        "Candlelit, Frosted, and Planter use fixed six-row arithmetic; that is an absence of dynamic synchronization, not necessarily a defect under immutable content."
+      ]
+    },
+    {
+      "ruleId": "RUI-010",
+      "category": "layering",
+      "candidateStatement": "A separate full-screen dim layer behind a modal window is common but not universal; it should remain a taste- and context-specific choice rather than a mandatory popup ingredient.",
+      "provisionalKind": "cross-taste-pattern",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "studded-toybox"
+      ],
+      "absentIn": [
+        "honey-ledger",
+        "planter-box-pop"
+      ],
+      "rawOccurrence": "6/8",
+      "independenceAdjustedSupport": "medium",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-024",
+        "OBS-FROSTED-BASEPLATE-023",
+        "OBS-INDIGO-007",
+        "OBS-LOUD-SLAB-007",
+        "OBS-OBSIDIAN-GACHA-029",
+        "OBS-STUDDED-TOYBOX-006",
+        "OBS-HONEY-LEDGER-028",
+        "OBS-PLANTER-029"
+      ],
+      "policyIds": [
+        "POLICY-011",
+        "POLICY-017"
+      ],
+      "externalClaimsNeeded": [
+        "User testing is needed to establish whether backdrop dimming improves focus or harms world awareness for each game context."
+      ],
+      "runtimeTestsNeeded": [
+        "Compare modal legibility, world visibility, and backdrop activation with dim enabled and disabled against the actual 3D scene.",
+        "Verify that tastes documented as raw-on-world do not acquire an unexplained dim through shared window defaults."
+      ],
+      "ambiguities": [
+        "Studded Toybox implements a dim despite its source explicitly prohibiting a separate backdrop, so recurrence includes a meaningful contradiction.",
+        "Dim colors and opacities are often derived or estimated rather than observed."
+      ]
+    },
+    {
+      "ruleId": "RUI-011",
+      "category": "layering",
+      "candidateStatement": "Implementations with modal backdrops commonly assign local ZIndex 10 to the dim and 11 to the panel, but those exact numbers are generator layer-band conventions rather than independently recurring taste choices.",
+      "provisionalKind": "generator-convention",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "studded-toybox"
+      ],
+      "absentIn": [
+        "honey-ledger",
+        "planter-box-pop"
+      ],
+      "rawOccurrence": "6/8",
+      "independenceAdjustedSupport": "low",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-023",
+        "OBS-FROSTED-BASEPLATE-023",
+        "OBS-INDIGO-007",
+        "OBS-INDIGO-033",
+        "OBS-LOUD-SLAB-006",
+        "OBS-OBSIDIAN-GACHA-029",
+        "OBS-STUDDED-TOYBOX-006"
+      ],
+      "policyIds": [
+        "POLICY-016",
+        "POLICY-017"
+      ],
+      "externalClaimsNeeded": [
+        "Confirm how descendant ZIndex values resolve under Sibling versus Global ZIndexBehavior."
+      ],
+      "runtimeTestsNeeded": [
+        "Mount each modal above HUD and below a second popup, then verify dim, panel, descendants, overhanging chrome, and nested popup ordering.",
+        "Repeat under both Sibling and Global to make the failure mode observable."
+      ],
+      "ambiguities": [
+        "Honey and Planter intentionally omit a dim layer and therefore do not instantiate the 10/11 pair.",
+        "Candlelit descendants use smaller local ZIndexes, making effective order dependent on the host's ZIndexBehavior."
+      ]
+    },
+    {
+      "ruleId": "RUI-012",
+      "category": "layering",
+      "candidateStatement": "Component-local ZIndex assignments do not prove the global layer contract; the mounting ScreenGui must explicitly establish Sibling ZIndexBehavior and the intended DisplayOrder bands, or verification must show an equivalent host configuration.",
+      "provisionalKind": "engine-constraint",
+      "observedIn": [],
+      "absentIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "rawOccurrence": "0/8",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-023",
+        "OBS-FROSTED-BASEPLATE-023",
+        "OBS-HONEY-LEDGER-031",
+        "OBS-INDIGO-033",
+        "OBS-LOUD-SLAB-006",
+        "OBS-OBSIDIAN-GACHA-029",
+        "OBS-PLANTER-028",
+        "OBS-STUDDED-TOYBOX-032"
+      ],
+      "policyIds": [
+        "POLICY-016",
+        "POLICY-017"
+      ],
+      "externalClaimsNeeded": [
+        "Verify from current Roblox documentation that Global is the default ZIndexBehavior and that Sibling changes descendant ordering as stated by the audited policy.",
+        "Verify DisplayOrder interaction across multiple ScreenGuis."
+      ],
+      "runtimeTestsNeeded": [
+        "Inspect the actual host ScreenGui for every story and production screen, then render HUD, window, nested popup, tooltip, shadow, and overhanging descendants simultaneously.",
+        "Fail the scenario if default-ZIndex descendants disappear behind an overlay or if a lower-band ScreenGui appears above a higher band."
+      ],
+      "ambiguities": [
+        "All observations are scoped below the mounting harness; the host may already provide the missing configuration.",
+        "The candidate is supported primarily by one externally grounded generator policy plus unanimous local absence, not eight independent engine investigations."
+      ]
+    },
+    {
+      "ruleId": "RUI-013",
+      "category": "input",
+      "candidateStatement": "Semantic button actions use Roblox Activated, while held-state visuals are driven by mouse down/up/leave; this pattern alone does not establish touch, keyboard, or gamepad feedback and navigation.",
+      "provisionalKind": "generator-convention",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "medium",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-026",
+        "OBS-FROSTED-BASEPLATE-029",
+        "OBS-HONEY-LEDGER-035",
+        "OBS-INDIGO-030",
+        "OBS-LOUD-SLAB-029",
+        "OBS-OBSIDIAN-GACHA-015",
+        "OBS-OBSIDIAN-GACHA-017",
+        "OBS-PLANTER-027",
+        "OBS-STUDDED-TOYBOX-010"
+      ],
+      "policyIds": [
+        "POLICY-014",
+        "POLICY-020",
+        "POLICY-027"
+      ],
+      "externalClaimsNeeded": [
+        "Verify which input modalities fire GuiButton.Activated and whether mouse button events are synthesized for touch or gamepad in current Roblox clients.",
+        "Verify default Selectable and focus-navigation behavior for generated buttons."
+      ],
+      "runtimeTestsNeeded": [
+        "For mouse, touch, keyboard, and gamepad, verify activation exactly once, visible pressed/focused feedback, cancellation on leave, and restoration after release.",
+        "Navigate every story without a pointer and verify reachable focus order and visible selection state."
+      ],
+      "ambiguities": [
+        "Activated may cover multiple modalities semantically, but none of the artifacts runtime-exercises that behavior.",
+        "The identical event wiring is likely copied from shared generator patterns and should not be mistaken for independent input design."
+      ]
+    },
+    {
+      "ruleId": "RUI-014",
+      "category": "input",
+      "candidateStatement": "Interactive roots preserve at least a 44px logical target, with smaller visual pills nested inside invisible hit roots and chunky tastes generally using 56px or larger controls.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "low",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-017",
+        "OBS-FROSTED-BASEPLATE-028",
+        "OBS-HONEY-LEDGER-006",
+        "OBS-INDIGO-029",
+        "OBS-LOUD-SLAB-020",
+        "OBS-OBSIDIAN-GACHA-017",
+        "OBS-PLANTER-018",
+        "OBS-PLANTER-021",
+        "OBS-STUDDED-TOYBOX-011",
+        "OBS-STUDDED-TOYBOX-020"
+      ],
+      "policyIds": [
+        "POLICY-019"
+      ],
+      "externalClaimsNeeded": [
+        "Confirm the 44px target recommendation against Roblox platform accessibility guidance and device pixel-density behavior."
+      ],
+      "runtimeTestsNeeded": [
+        "Visualize AbsoluteSize and hit bounds for every interactive element at all supported viewports; include nested price pills, close glyphs, badges, and compressed HUD launchers.",
+        "Use touch input near target edges to detect overlap or interception by adjacent controls."
+      ],
+      "ambiguities": [
+        "The exact 44px/56px values are mandated by shared policy, so occurrence is not independent.",
+        "A large visible control is not automatically a large unobstructed hit target; overlap and clipping still require runtime checks."
+      ]
+    },
+    {
+      "ruleId": "RUI-015",
+      "category": "motion",
+      "candidateStatement": "Press feedback follows the represented material: chunky or beveled controls tend to squash and collapse their face depth, while flat or translucent controls tend to darken, brighten, or lift fill without deformation.",
+      "provisionalKind": "cross-taste-pattern",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "medium",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-019",
+        "OBS-FROSTED-BASEPLATE-026",
+        "OBS-HONEY-LEDGER-022",
+        "OBS-HONEY-LEDGER-023",
+        "OBS-INDIGO-010",
+        "OBS-INDIGO-011",
+        "OBS-LOUD-SLAB-012",
+        "OBS-OBSIDIAN-GACHA-015",
+        "OBS-PLANTER-025",
+        "OBS-STUDDED-TOYBOX-009"
+      ],
+      "policyIds": [
+        "POLICY-013",
+        "POLICY-021",
+        "POLICY-022"
+      ],
+      "externalClaimsNeeded": [
+        "No external engine claim is needed beyond TweenService behavior; user testing would be needed to validate perceived material consistency."
+      ],
+      "runtimeTestsNeeded": [
+        "Capture press-in, held, cancelled, and release states for representative flat and beveled controls; verify no stuck scale, fill, or face-depth state.",
+        "Test rapid alternating presses and pointer leave/re-entry."
+      ],
+      "ambiguities": [
+        "The generator explicitly supplies the same two archetypes, reducing independence.",
+        "Honey's beveled close collapses depth while its primary control only darkens, showing that the conditional applies per component material, not once per taste."
+      ]
+    },
+    {
+      "ruleId": "RUI-016",
+      "category": "motion",
+      "candidateStatement": "Window entrance motion is family-conditioned rather than universal: chunky tastes use Back-Out scale pops, restrained tastes use small slide/fade or settle transitions, and effects-led dark chrome may prioritize world blur with no panel-scale animation.",
+      "provisionalKind": "generator-convention",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "low",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-025",
+        "OBS-FROSTED-BASEPLATE-025",
+        "OBS-HONEY-LEDGER-032",
+        "OBS-HONEY-LEDGER-034",
+        "OBS-INDIGO-009",
+        "OBS-LOUD-SLAB-010",
+        "OBS-LOUD-SLAB-035",
+        "OBS-OBSIDIAN-GACHA-030",
+        "OBS-PLANTER-024",
+        "OBS-STUDDED-TOYBOX-012",
+        "OBS-STUDDED-TOYBOX-013"
+      ],
+      "policyIds": [
+        "POLICY-008",
+        "POLICY-021",
+        "POLICY-022"
+      ],
+      "externalClaimsNeeded": [
+        "Verify TweenService easing behavior and BlurEffect lifecycle in current Roblox clients."
+      ],
+      "runtimeTestsNeeded": [
+        "Record entrance motion at stable frame rates and compare actual duration, trajectory, opacity, overshoot, and blur against the declared family register.",
+        "Mount multiple Obsidian windows concurrently to test global BlurEffect ownership and cleanup."
+      ],
+      "ambiguities": [
+        "All eight design sources lacked video or otherwise marked motion low-confidence, and shared family presets can wholly explain recurrence.",
+        "Obsidian intentionally drops the prescribed panel fade because of CanvasGroup rasterization, making it a meaningful exception rather than a weaker scale-pop example."
+      ]
+    },
+    {
+      "ruleId": "RUI-017",
+      "category": "motion",
+      "candidateStatement": "An explicit reduced-motion path should replace or attenuate scale pops, large slides, bounce, and blur transitions while preserving state change; none of the eight implementation slices demonstrates such a branch.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [],
+      "absentIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "rawOccurrence": "0/8",
+      "independenceAdjustedSupport": "medium",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-025",
+        "OBS-FROSTED-BASEPLATE-025",
+        "OBS-HONEY-LEDGER-032",
+        "OBS-INDIGO-009",
+        "OBS-LOUD-SLAB-010",
+        "OBS-OBSIDIAN-GACHA-030",
+        "OBS-PLANTER-024",
+        "OBS-STUDDED-TOYBOX-012"
+      ],
+      "policyIds": [
+        "POLICY-008",
+        "POLICY-025"
+      ],
+      "externalClaimsNeeded": [
+        "Identify the supported Roblox mechanism for obtaining a player's reduced-motion preference, or establish an application-level setting if no platform API exists.",
+        "Validate accessibility guidance for blur and motion attenuation."
+      ],
+      "runtimeTestsNeeded": [
+        "Toggle reduced motion before mount and while a window is open; verify deterministic state, no overshoot/bounce, attenuated translation/blur, and preserved completion callbacks.",
+        "Run the same path for press, progress, currency, and reward animations."
+      ],
+      "ambiguities": [
+        "The design sources often request reduced-motion behavior, but the shared implementation policy audit does not identify a concrete preference API.",
+        "A manual instant prop in Honey is not equivalent to user-driven reduced motion."
+      ]
+    },
+    {
+      "ruleId": "RUI-018",
+      "category": "hierarchy",
+      "candidateStatement": "Catalog units generally order item identity and artwork first, descriptive or rarity metadata second, and price or purchase action last; row and grid anatomies are valid variants of that stable information sequence.",
+      "provisionalKind": "cross-taste-pattern",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [
+        "obsidian-gacha"
+      ],
+      "rawOccurrence": "7/8",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-013",
+        "OBS-FROSTED-BASEPLATE-007",
+        "OBS-HONEY-LEDGER-011",
+        "OBS-INDIGO-014",
+        "OBS-LOUD-SLAB-016",
+        "OBS-PLANTER-008",
+        "OBS-STUDDED-TOYBOX-029",
+        "OBS-OBSIDIAN-GACHA-012",
+        "OBS-OBSIDIAN-GACHA-024"
+      ],
+      "policyIds": [
+        "POLICY-012",
+        "POLICY-023"
+      ],
+      "externalClaimsNeeded": [
+        "User scan and purchase-task testing is needed to establish whether the ordering improves recognition and decision speed."
+      ],
+      "runtimeTestsNeeded": [
+        "At representative viewport widths, run a timed item-finding and price-comparison task; verify that metadata and action remain associated with the correct art after wrapping or truncation.",
+        "Test both full-width rows and grid cards with long localized names and prices."
+      ],
+      "ambiguities": [
+        "Obsidian's Shop uses AuraCards plus a separate featured BannerOffer; the observations do not establish the same terminal price/action anatomy on each AuraCard, so it is retained as an absence.",
+        "Honey intends per-row buy tags but does not render passed children, a contradiction that should not be averaged into support.",
+        "Standardized item data raises recurrence, but the row/card reading order is not fully prescribed by that policy."
+      ]
+    },
+    {
+      "ruleId": "RUI-019",
+      "category": "interaction",
+      "candidateStatement": "A disabled action remains visible, uses a subdued visual treatment, suppresses press feedback, and must not dispatch its semantic callback.",
+      "provisionalKind": "generator-convention",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "low",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-019",
+        "OBS-CANDLELIT-PARLOR-031",
+        "OBS-FROSTED-BASEPLATE-019",
+        "OBS-HONEY-LEDGER-022",
+        "OBS-INDIGO-010",
+        "OBS-LOUD-SLAB-012",
+        "OBS-LOUD-SLAB-033",
+        "OBS-OBSIDIAN-GACHA-016",
+        "OBS-PLANTER-021",
+        "OBS-STUDDED-TOYBOX-009",
+        "OBS-STUDDED-TOYBOX-035"
+      ],
+      "policyIds": [
+        "POLICY-014",
+        "POLICY-025"
+      ],
+      "externalClaimsNeeded": [
+        "Confirm whether disabled GuiButtons should also set Active or Selectable properties to prevent focus and activation under every input modality."
+      ],
+      "runtimeTestsNeeded": [
+        "Attempt activation by mouse, touch, keyboard, and gamepad while disabled; assert zero callbacks and no press tween, then re-enable and assert exactly one callback.",
+        "Check that disabled contrast and explanatory label remain legible."
+      ],
+      "ambiguities": [
+        "The visual treatment differs materially: transparency, gray fill, muted stroke/text, or semantic disabled color are all present.",
+        "Several source tastes did not observe disabled states; the recurrence is primarily generator-derived."
+      ]
+    },
+    {
+      "ruleId": "RUI-020",
+      "category": "interaction",
+      "candidateStatement": "Window dismissal should be lifecycle-owned: close glyph and optional backdrop route through one guarded close request, and unmount or state removal occurs after any exit transition; missing callbacks must not leave a visibly inert affordance or an invisible mounted window.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "medium",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-021",
+        "OBS-CANDLELIT-PARLOR-025",
+        "OBS-FROSTED-BASEPLATE-017",
+        "OBS-FROSTED-BASEPLATE-018",
+        "OBS-HONEY-LEDGER-024",
+        "OBS-HONEY-LEDGER-032",
+        "OBS-INDIGO-008",
+        "OBS-INDIGO-019",
+        "OBS-LOUD-SLAB-013",
+        "OBS-OBSIDIAN-GACHA-017",
+        "OBS-PLANTER-020",
+        "OBS-STUDDED-TOYBOX-028"
+      ],
+      "policyIds": [
+        "POLICY-014",
+        "POLICY-021",
+        "POLICY-025"
+      ],
+      "externalClaimsNeeded": [
+        "Confirm event propagation and input interception behavior for fully transparent but mounted GuiObjects."
+      ],
+      "runtimeTestsNeeded": [
+        "Activate close and backdrop rapidly and concurrently; assert one exit, one callback, and removal from rendering and hit testing after completion.",
+        "Exercise the no-callback case for every Window implementation and verify that visible controls are either disabled/hidden or receive a real owner callback."
+      ],
+      "ambiguities": [
+        "Candlelit, Frosted, and Studded return early without a callback; Planter animates to an invisible mounted state; Indigo can hide a no-callback hub; these are different failure modes.",
+        "Backdrop dismissal is taste/context-specific and should remain independently configurable from explicit close."
+      ]
+    },
+    {
+      "ruleId": "RUI-021",
+      "category": "verification",
+      "candidateStatement": "UI-Labs stories, controls, implementation comments, and asset-provenance notes provide manual inspection surfaces but do not constitute executable verification; trustworthy delivery requires runtime mounting, interaction, multi-resolution capture, numeric state/motion checks, and asset-load confirmation.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [
+        "candlelit-parlor",
+        "frosted-baseplate",
+        "honey-ledger",
+        "indigo-quartermaster",
+        "loud-slab",
+        "obsidian-gacha",
+        "planter-box-pop",
+        "studded-toybox"
+      ],
+      "absentIn": [],
+      "rawOccurrence": "8/8",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [
+        "OBS-CANDLELIT-PARLOR-029",
+        "OBS-CANDLELIT-PARLOR-031",
+        "OBS-FROSTED-BASEPLATE-030",
+        "OBS-FROSTED-BASEPLATE-031",
+        "OBS-HONEY-LEDGER-036",
+        "OBS-HONEY-LEDGER-038",
+        "OBS-LOUD-SLAB-031",
+        "OBS-LOUD-SLAB-032",
+        "OBS-OBSIDIAN-GACHA-033",
+        "OBS-OBSIDIAN-GACHA-034",
+        "OBS-OBSIDIAN-GACHA-035",
+        "OBS-PLANTER-031",
+        "OBS-PLANTER-032",
+        "OBS-STUDDED-TOYBOX-030",
+        "OBS-STUDDED-TOYBOX-031"
+      ],
+      "policyIds": [
+        "POLICY-024",
+        "POLICY-025",
+        "POLICY-026"
+      ],
+      "externalClaimsNeeded": [
+        "Confirm current asset IsLoaded and moderation behavior in Roblox Studio/client.",
+        "Confirm availability and reliability of viewport emulation and screenshot persistence in the verification harness."
+      ],
+      "runtimeTestsNeeded": [
+        "Run the complete play-mount-interact-capture-assert loop for every required story at desktop and 667x375, plus portrait where supported.",
+        "Assert visible text, hit-target sizes, selected/disabled transitions, scrolling reachability, close lifecycle, motion endpoints, z-order, clipping, and image load success.",
+        "Persist captures or machine-readable assertions so verification is reproducible rather than comment-only."
+      ],
+      "ambiguities": [
+        "Indigo has no dedicated verification observation ID, but its artifact explicitly reports no assertion files; the registry preserves only available observation IDs rather than inventing one.",
+        "Some comments report prior Studio verification, while Obsidian explicitly reports that Studio MCP was offline; neither condition supplies executable evidence in the observed slice.",
+        "The shared verification policy counts as one source, and existing reports admit gaps in multi-resolution, motion-video, hover fallback, and capture persistence."
+      ]
+    },
+    {
+      "ruleId": "RUI-022",
+      "category": "responsive",
+      "candidateStatement": "Direct siblings controlled by UIListLayout or UIGridLayout must not rely on manual values for properties owned by that layout; use a nested wrapper or remove layout ownership for independent transforms.",
+      "provisionalKind": "engine-constraint",
+      "observedIn": [],
+      "absentIn": [],
+      "rawOccurrence": "external-only",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [],
+      "policyIds": [],
+      "externalClaimsNeeded": [
+        "Verify UIListLayout and UIGridLayout ownership of sibling Position, Rotation, and Size."
+      ],
+      "runtimeTestsNeeded": [
+        "Mutate owned properties on direct siblings and compare with a nested descendant wrapper."
+      ],
+      "ambiguities": [
+        "UIListLayout size ownership changes under flex, AutomaticSize, and constraints; UIGridLayout constraints can override CellSize."
+      ]
+    },
+    {
+      "ruleId": "RUI-023",
+      "category": "hierarchy",
+      "candidateStatement": "Localized text that can outgrow its bounds should be exercised with locale elongation and given an explicit expansion, wrapping, or truncation policy; TextScaled and AutomaticSize should not be combined by default on one TextLabel.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [],
+      "absentIn": [],
+      "rawOccurrence": "external-only",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [],
+      "policyIds": [],
+      "externalClaimsNeeded": [
+        "Verify Roblox Locale/Elongate guidance, AutomaticSize/TextScaled interaction, and fixed-label overflow behavior."
+      ],
+      "runtimeTestsNeeded": [
+        "Exercise target locales, elongation, wrapping height, truncation, TextFits, and TextBounds."
+      ],
+      "ambiguities": [
+        "Synthetic elongation does not validate shaping or every real locale; intentional truncation can be valid."
+      ]
+    },
+    {
+      "ruleId": "RUI-024",
+      "category": "layering",
+      "candidateStatement": "Effective ClipsDescendants creates a rectangular descendant-rendering boundary that ZIndex cannot escape and UICorner does not round; rotation behavior must account for the current rollout state.",
+      "provisionalKind": "engine-constraint",
+      "observedIn": [],
+      "absentIn": [],
+      "rawOccurrence": "external-only",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [],
+      "policyIds": [],
+      "externalClaimsNeeded": [
+        "Verify ClipsDescendants, ZIndex, UICorner, and rotated-descendant behavior."
+      ],
+      "runtimeTestsNeeded": [
+        "Render high-Z overflow, rounded parents, rotated descendants, and rotated clipping ancestors."
+      ],
+      "ambiguities": [
+        "Rotated descendant clipping and rotated parent clipping are different; rollout state may vary."
+      ]
+    },
+    {
+      "ruleId": "RUI-025",
+      "category": "motion",
+      "candidateStatement": "Supersedable stateful tweens should have deterministic ownership, terminal values, and callbacks; same-property automatic cancellation means explicit Cancel is conditional rather than universal.",
+      "provisionalKind": "implementation-guideline",
+      "observedIn": [],
+      "absentIn": [],
+      "rawOccurrence": "external-only",
+      "independenceAdjustedSupport": "high",
+      "observationIds": [],
+      "policyIds": [],
+      "externalClaimsNeeded": [
+        "Verify same-property replacement, different-property coexistence, Completed cancellation state, Cancel, and Pause semantics."
+      ],
+      "runtimeTestsNeeded": [
+        "Rapidly replace, cancel, pause, and replay transitions while asserting winning state and callback count."
+      ],
+      "ambiguities": [
+        "Roblox does not prescribe an ownership abstraction; decorative fire-and-forget tweens may not need one."
+      ]
+    }
+  ]
+}

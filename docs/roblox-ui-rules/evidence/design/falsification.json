@@ -1,0 +1,936 @@
+{
+  "reviews": [
+    {
+      "ruleId": "RUD-001",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "The eight tastes establish only a descriptive authored-token distribution, and most TextScaled implementations share the same generator habit of supplying MaxTextSize without MinTextSize, so those are not eight independent demonstrations of a safe floor. Provenance must remain separated: 14–18px is a corpus range for canonical authored roles; 9 is an official Roblox API-reference recommendation, not an enforced or accessibility-safe minimum; Xbox 18/26-pixel body-height defaults are imported external game guidance measured differently and are not Roblox TextSize values. The corpus inspection contains no runtime measurement.",
+      "counterexamples": [
+        {
+          "description": "Candlelit has a nominal role scale but also a 14px implementation-specific ceiling and TextScaled roles with only maximum constraints, so neither its canonical token nor its smaller ceiling is a rendered floor.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "287-295"
+            }
+          ]
+        },
+        {
+          "description": "Indigo is the lone inspected fixed-token system with a known 14px implementation minimum, but that only establishes what this implementation authors, not what is readable or accessible across devices and viewing distances.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/indigo-quartermaster.json",
+              "lines": "199-205"
+            }
+          ]
+        },
+        {
+          "description": "Studded's smallest authored role is 18px, yet headers, buttons, prices, and compact labels can shrink because TextScaled has no minimum constraint.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/studded-toybox.json",
+              "lines": "161-169"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Unconstrained TextScaled text shrinks below both the authored token and Roblox's 9 recommendation.",
+        "TextScaled bypasses the player's Preferred Text Size adjustment, while a maximum constraint can also cap that preference.",
+        "Long localized strings wrap, clip, or force further shrinkage in fixed controls.",
+        "A nominal token passes review while small captions, badges, close glyphs, or HUD microcopy are unreadable over a busy world."
+      ],
+      "missingBoundaries": [
+        "Minimum supported small-landscape viewport and tall/mobile viewport",
+        "Longest localized strings and non-Latin fallback faces",
+        "Player Preferred Text Size and Preferred Transparency settings",
+        "Console/TV viewing distance versus handheld DPI",
+        "Wrapped multiline text, scrolling containers, and clipping at 200% project-adopted scaling"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "For on-screen text, especially TextScaled labels: record whether a floor is a Roblox recommendation, an imported external target, or a project convention; constrain scaling and verify rendered bounds for supported strings and viewports. Do not call 9, 14–18, or Xbox's differently measured 18/26 values a universal Roblox accessibility minimum.",
+      "reason": "The candidate correctly rejects a corpus-derived safety floor but overstates the absence of guidance: Roblox does recommend not going below 9 and recommends constraining or avoiding on-screen TextScaled. That recommendation is still not an enforcement boundary or sufficient accessibility guarantee. The rule should therefore become a provenance-and-verification recommendation rather than remain wholly unresolved."
+    },
+    {
+      "ruleId": "RUD-002",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "The 1.15 cutoff is an analyst-selected corpus cluster boundary derived from authored role tokens that often share a generator schema; it is neither official Roblox guidance nor an independently validated perceptual threshold. Qualitative support is stronger: Roblox recommends differentiating intended hierarchy through size, color, placement, space, and related channels. No runtime or perceptual test establishes that 1.14 fails while 1.16 succeeds.",
+      "counterexamples": [
+        {
+          "description": "Frosted intentionally uses a 26/24 pair, ratio 1.0833, while keeping one family and one weight; the source treats the label as the louder sibling, showing that the numeric ratio alone cannot diagnose failure without its component context.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/frosted-baseplate.json",
+              "lines": "202-205"
+            }
+          ]
+        },
+        {
+          "description": "Planter assigns the same 30px heading role to window titles and row item names. They occur in different containers and scopes, so equal size is not evidence that another typographic channel is required between them.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/planter-box-pop.json",
+              "lines": "206-212"
+            },
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/planter-box-pop.json",
+              "lines": "216-220"
+            }
+          ]
+        },
+        {
+          "description": "Indigo's equal-size 18px body and label pair does use weight to distinguish semantics, demonstrating one valid solution but not a universal cutoff.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/indigo-quartermaster.json",
+              "lines": "221-224"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A forced secondary channel decorates semantic peers that were intentionally equal.",
+        "TextScaled shrinkage moves a pair across the 1.15 boundary at runtime without changing authored intent.",
+        "Font x-height, baked-in weight, outline thickness, casing, or container scale makes equal numeric sizes perceptually unequal.",
+        "Color becomes the only added channel and loses the distinction in grayscale or over a changing world."
+      ],
+      "missingBoundaries": [
+        "Equal-size peers versus intentionally ordered roles",
+        "Different font families, x-heights, fallback faces, and scripts",
+        "Long localized labels that shrink or wrap",
+        "Small landscape and tall/mobile container substitutions",
+        "Disabled, selected, and gamepad-focus states that can override hierarchy channels"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "When two roles in the same visible decision or reading region are intended to have different rank, ensure the intended order remains perceivable through the complete composition. Use size ratios as diagnostic corpus data only; do not encode 1.15 as a pass/fail boundary.",
+      "reason": "The relational hierarchy principle survives, but the 1.15 number is arbitrary and the word adjacent is underspecified. Scope must be limited to roles intended to differ in rank within one context, with no numeric boundary promoted beyond descriptive corpus provenance."
+    },
+    {
+      "ruleId": "RUD-003",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Four of eight tastes use a single canonical weight, but the tastes were normalized into a shared role schema and weight names are not perceptually comparable across families. The 1–3 weight count is a taste-cluster description, not a threshold. Official Roblox guidance recommends larger and bolder headings qualitatively, but publishes no mandatory semantic weight map. No runtime fallback-face behavior was verified.",
+      "counterexamples": [
+        {
+          "description": "Indigo needs Bold versus Regular to separate equal-size 18px label and body roles; treating weight as dispensable in this system would erase an authored semantic distinction.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/indigo-quartermaster.json",
+              "lines": "221-224"
+            }
+          ]
+        },
+        {
+          "description": "Frosted shows the opposite valid cluster: all roles use one family and one weight, with size carrying most hierarchy and only a 1.0833 step between label and body.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/frosted-baseplate.json",
+              "lines": "202-205"
+            }
+          ]
+        },
+        {
+          "description": "Planter is also single-weight and relies on size, outline, casing, and plate treatment, so synthesizing additional bold weights would not be source-faithful.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/planter-box-pop.json",
+              "lines": "216-220"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Removing an authored weight distinction collapses equal-size semantic roles.",
+        "Requesting an unavailable face produces fallback or synthetic-looking output that changes hierarchy.",
+        "A single-weight system falls back to color alone, failing over grayscale or low-contrast backgrounds.",
+        "Heavy weight plus thick outline closes counters in small text."
+      ],
+      "missingBoundaries": [
+        "Actual face availability per family and localization fallback",
+        "Small captions and outlined text at constrained sizes",
+        "Grayscale and variable-world-background legibility",
+        "Long strings, wrapping, and Preferred Text Size",
+        "Disabled, selected, and focus treatments that alter perceived weight"
+      ],
+      "recommendedStrength": "MAY",
+      "recommendedScope": "A taste may use one weight when other authored channels clearly carry the required hierarchy. Where multiple weights exist, map them to named roles and verify family-face availability; never remove an existing semantic weight distinction merely to enforce a single-weight style.",
+      "reason": "Weight is optional as a channel, not optional with respect to an existing design's semantics. The candidate needs this distinction and should remain a permissive taste-cluster rule rather than a universal recommendation to avoid weight contrast."
+    },
+    {
+      "ruleId": "RUD-004",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "The corpus splits between one-family and role-bound multi-family systems; the 1–3 family range is descriptive taste evidence, not a recommended maximum. Repeated role labels come partly from shared generator policy. Official Roblox guidance prioritizes legibility but does not prescribe one core family or a numeric family count. No runtime family availability or fallback behavior was observed.",
+      "counterexamples": [
+        {
+          "description": "Honey's source assigns utility typography to SourceSansPro, but the implementation reuses the heading family for an info-window title, showing that a named assignment can still drift at a callsite.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/corpus/honey-ledger.json",
+              "lines": "419-423"
+            }
+          ]
+        },
+        {
+          "description": "Loud permits a seasonal pixel-arcade face as a skin while reserving BuilderSans for engine-adjacent chrome, so a legitimate additional family can be contextual rather than part of one permanent core hierarchy.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/loud-slab.json",
+              "lines": "163-178"
+            }
+          ]
+        },
+        {
+          "description": "Indigo's mono timer is a functional branch from its body/display system, demonstrating why a blanket single-family rule would be wrong.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/indigo-quartermaster.json",
+              "lines": "221-224"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A second family is added for novelty and breaks visual cohesion.",
+        "A required script or glyph is unavailable and silent fallback destroys the intended role distinction.",
+        "A decorative display family is used for long prose or dense localized UI.",
+        "A mono/status family changes digit widths or alignment under fallback."
+      ],
+      "missingBoundaries": [
+        "Non-Latin localization and missing-glyph fallback",
+        "Numeric timer and tabular-data width stability",
+        "Long prose versus short display/action copy",
+        "Seasonal skins and engine/Core UI adjacency",
+        "Font asset availability and weight-face availability"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "For creator-authored UI typography, keep a small role-defined family set; default to one family only when no functional, linguistic, numeric, or taste-authored need justifies another. Treat the corpus count as descriptive, not a cap.",
+      "reason": "Named functional assignment is the defensible principle. The phrase one core family is too prescriptive for localization, skins, and role-specific numeric/system text unless presented as a default rather than an invariant."
+    },
+    {
+      "ruleId": "RUD-005",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Six tastes avoid global uppercase, while Candlelit and Loud form intentional uppercase-led subclusters; these are taste observations, not independent readability experiments. Roblox publishes no casing rule. Xbox sentence-case guidance is imported external game guidance and explicitly exempts one- or two-word labels; it must not be relabeled as Roblox policy. No localization render was observed.",
+      "counterexamples": [
+        {
+          "description": "Candlelit intentionally combines uppercase section eyebrows and action/display roles with serif narration, so uppercase is a functional local channel rather than a defect.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "337-340"
+            }
+          ]
+        },
+        {
+          "description": "Loud uses outlined uppercase headings as painted-signage shouts while keeping body and other roles distinct, making an uppercase-led heading cluster taste-defining.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/loud-slab.json",
+              "lines": "183-186"
+            }
+          ]
+        },
+        {
+          "description": "Planter's generated CONFIRM and LIMITED strings override role-token casing, showing that statistics on role flags undercount content-level uppercase.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/planter-box-pop.json",
+              "lines": "205-212"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Uppercasing localized text expands beyond button or header bounds.",
+        "Global uppercase erases distinctions between prose, titles, metadata, and actions.",
+        "Case conversion corrupts acronyms, identifiers, or locale-specific letter forms.",
+        "Forcing sentence case removes an authored signage or narrative/action distinction."
+      ],
+      "missingBoundaries": [
+        "One- and two-word controls versus multiline prose",
+        "Locale-aware case conversion and scripts without case",
+        "Long localized window titles and narrow buttons",
+        "Acronyms, player names, item identifiers, and branded wordmarks",
+        "Small TextScaled labels where uppercase width induces shrinkage"
+      ],
+      "recommendedStrength": "AVOID",
+      "recommendedScope": "Avoid forced all-caps for prose, captions, subtitles, and long localized strings. Permit short labels, acronyms, metadata, and explicitly uppercase-led taste roles; preserve source casing rather than normalizing showcase strings.",
+      "reason": "The anti-global rule survives only with the Xbox exception and taste-specific exceptions made explicit. It is a readability and localization recommendation, not an official Roblox casing requirement."
+    },
+    {
+      "ruleId": "RUD-006",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "The 0–4px range and 2.5px median describe taste-specific authored strokes, not a readable thickness, contrast threshold, or recommended cluster boundary. The outlined tastes also share generator primitives, reducing independence. Roblox recommends either a contrasting backing color or a stroke for noisy backgrounds but gives no thickness or contrast guarantee. If WCAG 4.5:1/3:1 is adopted, it is an imported external project target and must be measured against the composited worst-case background rather than inferred from stroke width. No runtime compositing was observed.",
+      "counterexamples": [
+        {
+          "description": "Loud's adjacent leaderboard values omit UIStroke even though its nominal style uses outlined text, showing that one taste can contain deliberate or unresolved unstroked exceptions.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/loud-slab.json",
+              "lines": "443-445"
+            }
+          ]
+        },
+        {
+          "description": "Candlelit uses only contextual 1px text rims while relying primarily on translucent surfaces and lit structural edges, so a global outlined-text treatment would misstate its depth and contrast strategy.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "530-533"
+            }
+          ]
+        },
+        {
+          "description": "Frosted's 22px TextScaled badge has neither a minimum constraint nor the nominal stroke, exposing the interaction between small scaling and stroke exceptions.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/frosted-baseplate.json",
+              "lines": "184-196"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A thick rim closes counters and degrades small glyphs.",
+        "A subtle or translucent rim fails against part of a moving, high-frequency world background.",
+        "UIStroke is clipped by tight text bounds or parent clipping.",
+        "A global stroke makes dark-on-light rows muddy and erases intentional material inversions."
+      ],
+      "missingBoundaries": [
+        "Light, dark, saturated, translucent, and moving world backgrounds",
+        "Small TextScaled labels without MinTextSize",
+        "Clipping, rotated text, scrolling masks, and shadow/glow compositing",
+        "Preferred Transparency changes to backing surfaces",
+        "Adopted external contrast measurement at the lowest-contrast background area"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Choose text backing surfaces, ink, and any stroke per role and background. Preserve taste-specific stroke vocabularies, but test each final composite; use 0–4px only as corpus provenance, never as a contrast or readability prescription.",
+      "reason": "The no-average warning is sound, but choose a cluster is too coarse because exceptions occur within tastes and contrast is compositional. The rule should require contextual choice and clearly separate taste evidence from any adopted external contrast target."
+    },
+    {
+      "ruleId": "RUD-007",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "All eight generated representative contexts were classified as having one dominant forward action, but the shared showcase fixture adds the same global PLAY pattern and therefore is one policy source, not eight independent observations. Roblox supports clear primary/secondary/tertiary interaction order but does not set a one-primary-button maximum; its official example can represent one primary interaction with multiple same-level choice controls. An exact one-per-page limit is imported general web design guidance, not Roblox guidance. No salience ranking was runtime-tested.",
+      "counterexamples": [
+        {
+          "description": "Obsidian's dialog uses two equal-size actions, Cancel and Confirm, with semantic color and rightmost placement distinguishing them; equal geometry is not automatically competing primacy.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/obsidian-gacha.json",
+              "lines": "221-223"
+            }
+          ]
+        },
+        {
+          "description": "Obsidian's generated shop exposes seven purchase CTAs, which are valid repeated commerce actions but invalidate any screen-level button count interpretation.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/obsidian-gacha.json",
+              "lines": "248-251"
+            }
+          ]
+        },
+        {
+          "description": "Honey shows a visible No/Yes pair and a separate shop arrangement with catalog, detail, and previous/Craft/next controls, requiring workflow-level rather than whole-screen scoping.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/corpus/honey-ledger.json",
+              "lines": "300-304"
+            },
+            {
+              "path": "docs/roblox-ui-rules/evidence/corpus/honey-ledger.json",
+              "lines": "331-335"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Nested screen, panel, header, and footer regions each claim a dominant action and produce several competing screen-level focal points.",
+        "A legitimate choice set is artificially demoted to satisfy a one-button interpretation.",
+        "Repeated row-local commerce actions become indistinguishable from a global commitment action.",
+        "Gamepad initial focus or focus order contradicts the visual primary action."
+      ],
+      "missingBoundaries": [
+        "Mutually exclusive choice sets with multiple same-level options",
+        "Nested panels and simultaneous modal stacking",
+        "Scrolling catalogs with repeated local actions",
+        "Destructive versus forward actions and disabled primary states",
+        "Gamepad initial focus, keyboard order, touch reach, and mouse pointer flow"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Within the current decision or workflow region, provide a clear intended interaction order and avoid competing global commitment emphasis. A primary interaction may contain multiple peer choices; repeated row-local actions and nested regions must be evaluated in context.",
+      "reason": "The hierarchy principle survives, but at most one dominant action is not an official Roblox invariant and cannot be scoped simultaneously to screen, panel, header, and footer. The unit must be one current decision/workflow, not a literal button count."
+    },
+    {
+      "ruleId": "RUD-008",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Roblox independently supports grouping related elements and using proximity, but publishes no numeric gap or ratio. The 1.67–2.67 values are corpus measurements whose numerator changes among section gap, group gap, and shell padding, and several ladders were generated through shared policy. The ratio is descriptive, not a validated cluster boundary. No perceptual grouping test was run.",
+      "counterexamples": [
+        {
+          "description": "Honey uses 8px content padding and uniform 4px list-row gaps in a dense ledger; container bands, row anatomy, and alignment carry grouping beyond a single gap ratio.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/corpus/honey-ledger.json",
+              "lines": "66-70"
+            }
+          ]
+        },
+        {
+          "description": "Frosted has separate 12px grid, 24px row-group, and 48px shell-apron levels, so selecting one group-to-local numerator discards a meaningful third hierarchy level.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/frosted-baseplate.json",
+              "lines": "721-725"
+            }
+          ]
+        },
+        {
+          "description": "Candlelit's authored ladder is 4/8/16/28 and its generated catalog adds a 12px row gap outside that ladder, demonstrating that component context can introduce useful intermediate spacing.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "668-672"
+            },
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "746-750"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Applying 2.67x everywhere over-spaces compact HUDs and catalogs.",
+        "Localization wrapping consumes or visually collapses the intended group separation.",
+        "A single ratio erases three or more nested grouping levels.",
+        "Equal gaps remain ambiguous when containment, alignment, or color bands are removed."
+      ],
+      "missingBoundaries": [
+        "Wrapped and localized text with variable row heights",
+        "Scrolling lists and virtualization boundaries",
+        "Small landscape versus tall/mobile reflow",
+        "Nested groups with more than two spacing levels",
+        "Focus outlines, shadows, and clipping that visually consume gaps"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "When spacing is intended to communicate grouping, make local relationships and semantic separations perceptibly distinct in the final layout. Allow equal gaps where containment, alignment, bands, or headings already carry the relationship. Keep 1.67–2.67 labeled as a corpus observation only.",
+      "reason": "The relational proximity principle is supported, but the numeric cluster and universal smaller-than relation overreach. The candidate must allow other grouping channels and multi-level spacing systems."
+    },
+    {
+      "ruleId": "RUD-009",
+      "verdict": "survives",
+      "independenceAdjustedSupport": "The five recurrences of 4/8/12/20/32 are best counted as one shared generator/repository policy, not five independent taste decisions. Three authored alternatives are independent counterevidence against universalization. The 4–48px corpus span and every listed ladder are repository evidence, not Roblox guidance, accessibility thresholds, or perceptual invariants. No runtime layout evidence is claimed.",
+      "counterexamples": [
+        {
+          "description": "Candlelit uses 4/8/16/28, with role assignments that would be lost by replacing 16 and 28 with generator defaults.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "668-672"
+            }
+          ]
+        },
+        {
+          "description": "Frosted uses 4/8/12/24/48, and the 48px apron exposes its studded material; collapsing it to 32px would alter the authored material composition.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/frosted-baseplate.json",
+              "lines": "721-725"
+            }
+          ]
+        },
+        {
+          "description": "Honey's dense window uses 8px content padding and 4px row gaps rather than demonstrating the full repository ladder.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/corpus/honey-ledger.json",
+              "lines": "66-70"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "The fallback ladder is mistaken for official or independently validated guidance.",
+        "Generator values overwrite a taste-defining apron or dense ledger rhythm.",
+        "Components accumulate off-ladder exceptions while documentation falsely claims strict token use.",
+        "Responsive layouts preserve token names but produce clipping or wasted space."
+      ],
+      "missingBoundaries": [
+        "When source evidence is absent versus merely incomplete",
+        "Responsive overrides at small landscape and tall/mobile sizes",
+        "Localized wrapping and variable-height rows",
+        "Scrolling content and safe-area padding",
+        "Whether component-specific optical offsets may sit outside the ladder"
+      ],
+      "recommendedStrength": "MAY",
+      "recommendedScope": "Use 4/8/12/20/32 only as a repository fallback for generated or under-specified layouts, after checking source measurements and component needs. Preserve authored alternative ladders and label all recurrence as generator policy provenance.",
+      "reason": "The candidate already contains the necessary independence correction and counterexamples. It survives as a repository fallback policy, not as a Roblox visual-design rule or universal spacing system."
+    },
+    {
+      "ruleId": "RUD-010",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "All tastes use recurring semantic palette roles, but the shared schema contributes many of those names, so this is not eight independent taxonomies. The 10–17 core RGB count is a corpus inventory, not an accent budget or threshold. Roblox recommends a limited theme with consistent functional associations but does not require every saturated color to have a named token or publish a universal count. No on-screen area coverage was measured at runtime.",
+      "counterexamples": [
+        {
+          "description": "Obsidian's rarity is an open per-aura content spectrum rather than a finite semantic accent list; reducing it to the generator's four showcase rungs would erase source behavior.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/obsidian-gacha.json",
+              "lines": "362-365"
+            }
+          ]
+        },
+        {
+          "description": "Planter uses six rarity hues on labeled content chips while also reserving gold, red, green, and purple for actions and prices, showing that content identity and UI-state accents need separate budgets.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/planter-box-pop.json",
+              "lines": "433-437"
+            }
+          ]
+        },
+        {
+          "description": "Candlelit reuses one cream value across text, glyphs, strokes, gauges, and its dominant CTA, so token count alone does not reveal accent coverage or salience.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "417-421"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Decorative or content colors are forced into misleading semantic names.",
+        "A small token count still covers most of the screen with saturated accents and destroys hierarchy.",
+        "Several legitimate semantic systems appear simultaneously and become confusable.",
+        "A broad saturated promotional surface overwhelms the base material family despite having a name."
+      ],
+      "missingBoundaries": [
+        "Creator-authored chrome versus item art, rarity content, and world imagery",
+        "Simultaneous danger, currency, selection, rarity, and promotional accents",
+        "Disabled and selected state variants",
+        "Color-vision deficiencies and grayscale recognition",
+        "Dynamic backgrounds, transparency preferences, and adopted external contrast targets"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Assign stable roles to saturated colors used by UI chrome, actions, states, and recurring indicators; manage content-driven rarity, art, and promotions separately. Keep structural surfaces coherent with the taste unless a named material or event skin intentionally changes them. Do not derive a color count from the corpus.",
+      "reason": "Consistent functional association is supported, but every saturated accent is too broad because content art and per-item spectra are not UI-state tokens. Palette counts and area coverage must remain distinct."
+    },
+    {
+      "ruleId": "RUD-011",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Roblox independently and explicitly advises that information, actions, and outcomes not rely on color alone; WCAG 1.4.1 is aligned imported web guidance, not the source of a Roblox engine rule. Corpus major states often add labels or geometry, but shared component policy reduces independence. No numeric threshold is involved, and no grayscale runtime exercise was performed.",
+      "counterexamples": [
+        {
+          "description": "Indigo's unlabeled 6px verdict bands communicate owned/cost/info meaning through hue and context alone.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/indigo-quartermaster.json",
+              "lines": "568-572"
+            }
+          ]
+        },
+        {
+          "description": "Studded's implemented soft- and hard-currency markers are blank colored frames, so currency kind is distinguished only by gold versus purple hue.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/studded-toybox.json",
+              "lines": "447-451"
+            }
+          ]
+        },
+        {
+          "description": "Obsidian's lower rarity rungs rely heavily on bracket/name hue while higher rungs add fill/glow, showing that content identity needs an explicitly scoped treatment rather than being called an unresolved template exception.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/obsidian-gacha.json",
+              "lines": "329-333"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Players with color-vision deficiencies cannot distinguish state, currency, or outcome.",
+        "A behavior-only disabled cue is invisible before activation and therefore is not an adequate non-color visual cue.",
+        "An animation-only alternate disappears under reduced motion or after the transition ends.",
+        "Focus, selected, pressed, and disabled states collide because all reuse the same value or outline change."
+      ],
+      "missingBoundaries": [
+        "Decorative color versus color that conveys required information",
+        "Persistent state versus transient feedback",
+        "Disabled controls before activation",
+        "Keyboard/gamepad focus versus selected state",
+        "Reduced-motion mode, grayscale, and high-contrast presentation"
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "Whenever color communicates required information, an available action, a state, or an outcome, provide a persistent non-color visual cue such as text, symbol, pattern, shape, position, or geometry. Do not count blocked behavior alone. Decorative hues and nonessential content styling are outside this requirement, but required rarity or currency identity is not.",
+      "reason": "This has a concrete access failure mode and direct Roblox guidance, so it supports a scoped MUST. The candidate must remove blocked behavior as a sufficient cue and must not leave hue-only verdict or currency markers as merely unresolved exceptions. WCAG remains separately labeled corroborating external guidance."
+    },
+    {
+      "ruleId": "RUD-012",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Two- or three-step finite radius ladders recur, but exact step counts and the 8–20px range are taste clusters assembled through a shared generator schema, not Roblox guidance or universal thresholds. Full-round tokens are sometimes generator exposure rather than authored use. No responsive shape rendering was observed at runtime.",
+      "counterexamples": [
+        {
+          "description": "Loud's source stops at 10px and prohibits full pills, while Theme exposes an unused full-radius token; token existence is not evidence of a valid silhouette role.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/loud-slab.json",
+              "lines": "467-470"
+            },
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/loud-slab.json",
+              "lines": "496-500"
+            }
+          ]
+        },
+        {
+          "description": "Planter's generated SideButton adds a notification circle beyond the source's sole circular info-badge class, demonstrating generator-driven shape drift.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/planter-box-pop.json",
+              "lines": "629-633"
+            }
+          ]
+        },
+        {
+          "description": "Indigo's prose, front matter, and implementation disagree on row and full-screen-hub radii, so a named ladder alone does not ensure consistent consumption.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/indigo-quartermaster.json",
+              "lines": "774-808"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A generator-exposed full token leaks into a hard-edged taste.",
+        "Responsive aspect changes turn a rounded rectangle into an unintended pill.",
+        "Too few named steps force unrelated controls, containers, badges, and content shapes into one silhouette.",
+        "A small full-round badge becomes clipped or loses its outline inside a scrolling mask."
+      ],
+      "missingBoundaries": [
+        "Responsive aspect-ratio changes on small landscape and tall/mobile",
+        "Circles used for content, avatars, pagination, or notification badges",
+        "Scrolling and ClipsDescendants around outlines and shadows",
+        "Touch target expansion around compact visible shapes",
+        "Selected, focused, and disabled outlines that alter silhouette"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Define a small role-based silhouette vocabulary per taste and audit actual component use. Reserve pills and circles for named functions, but do not prescribe two or three steps or any 8–20px range as a cross-taste threshold.",
+      "reason": "Coherent role-based shape usage is defensible; the typical step count and radius clusters are taste-specific. The rule needs to govern consumption rather than mere token availability."
+    },
+    {
+      "ruleId": "RUD-013",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "The corpus demonstrates several coherent material families, but the seven-of-eight shadow absence rate is taste evidence, not a prohibition, and shared generator primitives reduce independence. Structural stroke widths and glow sizes are descriptive tokens, not depth thresholds. Roblox supplies no one-metaphor requirement. No world-background or animation-interruption render was observed.",
+      "counterexamples": [
+        {
+          "description": "Frosted legitimately combines stud emboss, darker insets, selective 3–4px strokes, and a 6px cast shadow within one molded-material system.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/frosted-baseplate.json",
+              "lines": "588-592"
+            }
+          ]
+        },
+        {
+          "description": "Obsidian combines gradients, emitted glow, corner brackets, and separate specular gloss while intentionally omitting bevel and cast shadow; multiple mechanisms can serve one authored emission metaphor.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/obsidian-gacha.json",
+              "lines": "467-497"
+            }
+          ]
+        },
+        {
+          "description": "Honey is largely square and flat but reserves rounding and bevel for the close control, showing a local affordance exception inside an otherwise restrained surface system.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/corpus/honey-ledger.json",
+              "lines": "450-454"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "One mechanism is mistaken for one metaphor and legitimate material cues are deleted.",
+        "Unassigned shadow, gloss, bevel, and glow accumulate until elevation and interaction meaning conflict.",
+        "Shadows or glows are clipped by parent bounds or scrolling masks.",
+        "Animated press depression is interrupted and leaves the control in a visually inconsistent depth state."
+      ],
+      "missingBoundaries": [
+        "Clipping and scrolling overflow for shadows, rims, and glow",
+        "Modal stacking and elevation ordering",
+        "Dynamic world backgrounds and Preferred Transparency",
+        "Pressed, disabled, focused, and selected depth states",
+        "Animation interruption and reduced motion"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Within a taste or component family, give every depth cue a named material, elevation, state, or salience role and keep those roles consistent. Multiple mechanisms may coexist when they support one coherent authored model; corpus shadow/stroke/glow values are not cross-taste limits.",
+      "reason": "The coherent-material principle survives, but select one depth metaphor must not be read as select one rendering mechanism. Frosted and Obsidian are valid multi-cue systems, and all numeric clusters remain taste-specific."
+    },
+    {
+      "ruleId": "RUD-014",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Only four reports were considered comparable for the 6–10+ distribution, their counting granularity differs, and shared showcase fixtures add common HUD items. The roughly six and nine-to-ten clusters are corpus descriptions, not recommended counts; Loud reaches 17 groups. Roblox supports contextual vital-information display and testing around default touch controls, but gives no item cap or unobstructed-center percentage. No runtime viewport test is present.",
+      "counterexamples": [
+        {
+          "description": "Loud's representative HUD contains 17 persistent groups before subordinate cells, far beyond the proposed dense cluster, yet its source intentionally distributes them around the perimeter.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/loud-slab.json",
+              "lines": "692-696"
+            },
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/loud-slab.json",
+              "lines": "762-766"
+            }
+          ]
+        },
+        {
+          "description": "Candlelit's only source-observed persistent HUD is a bottom-center hotbar; currency, objectives, and side buttons were not observed, so assigning it to a six-element cluster would invent anatomy.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "784-788"
+            }
+          ]
+        },
+        {
+          "description": "Studded reports approximately ten authored persistent elements but then substitutes a one-row launcher group and Play action at phone-landscape width, showing that count alone does not describe responsive occlusion.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/studded-toybox.json",
+              "lines": "810-813"
+            },
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/studded-toybox.json",
+              "lines": "837-841"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A numeric cluster becomes a de facto cap despite inconsistent element/group counting.",
+        "A low-count HUD still occludes the center because elements are large or badly placed.",
+        "A dense desktop HUD collides with default touch controls or safe insets on mobile.",
+        "Preserving an empty center removes legitimate reticles, prompts, targeting, or world-aligned information."
+      ],
+      "missingBoundaries": [
+        "Small phone landscape, tall/mobile, tablet, desktop, and TV",
+        "Runtime Core UI insets and changing touch-control modes",
+        "Custom Scriptable controls versus default bottom-corner controls",
+        "Central reticles and contextual world-aligned prompts",
+        "Localization, microcopy wrapping, input switching, and visual-world busyness"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Show information and controls that are vital to the current gameplay or workflow, group them by function, and test occlusion and control collisions per supported platform. Treat top/side placement and a clear center as genre-dependent patterns; remove all numeric item-count clusters from normative guidance.",
+      "reason": "Contextual density is supported, but the candidate's restrained and dense counts are unstable corpus classifications. Control-corner guidance applies qualitatively to default touch controls, and central-world preservation is not universal across genres."
+    },
+    {
+      "ruleId": "RUD-015",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "The 0–0.8 opacity range and 0.2 median are taste observations, not recommended dimming values. Several values are story substitutions, and shared modal fixtures reduce independence. Roblox publishes no required modal dim or world-visibility amount. External WAI-ARIA modal guidance concerns inert outside content and contained focus, not a Roblox backdrop recipe. No runtime focus, input suppression, blur cleanup, or composited contrast was verified.",
+      "counterexamples": [
+        {
+          "description": "Planter intentionally places windows directly over the world without an observed dim layer or drop shadow.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/planter-box-pop.json",
+              "lines": "925-929"
+            }
+          ]
+        },
+        {
+          "description": "Studded's source uses a self-dimming well with no separate overlay, while the generated Dialog adds a black dismissing backdrop, changing both visuals and interaction.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/studded-toybox.json",
+              "lines": "769-773"
+            },
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/studded-toybox.json",
+              "lines": "946-950"
+            }
+          ]
+        },
+        {
+          "description": "Honey renders windows directly over one world backdrop with no dim or shadow, establishing another no-overlay strategy rather than a missing median value.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/corpus/honey-ledger.json",
+              "lines": "822-826"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A visually modal panel leaves background controls or gameplay active.",
+        "A generic black layer erases a translucent, self-dimming, or direct-on-world taste.",
+        "Blur or dim effects leak after interrupted close or stacked-modal transitions.",
+        "Tap-outside dismissal is added where the workflow requires explicit confirmation."
+      ],
+      "missingBoundaries": [
+        "Functional modality: input suppression, focus containment, Escape/Back, and focus restoration",
+        "Mouse, touch, keyboard, and gamepad dismissal paths",
+        "Stacked modals, toasts, and z-order ownership",
+        "Bright, dark, moving, and high-frequency world scenes",
+        "Preferred Transparency, blur cleanup, reduced motion, and animation interruption"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Choose backdrop, panel transparency, tint, blur, and world visibility per authored taste and workflow after separately defining whether the interface is truly modal. A true modal must manage background interaction and navigation independently of its visual treatment. Do not normalize opacity from corpus statistics.",
+      "reason": "Visual focus treatment is taste-specific, but functional modality is not supplied by appearance or GuiButton.Modal. The candidate must separate those layers and avoid presenting no-overlay examples as evidence that input/focus handling is unnecessary."
+    },
+    {
+      "ruleId": "RUD-016",
+      "verdict": "survives",
+      "independenceAdjustedSupport": "The repeated three-story anatomy, launcher count, six catalog items, global CTA, and CONFIRM copy originate from shared generator fixtures and therefore count as one policy source, not eight taste observations. Multiple source-native anatomies contradict the normalized fixture. No numeric design threshold or runtime result is involved.",
+      "counterexamples": [
+        {
+          "description": "Candlelit's generated HUD adds currency, three launchers, and a bottom-center CTA where the source only observed a hotbar and left currency anatomy undefined.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "809-813"
+            }
+          ]
+        },
+        {
+          "description": "Studded changes a source two-column launcher rail into three columns at phone-landscape width and replaces hotbar slots with Play, explicitly making a responsive implementation substitution.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/studded-toybox.json",
+              "lines": "837-841"
+            }
+          ]
+        },
+        {
+          "description": "Frosted's generated HUD has five main elements and adds Play even though the roughly nine-element source HUD keeps bottom-center clear.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/frosted-baseplate.json",
+              "lines": "356-360"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Shared fixtures create false cross-taste consensus.",
+        "Generator additions occupy source-reserved gameplay or control zones.",
+        "Normalized strings introduce casing and localization artifacts unrelated to the taste.",
+        "Source gaps are silently filled and later cited as observed source anatomy."
+      ],
+      "missingBoundaries": [
+        "Generator version and fixture lineage",
+        "Source-observed anatomy versus implementation substitutions",
+        "Responsive substitutions on small landscape and tall/mobile",
+        "Localization and orphaned final catalog rows",
+        "Cases where source evidence is genuinely absent rather than conflicting"
+      ],
+      "recommendedStrength": "AVOID",
+      "recommendedScope": "For evidence aggregation and source-faithful generation, count shared showcase structure once as generator policy, label every normalized addition, and prefer source anatomy when it is observed. Use a fixture only to compare component styling, not to infer independent composition rules.",
+      "reason": "The candidate already performs the required independence adjustment and protects source anatomy. It survives as an evidence-governance rule, not as a claim that the normalized composition is itself bad or unusable."
+    },
+    {
+      "ruleId": "RUD-017",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "The absence of distinct hover/focus styling recurs across representative generated stories, but this is primarily one harness/component-policy gap rather than eight independent decisions. Official Roblox curriculum recommends at least one visible feedback treatment when an interactable is focused; imported WCAG focus-visible guidance is separately scoped to web content. The corpus inspection is code/source evidence only and does not establish actual runtime gamepad navigation or engine-default selection visuals.",
+      "counterexamples": [
+        {
+          "description": "Studded implements pressed and disabled visuals but no distinct hover or focus visual, so pointer press cannot serve as persistent non-pointer focus.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/studded-toybox.json",
+              "lines": "1012-1016"
+            }
+          ]
+        },
+        {
+          "description": "Honey uses mouse-specific down/up/leave handling and Activated, while no inspected component configures selection navigation or key bindings.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/corpus/honey-ledger.json",
+              "lines": "1044-1048"
+            }
+          ]
+        },
+        {
+          "description": "Planter has authored selected and disabled treatments but leaves hover and keyboard/gamepad focus unspecified, showing that selected is not a substitute for current focus.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/planter-box-pop.json",
+              "lines": "964-968"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Keyboard or gamepad users cannot locate the currently activatable control.",
+        "Focus, selected, pressed, and disabled signals are visually indistinguishable.",
+        "Focus moves into an offscreen scrolling item without scrolling it into view.",
+        "A focus animation is interrupted and leaves the indicator absent or attached to the previous control."
+      ],
+      "missingBoundaries": [
+        "Keyboard versus gamepad focus and mouse-only hover",
+        "Selected state versus current navigation focus",
+        "Disabled and non-selectable controls",
+        "Scrolling focus reveal and virtualization",
+        "Modal initial focus, containment, restoration, stacking, and interrupted transitions"
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "For every control reachable by a supported keyboard or gamepad path, provide a persistent visible current-focus indicator and verify navigation order, scrolling reveal, activation, modal containment, and state separation. Hover remains pointer-specific and need not exist on touch; selected and pressed visuals do not substitute for focus.",
+      "reason": "The external-guidance-needed status is no longer accurate because Roblox publishes focus-feedback guidance. A scoped project MUST is justified by the concrete access and functional failure when non-pointer users cannot identify focus, while exact ring contrast, thickness, and animation remain unresolved and taste-specific. No runtime success is claimed by this review."
+    },
+    {
+      "ruleId": "RUD-018",
+      "verdict": "needs-runtime-test",
+      "independenceAdjustedSupport": "The seven explicit 44px floors originate from the shared repository/design schema and count primarily as one project policy source; Honey's 44px controls are corroborating examples, not an explicit independent floor. The 44 value is not established in the supplied official research as a Roblox platform minimum. Corpus code inspection finds nominal violations, but actual activated bounds, overlap, clipping, and touch capture were not exercised at runtime.",
+      "counterexamples": [
+        {
+          "description": "Obsidian authors a 44px floor but implements 40px segmented tabs and a 54x28 TextButton toggle, with both interactive bounds below that project baseline.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/obsidian-gacha.json",
+              "lines": "615-624"
+            },
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/obsidian-gacha.json",
+              "lines": "649-651"
+            }
+          ]
+        },
+        {
+          "description": "Studded's currency plus button is 35.2px square with no larger hit target despite an authored 44px minimum.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/studded-toybox.json",
+              "lines": "649-653"
+            }
+          ]
+        },
+        {
+          "description": "Candlelit demonstrates a valid compact-visible/larger-target pattern for a 36px buy pill and 24px close glyph, but this pattern proves only authored geometry, not unclipped or nonoverlapping runtime activation.",
+          "evidence": [
+            {
+              "path": "docs/roblox-ui-rules/evidence/design/corpus/candlelit-parlor.json",
+              "lines": "705-709"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A compact visible control is also the full interactive object and falls below the adopted project target.",
+        "A transparent expanded target is clipped by its parent or scrolling container.",
+        "Expanded targets overlap, causing a neighboring control to capture the touch.",
+        "The nominal 44px size is measured in offsets without accounting for device, DPI, input modality, spacing, or physical reach."
+      ],
+      "missingBoundaries": [
+        "Phone and tablet touch on real hardware",
+        "Mouse precision and gamepad focus, which have different target concerns",
+        "Target spacing and overlap, not size alone",
+        "ClipsDescendants, scrolling masks, rotation, and transformed bounds",
+        "Small landscape, tall/mobile, safe insets, and default touch-control collisions"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Treat 44px as an adopted repository interaction-target convention only, not official Roblox or universal accessibility guidance. For touch-supported controls, inspect and exercise the actual activated region, spacing, clipping, and overlap on target devices; larger invisible roots are acceptable only when they do not steal adjacent input.",
+      "reason": "The provenance language survives, but nominal size cannot establish functional hit behavior. A repository SHOULD can enforce its own 44px convention while official/platform safety status remains unresolved; runtime touch testing is still required before claiming that any implementation honors it."
+    }
+  ]
+}

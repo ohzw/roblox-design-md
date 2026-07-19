@@ -1,0 +1,367 @@
+{
+  "topic": "Roblox ScrollingFrame, AutomaticCanvasSize, UIListLayout, UIGridLayout, and AbsoluteContentSize behavior",
+  "claims": [
+    {
+      "id": "SRC-001",
+      "claim": "ScrollingFrame.AutomaticCanvasSize provides live, descendant-driven canvas sizing at edit time and run time; when it is X, Y, or XY, the corresponding canvas axes may adjust as child content changes.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "ScrollingFrame instances with AutomaticCanvasSize set to an AutomaticSize value other than None; X, Y, and XY select the affected axes.",
+      "limitations": [
+        "The API uses the qualified wording “may resize” and does not specify the render-step latency for AbsoluteCanvasSize updates.",
+        "AutomaticCanvasSize changes the effective scrollable canvas, not the ScrollingFrame's base GuiObject.Size.",
+        "The official enum documentation describes axis selection, but text-specific Y-axis behavior is relevant to text GuiObjects rather than a general guarantee about arbitrary ScrollingFrame descendants."
+      ],
+      "sources": [
+        {
+          "title": "ScrollingFrame API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "AutomaticCanvasSize can fit dynamically added descendant content at edit or run time, and AbsoluteCanvasSize may resize when AutomaticCanvasSize is not None."
+        },
+        {
+          "title": "AutomaticSize enum reference",
+          "url": "https://create.roblox.com/docs/reference/engine/enums/AutomaticSize",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "None, X, Y, and XY determine whether resizing is disabled or occurs on one or both axes."
+        },
+        {
+          "title": "Size modifiers and constraints",
+          "url": "https://create.roblox.com/docs/ui/size-modifiers",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "ScrollingFrame uses AutomaticCanvasSize in place of GuiObject.AutomaticSize for automatic sizing of its canvas."
+        }
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "claim": "With AutomaticCanvasSize enabled, a manually assigned CanvasSize remains a lower bound on the effective scrollable area: AbsoluteCanvasSize is the maximum of CanvasSize and the size required by children.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "ScrollingFrame.AbsoluteCanvasSize when AutomaticCanvasSize is any value other than None, on the enabled canvas axes.",
+      "limitations": [
+        "The reference does not define in detail how descendant bounds are aggregated for every combination of anchors, rotation, nested containers, constraints, and padding.",
+        "The reference states the maximum relationship for AbsoluteCanvasSize; it does not say that the serialized CanvasSize property itself is rewritten.",
+        "A nonzero manual CanvasSize can therefore intentionally or accidentally keep the effective canvas larger than its current content; avoiding that is an implementation recommendation, not an engine requirement."
+      ],
+      "sources": [
+        {
+          "title": "ScrollingFrame API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "AbsoluteCanvasSize is the maximum of CanvasSize and child size when AutomaticCanvasSize is enabled; CanvasSize otherwise determines the scrollable area."
+        }
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "claim": "UIListLayout and UIGridLayout expose inherited AbsoluteContentSize as a live measurement of occupied layout space; reading it makes the value current immediately, while its Changed event is deferred until the next render step after that read.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "UIGridStyleLayout.AbsoluteContentSize as inherited by UIListLayout and UIGridLayout.",
+      "limitations": [
+        "The event is not documented as firing immediately when the UI first changes; code must not assume synchronous event delivery.",
+        "The API specifically describes Object.Changed. It does not separately promise identical timing semantics for every signal-consumption pattern.",
+        "AbsoluteContentSize measures the layout's occupied space; it is not itself the ScrollingFrame canvas and does not create scrolling."
+      ],
+      "sources": [
+        {
+          "title": "UIGridStyleLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIGridStyleLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "AbsoluteContentSize reports occupied layout space including layout-created padding, updates as soon as read, and emits Changed on the next render step after the read."
+        },
+        {
+          "title": "UIListLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIListLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "UIListLayout inherits AbsoluteContentSize from UIGridStyleLayout."
+        },
+        {
+          "title": "UIGridLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIGridLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "UIGridLayout inherits AbsoluteContentSize from UIGridStyleLayout."
+        }
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "claim": "UIListLayout owns sibling positioning: each sibling's Position and Rotation are ignored or overridden by the layout, so manual writes to those properties do not provide reliable per-item placement while the sibling remains under that layout.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "GuiObject siblings of the parent containing a UIListLayout.",
+      "limitations": [
+        "Ordering should instead be expressed through SortOrder plus LayoutOrder or Name, and overall placement through layout alignment properties.",
+        "The source says Position and Rotation are “either ignored or overridden”; it does not promise that the stored property values are destroyed.",
+        "This claim does not apply to descendants inside a laid-out sibling; a nested wrapper can provide a separate coordinate space."
+      ],
+      "sources": [
+        {
+          "title": "UIListLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIListLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "The class description explicitly says sibling Position and Rotation are ignored or overridden and that the layout positions siblings in rows or columns."
+        },
+        {
+          "title": "List and flex layouts",
+          "url": "https://create.roblox.com/docs/ui/list-flex-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Warns that Position, Rotation, and/or Size changes in Studio or scripts do not have their normal effect once UIListLayout controls the siblings."
+        }
+      ]
+    },
+    {
+      "id": "SRC-005",
+      "claim": "A non-flex UIListLayout normally preserves each sibling's defined Size, but flex settings can influence or override size; UI size constraints can also override layout-controlled size.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "GuiObject siblings controlled by UIListLayout, distinguishing non-flex and flex-enabled configurations.",
+      "limitations": [
+        "Flex becomes enabled not only through HorizontalFlex or VerticalFlex, but also through non-Automatic ItemLineAlignment, Wraps=true, or a UIFlexItem on a sibling.",
+        "AutomaticSize participates in flex-basis and cross-size calculations, so “manual Size is always preserved in a list” is false in those configurations.",
+        "Constraints are a separate controlling mechanism and can take precedence over the layout."
+      ],
+      "sources": [
+        {
+          "title": "UIListLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIListLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Siblings retain defined Size unless the list uses flex; Fill flex modes and Stretch can resize items, and the reference documents AutomaticSize interactions."
+        },
+        {
+          "title": "Size modifiers and constraints",
+          "url": "https://create.roblox.com/docs/ui/size-modifiers",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Warns that UISizeConstraint and UIAspectRatioConstraint override a layout structure when both control an object's size."
+        }
+      ]
+    },
+    {
+      "id": "SRC-006",
+      "claim": "UIGridLayout owns both Position and Size of sibling GuiObjects; its CellSize defines the uniform cell size, so manually assigning child Position or Size conflicts with the grid and does not have the normal effect.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "GuiObject siblings of the parent containing a UIGridLayout.",
+      "limitations": [
+        "A UIConstraint on an individual grid item can determine its size instead of CellSize and may cause it to span multiple cells.",
+        "AbsoluteCellSize does not account for an individual item's UIScale, UISizeConstraint, or UIAspectRatioConstraint, so it must not be treated as the guaranteed rendered size of every constrained child.",
+        "The stored child properties may still exist, but the grid controls rendered layout while the child is its sibling."
+      ],
+      "sources": [
+        {
+          "title": "UIGridLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIGridLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that UIGridLayout takes sibling Size and Position under control; CellSize determines element size unless a UIConstraint determines it."
+        },
+        {
+          "title": "Grid and table layouts",
+          "url": "https://create.roblox.com/docs/ui/grid-table-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Warns that Position and/or Size changes in Studio or scripts do not have their normal effect under UIGridLayout, and notes that constraints are respected."
+        }
+      ]
+    },
+    {
+      "id": "SRC-007",
+      "claim": "UIListLayout.Padding and UIGridLayout.CellPadding are inter-item spacing, not outer container insets; UIPadding is the official mechanism for top, bottom, left, and right padding around a parent's contents.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Spacing of list/grid children within a parent GuiObject, including a ScrollingFrame.",
+      "limitations": [
+        "UIListLayout.Padding is one UDim along the list's current direction; it does not independently set four edges.",
+        "UIGridLayout.CellPadding is a UDim2 gap between grid elements.",
+        "UIPadding values may use Offset or Scale relative to the parent; the cited API does not establish special ScrollingFrame-specific scale behavior.",
+        "Context7 surfaced the layout-padding APIs but not the full outer-padding distinction; the current official Creator Hub list-layout and UIPadding pages were used as the web fallback."
+      ],
+      "sources": [
+        {
+          "title": "List and flex layouts",
+          "url": "https://create.roblox.com/docs/ui/list-flex-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Explicitly says UIListLayout.Padding adds space between items, does not pad around the list's overall bounds, and directs creators to UIPadding for outer padding."
+        },
+        {
+          "title": "UIGridLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIGridLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "CellPadding determines the space between grid elements."
+        },
+        {
+          "title": "UIPadding API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIPadding",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "UIPadding applies Offset- or Scale-based padding to the borders of its parent GuiObject on all four sides."
+        }
+      ]
+    },
+    {
+      "id": "SRC-008",
+      "claim": "AbsoluteContentSize includes padding created by the layout itself, but the stronger claim that it always includes every outer UIPadding contribution in all ScrollingFrame configurations is not established by the official references.",
+      "verdict": "partially-supported",
+      "kind": "engine-fact",
+      "scope": "UIGridStyleLayout.AbsoluteContentSize inherited by UIListLayout and UIGridLayout, especially when combined with a sibling UIPadding.",
+      "limitations": [
+        "The API says “including any padding created by the grid,” which supports UIListLayout.Padding/UIGridLayout.CellPadding but does not explicitly name UIPadding.",
+        "The UIPadding API defines how it insets parent content but does not define whether or how those four insets are folded into AbsoluteContentSize.",
+        "No universal claim about nested UIPadding, scale padding, or right/bottom padding and AutomaticCanvasSize should be elevated to a MUST without a reproducible engine test or a more explicit official source.",
+        "Context7 lacked relevant material on the UIPadding/AbsoluteContentSize interaction; direct official web pages were checked, but they leave this interaction unspecified."
+      ],
+      "sources": [
+        {
+          "title": "UIGridStyleLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIGridStyleLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "AbsoluteContentSize includes padding created by the grid/layout."
+        },
+        {
+          "title": "UIPadding API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIPadding",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Defines outer padding relative to the parent, but does not say that AbsoluteContentSize includes it."
+        },
+        {
+          "title": "List and flex layouts",
+          "url": "https://create.roblox.com/docs/ui/list-flex-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Distinguishes layout inter-item Padding from UIPadding around the list bounds."
+        }
+      ]
+    },
+    {
+      "id": "SRC-009",
+      "claim": "Wrapping, clipping, and scrolling are separate behaviors: UIListLayout.Wraps controls whether oversized list items continue on another line, UIGridLayout starts another row or column when a cell does not fit, and GuiObject.ClipsDescendants controls whether portions outside a rectangular parent are rendered.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "UIListLayout/UIGridLayout arrangement and GuiObject descendant rendering, including layouts parented to a ScrollingFrame.",
+      "limitations": [
+        "A layout arranges siblings; it does not by itself establish an effective ScrollingFrame canvas size.",
+        "ClipsDescendants has rotation limitations: clipping by a rotated parent or rounded UICorner shape is unsupported, and rotation-related clipping can be ignored when StarterGui.ClipsDescendantsSupportsRotation is disabled.",
+        "The default ClipsDescendants value specifically applied by a newly created ScrollingFrame was not established by the cited pages, so this result does not assert that default.",
+        "Context7 did not surface the clipping details; the direct official GuiObject API page was used as the web fallback."
+      ],
+      "sources": [
+        {
+          "title": "UIListLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIListLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Wraps determines whether siblings wrap to another line when their default size exceeds parent bounds."
+        },
+        {
+          "title": "UIGridLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIGridLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "The grid adds cells until the next does not fit, then continues on a new row; FillDirectionMaxCells can impose an earlier line break."
+        },
+        {
+          "title": "GuiObject API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "ClipsDescendants determines whether portions of descendant GuiObjects outside the parent's rectangular bounds are invisible and documents rotation limitations."
+        },
+        {
+          "title": "ScrollingFrame API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Separately defines CanvasSize/AbsoluteCanvasSize as the scrollable area and AbsoluteWindowSize as the visible frame area without scrollbars."
+        }
+      ]
+    },
+    {
+      "id": "SRC-010",
+      "claim": "“Always script CanvasSize from layout.AbsoluteContentSize” is not a universal Roblox requirement; it is an implementation option, while AutomaticCanvasSize is the documented adaptive alternative for descendant-driven scrolling content.",
+      "verdict": "contradicted",
+      "kind": "design-recommendation",
+      "scope": "Implementation policy for dynamically sized ScrollingFrames containing UIListLayout or UIGridLayout.",
+      "limitations": [
+        "AbsoluteContentSize is documented as useful for sizing layout containers, so a manual binding can still be appropriate when an application needs an explicit formula or behavior not covered by AutomaticCanvasSize.",
+        "A manual binding must account for AbsoluteContentSize's documented update/event timing and any desired outer padding.",
+        "The official sources do not establish a universal preference for automatic over manual sizing in every layout, nor a universal preference for manual over automatic sizing; therefore either choice must be stated as a scoped recommendation, not an engine MUST."
+      ],
+      "sources": [
+        {
+          "title": "ScrollingFrame API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/ScrollingFrame",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "For adaptive sizing based on children, the CanvasSize documentation directs creators to consider AutomaticCanvasSize."
+        },
+        {
+          "title": "UIGridStyleLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIGridStyleLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "AbsoluteContentSize is useful for sizing containers, making manual sizing a possible technique rather than a required one."
+        },
+        {
+          "title": "Size modifiers and constraints",
+          "url": "https://create.roblox.com/docs/ui/size-modifiers",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Documents AutomaticCanvasSize as the ScrollingFrame form of automatic sizing."
+        }
+      ]
+    },
+    {
+      "id": "SRC-011",
+      "claim": "List/grid layouts automatically recompute sibling placement when children are added or removed and when relevant ordering properties change, so callers ordinarily do not need to force ApplyLayout for live layout updates.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Concrete UIGridStyleLayout subclasses such as UIListLayout and UIGridLayout using Name or LayoutOrder sorting.",
+      "limitations": [
+        "The deprecated ApplyLayout method still exists, but the reference says it is typically unnecessary and primarily describes forcing a re-layout for changed custom sorting behavior.",
+        "The documented automatic triggers are add/remove and relevant Name/LayoutOrder changes; this claim does not generalize to every arbitrary descendant property.",
+        "AbsoluteContentSize event timing remains subject to the separate next-render-step behavior described in SRC-003."
+      ],
+      "sources": [
+        {
+          "title": "UIGridStyleLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIGridStyleLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that re-layouts automatically happen when UI elements are added/removed or Name/LayoutOrder changes, and that concrete subclasses perform actual positioning."
+        },
+        {
+          "title": "UIListLayout API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/UIListLayout",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that UIListLayout automatically re-lays out elements on add/remove and relevant ordering changes."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "The official Size modifiers guide loosely says ScrollingFrame.AutomaticCanvasSize “resizes ... CanvasSize,” while the more specific ScrollingFrame API defines AutomaticCanvasSize in terms of AbsoluteCanvasSize and says AbsoluteCanvasSize is the maximum of the configured CanvasSize and descendant size. For engine rules, the API's falsifiable distinction should control: treat CanvasSize as the configured baseline and AbsoluteCanvasSize as the effective result unless a direct engine reproduction shows the CanvasSize property itself mutating.",
+    "The UIGridStyleLayout API metadata presents AbsoluteContentSize with generic ReadWrite access metadata, while its prose describes an engine-calculated value that updates on read and the UIListLayout/UIGridLayout inherited-member summaries present it as layout data. No claim here relies on callers being able to assign AbsoluteContentSize."
+  ],
+  "unresolved": [
+    "Official sources reviewed do not explicitly define whether AutomaticCanvasSize or UIGridStyleLayout.AbsoluteContentSize includes all four UIPadding edges in every direct, nested, offset, and scale-padding configuration.",
+    "Official sources reviewed do not specify exact render-step timing for ScrollingFrame.AbsoluteCanvasSize after descendant or layout changes.",
+    "The default ClipsDescendants state of a newly created ScrollingFrame was not established by the cited current pages and should not be encoded as a universal rule from this research alone."
+  ]
+}

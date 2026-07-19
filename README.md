@@ -20,7 +20,7 @@ coherent react-lua UI.
 | [`spec/fixtures/`](spec/fixtures/) | Conformance fixtures (double as linter tests) |
 | [`design-md/`](design-md/) | The catalog — one directory per taste (`design-md/<slug>/DESIGN.roblox.md` + `previews/`) |
 | [`tools/linter/`](tools/linter/) | Node linter: `node lint.mjs <file>` (`npm test` runs fixture tests) |
-| `skills/` | Agent Skills: `screenshot-to-designmd`, `designmd-to-react-lua` (Phase 2–3) |
+| `skills/` | Agent Skills: `screenshot-to-designmd`, `roblox-ui-design`, `designmd-to-react-lua` |
 | `preview-place/` | Rojo project rendering every token/component for real-device screenshots (Phase 3) |
 | `tools/capture-rig/` | Studio-driven screenshot automation (Phase 3) |
 | `site/` | Static catalog site (Phase 5) |
@@ -32,6 +32,7 @@ coherent react-lua UI.
 # install the skills into your own project (any Agent Skills-compatible agent)
 npx skills add ohzw/roblox-design-md --skill designmd-to-react-lua
 npx skills add ohzw/roblox-design-md --skill screenshot-to-designmd
+npx skills add ohzw/roblox-design-md --skill roblox-ui-design
 
 # lint an entry (in this repo)
 cd tools/linter && npm install
@@ -41,11 +42,12 @@ node lint.mjs ../../design-md/cartoon-chunky/DESIGN.roblox.md
 cd site && npm install && npm run dev   # http://localhost:4321
 ```
 
-The two skills under `skills/` are self-contained — each bundles the format
-spec (`references/spec/`) and a zero-dependency single-file linter
-(`references/linter/lint.bundle.mjs`), both regenerated via
-`node tools/sync-skill-bundles.mjs` after spec/linter edits. They are the
-only skills this repository publishes.
+The three primary skills under `skills/` are self-contained. The extraction
+and implementation skills bundle the format spec (`references/spec/`) and a
+zero-dependency linter (`references/linter/lint.bundle.mjs`). The
+`roblox-ui-design` skill bundles the evidence-backed visual rulebook,
+machine-readable registry, and source index. Regenerate the bundles with
+`node tools/sync-skill-bundles.mjs` after editing their canonical sources.
 
 The first taste, [`cartoon-chunky`](design-md/cartoon-chunky/DESIGN.roblox.md),
 is the handwritten golden sample that calibrates the extraction and

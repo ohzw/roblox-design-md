@@ -1,0 +1,995 @@
+{
+  "taste": "obsidian-gacha",
+  "filesInspected": [
+    "design-md/obsidian-gacha/DESIGN.roblox.md",
+    "e2e/obsidian-gacha/src/Theme.luau",
+    "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+    "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+    "e2e/obsidian-gacha/src/Components/BannerOffer.luau",
+    "e2e/obsidian-gacha/src/Components/CloseButton.luau",
+    "e2e/obsidian-gacha/src/Components/CornerBrackets.luau",
+    "e2e/obsidian-gacha/src/Components/CurrencyBar.luau",
+    "e2e/obsidian-gacha/src/Components/Gloss.luau",
+    "e2e/obsidian-gacha/src/Components/Glow.luau",
+    "e2e/obsidian-gacha/src/Components/RollButton.luau",
+    "e2e/obsidian-gacha/src/Components/SegmentedTabs.luau",
+    "e2e/obsidian-gacha/src/Components/ToggleSwitch.luau",
+    "e2e/obsidian-gacha/src/Components/Window.luau",
+    "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+    "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+    "e2e/obsidian-gacha/src/Stories/Dialog.story.luau"
+  ],
+  "typography": {
+    "roles": [
+      {
+        "name": "display",
+        "family": "FredokaOne",
+        "sizePx": 40,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "low",
+        "evidence": [
+          {
+            "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+            "lines": "31-34"
+          },
+          {
+            "path": "e2e/obsidian-gacha/src/Theme.luau",
+            "lines": "45-54"
+          }
+        ]
+      },
+      {
+        "name": "heading",
+        "family": "FredokaOne",
+        "sizePx": 26,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+            "lines": "35-38"
+          },
+          {
+            "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+            "lines": "99-110"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "family": "FredokaOne",
+        "sizePx": 22,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+            "lines": "39-42"
+          },
+          {
+            "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+            "lines": "112-122"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "family": "FredokaOne",
+        "sizePx": 18,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+            "lines": "43-46"
+          },
+          {
+            "path": "e2e/obsidian-gacha/src/Stories/Dialog.story.luau",
+            "lines": "35-44"
+          }
+        ]
+      },
+      {
+        "name": "caption",
+        "family": "FredokaOne",
+        "sizePx": 14,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 0,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+            "lines": "47-50"
+          },
+          {
+            "path": "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+            "lines": "101-114"
+          }
+        ]
+      }
+    ],
+    "minimumAuthoredPx": 14,
+    "minimumRenderedPx": null,
+    "adjacentRatios": [
+      {
+        "from": "display",
+        "to": "heading",
+        "ratio": 1.538
+      },
+      {
+        "from": "heading",
+        "to": "label",
+        "ratio": 1.182
+      },
+      {
+        "from": "label",
+        "to": "body",
+        "ratio": 1.222
+      },
+      {
+        "from": "body",
+        "to": "caption",
+        "ratio": 1.286
+      }
+    ],
+    "rules": [
+      "All five authored chrome roles use one FredokaOne family at Enum.FontWeight.Regular; the prose describes the visual family as rounded, heavy, friendly, and bold, but the concrete font-weight token remains Regular.",
+      "Authored casing is Title Case or sentence case; uppercase is false for every Theme role.",
+      "Primary chrome text pairs cool near-white #F2F6FA with near-black surfaces; secondary, placeholder, and disabled text use #9AA6B2.",
+      "Chrome roles have no authored text stroke. The only inspected text stroke is a 1px, 50%-transparent contextual rarity-color stroke on the generated low-fidelity aura-name fallback.",
+      "No authored or implemented line-height value was found; line height is null for every role.",
+      "The authored minimum is the 14px caption role. A numeric rendered minimum cannot be established because TextScaled labels have MaxTextSize constraints but no MinTextSize constraints."
+    ],
+    "exceptions": [
+      "The 40px display role and reward typography were inferred because no celebration frame was captured; this is explicitly lower-confidence source material (design-md/obsidian-gacha/DESIGN.roblox.md:31-34, 524-527).",
+      "HUD counters are authored as caption use at 14px, but the HUD story renders all three with the 22px label role: 1.571x the nominal counter size (e2e/obsidian-gacha/src/Stories/HUD.story.luau:29-35; design-md/obsidian-gacha/DESIGN.roblox.md:339-342).",
+      "Banner offers are authored with the 40px display role, but the component subtracts 8px and renders the title at 32px, or 0.8x the nominal display size (e2e/obsidian-gacha/src/Components/BannerOffer.luau:70-89).",
+      "Aura names are source-specified as bespoke per-aura ImageLabel wordmarks, not UI text. The implementation adds a low-fidelity FredokaOne TextLabel fallback, TextScaled with an 18px maximum and no minimum, plus a 1px contextual stroke (design-md/obsidian-gacha/DESIGN.roblox.md:350-363; e2e/obsidian-gacha/src/Components/AuraCard.luau:69-99).",
+      "The close X uses TextScaled with MaxTextSize 30 and no MinTextSize, so it may render below the 14px authored scale at sufficiently small bounds; no exact minimum is available (e2e/obsidian-gacha/src/Components/CloseButton.luau:30-39)."
+    ]
+  },
+  "hierarchy": [
+    {
+      "id": "DES-OBSIDIAN-001",
+      "domain": "hierarchy",
+      "observed": "The authored type hierarchy is display 40px, heading 26px, label 22px, body 18px, caption 14px. In windows, the 26px title is integrated at the top, content starts below a 48px header, and actions are composed within the content or footer rather than in a separate title band.",
+      "designFunction": "[INFERENCE] Size and spatial order make reward/title/action/body/caption the descending emphasis sequence while keeping the chrome in one family.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "sizesPx": {
+          "display": 40,
+          "heading": 26,
+          "label": 22,
+          "body": 18,
+          "caption": 14
+        },
+        "headerHeightPx": 48,
+        "titleToBodyRatio": 1.444,
+        "actionToBodyRatio": 1.222
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "331-348"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "23-24,99-110,142-154"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-002",
+      "domain": "hierarchy",
+      "observed": "The HUD has one primary Roll CTA centered between two secondary Auto and Skip tiles. Source sizes are 130px for Roll and 110px for each flanking action, a 1.182 size ratio; the story keeps Roll at 130px but reduces the flanks to 96px, increasing the ratio to 1.354. Three counters sit immediately above the action row.",
+      "designFunction": "[INFERENCE] Central placement, larger silhouette, and the unique Roll verb make one CTA dominant without adding a saturated fill.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "primaryCtaCount": 1,
+        "secondaryActionCount": 2,
+        "sourcePrimarySidePx": 130,
+        "sourceSecondarySidePx": 110,
+        "sourceLinearSizeRatio": 1.182,
+        "implementationSecondarySidePx": 96,
+        "implementationLinearSizeRatio": 1.354,
+        "counterCount": 3
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "155-167,611-621"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "85-133"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-003",
+      "domain": "hierarchy",
+      "observed": "The dialog orders a 26px Confirm title, an 18px centered body line at 34% panel height, then two equal 130x48 actions at the bottom: neutral Cancel first and blue Confirm second. A bare 44x44 X and the full-screen dim layer also dismiss.",
+      "designFunction": "[INFERENCE] Equal action geometry keeps the decision pair structurally level while semantic color and rightmost placement distinguish confirmation.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "titlePx": 26,
+        "bodyPx": 18,
+        "actionCount": 2,
+        "actionWidthPx": 130,
+        "actionHeightPx": 48,
+        "actionGapPx": 12,
+        "messageYScale": 0.34,
+        "closeTargetPx": 44
+      },
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Dialog.story.luau",
+          "lines": "25-60"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/CloseButton.luau",
+          "lines": "17-39"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-004",
+      "domain": "hierarchy",
+      "observed": "The generated Shop story places one 96px-high featured offer before a six-item purchasable grid, then places category tabs in a 44px footer. It therefore exposes seven purchase CTAs: one banner price pill plus one price pill in each of six cards.",
+      "designFunction": "[INFERENCE] Featured-first ordering makes the promotional offer primary, while repeated card-local pills support scanning without a separate detail pane.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "featuredOfferCount": 1,
+        "gridItemCount": 6,
+        "purchaseCtaCount": 7,
+        "featuredHeightPx": 96,
+        "footerHeightPx": 44
+      },
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+          "lines": "22-55,72-103"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/BannerOffer.luau",
+          "lines": "20-28,100-121"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+          "lines": "116-130"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-005",
+      "domain": "color",
+      "observed": "The source palette declares 14 semantic roles but 13 distinct hex values because secondary and currency-hard both use #66D82E. The roles are primary #3961E1, secondary #66D82E, danger #D64359, surface #12171B, surface-deep #0D0D10, surface-dark #14253C, on-surface #F2F6FA, on-surface-dim #9AA6B2, currency-soft #60FFF7, currency-hard #66D82E, accent-gold #E3B36E, accent-rare #B14DE0, outline #AEBCCB, and dim #05070Acc.",
+      "designFunction": "[INFERENCE] Three cold dark surfaces act as the stage; semantic and rarity accents occupy controls, icons, prices, progress, and reward content rather than broad chrome surfaces.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "semanticRoleCount": 14,
+        "distinctHexCount": 13,
+        "darkSurfaceRoleCount": 3,
+        "textInkRoleCount": 2,
+        "accentAndStateRoleCount": 8,
+        "outlineRoleCount": 1
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "15-28"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "283-320"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-006",
+      "domain": "color",
+      "observed": "Surface/ink pairings avoid visible pure black and pure white: #F2F6FA primary ink and #9AA6B2 dim ink sit over #12171B, #0D0D10, or #14253C. The source describes a deliberately wide black-floor-to-neon-peak contrast treatment, with accent colors delivered as stroke plus matched glow rather than flat fill alone.",
+      "designFunction": "[INFERENCE] Keeping broad areas cold and near-black allocates visual energy to emitted accents and reward content.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "primaryInk": "#F2F6FA",
+        "secondaryInk": "#9AA6B2",
+        "surface": "#12171B",
+        "insetSurface": "#0D0D10",
+        "chromeSurface": "#14253C",
+        "pureBlackVisible": false,
+        "pureWhiteVisible": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "283-287,312-320"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "482-485"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-007",
+      "domain": "color",
+      "observed": "Meaning does not rely on hue alone for labeled actions, selected tabs, or toggles: actions retain textual verbs; selected tabs change both fill visibility and text color; toggles change both track color and knob position. Rarity is more hue-dependent: common and rare dark cards primarily distinguish their rung through rarity-colored brackets/name treatment, while epic and legendary additionally gain a filled glow treatment.",
+      "designFunction": "[INFERENCE] Redundant geometry or text supports state communication, but the rarity ladder intentionally treats hue as content identity.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "labeledActionRedundancy": true,
+        "tabUsesFillAndInk": true,
+        "toggleUsesHueAndPosition": true,
+        "rarityPartlyHueDependent": true
+      },
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+          "lines": "22-27,112-122"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/SegmentedTabs.luau",
+          "lines": "33-55"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ToggleSwitch.luau",
+          "lines": "15-37"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "303-320"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-008",
+      "domain": "color",
+      "observed": "Source rarity is an open per-aura spectrum: each aura drives its dark-tint fill and brackets, and #B14DE0 is only a representative fallback. The generated theme collapses the showcase to four named rungs—common gray, rare blue, epic magenta, legendary gold—and marks epic and legendary as filled.",
+      "designFunction": "[INFERENCE] The four-rung mapping is a showcase convenience, not a taste-local limit on rarity colors.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "sourceFixedRaritySwatchCount": 1,
+        "generatedRungCount": 4,
+        "generatedFilledRungCount": 2
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "303-310"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "131-151"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-009",
+      "domain": "color",
+      "observed": "The implementation adds #35506E as a story-only world backdrop and #1A222B as a raised card fill. Both are outside the authored semantic palette; the card fill deliberately replaces the specified #0D0D10 tile fill in previews.",
+      "designFunction": "[INFERENCE] These additions separate near-black UI from a still backdrop and from adjacent panel chrome in the generator showcase.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "addedColorCount": 2,
+        "worldBackdrop": "#35506E",
+        "cardFill": "#1A222B",
+        "authoredCardFill": "#0D0D10"
+      },
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "106-121"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "168-177"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-010",
+      "domain": "color",
+      "observed": "The authored dim is #05070Acc, whose alpha is 0xCC or 80% opaque. The still-preview theme strips the alpha and sets BackgroundTransparency to 0.4, producing 60% opacity; the deviation is documented as a preview accommodation.",
+      "designFunction": "[INFERENCE] The lighter still overlay avoids flattening the panel when the depth-of-field effect cannot be judged from one frame.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "authoredOpacity": 0.8,
+        "implementedOpacity": 0.6,
+        "implementedTransparency": 0.4,
+        "opacityDelta": -0.2
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "27-28"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "24-32"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "54-60"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-011",
+      "domain": "shape-depth",
+      "observed": "The radius scale is 8px for buttons, grid tiles, and wells; 14px for windows, side buttons, and offer banners; 20px for the Roll hero; full pills for currency, search, segmented tabs, and toggle tracks. The nominal silhouette grammar is rounded rectangles for chrome, pills for switches and filters, circles for avatars and pagination, and 1:1 squares for icon and aura tiles.",
+      "designFunction": "[INFERENCE] A three-step tight radius scale keeps the chrome silhouette consistent while full rounding is reserved for compact filters and tracks.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "radiiPx": [
+          8,
+          14,
+          20
+        ],
+        "radiusAdjacentRatios": [
+          1.75,
+          1.429
+        ],
+        "pillRadius": "full",
+        "nominalSquareAspect": 1
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "52-53,495-503"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "59-64"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-012",
+      "domain": "shape-depth",
+      "observed": "Depth uses no bevel and no drop shadow. It uses 2px panel/neutral hairlines, 3px semantic action strokes and corner brackets, approximately 26px bracket arms, 0.04 panel transparency, gradients, emitted glow, and a dimmed/blurred world. The stated layer order is world, dim, panel, brackets/chrome, then floating X.",
+      "designFunction": "[INFERENCE] Emission and reticle geometry substitute for conventional shadow elevation.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "shadowCount": 0,
+        "bevelCount": 0,
+        "hairlinePx": 2,
+        "semanticStrokePx": 3,
+        "bracketArmPx": 26,
+        "panelTransparency": 0.04,
+        "layerCount": 5
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "387-413"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "70-88"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-013",
+      "domain": "shape-depth",
+      "observed": "Four source glow tokens scale by salience: accent 10px/0.5 intensity, gem 12px/0.7, rarity 14px/0.6, reward 24px/0.9. A separate specular gloss is authored as 0.82 background transparency at the top and fully transparent by 50% height.",
+      "designFunction": "[INFERENCE] Glow spread and intensity make reward emission the depth maximum while ordinary chrome accents remain lower-energy.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "glowTokenCount": 4,
+        "glow": {
+          "accent": {
+            "spreadPx": 10,
+            "intensity": 0.5
+          },
+          "gem": {
+            "spreadPx": 12,
+            "intensity": 0.7
+          },
+          "rarity": {
+            "spreadPx": 14,
+            "intensity": 0.6
+          },
+          "reward": {
+            "spreadPx": 24,
+            "intensity": 0.9
+          }
+        },
+        "rewardToAccentSpreadRatio": 2.4,
+        "glossTopTransparency": 0.82,
+        "glossFadeEndScale": 0.5
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "64-82"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "183-191"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Gloss.luau",
+          "lines": "15-27"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-014",
+      "domain": "shape-depth",
+      "observed": "Representative implementation counterexamples omit authored emission: ActionButton builds fill, corner, stroke, and label but no Glow child even though the source requires a faint glow around every semantic button stroke; CurrencyBar includes a gem glow but no specular Gloss child; BannerOffer includes gradient, stroke, icon, text, and pill but no Gloss child. The AuraCard does implement a clipped rarity bloom.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "actionStrokeGlowImplemented": false,
+        "currencyGemGlowImplemented": true,
+        "currencySpecularGlossImplemented": false,
+        "bannerSpecularGlossImplemented": false,
+        "topTierCardBloomImplemented": true
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "537-547,600-608"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+          "lines": "56-124"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/CurrencyBar.luau",
+          "lines": "30-96"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/BannerOffer.luau",
+          "lines": "20-121"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+          "lines": "28-49"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-015",
+      "domain": "spacing-density",
+      "observed": "The authored spacing ladder is 4, 8, 12, 20, and 32px. Adjacent ratios are 2.0, 1.5, 1.667, and 1.6. Tight icon/label and price clusters use 8px, grid cells nominally use 12px, and window interiors use 20px.",
+      "designFunction": "[INFERENCE] Nonuniform adjacent ratios create a compact small-step cluster and larger jumps for region-level separation.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "spacingPx": {
+          "xs": 4,
+          "sm": 8,
+          "md": 12,
+          "lg": 20,
+          "xl": 32
+        },
+        "adjacentRatios": [
+          2,
+          1.5,
+          1.667,
+          1.6
+        ],
+        "tightGapPx": 8,
+        "gridGapPx": 12,
+        "windowPaddingPx": 20
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "52-53,368-370"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "57-64"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-016",
+      "domain": "spacing-density",
+      "observed": "Nominal control geometry is 48px primary/secondary buttons, 44px danger/buy buttons, 60px currency bar, 66px side buttons, 110px action tiles, 130px Roll tile, 90px aura cards with 12px gaps, 14px progress track, and a 54x28 toggle track. The source separately states that touch targets must stay at or above 44px, distinguishing compact visual tracks from intended interaction bounds.",
+      "designFunction": "[INFERENCE] Large square action tiles carry the HUD interaction load while thin tracks and bars act as compact visual state indicators.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "minimumTouchTargetPx": 44,
+        "primaryButtonHeightPx": 48,
+        "dangerBuyHeightPx": 44,
+        "currencyHeightPx": 60,
+        "sideButtonPx": 66,
+        "actionTilePx": 110,
+        "rollTilePx": 130,
+        "cardPx": 90,
+        "cardGapPx": 12,
+        "progressHeightPx": 14,
+        "toggleVisualSizePx": [
+          54,
+          28
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "93-198"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "368-378"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-017",
+      "domain": "spacing-density",
+      "observed": "Implementation breaks several nominal density values: CurrencyBar defaults to 200x56 rather than 60px high and the hard-currency HUD instance is 150x44; Shop cells are 140x168 with 8px gaps rather than 90x90 with 12px gaps; AuraCard defaults to 150x150 without a 1:1 aspect constraint; segmented tabs are 40px high and ToggleSwitch is itself a 54x28 TextButton, so both interactive bounds fall below the authored 44px minimum.",
+      "designFunction": "[INFERENCE] The larger non-square shop cells make room for item art and an internal 34px buy pill, but this is a generator accommodation rather than the source card scale.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "currencyDefaultSizePx": [
+          200,
+          56
+        ],
+        "hardCurrencySizePx": [
+          150,
+          44
+        ],
+        "shopCellSizePx": [
+          140,
+          168
+        ],
+        "shopGapPx": 8,
+        "auraCardDefaultPx": [
+          150,
+          150
+        ],
+        "tabsHeightPx": 40,
+        "toggleInteractiveSizePx": [
+          54,
+          28
+        ],
+        "touchMinimumViolations": [
+          "segmented-tabs",
+          "toggle-switch"
+        ],
+        "shopCardAspectRatio": 0.833
+      },
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/CurrencyBar.luau",
+          "lines": "30-38"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "54-67"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+          "lines": "37-43"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+          "lines": "132-147"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/SegmentedTabs.luau",
+          "lines": "33-66"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ToggleSwitch.luau",
+          "lines": "41-48"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-018",
+      "domain": "composition",
+      "observed": "The source HUD zones are top-left currency, a left rail of about seven buttons, bottom-center Roll cluster with three counters, two small top-right system glyphs, and reserved clear center/bottom corners/top strip. The implementation preserves the zone positions but shows only three rail buttons and two currency pills in a 220x120 stack.",
+      "designFunction": "[INFERENCE] Perimeter placement keeps the center available for avatar and reward reveal while preserving persistent access to economy, navigation, and rolling.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "sourceRailButtonCountApprox": 7,
+        "implementedRailButtonCount": 3,
+        "implementedCurrencyCount": 2,
+        "currencyStackSizePx": [
+          220,
+          120
+        ],
+        "railWidthPx": 66,
+        "actionClusterWidthPx": 420,
+        "bottomInsetPx": 20
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "611-622"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "51-96"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-019",
+      "domain": "composition",
+      "observed": "Window anatomy is centered dim/blur focus with integrated icon-title at top-left, optional 240x34 search pill near top-right, bare X at top-right, 20px horizontal and bottom content padding, and corner brackets. General windows use 0.82x0.78 scale capped at 1000x620; dialogs use 0.5x0.42 capped at 460x300. These scales differ from the source token of 0.60 width at 1.7:1.",
+      "designFunction": "[INFERENCE] The shared anatomy makes the dialog a focused size variant rather than a separate modal language, and dim plus blur reduces world prominence while leaving it visible.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "sourceWindowWidthScale": 0.6,
+        "sourceWindowAspect": 1.7,
+        "implementedWindowScale": [
+          0.82,
+          0.78
+        ],
+        "implementedWindowMaxPx": [
+          1000,
+          620
+        ],
+        "implementedWindowMaxAspect": 1.613,
+        "dialogScale": [
+          0.5,
+          0.42
+        ],
+        "dialogMaxPx": [
+          460,
+          300
+        ],
+        "searchSizePx": [
+          240,
+          34
+        ],
+        "contentPaddingPx": {
+          "left": 20,
+          "right": 20,
+          "top": 8,
+          "bottom": 20
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "108-123,624-640"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "44-48,54-88,112-154"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-020",
+      "domain": "composition",
+      "observed": "Source Shop composition is a vertical stack of banner offers. The generated Shop instead reads top-to-bottom as one featured banner, one horizontal six-card grid in a scrolling region, then category tabs. This is an explicit standard-showcase substitution, not source-observed Shop anatomy.",
+      "designFunction": "[INFERENCE] The substitution preserves six fixed catalog items and rarity tiers while retaining one taste-native promotional banner.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "sourcePrimaryPattern": "vertical-banner-stack",
+        "generatedPattern": "featured-banner-then-six-card-grid-then-tabs",
+        "bodyGapPx": 12,
+        "gridCanvasHeightPx": 372,
+        "gridViewportHeightOffsetPx": -160
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "632-639"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+          "lines": "1-9,37-103"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-021",
+      "domain": "composition",
+      "observed": "The source requires safe-area-aware HUD roots and says not to hardcode the top strip. The HUD story computes a runtime Y inset with GuiService:GetGuiInset().Y, places currency at inset+12px, and bottom-anchors the action cluster 20px above the edge. It does not use the source-named GetInsetArea API in this story.",
+      "designFunction": "[INFERENCE] Runtime inset calculation preserves the top-left HUD zone across topbar configurations, while bottom anchoring keeps the primary cluster at the screen perimeter.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "topGapAfterInsetPx": 12,
+        "leftGapPx": 12,
+        "bottomGapPx": 20,
+        "sourceNamedApi": "GetInsetArea",
+        "implementedApi": "GetGuiInset"
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "379-383"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Stories/HUD.story.luau",
+          "lines": "44-58,85-91"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-022",
+      "domain": "states-motion",
+      "observed": "Action buttons have explicit default, pressed, disabled, and released states. Default is #0D0D10 with semantic stroke and matching text; press tweens the fill 16% toward the semantic color over 0.08s and releases over 0.15s; disabled replaces text and stroke with the neutral gray system and blocks activation. No MouseEnter or focus handlers are authored in ActionButton, IconTile, RollButton, SegmentedTabs, or ToggleSwitch, so hover and focus are not visually distinguished in the inspected code.",
+      "designFunction": "[INFERENCE] Fill-only press feedback preserves the non-deforming chrome silhouette.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "defaultFill": "#0D0D10",
+        "pressedColorLerp": 0.16,
+        "pressInSeconds": 0.08,
+        "releaseSeconds": 0.15,
+        "disabledActivationBlocked": true,
+        "hoverDistinct": false,
+        "focusDistinct": false
+      },
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "99-105,122-128"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ActionButton.luau",
+          "lines": "22-38,41-80"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/IconTile.luau",
+          "lines": "57-71"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/RollButton.luau",
+          "lines": "66-83"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-023",
+      "domain": "states-motion",
+      "observed": "Selected tabs use #2E3338 opaque fill and #F2F6FA text versus transparent fill and #9AA6B2 text. Selected cards use #223349 and white brackets rather than rarity-colored brackets. Toggle ON/OFF uses both track color and knob movement from 0.28 to 0.72 over 0.15s. The implementation knob remains #F2F6FA in both states, contrary to the source prose that calls the OFF knob gray.",
+      "designFunction": "[INFERENCE] Fill, ink, and geometry provide state redundancy beyond hue for tabs and toggles.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "tabSelectedFill": "#2E3338",
+        "tabSelectedInk": "#F2F6FA",
+        "tabUnselectedInk": "#9AA6B2",
+        "cardSelectedFill": "#223349",
+        "toggleOffKnobX": 0.28,
+        "toggleOnKnobX": 0.72,
+        "toggleSeconds": 0.15,
+        "toggleKnobColorBothStates": "#F2F6FA"
+      },
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/SegmentedTabs.luau",
+          "lines": "33-55"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/AuraCard.luau",
+          "lines": "21-29,50-57"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Components/ToggleSwitch.luau",
+          "lines": "15-37,41-73"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "594-599"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-024",
+      "domain": "states-motion",
+      "observed": "Source-observed motion from 40fps clip sampling is window chrome appearing/disappearing in under about two frames with no scale-down, assigned to a 0.15s fast fade; backdrop blur clears over about 0.4s with Sine InOut; values count up with settle easing. These observations are source-recorded, not motion replayed during this inspection.",
+      "designFunction": "[INFERENCE] Fast chrome plus slower world refocus makes the panel feel immediate while depth settles behind it.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "captureFps": 40,
+        "chromeObservedFrameCountMaxApprox": 2,
+        "windowFadeSeconds": 0.15,
+        "blurSeconds": 0.4,
+        "windowScaleAnimation": false,
+        "countUp": true
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "508-523"
+        },
+        {
+          "path": "e2e/obsidian-gacha/src/Theme.luau",
+          "lines": "78-85"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-025",
+      "domain": "states-motion",
+      "observed": "Reward reveal motion is not source-observed: Back Out pop, 0.8-to-1.0 scale, flash, and optional top-tier Elastic are explicitly inferred taste-family presets. Reduced motion is authored to replace blur and reward scale/flash with fast fades.",
+      "designFunction": "[INFERENCE] The inferred register reserves overshoot for reward salience and keeps chrome restrained.",
+      "confidence": "low",
+      "origin": "design-source",
+      "metrics": {
+        "sourceObserved": false,
+        "startScale": 0.8,
+        "endScale": 1,
+        "easing": "Back Out",
+        "reducedMotionFallbackSeconds": 0.15
+      },
+      "evidence": [
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "524-533"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "84-90"
+        }
+      ]
+    },
+    {
+      "id": "DES-OBSIDIAN-026",
+      "domain": "states-motion",
+      "observed": "The Window implementation generates a Lighting BlurEffect from size 0 to 18 over 0.4s, but explicitly drops the authored 0.15s panel fade because CanvasGroup softened settled colors. On unmount it destroys the blur immediately rather than tweening the authored 0.4s clear. The implementation also contains no reduced-motion branch. These are code-authored additions/deviations and were not runtime-observed in this inspection.",
+      "designFunction": "[INFERENCE] The implementation prioritizes settled token-color fidelity over reproducing the source chrome fade.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "blurStart": 0,
+        "blurEnd": 18,
+        "blurInSeconds": 0.4,
+        "panelFadeImplemented": false,
+        "blurOutTweenImplemented": false,
+        "reducedMotionBranchImplemented": false
+      },
+      "evidence": [
+        {
+          "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+          "lines": "23-42"
+        },
+        {
+          "path": "design-md/obsidian-gacha/DESIGN.roblox.md",
+          "lines": "511-533"
+        }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Exact rendered minimum text size is unavailable: AuraCard names, icon badges, and the close glyph use TextScaled with maximum constraints but no minimum constraints; actual output depends on bounds and string length.",
+    "No line-height token or TextLabel line-height property was found in the authored document or inspected implementation, so every role's line height remains null.",
+    "No runtime preview, capture, or animation was generated for this observer pass. Source clip observations are reported separately from motion merely authored in the generated Luau.",
+    "The source prose says corner brackets act instead of a full perimeter stroke, while the window token and implementation apply both a 2px full UIStroke and 3px corner brackets. It is undetermined whether the prose intends brackets to replace only heavy perimeter framing or all perimeter strokes (design-md/obsidian-gacha/DESIGN.roblox.md:396-408; e2e/obsidian-gacha/src/Components/Window.luau:83-88).",
+    "The source calls for about seven left-rail HUD buttons and two top-right platform glyphs, but the representative HUD story contains three rail buttons and no top-right glyphs; the omitted launcher count is a showcase reduction rather than evidence of a revised taste rule (design-md/obsidian-gacha/DESIGN.roblox.md:611-622; e2e/obsidian-gacha/src/Stories/HUD.story.luau:70-83)."
+  ]
+}

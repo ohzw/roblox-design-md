@@ -1,0 +1,1152 @@
+{
+  "taste": "studded-toybox",
+  "filesInspected": [
+    "design-md/studded-toybox/DESIGN.roblox.md",
+    "e2e/studded-toybox/src/Theme.luau",
+    "e2e/studded-toybox/src/Components/Window.luau",
+    "e2e/studded-toybox/src/Components/GradientButton.luau",
+    "e2e/studded-toybox/src/Components/ItemCard.luau",
+    "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+    "e2e/studded-toybox/src/Components/SideButton.luau",
+    "e2e/studded-toybox/src/Components/CloseButton.luau",
+    "e2e/studded-toybox/src/Components/StudField.luau",
+    "e2e/studded-toybox/src/Stories/HUD.story.luau",
+    "e2e/studded-toybox/src/Stories/Shop.story.luau",
+    "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+    "e2e/studded-toybox/src/Stories/Buttons.story.luau"
+  ],
+  "typography": {
+    "roles": [
+      {
+        "name": "display",
+        "family": "FredokaOne",
+        "sizePx": 46,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 3,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "25-29"
+          },
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "261-268"
+          },
+          {
+            "path": "e2e/studded-toybox/src/Theme.luau",
+            "lines": "27-35"
+          }
+        ]
+      },
+      {
+        "name": "heading",
+        "family": "FredokaOne",
+        "sizePx": 40,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "30-33"
+          },
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "269-270"
+          },
+          {
+            "path": "e2e/studded-toybox/src/Components/Window.luau",
+            "lines": "177-192"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "family": "FredokaOne",
+        "sizePx": 28,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "38-41"
+          },
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "271-271"
+          },
+          {
+            "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+            "lines": "181-196"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "family": "FredokaOne",
+        "sizePx": 22,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "34-37"
+          },
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "272-274"
+          },
+          {
+            "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+            "lines": "71-87"
+          }
+        ]
+      },
+      {
+        "name": "caption",
+        "family": "FredokaOne",
+        "sizePx": 18,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "42-45"
+          },
+          {
+            "path": "design-md/studded-toybox/DESIGN.roblox.md",
+            "lines": "275-276"
+          },
+          {
+            "path": "e2e/studded-toybox/src/Theme.luau",
+            "lines": "29-35"
+          }
+        ]
+      }
+    ],
+    "minimumAuthoredPx": 18,
+    "minimumRenderedPx": null,
+    "adjacentRatios": [
+      {
+        "from": "display",
+        "to": "heading",
+        "ratio": 1.15
+      },
+      {
+        "from": "heading",
+        "to": "label",
+        "ratio": 1.428571
+      },
+      {
+        "from": "label",
+        "to": "body",
+        "ratio": 1.272727
+      },
+      {
+        "from": "body",
+        "to": "caption",
+        "ratio": 1.222222
+      }
+    ],
+    "rules": [
+      "The authored hierarchy uses one single-weight family; size and stroke thickness, not family or weight changes, establish role differences.",
+      "Canonical authored role order by size is display 46px > heading 40px > label 28px > body 22px > caption 18px.",
+      "All canonical roles are Regular because FredokaOne is treated as a single-weight family with baked-in boldness.",
+      "Display text uses a 3px contextual near-black outline; heading, label, body, and caption use a 2px contextual near-black outline.",
+      "Window headings are Title Case and never all-caps; uppercase is false for all five canonical Theme roles.",
+      "White on-surface text plus near-black outline is the nominal contrast treatment across varying saturated or translucent fills; no contrast ratio was measured in the inspected sources.",
+      "Headers, buttons, prices, and several compact labels use TextScaled with only MaxTextSize constraints; multi-line body copy uses fixed 22px TextSize.",
+      "Authored line height is null for every role; no line-height token or per-label line-height value is present.",
+      "The 18px caption token is the smallest authored text size, but minimum rendered size is null because TextScaled labels have maximum constraints without minimum constraints."
+    ],
+    "exceptions": [
+      "Window watermark text uses the display family but is forced uppercase and has no UIStroke, breaking the nominal Title Case and all-text-outlined rules; its actual rendered size is scale-driven rather than fixed (e2e/studded-toybox/src/Components/Window.luau:244-255).",
+      "The white counter chip renders dark outline-colored body text without a text stroke, an inverse treatment that breaks the nominal white outlined text rule (e2e/studded-toybox/src/Components/Window.luau:194-217).",
+      "The store-offer pattern explicitly permits theme-accent title text with a white outline as the sole source-authored colored-text exception (design-md/studded-toybox/DESIGN.roblox.md:427-434).",
+      "Rarity labels in ItemCard are authored as uppercase strings even though canonical Theme roles set uppercase=false; they use the caption-like BadgeSlot treatment rather than a dedicated uppercase typography role (e2e/studded-toybox/src/Components/ItemCard.luau:25-31,81-88).",
+      "Font identification is not direct metadata from the observed product: FredokaOne was judged from letterforms at medium confidence, with Montserrat ExtraBold recorded as runner-up (design-md/studded-toybox/DESIGN.roblox.md:193-201)."
+    ]
+  },
+  "hierarchy": [
+    {
+      "id": "DES-STUDDED-001",
+      "domain": "hierarchy",
+      "observed": "Primary emphasis is display/heading text and oversized green action slabs; secondary emphasis is 28px labels and colored purchase slabs; tertiary emphasis is 22px body copy and 18px captions. White text color is normally constant, so role separation is carried by 46/40/28/22/18px size steps, 3px versus 2px outline, placement, and slab scale.",
+      "designFunction": "Keeps a single cartoon-bold voice while allowing title, action, explanation, and status roles to remain numerically distinct.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "roleSizesPx": [
+          46,
+          40,
+          28,
+          22,
+          18
+        ],
+        "strokePx": {
+          "display": 3,
+          "other": 2
+        },
+        "weightCount": 1,
+        "textColorCountNominal": 1
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "25-56"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "253-281"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "27-54"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-002",
+      "domain": "hierarchy",
+      "observed": "Window anatomy reads header icon and left-aligned heading first, optional 96x40 counter chip next, flush red close slab at the right edge, then content inside the dark well. The header is 84px tall and the close slab is 92.4x84px from the 1.1 aspect token.",
+      "designFunction": "Makes title/context and dismissal persistent above changing window content while reserving red exclusively for the dismiss action.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "headerHeightPx": 84,
+        "counterChipPx": [
+          96,
+          40
+        ],
+        "closeAspect": 1.1,
+        "closeWidthPxAtReference": 92.4,
+        "windowBorderPx": 4
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "367-381"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "131-160"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "177-228"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-003",
+      "domain": "hierarchy",
+      "observed": "The canonical purchase-window order is header plus counter chip, then a two-column grid of item rows whose internal order is icon tile, 28px name, two-line 22px description, and purple price control, followed by a right scroll rail.",
+      "designFunction": "Moves from global shop context to item identity and explanation before presenting the per-item transaction.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "canonicalColumns": 2,
+        "namePx": 28,
+        "bodyPx": 22,
+        "priceRolePx": 28
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "422-425"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "293-295"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-004",
+      "domain": "hierarchy",
+      "observed": "The implemented Shop substitutes six card cells for the canonical descriptive rows. Within each card the reading order is 88px item render plus rarity tag, 28px name, then a 44px-tall purple buy action; body descriptions are absent. Crown receives a 4px gold border rather than the normal 2px ink border.",
+      "designFunction": "Presents the fixed six-item showcase compactly and gives the legendary item additional salience, but changes the source hierarchy and its content-versus-chrome rarity rule.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "itemCount": 6,
+        "cardLayoutOrders": {
+          "render": 1,
+          "name": 2,
+          "buy": 3
+        },
+        "renderPx": [
+          88,
+          88
+        ],
+        "nameBandHeightPx": 32,
+        "buyHeightPx": 44,
+        "normalBorderPx": 2,
+        "legendaryBorderPx": 4,
+        "bodyDescriptionPresent": false
+      },
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "1-15"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "26-33"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "46-70"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "73-115"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-005",
+      "domain": "hierarchy",
+      "observed": "The implemented HUD has one dominant contextual CTA, Play, as a 320x90 lime-green hero slab at bottom center. Three 140x140 launcher tiles form the upper-left utility group, and two 44px currency rows each add a smaller plus action.",
+      "designFunction": "Separates the single forward action from navigation and currency utilities through size, saturated green gradient, and bottom-center placement.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "primaryCtaCount": 1,
+        "launcherCount": 3,
+        "currencyBuyActionCount": 2,
+        "heroCtaPx": [
+          320,
+          90
+        ],
+        "launcherPx": [
+          140,
+          140
+        ],
+        "currencyRowHeightPx": 44
+      },
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "57-80"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "92-115"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "125-132"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-006",
+      "domain": "hierarchy",
+      "observed": "The confirm dialog has two visible actions: one centered 260x70 green Confirm slab and one red close slab integrated into the header. Its content order is Title/close in the header, a 72px inset message well, then Confirm with a 20px vertical gap.",
+      "designFunction": "Concentrates affirmative salience in one green action while retaining the taste's fixed red dismiss affordance rather than adding a second full-width cancel button.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "visibleActionCount": 2,
+        "primaryCtaCount": 1,
+        "confirmPx": [
+          260,
+          70
+        ],
+        "messageWellHeightPx": 72,
+        "contentGapPx": 20,
+        "dialogPx": [
+          560,
+          360
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "438-440"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "37-53"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "59-94"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-007",
+      "domain": "color",
+      "observed": "The runtime theme exposes 10 named semantic colors when surfaceDeep is included: green primary #0BD520, cyan secondary #02B9F2, red danger #E13B38, green-zone surface #0DA21F, deep surface #111111 at 0.30 transparency, white on-surface #FFFFFF, gold soft currency #FFD902, purple hard currency #A93FE6, magenta rare accent #AA42BB, and near-black outline #0A0A0F. It also declares seven vertical gradient pairs, three translucent component-fill roles, and one #A8A8A8 rim-light color.",
+      "designFunction": "Allocates saturated molded-plastic hues to actions and currencies while keeping the major content well dark and the nominal text/ink pair white versus near-black.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "namedSemanticColorCount": 10,
+        "gradientPairCount": 7,
+        "translucentComponentFillRoleCount": 3,
+        "rimLightColorCount": 1,
+        "surfaceDeepOpacity": 0.7,
+        "surfaceDeepTransparency": 0.3
+      },
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "11-25"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "49-76"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "91-103"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-008",
+      "domain": "color",
+      "observed": "Green communicates forward actions; cyan and magenta distinguish lower and higher purchase tiers; red is reserved for close and warning sub-captions; gold is reserved for offers/tokens; purple marks premium price; surface chrome may recolor blue, lime, pink, or gold while anatomy remains fixed.",
+      "designFunction": "Uses whole-surface hue allocation as a semantic layer without changing the common slab grammar.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "forwardHueFamily": "green",
+        "purchaseTierSequence": [
+          "cyan",
+          "magenta"
+        ],
+        "dismissHue": "red",
+        "softCurrencyHue": "gold",
+        "hardCurrencyHue": "purple",
+        "observedChromeThemeFamilyCount": 4
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "238-259"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "382-395"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-009",
+      "domain": "color",
+      "observed": "Source semantics do not rely on hue alone for major actions: close also has an X glyph and fixed header-end placement; purchase tiers retain Buy labels and common slab anatomy; rarity has a text tag/content render. The implemented CurrencyBar is a counterexample: soft versus hard currency icons are blank 44x44 colored frames, so kind is distinguished only by gold versus purple hue in that component.",
+      "designFunction": "Pairs hue with text, silhouette, and placement in most source patterns, while the implementation's blank currency markers omit a non-hue identifier.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "majorActionsHueOnly": false,
+        "implementedCurrencyKindHueOnly": true,
+        "currencyIconPx": [
+          44,
+          44
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "245-256"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "379-391"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+          "lines": "55-83"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-010",
+      "domain": "shape-depth",
+      "observed": "The radius scale is 6px for buttons, close slabs, cards, wells, and icon tiles; 10px for window frames and price controls; 14px for oversized hero CTAs. No full-radius token exists. Buttons target approximately 3-4.5:1 landscape aspects, icon tiles and cards target 1:1, and the spin wheel is the only circular content.",
+      "designFunction": "Maintains a squared modular toy-brick silhouette while allowing only small radius increases with component scale.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "radiiPx": [
+          6,
+          10,
+          14
+        ],
+        "radiusAdjacentRatios": [
+          1.666667,
+          1.4
+        ],
+        "buttonAspectRange": [
+          3,
+          4.5
+        ],
+        "tokenAspects": {
+          "close": 1.1,
+          "primary": 4.4,
+          "secondary": 4.4,
+          "buy": 3.4,
+          "sideButton": 1.1,
+          "card": 1
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "329-344"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "40-47"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "79-89"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-011",
+      "domain": "shape-depth",
+      "observed": "Depth uses 2px ink strokes on wells/cards/chips/price controls, 4px ink around windows, 2px light-gray rims on gradient slabs over dark ground, low-contrast stud emboss, a 70%-opaque self-dimming well, and a ghost watermark. Drop shadows and bevels are explicitly absent.",
+      "designFunction": "Creates separation through outlined molded surfaces and texture rather than simulated light-cast elevation.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "inkStrokePx": 2,
+        "windowStrokePx": 4,
+        "rimLightPx": 2,
+        "heavyToNormalStrokeRatio": 2,
+        "wellOpacity": 0.7,
+        "dropShadowCount": 0,
+        "bevelCount": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "305-324"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "49-54"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "120-146"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "233-255"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-012",
+      "domain": "shape-depth",
+      "observed": "Stud emboss is authored as an approximately 24px repeating rounded-square cell at low contrast. The implementation uses a tiled image with an exact 24x24px tile and 0.82 image transparency.",
+      "designFunction": "Makes molded toy-brick texture, rather than shadow, the common material cue across opaque chrome and buttons.",
+      "confidence": "medium",
+      "origin": "implementation-addition",
+      "metrics": {
+        "authoredCellPxApprox": 24,
+        "implementedTilePx": [
+          24,
+          24
+        ],
+        "implementedImageTransparency": 0.82,
+        "implementedImageOpacity": 0.18
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "315-318"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "119-128"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/StudField.luau",
+          "lines": "18-26"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-013",
+      "domain": "shape-depth",
+      "observed": "The legendary ItemCard changes cell chrome to a 4px gold border even though the source says rarity/status should read through content color rather than cell chrome. This is an internal implementation counterexample to the nominal card rule.",
+      "designFunction": "Adds showcase emphasis to Crown, but does so by changing border color and thickness rather than content alone.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "normalCardBorderPx": 2,
+        "legendaryCardBorderPx": 4,
+        "legendaryBorderColor": "#FFD902",
+        "thicknessRatio": 2
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "403-405"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "46-54"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-014",
+      "domain": "spacing-density",
+      "observed": "The authored spacing ladder is 4, 8, 12, 20, and 32px. Adjacent ratios are 2.0, 1.5, 1.666667, and 1.6. The 12px step is the default row/grid sibling gap; 20px is standard window padding; 8px separates icon and label; 32px separates header and major content groups.",
+      "designFunction": "Supports mid-high information density with small local gaps and larger group separation rather than a uniform spacing interval.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "spacingPx": {
+          "xs": 4,
+          "sm": 8,
+          "md": 12,
+          "lg": 20,
+          "xl": 32
+        },
+        "adjacentRatios": [
+          2,
+          1.5,
+          1.666667,
+          1.6
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "47-47"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "283-292"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "38-38"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-015",
+      "domain": "spacing-density",
+      "observed": "Authored touch targets have a 44px minimum and observed button heights of 58-84px. Implemented button examples are 58, 60, 70, and 90px tall. The CurrencyBar plus button is 0.8x the 44px row height, or 35.2x35.2px, so it falls 8.8px below the authored minimum; no separate larger hit target is defined around it.",
+      "designFunction": "Source sizing favors large direct touch surfaces, but the implemented currency add control collapses visual and touch bounds below that source minimum.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "authoredMinimumTouchPx": 44,
+        "observedButtonHeightRangePx": [
+          58,
+          84
+        ],
+        "implementedButtonHeightExamplesPx": [
+          58,
+          60,
+          70,
+          90
+        ],
+        "plusVisualPx": [
+          35.2,
+          35.2
+        ],
+        "plusTouchPx": [
+          35.2,
+          35.2
+        ],
+        "minimumShortfallPx": 8.8,
+        "heroExceedsObservedMaxPx": 6
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "302-303"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+          "lines": "101-115"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Buttons.story.luau",
+          "lines": "33-65"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "90-94"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-016",
+      "domain": "spacing-density",
+      "observed": "Implemented card density uses 8px padding on all sides, 4px vertical internal gaps, a 96px render band, a 32px name band, and a 44px buy action. Shop grid cells are 240x300 with 12px gaps; the horizontal gap is 5% of cell width.",
+      "designFunction": "Packs image, rarity, name, and transaction into each catalog unit while preserving a consistent grid gap.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "cardPaddingPx": 8,
+        "cardInternalGapPx": 4,
+        "gapToPaddingRatio": 0.5,
+        "renderBandHeightPx": 96,
+        "nameBandHeightPx": 32,
+        "buyHeightPx": 44,
+        "shopCellPx": [
+          240,
+          300
+        ],
+        "shopCellAspectWidthToHeight": 0.8,
+        "gridGapPx": 12,
+        "gridGapToCellWidthRatio": 0.05
+      },
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "56-70"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "90-114"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "90-105"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-017",
+      "domain": "spacing-density",
+      "observed": "The Shop story's 240x300 grid cell breaks the nominal 1:1 card-grid aspect. The component's default is 240x240, but UIGridLayout controls the story cell at 240x300.",
+      "designFunction": "Adds vertical room for render, label, and purchase control in the generated showcase, at the cost of the source's square card silhouette.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "nominalAspect": 1,
+        "componentDefaultPx": [
+          240,
+          240
+        ],
+        "storyCellPx": [
+          240,
+          300
+        ],
+        "storyAspect": 0.8
+      },
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "79-89"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+          "lines": "38-46"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "99-103"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-018",
+      "domain": "composition",
+      "observed": "Canonical world visibility uses the window's own near-black well at 70% opacity; there is no separate dim layer. The source layering plan is world, self-dimming well, chrome, content, with HUD DisplayOrder 0-9, windows 10-19, spin/reward overlays 20-29, and toasts 30+. Spin overlays instead omit the panel and use radial glow.",
+      "designFunction": "Preserves visible gameplay context while concentrating contrast behind window content and reserving higher layers for transient rewards and messages.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "wellOpacity": 0.7,
+        "separateBackdropCount": 0,
+        "displayOrderBands": {
+          "hud": [
+            0,
+            9
+          ],
+          "windows": [
+            10,
+            19
+          ],
+          "spinReward": [
+            20,
+            29
+          ],
+          "toastsMinimum": 30
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "319-327"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "369-378"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "233-267"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-019",
+      "domain": "composition",
+      "observed": "Canonical HUD zones are a two-column launcher rail on the upper left, a wide toggle below, currency stack bottom left above safe inset, hotbar bottom center, floating station labels in world space, and an empty bottom-right jump zone. Approximately 10 persistent elements are authored.",
+      "designFunction": "Clusters persistent utilities along left and bottom edges while preserving gameplay control zones and central world visibility.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "launcherColumns": 2,
+        "persistentElementCountApprox": 10,
+        "reservedZones": [
+          "bottom-left joystick",
+          "bottom-right jump"
+        ],
+        "safeInsetRequired": true
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "415-421"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "297-303"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-020",
+      "domain": "composition",
+      "observed": "The HUD story changes the source two-column launcher rail to three 140px columns in one row at 667x375, producing a 444x140px group with 12px gaps and positioning it 32px from the left plus 32px and live top inset vertically. It also replaces bottom-center hotbar slots with a single Play CTA shifted 20px right of center.",
+      "designFunction": "Avoids overlap between two launcher rows, the currency stack, and the contextual CTA at phone-landscape width, but is a responsive implementation substitution rather than an observed composition.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "referenceViewportPx": [
+          667,
+          375
+        ],
+        "implementedLauncherColumns": 3,
+        "launcherGroupPx": [
+          444,
+          140
+        ],
+        "launcherCellPx": [
+          140,
+          140
+        ],
+        "cellGapPx": 12,
+        "outerLeftPx": 32,
+        "playCenterOffsetPx": 20,
+        "playPx": [
+          320,
+          90
+        ]
+      },
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "36-65"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+          "lines": "116-132"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-021",
+      "domain": "composition",
+      "observed": "The implemented Shop window occupies 85% of viewport width and 80% of height with a 1088x576 maximum. Its reading flow is integrated header with Toybox title, counter, and close; responsive scrolling grid of six cards; white 6px scroll rail. Column count is viewport-dependent instead of fixed at the source-observed two columns.",
+      "designFunction": "Maintains the wide window and scroll affordance while adapting catalog count to available width.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "windowScale": [
+          0.85,
+          0.8
+        ],
+        "maxWindowPx": [
+          1088,
+          576
+        ],
+        "itemCount": 6,
+        "cellPx": [
+          240,
+          300
+        ],
+        "cellGapPx": [
+          12,
+          12
+        ],
+        "scrollRailPx": 6,
+        "fixedColumnCount": null
+      },
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "43-66"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+          "lines": "73-111"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-022",
+      "domain": "composition",
+      "observed": "The source input-dialog focus strategy is a compact integrated-header window with status icon, inset outlined body/input well, and one centered green confirm slab. The implementation uses a 560x360 window, 72px message well, and 260x70 confirm action.",
+      "designFunction": "Centers attention on one message and one affirmative action while retaining the permanent header close affordance.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "dialogPx": [
+          560,
+          360
+        ],
+        "messageWellHeightPx": 72,
+        "confirmPx": [
+          260,
+          70
+        ],
+        "contentGapPx": 20
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "438-440"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "37-94"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-023",
+      "domain": "composition",
+      "observed": "The Dialog story enables showDim, and Window implements it as a full-screen black TextButton at 0.45 transparency that calls requestClose when activated. This adds both a separate backdrop and an extra invisible dismiss path, contradicting source notes that no separate dim overlay was observed and the well itself should dim the world.",
+      "designFunction": "Adds conventional modal isolation and tap-outside dismissal for the showcase, but it is not source-observed taste anatomy.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "backdropTransparency": 0.45,
+        "backdropOpacity": 0.55,
+        "backdropDismissEnabled": true,
+        "sourceSeparateBackdropCount": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "199-204"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "89-101"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+          "lines": "37-41"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-024",
+      "domain": "states-motion",
+      "observed": "No video input was available, and no pressed, disabled, or selected states were observed. The 0.08/0.15/0.25/0.4s durations and Back-Out, Quad-Out, Quad-In, and Elastic-Out easings are a low-confidence cartoon-chunky family preset rather than observed motion.",
+      "designFunction": "Supplies a generated juicy motion register where still screenshots could not establish temporal behavior.",
+      "confidence": "low",
+      "origin": "generator-default",
+      "metrics": {
+        "observedMotion": false,
+        "observedStateCount": 0,
+        "durationsSeconds": {
+          "instant": 0.08,
+          "fast": 0.15,
+          "normal": 0.25,
+          "slow": 0.4
+        },
+        "easings": {
+          "pop": "Back-Out",
+          "settle": "Quad-Out",
+          "exit": "Quad-In",
+          "bounce": "Elastic-Out"
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "185-204"
+        },
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "345-366"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "57-65"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-025",
+      "domain": "states-motion",
+      "observed": "GradientButton implements default, pressed, and disabled distinctions. Pressed scales to 0.94 over 0.08s and shifts the fill toward a 15%-darkened variant; release or pointer exit restores scale 1 over 0.15s. Disabled swaps both gradient stops to #8A8A8A/#6E6E6E and blocks activation. There is no distinct hover visual and no focus visual.",
+      "designFunction": "Adds both geometric and color feedback for held state and removes saturation plus activation for disabled state.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "defaultDistinct": true,
+        "pressedDistinct": true,
+        "disabledDistinct": true,
+        "hoverDistinct": false,
+        "focusDistinct": false,
+        "selectedDistinct": false,
+        "pressedScale": 0.94,
+        "pressedDurationSeconds": 0.08,
+        "restoreDurationSeconds": 0.15,
+        "pressedDarkenFraction": 0.15,
+        "disabledGradient": [
+          "#8A8A8A",
+          "#6E6E6E"
+        ]
+      },
+      "evidence": [
+        {
+          "path": "e2e/studded-toybox/src/Theme.luau",
+          "lines": "106-118"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "72-80"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "97-136"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-026",
+      "domain": "states-motion",
+      "observed": "Window entrance initializes at scale 0.85 and tweens to 1 with Back-Out over 0.25s. Exit tweens to scale 0.9 and fades header and well to transparency 1 with Quad-In over 0.15s before invoking close.",
+      "designFunction": "Creates an overshooting arrival and faster receding dismissal consistent with the generated cartoon-chunky preset.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "entranceScale": [
+          0.85,
+          1
+        ],
+        "entranceDurationSeconds": 0.25,
+        "entranceEasing": "Back-Out",
+        "exitScale": [
+          1,
+          0.9
+        ],
+        "exitDurationSeconds": 0.15,
+        "exitEasing": "Quad-In",
+        "exitFadeTransparency": 1
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "351-359"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "34-46"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "50-80"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-027",
+      "domain": "states-motion",
+      "observed": "Currency values animate from the previous target to the new target over 0.4s using a computed Quad-Out curve. The source inferred count-up behavior from still HUD counters rather than observing it in video.",
+      "designFunction": "Makes earned-value changes legible as transitions instead of abrupt replacement.",
+      "confidence": "medium",
+      "origin": "generator-default",
+      "metrics": {
+        "durationSeconds": 0.4,
+        "easing": "Quad-Out",
+        "observedMotion": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "360-363"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/CurrencyBar.luau",
+          "lines": "27-51"
+        }
+      ]
+    },
+    {
+      "id": "DES-STUDDED-028",
+      "domain": "states-motion",
+      "observed": "Reduced-motion behavior exists only as source prose: replace pop and bounce with settle while keeping durations. No inspected component branches on a reduced-motion preference, so the implemented stories do not expose a reduced-motion distinction.",
+      "designFunction": "Documents an intended lower-overshoot register, but leaves it unimplemented in the inspected surface.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "reducedMotionSpecified": true,
+        "reducedMotionImplemented": false,
+        "durationChange": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/studded-toybox/DESIGN.roblox.md",
+          "lines": "364-366"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/Window.luau",
+          "lines": "34-46"
+        },
+        {
+          "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+          "lines": "72-80"
+        }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "What are the actual rendered minima for TextScaled header, button, price, caption, and watermark text across supported viewport sizes? Only MaxTextSize constraints are defined, so minimumRenderedPx is unavailable.",
+    "What line heights were present in the source UI? Neither DESIGN.roblox.md nor inspected Theme/components define a line-height token.",
+    "Is FredokaOne the actual source font? The extraction records only medium-confidence letterform judgment and a Montserrat ExtraBold runner-up.",
+    "How should hover, keyboard/gamepad focus, and selected states differ? None were source-observed, and the inspected implementation defines no distinct hover, focus, or selected visual.",
+    "What motion actually occurs in the source product? No video was supplied; every duration/easing and motion pattern is generated or inferred from stills.",
+    "Should the generated 0.82 stud transparency and 0.92 watermark transparency be promoted to source tokens? The source specifies only high/very-high transparency, not exact values.",
+    "Should the implementation remove the 55%-opaque modal backdrop and tap-outside dismissal to preserve the source's self-dimming-well strategy?",
+    "Should the Shop showcase return to square cells and two-column descriptive rows, or is its 240x300 responsive card grid an accepted showcase-specific exception?",
+    "Should the legendary card's 4px gold border be removed so rarity is communicated through content rather than cell chrome as the source requires?",
+    "Should currency icons gain distinct symbols or labels so soft versus hard currency does not rely on gold versus purple hue alone?",
+    "Should the CurrencyBar plus control receive at least a 44x44px hit target while retaining its 35.2px visual square?",
+    "Should the HUD retain the source two-column launcher rail and bottom-center hotbar outside the 667x375 responsive exception, or is the three-column rail plus Play CTA now intended anatomy?"
+  ]
+}

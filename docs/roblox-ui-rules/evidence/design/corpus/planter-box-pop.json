@@ -1,0 +1,1112 @@
+{
+  "taste": "planter-box-pop",
+  "filesInspected": [
+    "design-md/planter-box-pop/DESIGN.roblox.md",
+    "e2e/planter-box-pop/src/Theme.luau",
+    "e2e/planter-box-pop/src/Components/Window.luau",
+    "e2e/planter-box-pop/src/Components/ButtonPrimary.luau",
+    "e2e/planter-box-pop/src/Components/ButtonClose.luau",
+    "e2e/planter-box-pop/src/Components/RowCard.luau",
+    "e2e/planter-box-pop/src/Components/RarityChip.luau",
+    "e2e/planter-box-pop/src/Components/CurrencyCounter.luau",
+    "e2e/planter-box-pop/src/Components/SideButton.luau",
+    "e2e/planter-box-pop/src/Stories/HUD.story.luau",
+    "e2e/planter-box-pop/src/Stories/Shop.story.luau",
+    "e2e/planter-box-pop/src/Stories/Dialog.story.luau"
+  ],
+  "typography": {
+    "roles": [
+      {
+        "name": "display",
+        "family": "FredokaOne",
+        "sizePx": 40,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 4,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+            "lines": "32-58"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Theme.luau",
+            "lines": "34-43"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Components/CurrencyCounter.luau",
+            "lines": "28-51"
+          }
+        ]
+      },
+      {
+        "name": "heading",
+        "family": "FredokaOne",
+        "sizePx": 30,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+            "lines": "32-58"
+          },
+          {
+            "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+            "lines": "285-307"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Theme.luau",
+            "lines": "34-43"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Components/RowCard.luau",
+            "lines": "134-154"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "family": "FredokaOne",
+        "sizePx": 20,
+        "weight": "Regular",
+        "uppercase": true,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+            "lines": "32-58"
+          },
+          {
+            "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+            "lines": "294-301"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Theme.luau",
+            "lines": "34-43"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Components/ButtonPrimary.luau",
+            "lines": "86-116"
+          }
+        ]
+      },
+      {
+        "name": "body",
+        "family": "FredokaOne",
+        "sizePx": 18,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+            "lines": "32-58"
+          },
+          {
+            "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+            "lines": "299-307"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Theme.luau",
+            "lines": "34-43"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Components/RowCard.luau",
+            "lines": "178-226"
+          }
+        ]
+      },
+      {
+        "name": "caption",
+        "family": "FredokaOne",
+        "sizePx": 16,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "medium",
+        "evidence": [
+          {
+            "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+            "lines": "32-58"
+          },
+          {
+            "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+            "lines": "299-307"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Theme.luau",
+            "lines": "34-43"
+          },
+          {
+            "path": "e2e/planter-box-pop/src/Components/RarityChip.luau",
+            "lines": "24-125"
+          }
+        ]
+      },
+      {
+        "name": "notification badge count (implementation addition)",
+        "family": "FredokaOne",
+        "sizePx": 14,
+        "weight": "Regular",
+        "uppercase": false,
+        "strokePx": 2,
+        "sourceConfidence": "high",
+        "evidence": [
+          {
+            "path": "e2e/planter-box-pop/src/Components/SideButton.luau",
+            "lines": "128-153"
+          }
+        ]
+      }
+    ],
+    "minimumAuthoredPx": 14,
+    "minimumRenderedPx": null,
+    "adjacentRatios": [
+      {
+        "from": "display",
+        "to": "heading",
+        "ratio": 1.3333
+      },
+      {
+        "from": "heading",
+        "to": "label",
+        "ratio": 1.5
+      },
+      {
+        "from": "label",
+        "to": "body",
+        "ratio": 1.1111
+      },
+      {
+        "from": "body",
+        "to": "caption",
+        "ratio": 1.125
+      },
+      {
+        "from": "caption",
+        "to": "notification badge count (implementation addition)",
+        "ratio": 1.1429
+      }
+    ],
+    "rules": [
+      "All five design-source roles use FredokaOne Regular; family and weight do not change across the authored hierarchy.",
+      "No line-height value is authored in DESIGN.roblox.md or Theme.luau; line height is null for every role.",
+      "The design source assigns a 2px warm-near-black contextual outline to heading, label, body, and caption text and a 4px outline to display text; it declares no unstroked text tier.",
+      "Display is 40px, heading 30px, label 20px, body 18px, and caption 16px at reference size. TextScaled plus UITextSizeConstraint treats these as maxima rather than guaranteed rendered sizes.",
+      "Action labels are uppercase; item names and rarity chips are Title Case. Display, heading, body, and caption tokens do not force uppercase.",
+      "Primary text fill is #FFFFFF; stock, descriptions, and subcaptions use #C9C9C9; prices use #21DB21. These treatments retain the 2px #2B1A0A outline.",
+      "The HUD currency display adds a -4 degree rotation to simulate the source-observed slant while retaining the normal FredokaOne face.",
+      "A numeric minimum rendered size cannot be recovered from source because multiple labels use TextScaled and some have no minimum UITextSizeConstraint; minimumRenderedPx is therefore null."
+    ],
+    "exceptions": [
+      "Row item names use the same 30px heading role as window titles, so the product row deliberately collapses the nominal window-title/item-title hierarchy.",
+      "The SideButton notification count has MaxTextSize 14, 2px below the 16px caption token; this is the smallest explicit authored maximum and is an implementation addition.",
+      "The 20px circular RowCard info badge uses caption font with TextScaled but has only a border-mode white UIStroke; it does not apply the declared contextual text outline to the glyph, contradicting the source rule that every text item is outlined.",
+      "The LIMITED! ribbon uses the caption role but forces uppercase, while the caption token itself has uppercase=false.",
+      "The Dialog heading content is CONFIRM in uppercase even though the heading token has uppercase=false; casing comes from story content, not the role.",
+      "The front-matter description calls the gold action a pill, while the Overview and Shapes prose prohibit pills and specify modest-radius rectangles; the later quantitative shape rules and implementation use a 6px radius rectangle.",
+      "Because TextScaled can shrink below each role maximum, the 14px authored maximum is not evidence of a 14px rendered floor."
+    ]
+  },
+  "hierarchy": [
+    {
+      "id": "DES-PLANTER-001",
+      "domain": "hierarchy",
+      "observed": "The type hierarchy is 40px display, 30px heading, 20px label, 18px body, and 16px caption, all FredokaOne Regular. Window titles and item names both use heading; action plates use label; stock and rarity chips use caption.",
+      "designFunction": "[INFERENCE] Size, outline thickness, casing, and colored plates carry emphasis because family and weight remain invariant.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "sizesPx": {
+          "display": 40,
+          "heading": 30,
+          "label": 20,
+          "body": 18,
+          "caption": 16
+        },
+        "weights": {
+          "display": "Regular",
+          "heading": "Regular",
+          "label": "Regular",
+          "body": "Regular",
+          "caption": "Regular"
+        },
+        "headingToLabelRatio": 1.5,
+        "bodyToCaptionRatio": 1.125,
+        "displayStrokeToStandardStrokeRatio": 2
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "32-63"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "285-309"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "34-57"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-002",
+      "domain": "hierarchy",
+      "observed": "A shop header orders title/countdown at left, then one gold primary action, then a red square close control at the far right. The source limits the gold plate to one per header or footer region. Shop purchases occur through full-width rows and there is no footer CTA.",
+      "designFunction": "[INFERENCE] The single gold, white-rimmed, beveled plate supplies forward-action salience while the red square remains a distinct dismiss action.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "headerPrimaryCtaCount": 1,
+        "headerDismissCount": 1,
+        "primaryFill": "#F7C11E",
+        "primaryRimPx": 2,
+        "primaryBevelPx": 3,
+        "closeFill": "#E03C3C",
+        "closeAspectRatio": 1
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "389-414"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "440-460"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/Window.luau",
+          "lines": "133-203"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-003",
+      "domain": "hierarchy",
+      "observed": "Each commerce row orders a square item well at left; a 30px name at top; a 16px muted stock line below; an 18px currency-green price at bottom-left; and a 16px rarity plate at bottom-right. Optional muted descriptions align right, while Limited items add a red 84x22 ribbon at the upper-left.",
+      "designFunction": "[INFERENCE] Making the item name equal to the window-title size makes each row function as a compact product page; stock and description are tertiary via smaller size and muted fill.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "rowHeightPx": 128,
+        "referenceRowWidthPx": 450,
+        "referenceWidthHeightRatio": 3.5156,
+        "namePx": 30,
+        "stockPx": 16,
+        "pricePx": 18,
+        "chipPx": 16,
+        "limitedRibbonPx": {
+          "width": 84,
+          "height": 22
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "408-421"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/RowCard.luau",
+          "lines": "33-79"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/RowCard.luau",
+          "lines": "126-241"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-004",
+      "domain": "hierarchy",
+      "observed": "The Dialog story orders a CONFIRM header with only the red close control, then an 18px wrapped body, then one centered 220x56 gold CONFIRM action. Body-to-action gap is 20px.",
+      "designFunction": "[INFERENCE] Removing the normal header action leaves one affirmative CTA in the body region and one dismiss action in the header.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "dialogPx": {
+          "width": 420,
+          "height": 260
+        },
+        "bodyBoxHeightPx": 48,
+        "bodyTextMaxPx": 18,
+        "bodyActionGapPx": 20,
+        "confirmPx": {
+          "width": 220,
+          "height": 56
+        },
+        "bodyCtaCount": 1,
+        "headerCtaCount": 0,
+        "dismissCount": 1
+      },
+      "evidence": [
+        {
+          "path": "e2e/planter-box-pop/src/Stories/Dialog.story.luau",
+          "lines": "31-82"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-005",
+      "domain": "hierarchy",
+      "observed": "The HUD story adds a 180x56 gold PLAY plate above the hotbar even though PLAY and its placement are not present in the taste source. It also expands the one observed Shop launcher into three 96x56 launchers and transplants a notification badge onto Items.",
+      "designFunction": "[INFERENCE] The generator uses the primary plate anatomy to create a dominant global CTA and the side-button anatomy to normalize launcher peers.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "addedGlobalPrimaryCtaCount": 1,
+        "addedLauncherCount": 2,
+        "totalImplementedLaunchers": 3,
+        "playPx": {
+          "width": 180,
+          "height": 56
+        },
+        "launcherPx": {
+          "width": 96,
+          "height": 56
+        },
+        "notificationBadgePx": 26
+      },
+      "evidence": [
+        {
+          "path": "e2e/planter-box-pop/src/Stories/HUD.story.luau",
+          "lines": "107-179"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/SideButton.luau",
+          "lines": "1-16"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/SideButton.luau",
+          "lines": "116-153"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-006",
+      "domain": "color",
+      "observed": "The core palette has 18 semantic tokens but 17 distinct RGB colors because onSurface and highlight both equal #FFFFFF. Grass green and dirt brown define chrome; three browns distinguish body, recessed row, and thumbnail well; white and muted gray are text; gold, red, two currency colors, and six rarity accents carry semantics; #2B1A0A is the outline ink.",
+      "designFunction": "[INFERENCE] Repeated grass/soil surfaces establish the material metaphor while candy colors remain allocated to actions, danger, currency, and rarity.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "semanticTokenCount": 18,
+        "distinctCoreRgbCount": 17,
+        "baseChromeCount": 5,
+        "textAndInkTokenCount": 4,
+        "actionDangerCurrencyTokenCount": 5,
+        "rarityTierCount": 6,
+        "core": {
+          "primary": "#F7C11E",
+          "secondary": "#4EAD3B",
+          "danger": "#E03C3C",
+          "surface": "#8A5A2E",
+          "surfaceDeep": "#54331B",
+          "surfaceWell": "#96602F",
+          "onSurface": "#FFFFFF",
+          "onSurfaceMuted": "#C9C9C9",
+          "currencySoft": "#21DB21",
+          "currencyHard": "#8A3FE8",
+          "outline": "#2B1A0A",
+          "highlight": "#FFFFFF"
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "14-31"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "259-284"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "14-33"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-007",
+      "domain": "color",
+      "observed": "Gold is reserved for forward actions and selected tabs; red marks close and sold-out; vivid green is soft-currency price text; purple is the premium-price button; six rarity hues render only on labeled rarity chips. Selection adds a white rim, disabled purchase uses gray plus NO STOCK, close includes an X, and Transcendent adds stars, so the documented meanings are not communicated by hue alone.",
+      "designFunction": "[INFERENCE] Redundant text, icon, border, position, and silhouette cues preserve semantic distinctions beyond the palette assignment.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "meaningReliesOnHueAlone": false,
+        "rarityTierCount": 6,
+        "selectedSignals": [
+          "brighter gold",
+          "2px white rim"
+        ],
+        "disabledSignals": [
+          "#9E9E9E fill",
+          "NO STOCK text",
+          "no bevel"
+        ],
+        "transcendentSignals": [
+          "gold fill",
+          "Transcendent label",
+          "two star marks"
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "95-148"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "263-284"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "398-427"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/RarityChip.luau",
+          "lines": "14-125"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-008",
+      "domain": "color",
+      "observed": "Component-local design-source literals expand the 17-color core to 27 distinct RGB colors by adding disabled gray, three explicit bevel colors, two progress gradient stops, side-button green, unselected-tab gold, badge brown, and banner purple.",
+      "designFunction": "[INFERENCE] The larger literal palette supports component-specific depth and states without changing the core semantic token names.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "distinctCoreRgbCount": 17,
+        "distinctDesignSourceRgbIncludingComponentLiterals": 27,
+        "additionalLiteralCount": 10,
+        "additionalRgb": [
+          "#9E9E9E",
+          "#A02525",
+          "#C8940A",
+          "#8A8A8A",
+          "#8CE84A",
+          "#35B520",
+          "#31C931",
+          "#B98F0F",
+          "#33200F",
+          "#7458B0"
+        ]
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "69-163"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-009",
+      "domain": "color",
+      "observed": "Theme.luau derives five non-common rarity bevel colors using an approximately 0.68 value-darkening ratio, reuses the rare bevel for an event button, adds an unused 60%-transparent warm-brown dim guess, and adds #3F7A2C as a story-only world backdrop.",
+      "designFunction": "[INFERENCE] These values complete implementation anatomy or supply showcase context; they are not additional source-observed palette decisions.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "derivedRarityBevelCount": 5,
+        "documentedDarkeningRatioApprox": 0.68,
+        "dimTransparency": 0.6,
+        "worldBackdrop": "#3F7A2C",
+        "derivedRarityBevels": [
+          "#347A34",
+          "#2A66A3",
+          "#A69A27",
+          "#A85410",
+          "#A88625"
+        ]
+      },
+      "evidence": [
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "90-124"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-010",
+      "domain": "shape-depth",
+      "observed": "The radius ladder is 6px for rows, chips, action plates, hotbar slots, and tabs; 10px for wells and larger insets; 14px for the window shell; full radius only for the small info badge. The close control is a square, and buttons, bars, tabs, and currency treatments are rectangular rather than capsules.",
+      "designFunction": "[INFERENCE] A consistent modest-radius rectangular silhouette supplies chunkiness without a bubbly or pill-based vocabulary.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "radiiPx": {
+          "sm": 6,
+          "md": 10,
+          "lg": 14,
+          "full": null
+        },
+        "closeAspectRatio": 1,
+        "nominalCircleExceptions": 1,
+        "pillCount": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "60-63"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "352-368"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "46-57"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-011",
+      "domain": "shape-depth",
+      "observed": "Depth is embossed rather than cast: stud fields cover header and body but not inset rows; row and window edges use 2px warm-brown ink; primary and close plates use 3px darker bottom bevels; rarity plates use 2px bevels; interactive and selected plates may add a 2px white rim. The source explicitly specifies no window drop shadow.",
+      "designFunction": "[INFERENCE] Omitting studs from rows makes them appear recessed against the textured planter surfaces, while bottom bevels make controls appear physically raised.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "cardAndWindowStrokePx": 2,
+        "standardTextStrokePx": 2,
+        "displayTextStrokePx": 4,
+        "primaryBevelPx": 3,
+        "closeBevelPx": 3,
+        "rarityBevelPx": 2,
+        "interactiveRimPx": 2,
+        "dropShadowCount": 0
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "327-350"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "389-421"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "52-57"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "71-81"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-012",
+      "domain": "shape-depth",
+      "observed": "The implementation tiles the stud image at 40x40px with 0.5 image transparency. The source requires a tiled stud/brick motif but does not supply tile size or opacity, so these two values are implementation additions.",
+      "designFunction": "[INFERENCE] The repeated low-opacity texture operationalizes the source material metaphor without introducing cast shadows.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "studTilePx": {
+          "width": 40,
+          "height": 40
+        },
+        "studImageTransparency": 0.5
+      },
+      "evidence": [
+        {
+          "path": "e2e/planter-box-pop/src/Components/Window.luau",
+          "lines": "38-55"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "327-337"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-013",
+      "domain": "shape-depth",
+      "observed": "The source says the only circular silhouette is the item info badge, but the SideButton implementation adds a second circular class: a 26px notification badge with full radius and a white rim.",
+      "designFunction": "[INFERENCE] This is a standard-showcase transplant rather than a taste-source shape decision.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "sourceCircleClassCount": 1,
+        "implementedAdditionalCircleClassCount": 1,
+        "notificationBadgeDiameterPx": 26,
+        "rimPx": 2
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "356-368"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/SideButton.luau",
+          "lines": "116-153"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-014",
+      "domain": "spacing-density",
+      "observed": "The spacing ladder is 4, 8, 12, 20, and 32px. Source allocation is 12px between sibling rows, 20px between content groups, 32px window inner padding, and 4px icon-to-label gaps.",
+      "designFunction": "[INFERENCE] The ladder separates tight icon/label coupling, row rhythm, grouped sections, and shell padding into distinct intervals.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "spacingPx": {
+          "xs": 4,
+          "sm": 8,
+          "md": 12,
+          "lg": 20,
+          "xl": 32
+        },
+        "adjacentRatios": [
+          2,
+          1.5,
+          1.6667,
+          1.6
+        ],
+        "rowGapPx": 12,
+        "groupGapPx": 20,
+        "windowInnerPaddingPx": 32,
+        "iconLabelGapPx": 4
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "59-59"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "309-323"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "44-44"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-015",
+      "domain": "spacing-density",
+      "observed": "Shop rows are 128px tall at an approximately 450px reference width, a 3.516:1 width-to-height ratio, with 12px padding on all sides and a square well. The source calls for 2–3 rows per screenful in a scrolling list; the story uses six rows, 12px row gaps, an 8px visible white scrollbar, and a 560x560 maximum window.",
+      "designFunction": "[INFERENCE] Tall full-width rows prioritize per-item anatomy over catalog breadth while scrolling contains the six-item list.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "rowPx": {
+          "referenceWidth": 450,
+          "height": 128
+        },
+        "widthHeightRatio": 3.5156,
+        "rowPaddingPx": 12,
+        "rowGapPx": 12,
+        "rowsPerScreenful": [
+          2,
+          3
+        ],
+        "storyItemCount": 6,
+        "scrollbarThicknessPx": 8,
+        "scrollbarTransparency": 0.2,
+        "shopMaxPx": {
+          "width": 560,
+          "height": 560
+        }
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "309-323"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/RowCard.luau",
+          "lines": "33-102"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Stories/Shop.story.luau",
+          "lines": "80-132"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-016",
+      "domain": "spacing-density",
+      "observed": "The documented interactive target floor is 44px, with close and action plates around 56px. Implemented close and primary controls are 56px high, side launchers are 96x56, and the whole 128px row is a TextButton. Noninteractive visual elements can be smaller: rarity chips are 96x26 or 96x28, the info badge is 20px, and the notification badge is 26px.",
+      "designFunction": "[INFERENCE] Visual labels and badges remain compact while their associated interactive surfaces meet or exceed the documented target floor.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "interactiveMinimumPx": 44,
+        "standardActionHeightPx": 56,
+        "closePx": {
+          "width": 56,
+          "height": 56
+        },
+        "launcherPx": {
+          "width": 96,
+          "height": 56
+        },
+        "rowInteractiveHeightPx": 128,
+        "noninteractiveChipHeightPx": [
+          26,
+          28
+        ],
+        "infoBadgeDiameterPx": 20,
+        "notificationBadgeDiameterPx": 26
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "319-323"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/Window.luau",
+          "lines": "176-203"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/RowCard.luau",
+          "lines": "33-46"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/RowCard.luau",
+          "lines": "103-125"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/RarityChip.luau",
+          "lines": "42-55"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-017",
+      "domain": "spacing-density",
+      "observed": "For the 667x375 showcase case, the HUD implementation reduces launcher height from the SideButton default 88px to 56px and the rail gap from 12px to 8px. Three 56px buttons plus two 8px gaps produce a 184px rail; the documented 44px target floor is retained.",
+      "designFunction": "[INFERENCE] This responsive implementation compresses density without shrinking below the generic target minimum; it is not a source-observed mobile layout.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "defaultLauncherHeightPx": 88,
+        "implementedLauncherHeightPx": 56,
+        "heightScale": 0.6364,
+        "defaultGapPx": 12,
+        "implementedGapPx": 8,
+        "railHeightPx": 184,
+        "referenceViewportPx": {
+          "width": 667,
+          "height": 375
+        }
+      },
+      "evidence": [
+        {
+          "path": "e2e/planter-box-pop/src/Stories/HUD.story.luau",
+          "lines": "107-155"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/SideButton.luau",
+          "lines": "52-60"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-018",
+      "domain": "composition",
+      "observed": "The source window anatomy is an integrated 64px full-width header flush with the shell top, with a left-aligned title and a right-side cluster ordered gold action then red close. The implementation gives each side half the header, uses 20px side inset, 8px cluster gap, a 150x56 action, and a 56x56 close. Content begins 12px below the header and has 32px left, right, and bottom padding.",
+      "designFunction": "[INFERENCE] Keeping utilities inside the band preserves one rectangular planter silhouette and reserves the brown body for content.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "headerHeightPx": 64,
+        "titleWidthFraction": 0.5,
+        "clusterWidthFraction": 0.5,
+        "headerSideInsetPx": 20,
+        "clusterGapPx": 8,
+        "actionPx": {
+          "width": 150,
+          "height": 56
+        },
+        "closePx": {
+          "width": 56,
+          "height": 56
+        },
+        "headerContentGapPx": 12,
+        "contentHorizontalPaddingPx": 32,
+        "contentBottomPaddingPx": 32
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "389-407"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/Window.luau",
+          "lines": "125-220"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-019",
+      "domain": "composition",
+      "observed": "Shop reading order is header title/countdown, RESTOCK, close, then a single scrolling column of full-width rows; an optional NO STOCK plus premium-price pair appears below a focused row. Right-edge external tabs switch sibling shops. The implemented showcase retains the header and list order, uses six rows, and omits a footer CTA.",
+      "designFunction": "[INFERENCE] A vertical list makes each item the unit of commerce and keeps purchase affordances local to the row.",
+      "confidence": "high",
+      "origin": "design-source",
+      "metrics": {
+        "catalogColumns": 1,
+        "storyRows": 6,
+        "sourceRowsPerScreenful": [
+          2,
+          3
+        ],
+        "footerCtaCount": 0,
+        "headerPrimaryCtaCount": 1,
+        "scrollbarThicknessPx": 8
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "447-460"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Stories/Shop.story.luau",
+          "lines": "1-34"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Stories/Shop.story.luau",
+          "lines": "80-132"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-020",
+      "domain": "composition",
+      "observed": "The source-observed desktop HUD zones are left-mid Shop launcher, bottom-center 9–10-slot hotbar, bottom-left oversized currency, and top-right translucent leaderboard beneath the top inset, with world content remaining visible. The story implements nine 56px slots with 8px gaps, a left rail, a 120x64 currency box, a bottom-center PLAY control above the hotbar, and a 220x140 leaderboard positioned from the live top inset.",
+      "designFunction": "[INFERENCE] Edge zoning leaves the center world view largely unplated while persistent controls occupy predictable perimeter bands.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "sourceHotbarSlotCount": [
+          9,
+          10
+        ],
+        "implementedHotbarSlotCount": 9,
+        "slotPx": {
+          "width": 56,
+          "height": 56
+        },
+        "slotGapPx": 8,
+        "hotbarWidthPx": 576,
+        "currencyBoxPx": {
+          "width": 120,
+          "height": 64
+        },
+        "leaderboardPx": {
+          "width": 220,
+          "height": 140
+        },
+        "leaderboardTransparency": 0.35,
+        "implementedGlobalCtaCount": 1
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "440-449"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Stories/HUD.story.luau",
+          "lines": "85-229"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-021",
+      "domain": "composition",
+      "observed": "The source has no observed dim layer and specifies windows sitting directly over the world without drop shadow. All three stories use the story-only #3F7A2C world backdrop; Dialog centers a 420x260 window and does not render Theme.derived.dim.",
+      "designFunction": "[INFERENCE] Central placement, the intact shell, and the header/body contrast provide dialog focus while preserving full world visibility rather than isolating the modal with darkness.",
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "dialogPx": {
+          "width": 420,
+          "height": 260
+        },
+        "dialogPositionScale": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "backdropDimRendered": false,
+        "windowDropShadowRendered": false,
+        "storyWorldBackdrop": "#3F7A2C"
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "278-284"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "340-350"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "107-121"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Stories/Dialog.story.luau",
+          "lines": "31-82"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-022",
+      "domain": "states-motion",
+      "observed": "Source-observed state distinctions include default raised plates, selected tabs with brighter gold plus a white rim, a gray unbeveled NO STOCK control paired with a purple premium-price control, red close/sold-out treatment, and a limited-event rainbow rim. Hover and focus treatments are not authored. Pressed treatment was never observed.",
+      "designFunction": "[INFERENCE] Fill, rim, bevel, label, and icon changes provide redundant state signals; hover and focus remain unspecified gaps.",
+      "confidence": "medium",
+      "origin": "design-source",
+      "metrics": {
+        "hoverDefined": false,
+        "focusDefined": false,
+        "pressedObserved": false,
+        "disabledSourceDefined": true,
+        "disabledFill": "#9E9E9E",
+        "disabledBevelPx": 0,
+        "selectedRimPx": 2,
+        "limitedRimCycleSecondsApprox": 3
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "95-148"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "327-350"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "369-388"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "398-427"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-023",
+      "domain": "states-motion",
+      "observed": "ButtonPrimary, ButtonClose, and SideButton implement press feedback by scaling to 0.94 over 0.08s and extending the face to full height so the 3px bevel collapses; release uses 0.15s Quad-Out. AutoButtonColor is false, MouseLeave only restores default, and no hover or focus visual is implemented.",
+      "designFunction": "[INFERENCE] Squash plus bevel collapse simulates a physical plate depression, but it is generated from the taste-family preset rather than observed motion.",
+      "confidence": "high",
+      "origin": "generator-default",
+      "metrics": {
+        "pressedScale": 0.94,
+        "pressDurationSeconds": 0.08,
+        "releaseDurationSeconds": 0.15,
+        "defaultBevelPx": 3,
+        "pressedBevelPx": 0,
+        "autoButtonColor": false,
+        "hoverVisualDefined": false,
+        "focusVisualDefined": false
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "211-229"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "59-69"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Theme.luau",
+          "lines": "116-124"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/ButtonPrimary.luau",
+          "lines": "26-92"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/ButtonClose.luau",
+          "lines": "18-85"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/SideButton.luau",
+          "lines": "27-97"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-024",
+      "domain": "states-motion",
+      "observed": "ButtonPrimary accepts disabled and suppresses press squash and activation, but it retains the same fill, white rim, text, and 3px bevel as enabled default. Thus the implemented primary disabled state has behavioral distinction but no explicit visual distinction.",
+      "designFunction": null,
+      "confidence": "high",
+      "origin": "implementation-addition",
+      "metrics": {
+        "disabledActivation": false,
+        "disabledPressSquash": false,
+        "disabledVisualDifference": false,
+        "enabledAndDisabledBevelPx": 3
+      },
+      "evidence": [
+        {
+          "path": "e2e/planter-box-pop/src/Components/ButtonPrimary.luau",
+          "lines": "39-92"
+        }
+      ]
+    },
+    {
+      "id": "DES-PLANTER-025",
+      "domain": "states-motion",
+      "observed": "Window entrance is generated as simultaneous scale 0.8 to 1.0 and transparency 1 to 0 over 0.25s Back-Out. Exit scales to 0.9 and fades to transparency 1 over 0.15s Quad-In. The source explicitly says no video input existed and classifies these values as a low-confidence cartoon-chunky preset.",
+      "designFunction": "[INFERENCE] Overshoot establishes a lively register and the 0.6 exit-to-entrance duration ratio makes dismissal faster than arrival.",
+      "confidence": "low",
+      "origin": "generator-default",
+      "metrics": {
+        "entranceScaleFrom": 0.8,
+        "entranceScaleTo": 1,
+        "entranceDurationSeconds": 0.25,
+        "entranceEasing": "Back-Out",
+        "exitScaleTo": 0.9,
+        "exitDurationSeconds": 0.15,
+        "exitEasing": "Quad-In",
+        "exitEntranceDurationRatio": 0.6,
+        "motionObserved": false,
+        "motionGenerated": true
+      },
+      "evidence": [
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "211-229"
+        },
+        {
+          "path": "design-md/planter-box-pop/DESIGN.roblox.md",
+          "lines": "369-388"
+        },
+        {
+          "path": "e2e/planter-box-pop/src/Components/Window.luau",
+          "lines": "27-93"
+        }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "What are the actual minimum rendered glyph sizes at each supported viewport? TextScaled and missing minimum UITextSizeConstraints make this unavailable from authored source; minimumRenderedPx is null.",
+    "What line-height values should each role use? Neither DESIGN.roblox.md nor Theme.luau authors line height.",
+    "What hover and keyboard/gamepad focus treatments belong to the taste? Neither the source nor inspected components define them.",
+    "What pressed motion actually appeared in the source UI? No video was available; 0.94 squash, bevel collapse, and the motion durations are generated low-confidence defaults.",
+    "Should a disabled ButtonPrimary receive a visual state? The component blocks activation but currently renders identically to enabled default, while the separate source button-buy-disabled grammar is gray and unbeveled.",
+    "Should the RowCard info-badge glyph gain the standard 2px contextual text outline? Its current stroke is border-mode and is a counterexample to the source-wide outlined-text rule.",
+    "Is the circular SideButton notification badge acceptable as a standard-showcase transplant? It creates a second circular silhouette class despite the source declaring the item info badge the only circle.",
+    "Should HUD PLAY, Items, Settings, and the launcher notification badge be retained? They are implementation additions required by the showcase rather than source-observed composition.",
+    "What mobile HUD composition should be treated as source-local? The source explicitly says mobile placement was not observed; the 667x375 rail compression is an implementation response.",
+    "Should the unused Theme.derived.dim token remain available? The design source intentionally omits dim and all inspected stories preserve world visibility without using it.",
+    "Does the front-matter phrase gold action pill need reconciliation with the later no-pill rule? Quantitative radii, Shapes prose, and implementation all resolve it as a 6px-radius rectangle."
+  ]
+}

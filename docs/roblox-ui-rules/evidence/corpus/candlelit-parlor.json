@@ -1,0 +1,1153 @@
+{
+  "taste": "candlelit-parlor",
+  "filesInspected": [
+    "design-md/candlelit-parlor/DESIGN.roblox.md",
+    "e2e/candlelit-parlor/src/CandlelitParlor.storybook.luau",
+    "e2e/candlelit-parlor/src/Theme.luau",
+    "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+    "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+    "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+    "e2e/candlelit-parlor/src/Stories/Dialog.story.luau",
+    "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+    "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+    "e2e/candlelit-parlor/src/Components/CurrencyDisplay.luau",
+    "e2e/candlelit-parlor/src/Components/IconTile.luau",
+    "e2e/candlelit-parlor/src/Components/BuyPill.luau",
+    "e2e/candlelit-parlor/src/Components/ParlorButton.luau"
+  ],
+  "screens": [
+    "HUD",
+    "Shop",
+    "ShopOffers",
+    "Dialog"
+  ],
+  "components": [
+    "ParlorWindow",
+    "ItemRow",
+    "CurrencyDisplay",
+    "IconTile",
+    "BuyPill",
+    "ParlorButton",
+    "SectionHeader (local to ShopOffers story)",
+    "Banner offer (inline composition in ShopOffers story)"
+  ],
+  "observations": [
+    {
+      "id": "OBS-CANDLELIT-PARLOR-001",
+      "category": "structure",
+      "subject": "Storybook surface registry",
+      "observed": "The storybook registers one story root, `script.Parent.Stories`; the inspected root contains four screen stories: HUD, Shop, ShopOffers, and Dialog.",
+      "inferredPurpose": "Expose three standard showcase surfaces plus one taste-specific offer surface from a single UI-Labs story root.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/CandlelitParlor.storybook.luau",
+          "lines": "1-5",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "34-99",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "54-106",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "67-195",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Dialog.story.luau",
+          "lines": "26-71",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-002",
+      "category": "structure",
+      "subject": "HUD screen composition",
+      "observed": "HUD places a single gold currency readout at top-left, three labeled launchers (Shop, Items, Settings) in a horizontal top-right row, and one cream Play action at bottom-center. Items alone carries the configurable numeric badge.",
+      "inferredPurpose": "Provide the standard showcase's currency, launcher, badge, and dominant-action slots while leaving the lower corners visually clear.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "37-52",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "54-85",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "87-95",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "474-477",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-003",
+      "category": "structure",
+      "subject": "Standard Shop catalog",
+      "observed": "Shop renders six fixed products—Acorn, Feather, Crystal, Lantern, Compass, and Crown—with prices 25, 40, 120, 150, 600, and 2500. Every row uses the gold purchase variant; Crown alone is flagged `emphasized`.",
+      "inferredPurpose": "Keep showcase content fixed while expressing all ordinary purchases through the taste's commerce accent and reserving stronger gold treatment for the top item.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "33-49",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "61-77",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "276-289",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-004",
+      "category": "structure",
+      "subject": "Shop list grammar versus source shop pattern",
+      "observed": "The implemented Shop is a single vertical list of six full-width 84px ItemRow strips. The source screen pattern instead describes section banners followed by a row of three product cards plus a Back tile in the first card slot.",
+      "inferredPurpose": "Adapt the standard six-item set to a scrollable editorial list while retaining the source's stated full-width-strip density; this is an implementation reconciliation, not the source shop pattern verbatim.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "1-21",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "51-77",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "1-20",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "331-341",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "478-485",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-005",
+      "category": "structure",
+      "subject": "ShopOffers accent sections",
+      "observed": "ShopOffers vertically composes a Knobs header and hint, a 104px gold banner with headline/caption/price, then a Revives header and hint followed by two rose purchase controls priced 39 and 99.",
+      "inferredPurpose": "Exercise both halves of the source's signature commerce-gold versus life-rose split, which the all-commerce standard Shop does not show.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "1-13",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "95-110",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "120-170",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "172-190",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "250-252",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "478-484",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-006",
+      "category": "structure",
+      "subject": "Dialog anatomy",
+      "observed": "Dialog reuses ParlorWindow at 420x220, with a wrapped serif body followed by one full-width 56px ParlorButton labeled Confirm. Its only dismissal affordances are the inherited close glyph and inherited dim layer; no separate Cancel control is instantiated.",
+      "inferredPurpose": "Represent confirmation with the nearest existing taste-native window anatomy rather than introduce a bespoke dialog component.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Dialog.story.luau",
+          "lines": "1-16",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Dialog.story.luau",
+          "lines": "35-66",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "420-432",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-007",
+      "category": "structure",
+      "subject": "ParlorWindow anatomy",
+      "observed": "ParlorWindow is a full-screen transparent root containing an optional full-screen dim button and a centered CanvasGroup panel. The panel has 28px padding, a transparent 52px header with left title and right 44px close target, then a content frame offset below the header by 16px.",
+      "inferredPurpose": "Create the source's dim → window composition and keep header chrome separate from vertically composed story content.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "19-20",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "83-107",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "122-149",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "171-189",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "438-447",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-008",
+      "category": "responsive",
+      "subject": "Standard Shop window sizing",
+      "observed": "Shop requests 85% of viewport width and height and caps the panel at 560x560 through ParlorWindow's UISizeConstraint. Its content ScrollingFrame fills the resulting content area.",
+      "inferredPurpose": "Keep the standard Shop inside small viewports while preserving a desktop maximum.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "83-100",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "99-115",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "342-345",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-009",
+      "category": "responsive",
+      "subject": "Fixed-size secondary surfaces",
+      "observed": "ShopOffers requests 640x480 and Dialog requests 420x220. ParlorWindow applies only an upper MaxSize (default 560x560); there is no minimum-size or content-reflow logic in the window component.",
+      "inferredPurpose": "Preserve authored editorial proportions for the secondary stories, at the cost of less complete short-viewport adaptation than the scale-sized standard Shop.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "86-98",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Dialog.story.luau",
+          "lines": "35-49",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "99-126",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-010",
+      "category": "responsive",
+      "subject": "HUD top inset strategy",
+      "observed": "HUD reads `GuiService:GetGuiInset().Y` during render and adds it to the currency and launcher Y offsets. It does not instantiate ScreenGui or set DeviceSafeInsets in the story slice.",
+      "inferredPurpose": "Clear the story harness top bar with a live inset rather than a hardcoded offset.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "18-21",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "41-63",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "349-352",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-011",
+      "category": "hierarchy",
+      "subject": "Three-voice typography hierarchy",
+      "observed": "Theme maps display/eyebrow/label to Montserrat bold weights, headings/body to Merriweather, and CTAs to Oswald Bold. Display and heading reference 40px, CTA 36px, eyebrow 28px, label 24px, and body/caption 16px; Montserrat/Oswald roles are marked uppercase while Merriweather roles are not.",
+      "inferredPurpose": "Separate merchandise emphasis, parlor narrative voice, and lobby action voice without adding colors.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "34-50",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "32-64",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "297-324",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-012",
+      "category": "responsive",
+      "subject": "Text scaling policy",
+      "observed": "Window titles, primary CTA text, launcher labels/glyphs, banner headline, and item titles use TextScaled with maximum-size constraints; body, caption, tier, currency, and purchase amounts use fixed TextSize values.",
+      "inferredPurpose": "Allow high-level display text to fit variable containers while keeping small reading text stable.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "133-143",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorButton.luau",
+          "lines": "79-96",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/IconTile.luau",
+          "lines": "86-110",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "130-160",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "155-193",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "321-324",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-013",
+      "category": "hierarchy",
+      "subject": "ItemRow information order",
+      "observed": "Each ItemRow is an 84px full-width button with a 60px left image well, a middle vertical stack of mixed-case serif title and uppercase 14px dim tier, and a gold BuyPill anchored flush right. Crown swaps to an emphasized fill gradient and adds the commerce gradient plus 1px rim to its title.",
+      "inferredPurpose": "Make item identity primary, tier secondary, and purchase action terminal while giving exactly one catalog item stronger commerce emphasis.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "44-61",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "73-120",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "125-146",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "155-207",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "160-165",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-014",
+      "category": "hierarchy",
+      "subject": "Offer banner hierarchy",
+      "observed": "The gold banner reserves 150px at right, vertically stacks a scaled uppercase display headline above a fixed uppercase caption on the left, applies a cream-to-gold vertical gradient and 1px contextual rim to the headline, and anchors the gold price control at right-center.",
+      "inferredPurpose": "Make the offer amount/message dominate while keeping purchase cost immediately scannable.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "108-170",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "90-93",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "313-318",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "444-447",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-015",
+      "category": "visual-style",
+      "subject": "Core one-ink palette",
+      "observed": "Theme centralizes candle-cream `#FFDEBC` as both primary and outline, warm-plum `#1A0F10` as the window surface, `#26150E` at 0.2 transparency as dark chrome, rose-parchment/dim text inks, and separate gold and rose accent families.",
+      "inferredPurpose": "Build hierarchy mainly with size, opacity, and role while restricting hue changes to commerce and life contexts.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "13-32",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "14-30",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "242-252",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-016",
+      "category": "visual-style",
+      "subject": "Dark-glass panel and thin-edge styling",
+      "observed": "ParlorWindow uses the warm surface at 0.08 transparency, 12px corners, a 2px cream border stroke, and no shadow node. ItemRow uses a 0.1-transparent vertical olive-gold gradient, 8px corners, and deliberately no UIStroke.",
+      "inferredPurpose": "Use translucency plus thin illuminated edges for depth while allowing product artwork strips to remain the major strokeless exception.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "54-68",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "86-87",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "99-126",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "78-115",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "354-378",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "448-454",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-017",
+      "category": "visual-style",
+      "subject": "Gold and rose purchase variants",
+      "observed": "BuyPill has exactly two variants: gold uses currency-soft fill/currency-ink text and rose uses danger fill/danger-ink text. Both render a 36px-high, 8px-corner, strokeless inner rectangle with platform-currency glyph before the amount inside a 44px transparent touch root.",
+      "inferredPurpose": "Keep commerce and life purchases visually distinct while sharing one price-tag anatomy and minimum target size.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Components/BuyPill.luau",
+          "lines": "18-32",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/BuyPill.luau",
+          "lines": "58-100",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/BuyPill.luau",
+          "lines": "107-129",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "111-124",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "433-437",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-018",
+      "category": "visual-style",
+      "subject": "Derived currency display",
+      "observed": "The implementation adds a passive 36px gold currency display using the purchase pill's fill/ink pair, 8px corners, a currency glyph, comma-grouped amount text, and no Activated handler. The source explicitly says currency-bar was unobserved and intentionally undefined.",
+      "inferredPurpose": "Fill a required HUD showcase slot by reusing the closest taste-native passive reading of the commerce system rather than inventing another hue.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "124-137",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/CurrencyDisplay.luau",
+          "lines": "1-27",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/CurrencyDisplay.luau",
+          "lines": "30-71",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "199-204",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "462-467",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-019",
+      "category": "interaction",
+      "subject": "Press and disabled feedback",
+      "observed": "ParlorButton, IconTile, and BuyPill disable Roblox's automatic button color, brighten their fill on MouseButton1Down over 0.1s, and restore over 0.25s on MouseButton1Up or MouseLeave. Disabled controls use 0.45 transparency and suppress activation. The exact 12% color lerps and 0.45 disabled value are derived implementation constants.",
+      "inferredPurpose": "Supply restrained brightness feedback without scale squash or bounce, and make disabled controls visibly quieter.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "99-113",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorButton.luau",
+          "lines": "15-35",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorButton.luau",
+          "lines": "49-74",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/IconTile.luau",
+          "lines": "22-46",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/IconTile.luau",
+          "lines": "126-151",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/BuyPill.luau",
+          "lines": "34-54",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/BuyPill.luau",
+          "lines": "58-83",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "400-417",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "462-465",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-020",
+      "category": "interaction",
+      "subject": "ItemRow interaction",
+      "observed": "The whole ItemRow is a TextButton. Press lowers its background transparency from 0.1 to 0.02 over the instant tween, release/leave restores 0.1 over the fast tween, row activation calls `onActivated` when supplied, and its nested BuyPill separately receives `onBuy`.",
+      "inferredPurpose": "Allow both row-level inspection and a dedicated purchase target while giving the strokeless artwork strip a fill lift rather than a stroke lift.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "47-69",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "78-100",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "200-208",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-021",
+      "category": "interaction",
+      "subject": "Close gating in included stories",
+      "observed": "ParlorWindow's dim layer and close button both call `requestClose`, but that function immediately returns when `onClose` is absent. Shop, ShopOffers, and Dialog do not pass `onClose`, so their visible dim and × controls do not dismiss the showcased window.",
+      "inferredPurpose": "The stories appear intended primarily as visual showcases; lifecycle ownership is left to a caller that the stories do not provide.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "62-80",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "89-97",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "145-169",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "83-102",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "90-193",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Dialog.story.luau",
+          "lines": "39-67",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-022",
+      "category": "scrolling",
+      "subject": "Shop scrolling strategy",
+      "observed": "Only the standard Shop instantiates a ScrollingFrame. It fills the window content, uses an explicit canvas height of `(84 + 12) * 6` pixels, and shows a 4px cream scrollbar at 0.5 transparency. The list itself uses UIListLayout with 12px gaps.",
+      "inferredPurpose": "Keep all six full-width rows reachable within the responsive panel while styling the scroll indicator inside the one-ink palette.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "51-77",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "94-102",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-023",
+      "category": "layering",
+      "subject": "Window z-index assignments",
+      "observed": "ParlorWindow assigns the dim layer ZIndex 10 and panel ZIndex 11. Header/content descendants use ZIndex 2–4, and the component does not configure a ScreenGui or ZIndexBehavior within the inspected slice.",
+      "inferredPurpose": "The explicit dim/panel pair mirrors the source's dim-before-window layering, but the effective descendant ordering depends on the mount's external ZIndexBehavior.",
+      "inferenceConfidence": "medium",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "83-107",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "128-189",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "372-378",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-024",
+      "category": "layering",
+      "subject": "Dim overlay value and default",
+      "observed": "ParlorWindow shows its dim layer unless `showDim == false`. The implementation derives the overlay as pure black at 0.55 transparency; ShopOffers exposes ShowDim with default true, while Shop and Dialog take the component default.",
+      "inferredPurpose": "Provide consistent popup separation from the dark world backdrop despite the source being unable to extract the overlay's actual opacity.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "109-116",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "39-45",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "88-98",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "67-74",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "90-94",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "372-376",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-025",
+      "category": "motion",
+      "subject": "Window entrance and exit motion",
+      "observed": "On mount the panel starts 2% below its final Y position at GroupTransparency 1, then tweens to final position and zero group transparency over the source's 0.45s Sine-Out entrance. A valid close request fades the panel and dim over 0.25s Sine-In and invokes `onClose` after the panel tween completes. Close-glyph press color uses the 0.1s settle tween; there is no scale animation.",
+      "inferredPurpose": "Keep popup motion fade-first and quiet, with exit faster than entrance and no overshoot.",
+      "inferenceConfidence": "high",
+      "origin": "design-source",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "70-77",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "22-36",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "47-80",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "153-168",
+          "kind": "implementation"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "398-417",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-026",
+      "category": "input",
+      "subject": "Implemented input modality surface",
+      "observed": "Interactive components use mouse-specific down/up/leave events for visual press state and Roblox `Activated` for the semantic action. The dim backdrop also uses Activated. CurrencyDisplay has no action handler. No explicit keyboard focus, gamepad selection, touch gesture, hover-enter, or text-entry handler appears in the inspected implementation.",
+      "inferredPurpose": "Rely on Activated for cross-modality activation while keeping pointer press visuals simple; modality-specific navigation behavior is left to Roblox defaults or an external mount.",
+      "inferenceConfidence": "medium",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorButton.luau",
+          "lines": "49-74",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/IconTile.luau",
+          "lines": "126-151",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/BuyPill.luau",
+          "lines": "58-83",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "78-100",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+          "lines": "89-97",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/CurrencyDisplay.luau",
+          "lines": "1-11",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-027",
+      "category": "visual-style",
+      "subject": "Image asset treatment",
+      "observed": "Theme holds concrete Roblox image IDs for three HUD launchers and six catalog items. IconTile always tints launcher images cream; ItemRow tints only assets marked tintable and renders Acorn, Lantern, and Crown at identity tint.",
+      "inferredPurpose": "Apply the one-ink rule to monochrome icons without recoloring baked full-color item art.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "167-217",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/IconTile.luau",
+          "lines": "56-80",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "125-138",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "34-48",
+          "kind": "story"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-028",
+      "category": "hierarchy",
+      "subject": "Launcher badge transplant",
+      "observed": "IconTile conditionally places a 28x28 dark, 20%-transparent badge overlapping the launcher's top-right, with 8px corners, a 3px cream stroke, and cream numeral. HUD attaches it to Items, whereas the source defines badge-slot as a top-left hotbar keybind tag.",
+      "inferredPurpose": "Reuse the strongest documented interaction-hint treatment to satisfy the HUD showcase's notification badge slot, despite changing its host and placement.",
+      "inferenceConfidence": "high",
+      "origin": "required-by-skill",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Components/IconTile.luau",
+          "lines": "165-189",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "1-13",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "76-80",
+          "kind": "story"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "455-461",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "486-490",
+          "kind": "design-source"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-029",
+      "category": "verification",
+      "subject": "Recorded Studio verification claims",
+      "observed": "Implementation comments record a 2026-07-13 Studio verification/reverification that removed ItemRow borders after the bordered list read as boxed cells, and record in-engine verification for the selected image assets plus exclusion of a Compass sibling said to fail IsLoaded.",
+      "inferredPurpose": "Document why the current strokeless strip and canonical asset IDs were chosen after visual/runtime inspection.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "139-170",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "173-216",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ItemRow.luau",
+          "lines": "6-20",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-030",
+      "category": "interaction",
+      "subject": "Showcase action outcomes",
+      "observed": "HUD passes no activation callbacks to Play or its three launchers; Shop passes neither row activation nor purchase callbacks; ShopOffers passes no callback to its purchase pills; Dialog passes no callback to Confirm. Consequently the components can show press feedback, but the included stories define no navigation, purchase, confirmation, or dismissal state transition.",
+      "inferredPurpose": "Keep these stories as visual/component showcases rather than end-to-end product flows.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "50-95",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "61-77",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "165-190",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Dialog.story.luau",
+          "lines": "51-66",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/ParlorButton.luau",
+          "lines": "70-73",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/IconTile.luau",
+          "lines": "147-150",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Components/BuyPill.luau",
+          "lines": "79-82",
+          "kind": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "OBS-CANDLELIT-PARLOR-031",
+      "category": "verification",
+      "subject": "Source-state provenance versus implemented states",
+      "observed": "The design source says pressed, disabled, and selected variants were not observed and were not defined, offering only default guidance for pressed and disabled. The implementation defines pressed and disabled behavior, but none of the story controls expose a disabled or selected scenario.",
+      "inferredPurpose": "Fill basic interactive-state gaps conservatively without claiming those states came from the screenshots.",
+      "inferenceConfidence": "high",
+      "origin": "implementation-choice",
+      "evidence": [
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "223-225",
+          "kind": "design-source"
+        },
+        {
+          "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+          "lines": "462-467",
+          "kind": "design-source"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Theme.luau",
+          "lines": "99-113",
+          "kind": "implementation"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/HUD.story.luau",
+          "lines": "37-40",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+          "lines": "54-59",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+          "lines": "67-75",
+          "kind": "story"
+        },
+        {
+          "path": "e2e/candlelit-parlor/src/Stories/Dialog.story.luau",
+          "lines": "26-33",
+          "kind": "story"
+        }
+      ]
+    }
+  ],
+  "absences": [
+    {
+      "subject": "Source button-secondary, text-input, utility chip, and Back tile are absent from the implemented Shop",
+      "evidence": "The source calls for button-secondary and text-input anatomy (`design-md/candlelit-parlor/DESIGN.roblox.md:426-447`) and a Shop header with utility chip/code input plus a Back tile (`design-md/candlelit-parlor/DESIGN.roblox.md:478-485`); implemented Shop contains only ParlorWindow plus the ItemRow ScrollingFrame (`e2e/candlelit-parlor/src/Stories/Shop.story.luau:61-102`)."
+    },
+    {
+      "subject": "No source-shaped three-card grid in the standard Shop",
+      "evidence": "The source specifies ~0.92:1 product cards and a three-card row (`design-md/candlelit-parlor/DESIGN.roblox.md:147-154`, `design-md/candlelit-parlor/DESIGN.roblox.md:478-484`); Shop instantiates only full-width ItemRows (`e2e/candlelit-parlor/src/Stories/Shop.story.luau:61-77`), and ItemRow fixes the strip to full width by 84px (`e2e/candlelit-parlor/src/Components/ItemRow.luau:78-84`)."
+    },
+    {
+      "subject": "ItemRow omits the source card's bottom price strip and over-render amount anatomy",
+      "evidence": "The source card-grid puts rimmed amount digits over the render and a darker translucent price strip along the bottom (`design-md/candlelit-parlor/DESIGN.roblox.md:448-454`); ItemRow instead uses left image, middle title/tier, and a flush-right BuyPill (`e2e/candlelit-parlor/src/Components/ItemRow.luau:117-207`)."
+    },
+    {
+      "subject": "ShopOffers banner has no left item render",
+      "evidence": "The source banner-offer explicitly includes an item render on the left (`design-md/candlelit-parlor/DESIGN.roblox.md:444-447`); the inline banner's children are padding, TextStack, and Price only (`e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau:108-170`)."
+    },
+    {
+      "subject": "No hotbar-slot, durability progress bar, overflow slot, underline rail, objective, or gameplay inventory HUD is implemented",
+      "evidence": "Those hotbar elements are described in the source (`design-md/candlelit-parlor/DESIGN.roblox.md:455-461`, `design-md/candlelit-parlor/DESIGN.roblox.md:486-494`), while the HUD story contains only CurrencyDisplay, three IconTiles, and Play (`e2e/candlelit-parlor/src/Stories/HUD.story.luau:42-95`)."
+    },
+    {
+      "subject": "No explicit clipping policy is configured",
+      "evidence": "ParlorWindow declares root, dim, panel, header, and content properties without `ClipsDescendants` (`e2e/candlelit-parlor/src/Components/ParlorWindow.luau:83-189`); the only clipping-capable viewport instantiated is Shop's ScrollingFrame (`e2e/candlelit-parlor/src/Stories/Shop.story.luau:94-102`)."
+    },
+    {
+      "subject": "No tabs, side rail, tooltip, footer, or pagination",
+      "evidence": "The source explicitly says the observed Shop has no tabs/side rail and that tooltip is undefined and footer unknown (`design-md/candlelit-parlor/DESIGN.roblox.md:462-467`, `design-md/candlelit-parlor/DESIGN.roblox.md:478-485`); none are added around the implemented Shop list (`e2e/candlelit-parlor/src/Stories/Shop.story.luau:83-103`)."
+    },
+    {
+      "subject": "No explicit keyboard/gamepad focus map, touch gesture, or hover-enter state",
+      "evidence": "Interactive components expose MouseButton1Down/Up, MouseLeave, and Activated only (`e2e/candlelit-parlor/src/Components/ParlorButton.luau:49-74`, `e2e/candlelit-parlor/src/Components/IconTile.luau:126-151`, `e2e/candlelit-parlor/src/Components/BuyPill.luau:58-83`, `e2e/candlelit-parlor/src/Components/ItemRow.luau:78-100`)."
+    },
+    {
+      "subject": "No explicit ScreenGui safe-inset configuration",
+      "evidence": "The source recommends DeviceSafeInsets and GetInsetArea (`design-md/candlelit-parlor/DESIGN.roblox.md:349-352`); HUD instead reads only GetGuiInset.Y and returns a Frame (`e2e/candlelit-parlor/src/Stories/HUD.story.luau:41-63`)."
+    },
+    {
+      "subject": "No executable verification assertions or behavior checks",
+      "evidence": "The registered artifacts are visual stories (`e2e/candlelit-parlor/src/CandlelitParlor.storybook.luau:1-5`); verification appears only as implementation comments describing prior Studio inspection (`e2e/candlelit-parlor/src/Theme.luau:139-170`, `e2e/candlelit-parlor/src/Components/ItemRow.luau:6-20`) and the stories themselves contain no assertions (`e2e/candlelit-parlor/src/Stories/HUD.story.luau:34-99`, `e2e/candlelit-parlor/src/Stories/Shop.story.luau:54-106`, `e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau:67-195`, `e2e/candlelit-parlor/src/Stories/Dialog.story.luau:26-71`)."
+    },
+    {
+      "subject": "No selected-state presentation and no disabled-state story",
+      "evidence": "The source says selected/pressed/disabled states were unobserved (`design-md/candlelit-parlor/DESIGN.roblox.md:223-225`, `design-md/candlelit-parlor/DESIGN.roblox.md:462-465`); story controls expose values/text/dim only and no disabled or selected control (`e2e/candlelit-parlor/src/Stories/HUD.story.luau:37-40`, `e2e/candlelit-parlor/src/Stories/Shop.story.luau:54-59`, `e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau:67-75`, `e2e/candlelit-parlor/src/Stories/Dialog.story.luau:26-33`)."
+    },
+    {
+      "subject": "No functional screen transitions or purchase outcomes",
+      "evidence": "The story callsites omit onActivated/onBuy/onClose (`e2e/candlelit-parlor/src/Stories/HUD.story.luau:50-95`, `e2e/candlelit-parlor/src/Stories/Shop.story.luau:61-102`, `e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau:90-190`, `e2e/candlelit-parlor/src/Stories/Dialog.story.luau:39-66`), while components invoke outcomes only when callbacks exist (`e2e/candlelit-parlor/src/Components/ParlorWindow.luau:62-80`, `e2e/candlelit-parlor/src/Components/BuyPill.luau:79-82`, `e2e/candlelit-parlor/src/Components/ParlorButton.luau:70-73`)."
+    }
+  ],
+  "uncertainties": [
+    "All three source screenshots were crops with unknown viewports, and the source warns every pixel token may share a constant-factor skew (`design-md/candlelit-parlor/DESIGN.roblox.md:194-203`, `design-md/candlelit-parlor/DESIGN.roblox.md:326-327`).",
+    "Motion is not an observed taste fact: the source had no video and labels its entire motion block an unmodified family preset/default (`design-md/candlelit-parlor/DESIGN.roblox.md:190-204`, `design-md/candlelit-parlor/DESIGN.roblox.md:400-402`), even though the implementation realizes those values (`e2e/candlelit-parlor/src/Components/ParlorWindow.luau:22-80`).",
+    "The source could not extract dim-overlay opacity (`design-md/candlelit-parlor/DESIGN.roblox.md:199-203`, `design-md/candlelit-parlor/DESIGN.roblox.md:374-376`); implementation value 0.55 is therefore derived and still marked 'verify in-game' (`e2e/candlelit-parlor/src/Theme.luau:109-116`).",
+    "The source HUD map is low-confidence because no full gameplay view was provided (`design-md/candlelit-parlor/DESIGN.roblox.md:471-472`), so the implementation's top-left currency, top-right launchers, and bottom-center Play cannot be validated against an observed full HUD (`e2e/candlelit-parlor/src/Stories/HUD.story.luau:42-95`).",
+    "Safe-area guidance is itself defaulted and low-confidence in the source (`design-md/candlelit-parlor/DESIGN.roblox.md:349-352`); the implementation uses GetGuiInset rather than the specified GetInsetArea/DeviceSafeInsets path (`e2e/candlelit-parlor/src/Stories/HUD.story.luau:18-21`, `e2e/candlelit-parlor/src/Stories/HUD.story.luau:41-63`).",
+    "ParlorWindow comments say a 560x560 fixed Shop failure was verified at 667x375 (`e2e/candlelit-parlor/src/Components/ParlorWindow.luau:109-114`), but there is no executable assertion in the assigned files; ShopOffers still requests a 480px height (`e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau:90-93`), so its behavior on a 375px-high viewport is not established.",
+    "The source footer was cropped and conventions are unknown (`design-md/candlelit-parlor/DESIGN.roblox.md:478-485`); the implementation provides no footer from which to resolve that uncertainty (`e2e/candlelit-parlor/src/Stories/Shop.story.luau:83-103`).",
+    "Effective z-order of ParlorWindow descendants is mount-dependent because the slice assigns dim/panel ZIndex 10/11 but header/content descendants 2–4 and does not configure ZIndexBehavior (`e2e/candlelit-parlor/src/Components/ParlorWindow.luau:83-189`); the source assumes Sibling ZIndexBehavior bands (`design-md/candlelit-parlor/DESIGN.roblox.md:377-378`).",
+    "Comments attribute the fixed catalog, badge transplant, and asset selection to external showcase/asset-sourcing policies (`e2e/candlelit-parlor/src/Stories/Shop.story.luau:1-28`, `e2e/candlelit-parlor/src/Stories/HUD.story.luau:1-16`, `e2e/candlelit-parlor/src/Theme.luau:167-216`), but those external policy files were outside the assigned inspection target, so only the implementation's stated provenance—not the external requirements themselves—was verified."
+  ]
+}

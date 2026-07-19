@@ -1,12 +1,15 @@
-// Syncs the canonical spec into each skill's references/spec/ bundle so the
-// skills work STANDALONE when installed via `npx skills add` (users who
-// install a skill don't have this repository). Run after editing SPEC.md or
-// spec/spec-config.yaml, before committing:
+// Syncs canonical documents into standalone skill reference bundles. The
+// screenshot extraction and react-lua implementation skills receive the
+// DESIGN.roblox.md spec and zero-dependency linter. The visual-design skill
+// receives the evidence-backed design rulebook, registry, and source index.
+// Users who install one skill do not have the rest of this repository.
+//
+// Run after editing the canonical spec, linter, or design-rule documents:
 //
 //   node tools/sync-skill-bundles.mjs
 //
-// The repo-root files remain the single source of truth; the bundles are
-// generated copies with a provenance header.
+// Repository-root files remain the single sources of truth; the bundles are
+// generated copies with provenance headers.
 import fs from "node:fs";
 import path from "node:path";
 import { execSync } from "node:child_process";
@@ -21,6 +24,7 @@ const YAML_HEADER =
   "# Regenerate with: node tools/sync-skill-bundles.mjs\n";
 
 const SKILLS = ["skills/screenshot-to-designmd", "skills/designmd-to-react-lua"];
+const DESIGN_SKILL = "skills/roblox-ui-design";
 
 // Single-file linter bundle (js-yaml inlined by esbuild) so standalone skill
 // installs can lint with plain `node lint.bundle.mjs <file>` — it resolves
@@ -49,4 +53,33 @@ for (const skill of SKILLS) {
   fs.copyFileSync(bundleOut, path.join(linterDest, "lint.bundle.mjs"));
   console.log(`synced spec + linter bundle -> ${skill}/references/`);
 }
+const designReferences = path.join(ROOT, DESIGN_SKILL, "references");
+fs.mkdirSync(designReferences, { recursive: true });
+const designRulesBundle = fs
+  .readFileSync(
+    path.join(ROOT, "docs", "roblox-ui-rules", "design-rules.md"),
+    "utf8"
+  )
+  .replace("./design-sources.md", "./sources.md")
+  .replace(
+    "、実装・engine側のルールは [`rules.md`](./rules.md) を参照する。",
+    "。"
+  );
+fs.writeFileSync(
+  path.join(designReferences, "design-rules.md"),
+  HEADER + designRulesBundle
+);
+fs.copyFileSync(
+  path.join(ROOT, "docs", "roblox-ui-rules", "design-registry.json"),
+  path.join(designReferences, "design-registry.json")
+);
+fs.writeFileSync(
+  path.join(designReferences, "sources.md"),
+  HEADER +
+    fs.readFileSync(
+      path.join(ROOT, "docs", "roblox-ui-rules", "design-sources.md"),
+      "utf8"
+    )
+);
+console.log(`synced design rule bundle -> ${DESIGN_SKILL}/references/`);
 fs.rmSync(bundleOut); // intermediate; the shipped copies live in the skills

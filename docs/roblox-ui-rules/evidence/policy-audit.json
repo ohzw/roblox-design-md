@@ -1,0 +1,835 @@
+{
+  "filesInspected": [
+    "skills/designmd-to-react-lua/SKILL.md",
+    "skills/designmd-to-react-lua/references/asset-sourcing.md",
+    "skills/designmd-to-react-lua/references/generation-procedure.md",
+    "skills/designmd-to-react-lua/references/layout-rules.md",
+    "skills/designmd-to-react-lua/references/motion-implementation.md",
+    "skills/designmd-to-react-lua/references/react-lua-rules.md",
+    "skills/designmd-to-react-lua/references/standard-showcase.md",
+    "skills/designmd-to-react-lua/references/verification.md",
+    "skills/designmd-to-react-lua/references/spec/SPEC.md",
+    "skills/designmd-to-react-lua/references/spec/spec-config.yaml",
+    "skills/screenshot-to-designmd/SKILL.md",
+    "skills/screenshot-to-designmd/references/extraction-procedure.md",
+    "skills/screenshot-to-designmd/references/font-mapping.md",
+    "skills/screenshot-to-designmd/references/input-checklist.md",
+    "skills/screenshot-to-designmd/references/motion-presets.md",
+    "skills/screenshot-to-designmd/references/spec/SPEC.md",
+    "skills/screenshot-to-designmd/references/spec/spec-config.yaml",
+    "skills/screenshot-to-designmd/references/linter/lint.bundle.mjs",
+    "skills/screenshot-to-designmd/calibration/2026-07-12-round-trip/report.md",
+    "docs/phase4-e2e-report.md"
+  ],
+  "policies": [
+    {
+      "id": "POLICY-001",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "Inside the catalog repository, the implementation generator is told to read components from the hand-built cartoon-chunky preview-place to absorb its register before generating; later guidance names four preview-place components as worked examples to imitate.",
+      "canExplainPatterns": [
+        "preview-place-like module boundaries",
+        "shared component implementation shapes",
+        "shared naming and code register even across unrelated tastes"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/SKILL.md",
+          "lines": "10-15"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/generation-procedure.md",
+          "lines": "118-121"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-002",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "DESIGN.roblox.md sections that are present must use one canonical order, with duplicate canonical sections rejected and unknown sections preserved.",
+      "canExplainPatterns": [
+        "the same section sequence across extracted tastes",
+        "the same eleven-section document skeleton",
+        "identical placement of Roblox extension sections"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/spec-config.yaml",
+          "lines": "5-23"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "19-38"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "249-268"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/spec/spec-config.yaml",
+          "lines": "1-23"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-003",
+      "classification": "architecture",
+      "strength": "recommended",
+      "statement": "Extraction should use the configured recommended token names whenever they fit and invent names only when the recommendations do not cover the concept, explicitly to make runs near-deterministic.",
+      "canExplainPatterns": [
+        "shared color keys such as primary, surface, outline, and currency-soft",
+        "shared typography tiers display, heading, body, label, and caption",
+        "shared spacing and rounded token ladders"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/SKILL.md",
+          "lines": "59-62"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/spec-config.yaml",
+          "lines": "178-203"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/calibration/2026-07-12-round-trip/report.md",
+          "lines": "46-51"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-004",
+      "classification": "aesthetic-default",
+      "strength": "required",
+      "statement": "Colors are assigned to prescribed semantic roles by behavior rather than hue, including primary, danger, surface roles, currency roles, rarity accent, outline, and dim.",
+      "canExplainPatterns": [
+        "the same semantic palette role names across independent tastes",
+        "dominant forward actions consistently becoming primary",
+        "close or destructive controls consistently becoming danger"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/SKILL.md",
+          "lines": "38-49"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/extraction-procedure.md",
+          "lines": "89-107"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "105-109"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-005",
+      "classification": "aesthetic-default",
+      "strength": "required",
+      "statement": "Observed lettering is mapped to the nearest family in a normative Roblox font-family table; Gotham and Arial families must never be emitted because the engine removed and remaps them.",
+      "canExplainPatterns": [
+        "repeated FredokaOne for rounded cartoon lettering",
+        "repeated Montserrat or BuilderSans for neutral lettering",
+        "repeated Oswald for condensed heavy lettering",
+        "absence of Gotham and Arial in generated code"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/references/font-mapping.md",
+          "lines": "1-17"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "120-160"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-006",
+      "classification": "aesthetic-default",
+      "strength": "required",
+      "statement": "Measured geometry is rounded to friendly steps: spacing to 4px, radii to 2px, and strokes to 1px.",
+      "canExplainPatterns": [
+        "geometry concentrated on common integer steps",
+        "recurring multiples of four in spacing",
+        "recurring even-number radii",
+        "integer stroke widths"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/references/extraction-procedure.md",
+          "lines": "43-45"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-007",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "Observed typography sizes are normalized into five named tiers—display, heading, body, label, and caption—and unobserved tiers are skipped.",
+      "canExplainPatterns": [
+        "the same typography tier taxonomy across tastes",
+        "consistent omission of unobserved tiers",
+        "similar bindings between headings, buttons, body copy, and captions"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/references/extraction-procedure.md",
+          "lines": "112-119"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/spec-config.yaml",
+          "lines": "192-201"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-008",
+      "classification": "aesthetic-default",
+      "strength": "required",
+      "statement": "Every still-image extraction ships one of four taste-family motion preset blocks; video may override values only through bucket classification, and motion must not be claimed as observed without video.",
+      "canExplainPatterns": [
+        "identical duration ladders within taste-family classifications",
+        "shared easing combinations such as Back Out plus Quad Out/In",
+        "common overshoot, fade, slide, or no-bounce prose within a family",
+        "low Motion confidence when no video exists"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/references/motion-presets.md",
+          "lines": "1-59"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/motion-presets.md",
+          "lines": "61-77"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "175-188"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/SKILL.md",
+          "lines": "44-46"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-009",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "Every ornament must be classified as either a Roblox UI primitive or a pre-rendered image asset; differing-per-item visuals, baked type, 3D shading, and light bursts are treated as asset slots rather than primitive recipes.",
+      "canExplainPatterns": [
+        "shared ImageLabel boundaries for wordmarks, faceted items, and burst art",
+        "shared UIGradient/UIStroke/UICorner treatment for primitive fills and outlines",
+        "similar avoidance of reconstructed baked art"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/references/extraction-procedure.md",
+          "lines": "63-79"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "39-55"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/asset-sourcing.md",
+          "lines": "8-19"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-010",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "Generation starts with Theme.luau as a mechanical front-matter translation; component visuals bind to Theme, token names become camelCase fields, and literal visual constants outside Theme are defects except for values inlined by the DESIGN document.",
+      "canExplainPatterns": [
+        "a Theme.luau in every implementation",
+        "the same token-to-Luau table shapes",
+        "camelCase Theme field names",
+        "absence of literal colors and durations in components"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/SKILL.md",
+          "lines": "50-56"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/generation-procedure.md",
+          "lines": "34-57"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+          "lines": "118-126"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-011",
+      "classification": "aesthetic-default",
+      "strength": "required",
+      "statement": "When a needed visual value lacks a front-matter token but the taste gives a basis, it is derived in Theme and marked Derived; prescribed examples include sky-like backdrops for bright tastes, moody backdrops for dark tastes, pressed lifts, and dim washes.",
+      "canExplainPatterns": [
+        "shared Theme.derived tables",
+        "sky-like versus moody story backdrops",
+        "computed pressed colors and dim overlays centralized in Theme",
+        "complete derived rarity bevel sets"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/generation-procedure.md",
+          "lines": "58-69"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-012",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "The output uses a prescribed src tree with Theme, Components, Screens, Stories, and a storybook module; screens may compose themed components but may not draw styled repeating shapes inline.",
+      "canExplainPatterns": [
+        "identical directory trees",
+        "one component module per DESIGN component",
+        "separate screen and story modules",
+        "promotion of repeated styled rows and cells into components"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/generation-procedure.md",
+          "lines": "18-32"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/SKILL.md",
+          "lines": "25-27"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/generation-procedure.md",
+          "lines": "125-134"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-013",
+      "classification": "aesthetic-default",
+      "strength": "example",
+      "statement": "The component procedure presents two worked archetypes: a beveled root/Face structure whose bevel collapses when pressed, and a flat/translucent single-frame structure whose pressed feedback is a brightness or stroke lift.",
+      "canExplainPatterns": [
+        "root plus Face layering in chunky implementations",
+        "single-frame translucent panels in dark implementations",
+        "bevel collapse or brightness-lift press states"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/generation-procedure.md",
+          "lines": "88-101"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-014",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "Generated components implement pressed, disabled, and selected states through prescribed props/events and expose standard size, position, anchorPoint, layoutOrder, zIndex, and activation passthroughs.",
+      "canExplainPatterns": [
+        "matching prop names across unrelated components",
+        "useState-driven MouseButton1Down/Up/Leave handling",
+        "selected and disabled props on many modules",
+        "variant maps at module scope"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/generation-procedure.md",
+          "lines": "102-116"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+          "lines": "118-123"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-015",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "Repeating content must use UIListLayout or UIGridLayout, containers and screens are Scale-first with UIAspectRatioConstraint, and button/header text uses TextScaled plus UITextSizeConstraint while body/caption text uses fixed TextSize.",
+      "canExplainPatterns": [
+        "shared UIListLayout and UIGridLayout trees",
+        "shared Scale-based container sizing",
+        "UIAspectRatioConstraint on scale-driven elements",
+        "TextScaled headers and buttons but fixed-size body text"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+          "lines": "1-28"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "301-309"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-016",
+      "classification": "engine-constraint",
+      "strength": "required",
+      "statement": "Every generated ScreenGui explicitly sets ZIndexBehavior to Sibling because Global is the engine default and can hide default-ZIndex descendants under overlays.",
+      "canExplainPatterns": [
+        "ZIndexBehavior.Sibling in every ScreenGui",
+        "sibling shadow and panel layering",
+        "avoidance of child shadows behind parent panels"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+          "lines": "30-45"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/react-lua-rules.md",
+          "lines": "29-39"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "288-298"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/calibration/2026-07-12-round-trip/report.md",
+          "lines": "27-35"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-017",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "With Sibling behavior, generated ScreenGuis reserve DisplayOrder bands of HUD 0–9, windows 10–19, popups/toasts 20–29, and tooltips 30+, reproducing the bands with sibling ZIndex inside a single ScreenGui.",
+      "canExplainPatterns": [
+        "the same cross-screen layer bands",
+        "windows consistently above HUD",
+        "popups and tooltips consistently above windows"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+          "lines": "45-56"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-018",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "Any content-bearing window must use a Scale-first panel around 0.85 by 0.85 with a desktop MaxSize, keep header and close controls on-screen, and use a ScrollingFrame when content can overflow; delivery must also verify desktop and 667×375 landscape.",
+      "canExplainPatterns": [
+        "similar 0.85-scale window roots",
+        "UISizeConstraint desktop caps",
+        "scrolling shop/list content",
+        "667×375 responsive accommodations"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+          "lines": "86-105"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-019",
+      "classification": "accessibility",
+      "strength": "required",
+      "statement": "Every interactive element has a minimum 44px logical touch target; a smaller visual token stays at its taste size inside an invisible 44px-or-larger interactive root, while chunky tastes prefer 56px or more.",
+      "canExplainPatterns": [
+        "invisible enlarged hit roots around price pills",
+        "44px minimum close and icon buttons",
+        "56px-or-larger chunky controls"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/generation-procedure.md",
+          "lines": "105-108"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+          "lines": "108-114"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "315-318"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-020",
+      "classification": "accessibility",
+      "strength": "required",
+      "statement": "HUDs keep the joystick, jump-button, and topbar zones clear, and hover-only affordances require a touch-visible equivalent.",
+      "canExplainPatterns": [
+        "empty bottom-left and bottom-right HUD zones",
+        "top-offset HUD clusters",
+        "touch-visible alternatives to hover"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+          "lines": "108-114"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/SPEC.md",
+          "lines": "310-320"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-021",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "When a DESIGN document defines press squash, the implementation pattern is UIScale plus a ref plus TweenService; animatable values derive from Theme.motion and task.wait is forbidden for animation timing.",
+      "canExplainPatterns": [
+        "UIScale children on buttons and windows",
+        "TweenService-created press and entrance tweens",
+        "Theme.motion duration and easing lookups",
+        "MouseLeave restoring press scale"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/motion-implementation.md",
+          "lines": "3-8"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/motion-implementation.md",
+          "lines": "117-124"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-022",
+      "classification": "aesthetic-default",
+      "strength": "example",
+      "statement": "Worked motion snippets use a 0.92 press target and describe a 0.8-to-1.0 entrance pop as an example; those numbers are examples, not unconditional requirements.",
+      "canExplainPatterns": [
+        "repeated 0.92 press squash values",
+        "repeated 0.8 entrance start scales",
+        "similar press-in and press-out tween wiring"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/motion-implementation.md",
+          "lines": "10-29"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/motion-implementation.md",
+          "lines": "42-64"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-023",
+      "classification": "architecture",
+      "strength": "required",
+      "statement": "Catalog/e2e slices implement the same fixed showcase: the minimum component slots and exactly HUD.story, Shop.story, and Dialog.story with prescribed labels, counts, six ordered items, rarity roles, prices, and dialog copy.",
+      "canExplainPatterns": [
+        "identical story names",
+        "12,400 soft currency and 99 hard currency",
+        "SHOP, ITEMS, SETTINGS, and PLAY labels",
+        "Acorn, Feather, Crystal, Lantern, Compass, and Crown in the same order",
+        "prices 25, 40, 120, 150, 600, and 2500",
+        "shared confirm-dialog copy"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/SKILL.md",
+          "lines": "60-64"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/standard-showcase.md",
+          "lines": "1-27"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/standard-showcase.md",
+          "lines": "27-99"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-024",
+      "classification": "aesthetic-default",
+      "strength": "required",
+      "statement": "Standard Showcase implementations check and reuse an arbitrated canonical asset table first, after a taste-specific pixel check; fresh searches are the exception.",
+      "canExplainPatterns": [
+        "the same icon and item image IDs across tastes",
+        "shared Acorn, Feather, Crystal, Lantern, Compass, and Crown artwork",
+        "shared white tintable shop, item, settings, and currency icons"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/standard-showcase.md",
+          "lines": "82-84"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/asset-sourcing.md",
+          "lines": "78-104"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/asset-sourcing.md",
+          "lines": "104-122"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-025",
+      "classification": "verification",
+      "strength": "required",
+      "statement": "Every component and screen gets a UI-Labs story, stories use the prescribed React story shape and a world-like backdrop, and available verification proceeds through syntax, visual capture, numeric state/motion assertions, and a fixed rubric.",
+      "canExplainPatterns": [
+        "matching story module shapes",
+        "world-like story backdrops",
+        "controls for text, counts, disabled state, and progress",
+        "the same 3-second wayfinding, CTA, tap-target, contrast, and token-fidelity checks"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/generation-procedure.md",
+          "lines": "136-158"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/verification.md",
+          "lines": "3-15"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/verification.md",
+          "lines": "88-123"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-026",
+      "classification": "verification",
+      "strength": "required",
+      "statement": "Extraction records an input and element for every token, marks default-affected sections low confidence, states defaults inline, and never presents a default as observed.",
+      "canExplainPatterns": [
+        "similar extraction provenance blocks",
+        "low Motion confidence without video",
+        "explicit notes for omitted or defaulted sections",
+        "consistent omission of unseen components and states"
+      ],
+      "externallyGrounded": false,
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/SKILL.md",
+          "lines": "21-33"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/SKILL.md",
+          "lines": "51-52"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/SKILL.md",
+          "lines": "93-95"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/extraction-procedure.md",
+          "lines": "180-207"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-027",
+      "classification": "engine-constraint",
+      "strength": "required",
+      "statement": "Generation uses the React 17 Luau API surface and must not emit JSX, Roact APIs, Suspense/lazy/error boundaries, camelCase event props, legacy Font assignments, JavaScript ternaries, or JavaScript destructuring.",
+      "canExplainPatterns": [
+        "React.createElement calls instead of JSX",
+        "ReactRoblox.createRoot mounting",
+        "bracketed React.Event handlers",
+        "FontFace assignments",
+        "Luau if-expressions and multiple returns"
+      ],
+      "externallyGrounded": true,
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/react-lua-rules.md",
+          "lines": "3-8"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/react-lua-rules.md",
+          "lines": "80-95"
+        }
+      ]
+    }
+  ],
+  "knownValidationGaps": [
+    {
+      "gap": "The bundled linter fails the process only for error-severity findings. Section order, CSS vocabulary, unknown component properties, and missing primary are warnings; missing extraction confidence is only info. Therefore a zero-error result does not validate canonical order, warning-free prose, provenance completeness, visual fidelity, interaction behavior, or source-taste accuracy.",
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/references/spec/spec-config.yaml",
+          "lines": "225-254"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/linter/lint.bundle.mjs",
+          "lines": "3138-3154"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/linter/lint.bundle.mjs",
+          "lines": "3263-3264"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/references/linter/lint.bundle.mjs",
+          "lines": "3276-3294"
+        }
+      ]
+    },
+    {
+      "gap": "Visual QA is conditional on a connected Roblox Studio MCP, and multi-resolution review is conditional on emulation availability; syntax checking remains the only always-available layer.",
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/references/verification.md",
+          "lines": "3-15"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/verification.md",
+          "lines": "115-123"
+        }
+      ]
+    },
+    {
+      "gap": "The reported Phase 4 pass did not perform multi-resolution validation, and the report records MCP device-emulation operation as unverified.",
+      "evidence": [
+        {
+          "path": "docs/phase4-e2e-report.md",
+          "lines": "35-38"
+        },
+        {
+          "path": "docs/phase4-e2e-report.md",
+          "lines": "62-65"
+        }
+      ]
+    },
+    {
+      "gap": "Motion video overrides had no end-to-end or field example in the calibration and Phase 4 reports.",
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/calibration/2026-07-12-round-trip/report.md",
+          "lines": "80-84"
+        },
+        {
+          "path": "docs/phase4-e2e-report.md",
+          "lines": "62-65"
+        }
+      ]
+    },
+    {
+      "gap": "Touch-independent tooltip or hover fallback guidance was recorded as prose-only rather than validated implementation behavior.",
+      "evidence": [
+        {
+          "path": "docs/phase4-e2e-report.md",
+          "lines": "64-68"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+          "lines": "108-114"
+        }
+      ]
+    },
+    {
+      "gap": "Catalog preview persistence was not validated; Phase 4 says screen_capture existed only in context and required a manual screenshot or a capture-rig variant for site publication.",
+      "evidence": [
+        {
+          "path": "docs/phase4-e2e-report.md",
+          "lines": "62-68"
+        }
+      ]
+    },
+    {
+      "gap": "Calibration still found selected-versus-rarity interpretation ambiguous and missed a faint window shadow in one blind run.",
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/calibration/2026-07-12-round-trip/report.md",
+          "lines": "46-57"
+        }
+      ]
+    },
+    {
+      "gap": "The passing Phase 4 implementation is reported as having two stories, while the current Standard Showcase requires exactly three; that report does not establish conformance to the current fixed showcase contract.",
+      "evidence": [
+        {
+          "path": "docs/phase4-e2e-report.md",
+          "lines": "29-33"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/standard-showcase.md",
+          "lines": "27-29"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/standard-showcase.md",
+          "lines": "86-96"
+        }
+      ]
+    },
+    {
+      "gap": "The top-level skill says catalog icon and texture slots get real image assets rather than glyph placeholders, but the asset reference permits a procedural or glyph placeholder after an honest unsuccessful search; the mandatory surface and its fallback are not stated consistently.",
+      "evidence": [
+        {
+          "path": "skills/designmd-to-react-lua/SKILL.md",
+          "lines": "65-68"
+        },
+        {
+          "path": "skills/designmd-to-react-lua/references/asset-sourcing.md",
+          "lines": "60-70"
+        }
+      ]
+    },
+    {
+      "gap": "The first round-trip calibration was explicitly highly contaminated because the extractor session knew the golden answers; the blind runs found a rendering bug and a wrong measurement rule that the contaminated run did not catch.",
+      "evidence": [
+        {
+          "path": "skills/screenshot-to-designmd/calibration/2026-07-12-round-trip/report.md",
+          "lines": "3-13"
+        },
+        {
+          "path": "skills/screenshot-to-designmd/calibration/2026-07-12-round-trip/report.md",
+          "lines": "27-42"
+        }
+      ]
+    }
+  ],
+  "independenceRisks": [
+    "The implementation skill explicitly routes catalog generators through the same cartoon-chunky preview-place register and named worked components; shared component anatomy or code shape may reflect that seed rather than independent source tastes (skills/designmd-to-react-lua/SKILL.md:10-15; skills/designmd-to-react-lua/references/generation-procedure.md:118-121).",
+    "The Standard Showcase intentionally fixes story names, labels, currency counts, item identities/order, prices, dialog copy, and minimum component slots. Those corpus similarities are controlled comparison content, not evidence that the source tastes independently share them (skills/designmd-to-react-lua/references/standard-showcase.md:1-99).",
+    "The canonical asset registry intentionally reuses the same image IDs across tastes. Common icon/item artwork and associated aspect or transparency handling are generator contamination, not independent taste observations (skills/designmd-to-react-lua/references/asset-sourcing.md:78-122).",
+    "Canonical section order, recommended token names, five typography tiers, semantic color roles, and geometry quantization deliberately reduce extraction variance. Their recurrence across DESIGN documents cannot by itself support a claim of taste similarity (skills/screenshot-to-designmd/SKILL.md:56-62; skills/screenshot-to-designmd/references/extraction-procedure.md:43-45,89-117).",
+    "The four family-level motion presets inject durations, easings, and prose when no video exists. Shared motion among tastes assigned to the same family may be wholly defaulted rather than observed (skills/screenshot-to-designmd/references/motion-presets.md:1-59).",
+    "The 44px/56px touch-target rule, reserved HUD zones, Scale-first layout, Sibling ZIndex behavior, layer bands, and the 667×375 viewport requirement impose common interaction and layout geometry independently of the screenshots (skills/designmd-to-react-lua/references/layout-rules.md:19-56,86-114).",
+    "Both skills carry generated copies of the same root spec/config, so extraction and implementation are coupled through one schema rather than independent stages; a convention in the shared spec propagates to both sides of the round trip (skills/designmd-to-react-lua/references/spec/spec-config.yaml:1-23; skills/screenshot-to-designmd/references/spec/spec-config.yaml:1-23).",
+    "The calibration report says section structure, token naming, component anatomy, and omission patterns were identical across all three runs because of vocabulary constraints. That is direct evidence of policy-driven convergence, including on anatomy, even when two runs were blind (skills/screenshot-to-designmd/calibration/2026-07-12-round-trip/report.md:46-57).",
+    "Fourteen skill/spec changes were folded back from one Phase 4 opposite-taste run, including two press archetypes, brightness/stroke lifts, CanvasGroup guidance, invisible touch roots, safe glyphs, and ZIndex bands. Later e2e implementations can converge on those case-derived remedies even when their tastes are independent (docs/phase4-e2e-report.md:40-50).",
+    "The Phase 4 input set came from one named horror title and included community-Wiki material; its successful two-story implementation then informed general generator policy. This is a narrow empirical base for conventions applied corpus-wide (docs/phase4-e2e-report.md:8-18,29-31,40-50).",
+    "The shared verification rubric can select for the same visible outcomes—persistent CTA/currency, enlarged hit areas, contrast treatment, and multi-resolution containment—regardless of whether those outcomes were visible in the original screenshots (skills/designmd-to-react-lua/references/verification.md:115-123).",
+    "Worked numeric motion examples such as 0.92 press squash and 0.8 entrance scale can become copied constants even though the document presents them as examples rather than universal requirements (skills/designmd-to-react-lua/references/motion-implementation.md:10-29,42-64)."
+  ]
+}

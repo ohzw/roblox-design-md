@@ -1,0 +1,1307 @@
+{
+  "reviews": [
+    {
+      "ruleId": "RUI-001",
+      "verdict": "downgrade",
+      "independenceAdjustedSupport": "Very low: the apparent 8/8 recurrence collapses to one shared extraction/generation schema plus one generator policy. Independent support exists only for taste-specific role additions and visual values, not for the common token names or five-tier taxonomy.",
+      "counterexamples": [
+        {
+          "description": "Candlelit adds eyebrow and CTA voices beyond the normalized core, so the shared hierarchy is not a complete invariant across tastes.",
+          "evidence": [
+            {
+              "path": "e2e/candlelit-parlor/src/Theme.luau",
+              "lines": "34-50"
+            },
+            {
+              "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+              "lines": "32-64"
+            }
+          ]
+        },
+        {
+          "description": "Indigo adds a monospaced timer role, demonstrating that taste-native roles must remain extensible.",
+          "evidence": [
+            {
+              "path": "e2e/indigo-quartermaster/src/Theme.luau",
+              "lines": "32-43"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Promoting the recurring key names as taste evidence would mistake schema normalization for independent design agreement.",
+        "Forcing only the common five tiers can erase legitimate taste-specific roles.",
+        "Component-local visual literals can drift from Theme, but that is a generator maintainability defect rather than a cross-taste product invariant."
+      ],
+      "missingBoundaries": [
+        "Scope of nonvisual constants such as geometry needed only by one component.",
+        "Whether runtime-calculated or data-dependent colors belong in Theme.",
+        "No runtime test is needed to establish centralization; static inspection of Theme bindings and local literals is sufficient. A render test is useful only when validating a token-propagation toolchain."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Generated catalog implementations should use the repository's existing Theme convention for shared semantic visual values while permitting taste-specific roles; do not promote the normalized role names as independently observed taste rules.",
+      "reason": "The implementation convention is maintainable, but its recurrence is generator-controlled. The evidence supports one repository convention, not a universal Roblox rule or a claim that the source tastes independently share the same conceptual token system."
+    },
+    {
+      "ruleId": "RUI-002",
+      "verdict": "survives",
+      "independenceAdjustedSupport": "Very low for the recurring content itself, but high for the falsification conclusion: POLICY-023 directly specifies the same three stories, labels, counts, item order, prices, badge slot, and dialog copy, so the eight implementations are one controlled comparison source rather than eight observations.",
+      "counterexamples": [
+        {
+          "description": "Several tastes include additional source-native stories, showing that the fixed three-screen showcase is not the full screen grammar of a taste.",
+          "evidence": [
+            {
+              "path": "e2e/candlelit-parlor/src/Stories/ShopOffers.story.luau",
+              "lines": "67-195"
+            },
+            {
+              "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+              "lines": "65-194"
+            }
+          ]
+        },
+        {
+          "description": "The fixed PLAY action is explicitly introduced where the taste source does not define it.",
+          "evidence": [
+            {
+              "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+              "lines": "9-15"
+            },
+            {
+              "path": "e2e/planter-box-pop/src/Stories/HUD.story.luau",
+              "lines": "1-25"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Treating standardized Crown emphasis, badge placement, labels, assets, or prices as taste-native behavior.",
+        "Using the showcase as evidence that omitted source-native screens or HUD regions do not exist.",
+        "Counting canonical asset reuse as independent visual convergence."
+      ],
+      "missingBoundaries": [
+        "Taste-native stories added beside the required showcase.",
+        "Adaptations where a required slot has no direct source-native component.",
+        "No runtime test is needed to prove that the content is generator-controlled; policy and callsite inspection establish that. Runtime rendering belongs to delivery verification, not rule promotion."
+      ],
+      "recommendedStrength": "AVOID",
+      "recommendedScope": "Avoid promoting fixed Standard Showcase content, story names, item data, badge requirements, or canonical assets into taste or platform rules; use them only as repository comparison fixtures.",
+      "reason": "The candidate correctly identifies controlled content and draws the right negative inference. Its value is as an anti-contamination rule, not as evidence about Roblox UI design."
+    },
+    {
+      "ruleId": "RUI-003",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Low-to-medium: all eight render a Dialog because the generator mandates that story, but several independently reuse an existing Window component. The recurrence of a dialog is controlled; shell reuse has some independent architectural support, while confirm/cancel grammar is visibly diverse.",
+      "counterexamples": [
+        {
+          "description": "Honey uses an info-window variant with an explicit adjacent No/Yes pair rather than the one-action grammar seen elsewhere.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+              "lines": "31-110"
+            }
+          ]
+        },
+        {
+          "description": "Candlelit and Indigo use a single confirm action plus close/backdrop dismissal, so paired textual actions are not invariant.",
+          "evidence": [
+            {
+              "path": "e2e/candlelit-parlor/src/Stories/Dialog.story.luau",
+              "lines": "35-66"
+            },
+            {
+              "path": "e2e/indigo-quartermaster/src/Stories/Dialog.story.luau",
+              "lines": "33-62"
+            }
+          ]
+        },
+        {
+          "description": "Studded adapts an input-well anatomy as a message well, showing that shell reuse can still require substantial content adaptation.",
+          "evidence": [
+            {
+              "path": "e2e/studded-toybox/src/Stories/Dialog.story.luau",
+              "lines": "31-100"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Blind shell reuse can clip long localized body text or actions in a compact viewport.",
+        "Reusing a window with an inert inherited close control creates a false affordance.",
+        "Forcing one confirm/cancel count can remove a required escape path or duplicate an already clear close path.",
+        "Backdrop dismissal can accidentally permit destructive cancellation or conflict with modal stacking."
+      ],
+      "missingBoundaries": [
+        "Long localized prompts and wrapped button labels.",
+        "Destructive versus reversible confirmation semantics.",
+        "Keyboard/gamepad initial focus, directional order, and cancel/back behavior.",
+        "Stacked confirmation above an existing window.",
+        "Runtime test still needed: mount base window and dialog in the actual host, then verify content fit, focus order, explicit close/cancel behavior, and one-action versus paired-action variants."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "When a compact confirmation is compatible with an established window shell, prefer reusing that shell, but let decision semantics, escape paths, dimensions, and action placement follow the task and taste.",
+      "reason": "Shell reuse is a reasonable deep-module recommendation, not an invariant. The generator inflates recurrence, and the corpus explicitly supports several decision grammars."
+    },
+    {
+      "ruleId": "RUI-004",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Very low as recurrence: Scale-first windows, desktop caps, ScrollingFrame overflow, and the 667×375 check are directly imposed by POLICY-015 and POLICY-018. Official sources independently support responsive scale sizing, size constraints, scrolling, and multi-device testing, but not this exact compound recipe or test resolution.",
+      "counterexamples": [
+        {
+          "description": "Several secondary dialogs and settings surfaces remain fixed-offset despite the claimed all-window pattern.",
+          "evidence": [
+            {
+              "path": "e2e/frosted-baseplate/src/Stories/Settings.story.luau",
+              "lines": "76-81"
+            },
+            {
+              "path": "e2e/frosted-baseplate/src/Stories/Dialog.story.luau",
+              "lines": "52-58"
+            },
+            {
+              "path": "e2e/planter-box-pop/src/Stories/Dialog.story.luau",
+              "lines": "41-47"
+            }
+          ]
+        },
+        {
+          "description": "Studded computes fixed default dimensions and does not instantiate UIAspectRatioConstraint despite the generator's Scale-first guidance.",
+          "evidence": [
+            {
+              "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+              "lines": "110-117"
+            },
+            {
+              "path": "e2e/studded-toybox/src/Components/ItemCard.luau",
+              "lines": "39-47"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A scale-plus-cap panel can still become too short for fixed headers, padding, and actions.",
+        "A ScrollingFrame with stale or undersized canvas can make the last item unreachable.",
+        "Overhanging close/title chrome can be clipped even when the panel itself is contained.",
+        "TextScaled content can become unreadably small instead of reflowing.",
+        "A layout that fits small landscape can still fail portrait, ultrawide, console safe zones, or localized text."
+      ],
+      "missingBoundaries": [
+        "Tall/mobile portrait and very short landscape.",
+        "Long localized titles, body text, and button labels.",
+        "Minimum readable/control sizes under scale shrinkage.",
+        "Safe-area handling at all four edges.",
+        "Nested scrolling and fixed footer/header regions.",
+        "Runtime test still needed: exercise supported device categories and orientations in the actual mount, resize while open, and verify header/close containment plus reachability of the final item."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "For content-bearing windows intended to support multiple viewports, use responsive sizing with intentional pixel bounds and provide scrolling or reflow whenever content can exceed the available region; choose supported device tests by product policy, not 667×375 as an official Roblox minimum.",
+      "reason": "The outcome is sound, but the exact implementation and test target are project policy. Offset values remain valid for fixed chrome and minimums, and Scale alone does not guarantee containment."
+    },
+    {
+      "ruleId": "RUI-005",
+      "verdict": "survives",
+      "independenceAdjustedSupport": "Medium-to-high: six corpus instances expose the geometry, and current UISizeConstraint documentation independently establishes that MaxSize is a pixel cap, not a viewport-relative shrink contract. The implementations are not fully independent, but the underlying failure follows from engine semantics rather than recurrence.",
+      "counterexamples": [
+        {
+          "description": "Loud Slab and Obsidian avoid the max-only fixed-width failure by giving dialogs scale-based sizes plus caps.",
+          "evidence": [
+            {
+              "path": "e2e/loud-slab/src/Stories/Dialog.story.luau",
+              "lines": "27-49"
+            },
+            {
+              "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+              "lines": "67-80"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "The panel extends beyond a narrower parent or viewport.",
+        "Title, close control, body, or action becomes clipped or unreachable.",
+        "A centered oversized dialog can obscure both edges and leave no accessible dismissal target.",
+        "Shrinking only the outer panel can still make fixed internal rows collide."
+      ],
+      "missingBoundaries": [
+        "Parent containers smaller than the device viewport.",
+        "Portrait widths below the authored fixed width.",
+        "Safe insets and topbar reductions to usable space.",
+        "Long localized content and larger text settings.",
+        "Runtime test still needed only for the composed supported viewports: verify the actual parent bounds, internal reflow, and operability; the MaxSize engine fact itself no longer needs runtime proof."
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "Every dialog must remain contained and operable within the product's declared supported viewport and safe area. Fixed-offset sizing with only a larger MaxSize does not satisfy that contract; use reflow, responsive sizing, or an explicit minimum supported viewport.",
+      "reason": "This is a concrete containment and access failure, not a style preference. The candidate correctly offers multiple remedies instead of mandating Scale."
+    },
+    {
+      "ruleId": "RUI-006",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Very low: the repeated GetGuiInset().Y call is a shared story-harness adaptation and generator convention. Current ScreenGui defaults already use CoreUISafeInsets, so custom Y-offset code is not a universal production requirement.",
+      "counterexamples": [
+        {
+          "description": "Indigo's InMatchHUD is a story-level HUD but uses fixed y=24 instead of GetGuiInset().Y, contradicting the word 'consistently' across all story HUDs.",
+          "evidence": [
+            {
+              "path": "e2e/indigo-quartermaster/src/Stories/InMatchHUD.story.luau",
+              "lines": "77-82"
+            }
+          ]
+        },
+        {
+          "description": "The design sources request DeviceSafeInsets/GetInsetArea while local stories use only GetGuiInset().Y, demonstrating that the pattern is harness-specific rather than full safe-area implementation.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Stories/HUD.story.luau",
+              "lines": "35-43"
+            },
+            {
+              "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+              "lines": "35-59"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Double-applying top inset when the host ScreenGui already uses safe insets.",
+        "Leaving left, right, or bottom interactive UI under a notch, Core UI, or console safe zone.",
+        "Using a render-time inset snapshot that does not respond when Core UI visibility or orientation changes.",
+        "Assuming a story Frame reveals the production ScreenGui configuration."
+      ],
+      "missingBoundaries": [
+        "CoreUISafeInsets default versus DeviceSafeInsets versus ScreenInsets.None.",
+        "Topbar visibility changes and rotated devices.",
+        "Console overscan and noninteractive full-bleed backgrounds.",
+        "Actual UI-Labs and production ScreenGui mount configuration.",
+        "Runtime test still needed: inspect the actual host ScreenGui and exercise device cutouts, Core UI changes, orientation, and all four edges; source verification already settles the API semantics."
+      ],
+      "recommendedStrength": "MAY",
+      "recommendedScope": "A full-bleed story harness may use GetGuiInset().Y to clear its topbar, but production guidance should require the accessible outcome and account for the host ScreenGui's existing safe-inset behavior rather than prescribe this call.",
+      "reason": "The candidate's warning that top-Y evidence is incomplete is correct, but its opening consistency claim is too broad and the repeated implementation is not independent."
+    },
+    {
+      "ruleId": "RUI-007",
+      "verdict": "downgrade",
+      "independenceAdjustedSupport": "Very low: the standard showcase mandates a dominant PLAY slot and the layout policy reserves touch-control zones. Obsidian's Roll provides one source-native example, but the overall 8/8 placement cannot be treated as independent product evidence.",
+      "counterexamples": [
+        {
+          "description": "Loud Slab intentionally occupies bottom-left with currency and bottom-right with a timer while also using a bottom-center action/hotbar cluster.",
+          "evidence": [
+            {
+              "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+              "lines": "240-336"
+            }
+          ]
+        },
+        {
+          "description": "Planter places currency near bottom-left and a large fixed hotbar at bottom-center, so both lower corners are not generally empty.",
+          "evidence": [
+            {
+              "path": "e2e/planter-box-pop/src/Stories/HUD.story.luau",
+              "lines": "146-177"
+            }
+          ]
+        },
+        {
+          "description": "Studded places its currency stack bottom-left and shifts PLAY off exact center to avoid measured collisions.",
+          "evidence": [
+            {
+              "path": "e2e/studded-toybox/src/Stories/HUD.story.luau",
+              "lines": "86-133"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Bottom-center action overlaps a hotbar, captions, subtitles, or Roblox touch controls.",
+        "A large central CTA obscures gameplay or crosshair-relevant information.",
+        "Assumed fixed joystick/jump rectangles fail when controls are customized or platform UI changes.",
+        "Gamepad focus entry can prioritize an edge launcher instead of the intended contextual action."
+      ],
+      "missingBoundaries": [
+        "Roblox touch controls visible and customized.",
+        "Genres where center-bottom is gameplay-critical.",
+        "Safe-area bottom inset and caption/subtitle regions.",
+        "Portrait layout and very small landscape.",
+        "Runtime test still needed: show actual touch controls and all taste-native HUD regions together, then inspect overlap and reachability across supported layouts."
+      ],
+      "recommendedStrength": "MAY",
+      "recommendedScope": "Use bottom-center for a dominant contextual action when the gameplay view, hotbar, platform controls, and safe-area collision budget permit it; edge-dock persistent status and launchers where appropriate to the source HUD.",
+      "reason": "This is a common HUD option, not a stable invariant. The strongest recurrence is generator-controlled, and several tastes legitimately occupy lower corners."
+    },
+    {
+      "ruleId": "RUI-008",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Low-to-medium: overflow scrolling is generator-required, but several independently shaped catalog/list screens use it while short panels remain fixed. The evidence supports overflow-based behavior, not a semantic taxonomy in which all catalogs scroll and all details/dialogs remain stationary.",
+      "counterexamples": [
+        {
+          "description": "Honey's 'short' fixed dialog is 420×260 and has no scroll or responsive reduction, so content length alone does not guarantee that stationary content fits narrow viewports.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+              "lines": "31-43"
+            }
+          ]
+        },
+        {
+          "description": "Loud's dialog required a content-derived resizing correction after scale-only content clipped at 667×375, showing that nominally short confirmation content can overflow.",
+          "evidence": [
+            {
+              "path": "e2e/loud-slab/src/Stories/Dialog.story.luau",
+              "lines": "27-49"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Final rows are unreachable because the canvas is stale or input cannot scroll.",
+        "Headers or footer actions scroll away when they are intended to remain persistent.",
+        "A short English dialog overflows after localization, larger text, or a shorter viewport.",
+        "Nested interactive controls intercept touch drag or gamepad navigation.",
+        "Clipping hides focus rings, overhanging badges, or shadows at the scroll boundary."
+      ],
+      "missingBoundaries": [
+        "Mouse wheel, touch drag, keyboard/gamepad focus-follow scrolling.",
+        "Long localized confirmation and detail content.",
+        "Fixed headers, banners, tabs, and footer actions.",
+        "Nested ScrollingFrames and horizontal overflow.",
+        "Runtime test still needed: reach the final item with each supported input modality at minimum window height and verify intended stationary regions and focus visibility."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Bound content within its window and make any region scrollable or reflowing when it can exceed available space; keep headers, details, and actions stationary only when their worst-case content fits and their interaction role calls for persistence.",
+      "reason": "Overflow risk, not the label 'catalog' or 'detail,' is the durable criterion."
+    },
+    {
+      "ruleId": "RUI-009",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Low: five implementations share a manual AbsoluteContentSize pattern, but shared generator examples can explain that shape; three fixed six-item catalogs use arithmetic, and official documentation establishes AutomaticCanvasSize as an equally valid adaptive mechanism.",
+      "counterexamples": [
+        {
+          "description": "Candlelit, Frosted, and Planter use fixed arithmetic for immutable six-row catalogs rather than layout listeners.",
+          "evidence": [
+            {
+              "path": "e2e/candlelit-parlor/src/Stories/Shop.story.luau",
+              "lines": "51-77"
+            },
+            {
+              "path": "e2e/frosted-baseplate/src/Stories/Shop.story.luau",
+              "lines": "65-84"
+            },
+            {
+              "path": "e2e/planter-box-pop/src/Stories/Shop.story.luau",
+              "lines": "67-84"
+            }
+          ]
+        },
+        {
+          "description": "Obsidian legitimately mixes dynamic Settings measurement with fixed Shop and Aura Storage canvases in one taste.",
+          "evidence": [
+            {
+              "path": "e2e/obsidian-gacha/src/Screens/SettingsScreen.luau",
+              "lines": "47-70"
+            },
+            {
+              "path": "e2e/obsidian-gacha/src/Stories/Window.story.luau",
+              "lines": "44-58"
+            },
+            {
+              "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+              "lines": "37-54"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Manual listeners leak or write stale canvas after unmount.",
+        "AbsoluteContentSize change delivery occurs after the render step and code assumes synchronous notification.",
+        "AutomaticCanvasSize plus a nonzero manual CanvasSize leaves unintended blank lower-bound space.",
+        "Outer UIPadding is omitted from the effective canvas.",
+        "Grid rewrap changes row count without updating reachability."
+      ],
+      "missingBoundaries": [
+        "AutomaticCanvasSize as the default adaptive alternative.",
+        "UIPadding inclusion, which official docs do not fully specify for every configuration.",
+        "Anchors, nested containers, rotation, and constraints in descendant bounds.",
+        "Initial render-step timing and rapid item-count mutations.",
+        "Runtime test still needed only for the chosen implementation's unresolved composition: mutate item count, row height, localization length, and viewport width; verify final-item reachability, padding, no stale blank canvas, and listener cleanup."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "When scroll content can change, keep the effective canvas synchronized using AutomaticCanvasSize or a correctly cleaned-up AbsoluteContentSize binding. Fixed arithmetic is acceptable only when item count, metrics, wrapping, and padding are genuinely invariant.",
+      "reason": "The original statement over-prescribes the manual binding and omits the documented engine alternative. The durable rule is synchronization of the effective canvas, not one technique."
+    },
+    {
+      "ruleId": "RUI-010",
+      "verdict": "survives",
+      "independenceAdjustedSupport": "Medium: six tastes instantiate a separate dim and two intentionally omit it; the generator can supply derived dim values, but the source-level no-dim treatments in Honey and Planter and the Studded contradiction provide independent evidence that dimming is contextual rather than universal.",
+      "counterexamples": [
+        {
+          "description": "Honey intentionally renders windows raw on the world without dim or shadow.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+              "lines": "27-32"
+            },
+            {
+              "path": "design-md/honey-ledger/DESIGN.roblox.md",
+              "lines": "359-369"
+            }
+          ]
+        },
+        {
+          "description": "Planter intentionally places Dialog directly over the world backdrop and leaves its derived dim token unused.",
+          "evidence": [
+            {
+              "path": "e2e/planter-box-pop/src/Stories/Dialog.story.luau",
+              "lines": "37-48"
+            },
+            {
+              "path": "e2e/planter-box-pop/src/Theme.luau",
+              "lines": "109-117"
+            }
+          ]
+        },
+        {
+          "description": "Studded implements a separate dim despite an explicit source prohibition, so that implementation cannot be counted as supportive taste evidence.",
+          "evidence": [
+            {
+              "path": "e2e/studded-toybox/src/Components/Window.luau",
+              "lines": "88-104"
+            },
+            {
+              "path": "design-md/studded-toybox/DESIGN.roblox.md",
+              "lines": "319-324"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Dimming harms world awareness in gameplay-critical contexts.",
+        "No dim leaves a low-contrast modal illegible against a live scene.",
+        "An activatable backdrop dismisses a modal that should require an explicit decision.",
+        "Backdrop visual order and input interception diverge under stacked modals."
+      ],
+      "missingBoundaries": [
+        "Blocking modal versus nonmodal window.",
+        "Live 3D world luminance and blur/DepthOfField.",
+        "Stacked modals and multiple backdrop ownership.",
+        "Backdrop dismissal semantics.",
+        "Runtime test still needed: render against the actual 3D scene and verify legibility, world awareness, backdrop activation, and stacking; no engine test is needed to decide that dim is optional."
+      ],
+      "recommendedStrength": "MAY",
+      "recommendedScope": "Use a separate dim backdrop when the modal context and taste need focus separation; omit it for intentional raw-on-world or self-dimming surfaces, and configure dismissal independently.",
+      "reason": "The candidate is already appropriately nonuniversal and is supported by genuine source-level variation."
+    },
+    {
+      "ruleId": "RUI-011",
+      "verdict": "survives",
+      "independenceAdjustedSupport": "Very low for the numbers and high for the contamination conclusion: the 10/11 pair is directly explained by the shared layer-band policy, while Honey and Planter do not instantiate it.",
+      "counterexamples": [
+        {
+          "description": "Honey has no separate dim layer and therefore no 10/11 dim-panel pair.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+              "lines": "27-43"
+            }
+          ]
+        },
+        {
+          "description": "Planter's Window defaults the panel to 11 but has no dim sibling at 10, showing that 11 alone is not a complete modal contract.",
+          "evidence": [
+            {
+              "path": "e2e/planter-box-pop/src/Components/Window.luau",
+              "lines": "102-128"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Copying 10/11 into a different hierarchy does not guarantee effective ordering under Sibling behavior.",
+        "Descendant local ZIndexes can still produce unexpected cross-branch order.",
+        "Clipping can hide overhanging chrome regardless of a high ZIndex.",
+        "A second popup can appear beneath a window if ScreenGui DisplayOrder or common-ancestor ordering is not coordinated."
+      ],
+      "missingBoundaries": [
+        "Same ScreenGui versus multiple ScreenGuis.",
+        "Sibling versus Global hierarchy semantics.",
+        "Equal ZIndex and DisplayOrder ties.",
+        "Tooltips, nested popups, custom shadows, and overhanging chrome.",
+        "Runtime test still needed only in the actual host: display HUD, window, nested popup, tooltip, and overhanging descendants simultaneously; testing both ZIndexBehavior modes is unnecessary unless the product supports both."
+      ],
+      "recommendedStrength": "MAY",
+      "recommendedScope": "Treat 10/11 as this generator's local convention when it fits the host layering plan; never infer it as a taste rule or universal Roblox layer contract.",
+      "reason": "The candidate correctly distinguishes exact generator numbers from independent design recurrence."
+    },
+    {
+      "ruleId": "RUI-012",
+      "verdict": "reject",
+      "independenceAdjustedSupport": "Mixed: high official support that local ZIndex does not establish cross-ScreenGui order, but no support for the obsolete premise that Global is the default. Current official documentation says Sibling is the default. The eight local absences are also one common story-mount boundary, not eight independent host failures.",
+      "counterexamples": [
+        {
+          "description": "The audited generator policy itself encodes the obsolete claim that Global is the engine default; current official LayerCollector documentation identifies Sibling as the default.",
+          "evidence": [
+            {
+              "path": "skills/designmd-to-react-lua/references/layout-rules.md",
+              "lines": "30-45"
+            },
+            {
+              "path": "skills/designmd-to-react-lua/references/react-lua-rules.md",
+              "lines": "29-39"
+            }
+          ]
+        },
+        {
+          "description": "All observed files stop below the mounting ScreenGui, so absence of a local assignment does not demonstrate a failing host configuration.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/HoneyLedger.storybook.luau",
+              "lines": "1-5"
+            },
+            {
+              "path": "e2e/studded-toybox/src/StuddedToybox.storybook.luau",
+              "lines": "1-4"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Mandating an explicit Sibling assignment based on a false default claim propagates obsolete engine guidance.",
+        "Assuming local ZIndex values order objects across separate ScreenGuis ignores DisplayOrder.",
+        "Assuming default Sibling solves every cross-branch overlay still fails when hierarchy or clipping is wrong.",
+        "Equal DisplayOrder or ambiguous equal ZIndex ties can remain uncontrolled."
+      ],
+      "missingBoundaries": [
+        "Current default Sibling versus intentionally selected Global.",
+        "Single ScreenGui versus multiple ScreenGuis.",
+        "Common-ancestor placement and clipping boundaries.",
+        "Current UIShadow as an alternative to custom sibling shadow architecture.",
+        "Runtime test still needed: inspect the actual host and render competing layers together. No runtime test is needed to re-check the documented default."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Replacement rule: define and verify the host's complete layering contract. Rely on the current Sibling default or set the desired ZIndexBehavior explicitly; when multiple ScreenGuis overlap, assign intentional DisplayOrder values. Do not require explicit Sibling solely because of an obsolete default claim.",
+      "reason": "As written, the candidate carries the known false engine premise and converts it into a MUST. The valid remainder should be rewritten rather than promoted under this rule."
+    },
+    {
+      "ruleId": "RUI-013",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Low for recurrence because POLICY-014 and common generator examples prescribe the wiring. Independent official support is strong that GuiButton.Activated is the cross-platform primary action event, and equally strong that gamepad activation still requires selection/reachability.",
+      "counterexamples": [
+        {
+          "description": "Some controls, such as Honey ListRow, use Activated without mouse-held visuals, so mouse down/up/leave is not necessary for every semantic button.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Components/ListRow.luau",
+              "lines": "30-41"
+            }
+          ]
+        },
+        {
+          "description": "No inspected implementation provides SelectionGained/Lost styling or explicit navigation, so the common wiring does not establish supported gamepad focus feedback.",
+          "evidence": [
+            {
+              "path": "e2e/indigo-quartermaster/src/Components/ButtonPrimary.luau",
+              "lines": "50-79"
+            },
+            {
+              "path": "e2e/studded-toybox/src/Components/GradientButton.luau",
+              "lines": "118-136"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Gamepad users cannot activate a button that is not reachable and selected.",
+        "Touch or gamepad activation works semantically but supplies no visible press/focus feedback.",
+        "Mouse leave/cancel and rapid re-entry leave a custom visual state stuck.",
+        "Combining lower-level events with Activated dispatches the semantic action twice.",
+        "Disabled buttons remain focusable or activatable because Active/Selectable state is not coordinated."
+      ],
+      "missingBoundaries": [
+        "Initial gamepad selection and directional navigation.",
+        "Keyboard activation and visible focus.",
+        "Touch cancellation and multi-touch.",
+        "Secondary actions, holds, drags, and gestures, which Activated does not replace.",
+        "Runtime test still needed: activate exactly once and inspect pressed/focused/cancelled/restored states with mouse, touch, keyboard, and gamepad; traverse every interactive story without a pointer."
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "For standard GuiButton primary actions on supported devices, dispatch through Activated and ensure each supported modality can reach, focus, activate once, cancel, and receive visible feedback. Mouse-specific events may enhance pointer-held visuals but are not the cross-input contract.",
+      "reason": "Source verification resolves Activated's supported modalities. What remains runtime-sensitive is reachability, focus presentation, cancellation, and accidental double dispatch."
+    },
+    {
+      "ruleId": "RUI-014",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Very low for 44px/56px: the values are directly imposed by POLICY-019. Current Roblox guidance supports sufficiently large mobile touch zones and cites 9×9 mm, but no current Roblox source establishes 44 Roblox offset pixels as a platform minimum; 44×44 comes from a separate WCAG CSS-pixel criterion.",
+      "counterexamples": [
+        {
+          "description": "The corpus's 44px invisible roots demonstrate compliance with project policy, not independent taste choices.",
+          "evidence": [
+            {
+              "path": "e2e/candlelit-parlor/src/Components/BuyPill.luau",
+              "lines": "58-100"
+            },
+            {
+              "path": "e2e/indigo-quartermaster/src/Components/ButtonBuy.luau",
+              "lines": "46-112"
+            }
+          ]
+        },
+        {
+          "description": "Loud's compact rail is deliberately reduced to exactly 44px height for one landscape target, showing that 44 is an implementation floor in this generator rather than a source-native chunky size.",
+          "evidence": [
+            {
+              "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+              "lines": "157-197"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A nominal 44px root is clipped, overlapped, or intercepted and therefore has a smaller effective target.",
+        "Adjacent enlarged invisible roots overlap and dispatch the wrong action.",
+        "Roblox offset pixels do not guarantee a particular physical millimeter size across devices.",
+        "A large target is unreachable by gamepad or lacks visible focus despite adequate touch size."
+      ],
+      "missingBoundaries": [
+        "Physical device density and the official 9×9 mm recommendation.",
+        "Spacing between adjacent targets and target overlap.",
+        "Clipping by parents and scroll frames.",
+        "Mouse precision, touch edge taps, and gamepad focus.",
+        "Runtime test still needed: visualize AbsoluteSize and effective hit bounds at supported viewports and exercise edge taps/adjacent controls. Runtime cannot turn 44px into an official Roblox minimum."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Keep interactive targets comfortably touchable and unobstructed across supported devices; within this generator, 44px may remain a project baseline and 56px a chunky-taste preference, but neither should be promoted as a current official Roblox pixel minimum.",
+      "reason": "The accessible outcome survives, while the exact numeric and official-provenance claim must be narrowed."
+    },
+    {
+      "ruleId": "RUI-015",
+      "verdict": "downgrade",
+      "independenceAdjustedSupport": "Low: POLICY-013 and POLICY-022 supply the same beveled and flat archetypes, and later implementations share that seed. Some source-specific component differences support material-coherent feedback, but not a cross-taste law.",
+      "counterexamples": [
+        {
+          "description": "Frosted's visually flat Button still squashes to 0.93 and brightens, crossing the proposed flat-versus-deformed split.",
+          "evidence": [
+            {
+              "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+              "lines": "57-84"
+            },
+            {
+              "path": "e2e/frosted-baseplate/src/Components/Button.luau",
+              "lines": "90-110"
+            }
+          ]
+        },
+        {
+          "description": "Honey uses two different responses within one taste: its beveled close collapses depth, while its primary button only darkens.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Components/CloseButton.luau",
+              "lines": "47-69"
+            },
+            {
+              "path": "e2e/honey-ledger/src/Components/ButtonPrimary.luau",
+              "lines": "43-72"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A copied squash makes restrained or translucent chrome feel rubbery.",
+        "Color-only feedback becomes imperceptible at low contrast.",
+        "Press, pointer leave, disabled transition, or rapid re-press leaves scale, fill, or bevel stuck.",
+        "Gamepad and touch activation receive no equivalent feedback because only mouse-held events drive the effect."
+      ],
+      "missingBoundaries": [
+        "Hybrid controls that are flat but playful.",
+        "Disabled and selected states.",
+        "Touch/gamepad/keyboard feedback.",
+        "Reduced-motion preference.",
+        "Animation interruption and rapid alternating presses.",
+        "Runtime test still needed: capture press-in, held, cancellation, release, disable-during-press, and rapid interruption for representative components."
+      ],
+      "recommendedStrength": "MAY",
+      "recommendedScope": "Choose press feedback that reinforces the individual component's represented material and motion register; bevel collapse, squash, color lift, stroke lift, or no deformation are options, not family invariants.",
+      "reason": "The principle is useful design advice, but the observed dichotomy is generator-supplied and admits direct component-level counterexamples."
+    },
+    {
+      "ruleId": "RUI-016",
+      "verdict": "downgrade",
+      "independenceAdjustedSupport": "Very low: all source documents lacked video or marked motion low-confidence, and POLICY-008 injects family presets. The implemented family split is therefore default propagation, not independent observation of taste motion.",
+      "counterexamples": [
+        {
+          "description": "Honey's Shop windows explicitly set instant=true while its Dialog uses the animated settle, so one family does not imply one universal window entrance.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+              "lines": "70-109"
+            },
+            {
+              "path": "e2e/honey-ledger/src/Stories/Dialog.story.luau",
+              "lines": "31-43"
+            }
+          ]
+        },
+        {
+          "description": "Obsidian drops the prescribed panel fade and animates a global Lighting BlurEffect instead because CanvasGroup rasterization harmed settled color fidelity.",
+          "evidence": [
+            {
+              "path": "e2e/obsidian-gacha/src/Components/Window.luau",
+              "lines": "23-43"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Treating a still-image preset as observed motion misrepresents the source taste.",
+        "Global BlurEffect instances conflict or are destroyed incorrectly when multiple windows overlap.",
+        "A Back-Out pop clips overhanging chrome or causes motion discomfort.",
+        "Interrupted enter/exit tweens leave a hidden but mounted panel or incorrect blur."
+      ],
+      "missingBoundaries": [
+        "Actual video-observed motion versus still-derived default.",
+        "Multiple simultaneous windows and blur ownership.",
+        "Open-close-open interruption.",
+        "Reduced motion and low frame rates.",
+        "CanvasGroup rendering fidelity.",
+        "Runtime test still needed only when adopting motion: capture trajectory/endpoints and interruption, and mount concurrent blur-owning windows. It cannot validate source fidelity without source video."
+      ],
+      "recommendedStrength": "MAY",
+      "recommendedScope": "Select entrance motion per verified taste evidence and component context; family presets are generator defaults only and must be labeled as such, with instant or alternative transitions allowed.",
+      "reason": "The candidate correctly says motion is not universal, but its family mapping still overstates contaminated evidence."
+    },
+    {
+      "ruleId": "RUI-017",
+      "verdict": "survives",
+      "independenceAdjustedSupport": "High for the recommendation from official sources: GuiService.ReducedMotionEnabled is documented and Roblox's accessibility guidance tells creators to reduce or remove custom UI tween motion. The 0/8 implementation absence is corpus evidence of a gap, although the eight absences share one generator lineage.",
+      "counterexamples": [
+        {
+          "description": "Honey exposes a manual instant prop, but it is not connected to the player's reduced-motion preference and therefore is not a counterexample to the recorded absence.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Components/Window.luau",
+              "lines": "44-70"
+            },
+            {
+              "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+              "lines": "70-109"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Scale, bounce, large translation, or blur continues despite the player's Reduce Motion setting.",
+        "Snapping to a target skips completion callbacks or leaves lifecycle state inconsistent.",
+        "Changing the preference during an active tween leaves the UI between states.",
+        "Only window motion is reduced while press, reward, currency, progress, and blur animations continue.",
+        "A reduced path removes state feedback entirely instead of preserving a clear state change."
+      ],
+      "missingBoundaries": [
+        "Preference toggled before mount versus during active animation.",
+        "Positional motion versus opacity fades versus instant transitions.",
+        "BlurEffect cleanup and concurrent windows.",
+        "Continuous progress/currency feedback and celebratory reward motion.",
+        "Runtime test still needed: toggle ReducedMotionEnabled before and during transitions, verify deterministic endpoints/callbacks, and cover each custom motion category actually shipped."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Custom UI motion should observe GuiService.ReducedMotionEnabled and reduce or remove substantial scale, translation, bounce, and blur while preserving state, feedback, lifecycle completion, and cleanup.",
+      "reason": "The known correction is confirmed: the platform preference and public guidance exist. The implementation path remains product-specific, so the rule should not prescribe one duration or effect replacement."
+    },
+    {
+      "ruleId": "RUI-018",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Medium: fixed item data and the Standard Showcase raise recurrence, but several independently implemented row/card anatomies place identity before purchase. Support is strongest for self-contained purchase units and weak for split catalog/detail/action flows.",
+      "counterexamples": [
+        {
+          "description": "Honey's catalog rows do not actually render the passed buy controls, and price/action lives in separate detail/CTA regions, so the claimed terminal action does not hold per unit.",
+          "evidence": [
+            {
+              "path": "e2e/honey-ledger/src/Stories/Shop.story.luau",
+              "lines": "83-100"
+            },
+            {
+              "path": "e2e/honey-ledger/src/Components/ListRow.luau",
+              "lines": "30-127"
+            }
+          ]
+        },
+        {
+          "description": "Obsidian's AuraCard grid and separate BannerOffer use different anatomies; the AuraCard evidence does not establish a terminal price/action on each card.",
+          "evidence": [
+            {
+              "path": "e2e/obsidian-gacha/src/Stories/Shop.story.luau",
+              "lines": "62-104"
+            },
+            {
+              "path": "e2e/obsidian-gacha/src/Components/BannerOffer.luau",
+              "lines": "58-118"
+            }
+          ]
+        },
+        {
+          "description": "Planter places price bottom-left and rarity bottom-right while description may sit upper-right, so the metadata/action order is spatial rather than one strict linear sequence.",
+          "evidence": [
+            {
+              "path": "e2e/planter-box-pop/src/Components/RowCard.luau",
+              "lines": "144-228"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Wrapping or truncation visually associates a price with the wrong item.",
+        "Long localized names push price/action outside the card or below the fold.",
+        "A nested buy button inside an activatable card causes ambiguous or duplicate activation.",
+        "Rarity or status is mistaken for selection because emphasis channels are overloaded.",
+        "Screen-reader or gamepad focus order diverges from the visual order."
+      ],
+      "missingBoundaries": [
+        "Split master-detail catalogs versus self-contained cards.",
+        "Long localized names, currencies, and price formats.",
+        "Nested action versus whole-card activation.",
+        "Owned, unavailable, or multi-price states.",
+        "Runtime test still needed: inspect wrapping and focus order at representative widths and run item-find/price-compare tasks only if claiming a user-performance benefit."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "Within a self-contained catalog purchase unit, keep item identity/art, supporting metadata, and the associated price/action clearly grouped in a predictable visual and focus order. Do not require the same sequence for master-detail or featured-offer layouts.",
+      "reason": "The broad hierarchy is useful, but the corpus contains legitimate split and spatial variants, and standardized item data reduces independence."
+    },
+    {
+      "ruleId": "RUI-019",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Low for the recurring visuals because POLICY-014 prescribes disabled props and several sources never observed disabled states. Independent functional support is strong that an inactive GuiButton must not fire Activated; visibility and subdued styling are design choices, not universal engine requirements.",
+      "counterexamples": [
+        {
+          "description": "Loud's source explicitly says disabled state was not observed, while the implementation and component story derive and showcase one through generator policy.",
+          "evidence": [
+            {
+              "path": "design-md/loud-slab/DESIGN.roblox.md",
+              "lines": "199-219"
+            },
+            {
+              "path": "e2e/loud-slab/src/Stories/ButtonPrimary.story.luau",
+              "lines": "13-56"
+            }
+          ]
+        },
+        {
+          "description": "Candlelit's source similarly marks disabled/selected variants unobserved, so its subdued disabled treatment is not independent taste evidence.",
+          "evidence": [
+            {
+              "path": "design-md/candlelit-parlor/DESIGN.roblox.md",
+              "lines": "223-225"
+            },
+            {
+              "path": "e2e/candlelit-parlor/src/Components/ParlorButton.luau",
+              "lines": "49-74"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A disabled-looking action still dispatches by mouse, touch, keyboard, or gamepad.",
+        "Press tween runs while disabled and implies availability.",
+        "A disabled control remains in gamepad focus order without an explanation or useful focus behavior.",
+        "Low-contrast subdued styling makes the label unreadable.",
+        "Disabling during an active press leaves the held visual stuck."
+      ],
+      "missingBoundaries": [
+        "Hidden unavailable actions versus visible disabled actions.",
+        "Whether focus should skip the control or expose explanatory text.",
+        "Active and Selectable coordination.",
+        "Disable/re-enable during press or tween.",
+        "Runtime test still needed: attempt all supported activation modalities while disabled, then re-enable and verify one callback, restored visuals, and intentional focus behavior."
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "When an action is represented as disabled, it must not dispatch its semantic callback or play enabled press feedback. If it remains visible, use a legible unavailable treatment and intentional focus behavior; hiding the action can also be valid product behavior.",
+      "reason": "The functional prohibition justifies MUST. The original statement overreaches by making continued visibility and one subdued treatment invariant."
+    },
+    {
+      "ruleId": "RUI-020",
+      "verdict": "survives",
+      "independenceAdjustedSupport": "Medium-to-high: several distinct implementations exhibit different concrete lifecycle failures—early return with inert controls, fade to an invisible mounted state, and hide-without-owner behavior—so support is not solely one copied convention. Engine input interception for transparent mounted GuiObjects still requires host/runtime confirmation.",
+      "counterexamples": [
+        {
+          "description": "Studded's dedicated Window story demonstrates the valid owner-managed path: onClose runs after exit, unmounts the window, and a separate action remounts it.",
+          "evidence": [
+            {
+              "path": "e2e/studded-toybox/src/Stories/Window.story.luau",
+              "lines": "18-50"
+            }
+          ]
+        },
+        {
+          "description": "Candlelit and Frosted screen stories show the failure case where visible close/backdrop affordances return immediately because onClose is absent.",
+          "evidence": [
+            {
+              "path": "e2e/candlelit-parlor/src/Components/ParlorWindow.luau",
+              "lines": "62-80"
+            },
+            {
+              "path": "e2e/frosted-baseplate/src/Components/Window.luau",
+              "lines": "73-104"
+            }
+          ]
+        },
+        {
+          "description": "Planter shows a different failure: it completes the fade with no owner callback and leaves the CanvasGroup mounted and invisible.",
+          "evidence": [
+            {
+              "path": "e2e/planter-box-pop/src/Components/Window.luau",
+              "lines": "75-96"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Rapid close and backdrop activation invoke multiple exits or callbacks.",
+        "An inert visible close control misleads users.",
+        "An invisible mounted root intercepts input or retains focus.",
+        "Unmount during an active tween leaks effects/listeners or loses the completion path.",
+        "Open during close races with stale tween completion and removes the newly opened window.",
+        "Backdrop dismissal bypasses a required destructive confirmation."
+      ],
+      "missingBoundaries": [
+        "Close during entrance and reopen during exit.",
+        "Unmount by parent for reasons other than local close.",
+        "Modal stack ownership and backdrop scope.",
+        "Focus restoration to the opener.",
+        "No-callback visual-only stories versus production components.",
+        "Runtime test still needed: race close/backdrop/open/unmount, assert one callback and final removal from rendering, focus, and hit testing, and inspect interruption cleanup."
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "Production dismissible windows must have one owner-controlled, guarded close lifecycle shared by each enabled dismissal affordance; state removal follows the intended exit transition, interruption is deterministic, and no visible inert or invisible input-blocking window remains.",
+      "reason": "The corpus contains verified code-level failure modes with direct functional impact. The candidate already keeps backdrop dismissal optional."
+    },
+    {
+      "ruleId": "RUI-021",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "High for the logical distinction that stories/comments are not executable proof, but low for 8/8 independence because story shape, controls, asset policy, and verification prose are shared generator policy. The exact 667×375 and every-story matrix are project requirements, not official Roblox minima.",
+      "counterexamples": [
+        {
+          "description": "Obsidian explicitly reports that Studio MCP was offline and no in-engine visual or numeric QA ran, despite having stories and verification prose.",
+          "evidence": [
+            {
+              "path": "e2e/obsidian-gacha/README.md",
+              "lines": "34-45"
+            }
+          ]
+        },
+        {
+          "description": "Phase 4 reports two stories while the current Standard Showcase requires three, so an older passing report cannot establish current contract conformance.",
+          "evidence": [
+            {
+              "path": "docs/phase4-e2e-report.md",
+              "lines": "29-38"
+            },
+            {
+              "path": "skills/designmd-to-react-lua/references/standard-showcase.md",
+              "lines": "86-96"
+            }
+          ]
+        },
+        {
+          "description": "Multiple tastes preserve prior responsive fixes only as comments with no executable assertion or capture artifact.",
+          "evidence": [
+            {
+              "path": "e2e/loud-slab/src/Stories/HUD.story.luau",
+              "lines": "136-171"
+            },
+            {
+              "path": "e2e/studded-toybox/src/Stories/Shop.story.luau",
+              "lines": "42-52"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A story mounts but interactions dispatch nothing or close controls are inert.",
+        "One resolution passes while portrait, another device class, localization, or safe area clips content.",
+        "A comment claims asset verification while moderation/load state has changed.",
+        "Motion reaches the wrong endpoint or interruption leaves hidden mounted UI.",
+        "Manual capture cannot be reproduced or tied to the code/configuration reviewed.",
+        "Running an indiscriminate full matrix creates ceremony without testing the changed contract."
+      ],
+      "missingBoundaries": [
+        "Risk-based verification scope for a component, screen, asset, or motion-only change.",
+        "Official multi-device categories versus the project's 667×375 regression target.",
+        "Persistence and provenance of captures/assertions.",
+        "Live-world effects that opaque story backdrops conceal.",
+        "Runtime tests still needed are only those source inspection cannot settle: actual mount, supported input interaction, relevant viewport/localization cases, z-order/clipping, motion endpoints/interruption, and current asset loading for shipped assets."
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "For production/catalog delivery, pair declarative stories and provenance notes with reproducible runtime evidence targeted to the changed risks. Keep 667×375 and the exact story matrix as repository policy, while also testing representative supported Roblox device categories where applicable.",
+      "reason": "The core verification warning survives, but 'trustworthy delivery requires every listed check for every artifact' is too broad. Runtime work should cover observable contracts and unresolved engine/composition behavior, not re-test facts already established by source documentation."
+    },
+    {
+      "ruleId": "RUI-022",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Moderate: the candidate is external-only with no repository observations, and its support comes from one official-source research synthesis rather than independent corpus recurrence. The property-ownership facts are documented, but the proposed implementation choices and target-runtime behavior were not independently exercised.",
+      "counterexamples": [
+        {
+          "description": "A non-flex UIListLayout normally preserves each direct sibling's defined Size. Therefore Size cannot be treated as universally list-owned; flex is the boundary, and flex may be enabled by HorizontalFlex, VerticalFlex, non-Automatic ItemLineAlignment, Wraps, or UIFlexItem.",
+          "evidence": [
+            {
+              "path": "agent://LayoutResearch",
+              "lines": "124-145"
+            }
+          ]
+        },
+        {
+          "description": "UI constraints can override layout-controlled size. In a grid, a constrained item can differ from CellSize and may span cells, so a blanket prohibition on manually specified or constraint-derived size would reject supported behavior.",
+          "evidence": [
+            {
+              "path": "agent://LayoutResearch",
+              "lines": "147-170"
+            }
+          ]
+        },
+        {
+          "description": "UIListLayout ownership of Position and Rotation applies to its direct GuiObject siblings, not to descendants inside a laid-out item; a descendant remains a valid independent transform coordinate space.",
+          "evidence": [
+            {
+              "path": "agent://LayoutResearch",
+              "lines": "95-106"
+            }
+          ]
+        },
+        {
+          "description": "The official grid evidence establishes ownership of sibling Position and Size, not Rotation. The list's Rotation rule must not be generalized to UIGridLayout without separate evidence.",
+          "evidence": [
+            {
+              "path": "agent://LayoutResearch",
+              "lines": "147-170"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Tweening or manually assigning Position or Rotation on a direct UIListLayout sibling can appear ignored or be overwritten by the next layout pass.",
+        "Assigning Position or Size directly to a UIGridLayout sibling can produce no normal rendered effect because the grid controls those properties.",
+        "Over-broadly treating Size as always owned by UIListLayout would forbid legitimate non-flex item sizing.",
+        "Ignoring AutomaticSize, UIFlexItem, UISizeConstraint, UIAspectRatioConstraint, or UIScale interactions can make the declared ownership matrix disagree with the rendered result.",
+        "Animating a nested wrapper without considering ancestor clipping can preserve transform independence but still clip the visual overflow."
+      ],
+      "missingBoundaries": [
+        "UIListLayout non-flex versus every documented flex-enabling configuration",
+        "UIListLayout Position/Rotation versus conditionally controlled Size",
+        "UIGridLayout Position/Size versus unestablished Rotation ownership",
+        "AutomaticSize and flex-basis or cross-axis sizing",
+        "UISizeConstraint, UIAspectRatioConstraint, and UIScale precedence",
+        "Direct sibling versus nested descendant wrapper",
+        "Wraps and responsive reflow in small-landscape and tall/mobile viewports",
+        "Scrolling containers and clipping of independently transformed descendants",
+        "Interrupted tweens of layout-owned properties versus wrapper-owned properties",
+        "Target-runtime mutation test; none was supplied"
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "For a direct GuiObject sibling, do not depend on writes to properties the active layout actually controls: UIListLayout controls Position and Rotation, and controls Size only in the applicable flex/AutomaticSize/constraint configuration; UIGridLayout controls Position and Size except where a supported constraint determines size. For an independent per-item transform, move that transform to an unconstrained descendant or change/configure the layout hierarchy. Treat the wrapper/removal choice as recommended implementation, not as the engine invariant itself.",
+      "reason": "The engine failure mode supports a MUST only after defining the property matrix. The original wording is directionally correct but can be misread as making Size universally list-owned or Rotation grid-owned, and it presents wrapper/removal as if they were the only remedies. Constraints and layout configuration are valid alternatives. The stable invariant is that a direct sibling cannot reliably use a property currently owned by its layout; the architecture used to obtain independence is a recommendation."
+    },
+    {
+      "ruleId": "RUI-023",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Moderate: the candidate is external-only and has no independent repository observations. Official documentation supports locale emulation, elongation as a diagnostic aid, the TextScaled/AutomaticSize recommendation, and concrete overflow semantics, but not a universal release gate or a single mandatory overflow policy.",
+      "counterexamples": [
+        {
+          "description": "Studio Elongate affects only strings processed by Roblox's translation system. Hard-coded or otherwise unlocalized strings are not covered, and synthetic length pressure does not validate real-locale shaping, line breaking, bidirectionality, or translation quality.",
+          "evidence": [
+            {
+              "path": "agent://TextResearch",
+              "lines": "4-16"
+            }
+          ]
+        },
+        {
+          "description": "TextWrapped alone is not a complete preservation policy in a fixed-height label: any additional line whose height exceeds the container is omitted. A rule that lists wrapping without requiring vertical expansion, scrolling, or intentional loss can still hide content.",
+          "evidence": [
+            {
+              "path": "agent://TextResearch",
+              "lines": "142-157"
+            }
+          ]
+        },
+        {
+          "description": "Truncation is a valid intentional policy for expendable text, but it deliberately hides graphemes and can split a word under SplitWord. It is unsuitable where the full string is functionally required unless another access path exposes it.",
+          "evidence": [
+            {
+              "path": "agent://TextResearch",
+              "lines": "150-158"
+            }
+          ]
+        },
+        {
+          "description": "Avoiding TextScaled with AutomaticSize is official guidance, not an engine prohibition. TextScaled also has documented uses such as BillboardGui text, so the recommendation should be scoped primarily to ordinary on-screen TextLabels rather than treated as an invariant across all text UI.",
+          "evidence": [
+            {
+              "path": "agent://TextResearch",
+              "lines": "113-127"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "Elongation-only testing can pass while a real target locale still fails due to script shaping, bidirectional layout, word segmentation, or font coverage.",
+        "A fixed-height wrapped label can silently omit later lines even though TextWrapped is enabled.",
+        "TextScaled without a suitable UITextSizeConstraint can shrink important text below readable size.",
+        "Combining TextScaled and AutomaticSize can create unstable or unintended scaling because they solve opposite sizing problems.",
+        "AutomaticSize can preserve the text but expand into adjacent controls, beyond a small-landscape viewport, or outside a scrolling canvas if container behavior is not specified.",
+        "Truncating critical instructions, prices, consent text, or error recovery information can remove functionally necessary content.",
+        "Pseudolocalization/elongation can miss hard-coded strings that do not pass through the translation system."
+      ],
+      "missingBoundaries": [
+        "Small-landscape width and tall/mobile width-height extremes",
+        "Actual supported locales, including bidirectional and non-Latin shaping, in addition to synthetic elongation",
+        "Hard-coded strings versus strings processed by the translation system",
+        "TextLabel versus TextButton, TextBox, and BillboardGui text",
+        "Fixed-height wrapping versus AutomaticSize Y/XY or a scrolling container",
+        "TextTruncate combined with TextWrapped; official precedence is unresolved",
+        "AnchorPoint, parent constraints, minimum Size, and maximum expansion behavior",
+        "UITextSizeConstraint and a readable minimum text size",
+        "Critical text that must remain fully available versus expendable labels that may truncate",
+        "Gamepad-focus and touch layouts where focused/pressed affordances reduce available text space"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "For user-visible localized on-screen text whose complete or meaningful representation can exceed its available bounds, exercise supported target locales and Studio elongation, then define a content-appropriate policy: expand on the necessary axis, wrap with sufficient vertical growth or scrolling, or intentionally truncate only when loss is acceptable. Treat elongation as length-pressure coverage, not proof for every locale. On ordinary on-screen TextLabels, avoid combining TextScaled and AutomaticSize by default; use a documented exception only with bounded text size and verified layout behavior.",
+      "reason": "The candidate survives as guidance, not an invariant. Official sources say elongation helps find problems rather than mandating it as a universal release check, and overflow handling depends on whether complete content is required. The original list also overstates wrapping unless vertical capacity is addressed. The TextScaled/AutomaticSize clause is well supported as a default recommendation, with valid exceptions and a narrower on-screen TextLabel scope."
+    },
+    {
+      "ruleId": "RUI-024",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Moderate-high for the documented, effective non-rotated clipping invariant; unresolved for any claim about the rollout state actually experienced by a target client. Evidence is external-only and synthesized in one official-source artifact, with no repository observation or runtime render test.",
+      "counterexamples": [
+        {
+          "description": "Clipping is conditional under rotation. When ClipsDescendantsSupportsRotation is enabled, rotated descendants can be clipped, but a rotated parent shape remains unsupported; when it is not enabled, non-zero Rotation on the clipping GuiObject or any ancestor causes ClipsDescendants to be ignored.",
+          "evidence": [
+            {
+              "path": "agent://LayeringResearch",
+              "lines": "118-140"
+            }
+          ]
+        },
+        {
+          "description": "ClipsDescendants is a descendant boundary, not a global screen boundary. Reparenting an overlay to an appropriate common ancestor or separate ScreenGui can place it outside the clipping branch; high ZIndex alone cannot do so while it remains a descendant.",
+          "evidence": [
+            {
+              "path": "agent://LayeringResearch",
+              "lines": "212-236"
+            }
+          ]
+        },
+        {
+          "description": "UICorner changes the visible corner treatment but does not make the ClipsDescendants boundary rounded. A rounded card can therefore still use rectangular clipping, creating corner leakage or unexpectedly square cuts.",
+          "evidence": [
+            {
+              "path": "agent://LayeringResearch",
+              "lines": "91-100"
+            }
+          ]
+        },
+        {
+          "description": "A sibling shadow can escape one card's clipping boundary but can still be clipped by a shared ancestor. Thus moving an effect one level is not a universal escape from effective ancestor clipping.",
+          "evidence": [
+            {
+              "path": "agent://LayeringResearch",
+              "lines": "142-154"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A tooltip, popover, modal ornament, or shadow kept in a clipping branch is cut off despite a very high ZIndex.",
+        "A rounded container clips descendants to a rectangle rather than its UICorner silhouette, causing content to show in or be cut at square corners.",
+        "Assuming rotation support is enabled can produce unclipped overflow on clients where the rollout is not effective.",
+        "Assuming the legacy behavior can produce unnecessary workarounds where rotated descendants are supported.",
+        "Conflating a rotated descendant with a rotated clipping ancestor can encode the wrong behavior: the documented support does not make a rotated parent shape a supported clip geometry.",
+        "During a Rotation tween, legacy behavior can switch effective clipping off for any non-zero ancestor rotation and expose overflow.",
+        "Moving an overlay to a separate ScreenGui without coordinating DisplayOrder, input capture, and modal lifecycle can fix clipping while breaking stacking or interaction."
+      ],
+      "missingBoundaries": [
+        "Actual ClipsDescendantsSupportsRotation rollout state on the target engine/client cohort",
+        "Rotated descendant versus rotated clipping GuiObject versus rotated ancestor",
+        "Rotation animation through zero and interruption mid-tween",
+        "Nested clipping ancestors and which ancestor establishes the effective boundary",
+        "UICorner radius versus rectangular clipping geometry",
+        "ScrollingFrame content, popovers, and shadows extending outside the viewport",
+        "UIShadow blur/spread interaction with parent or ancestor clipping; official research leaves it unresolved",
+        "Sibling/global ZIndex behavior versus cross-ScreenGui DisplayOrder",
+        "Modal stacking and input capture after reparenting outside the clipped branch",
+        "Small-landscape and tall/mobile placements that force overlays against viewport edges",
+        "Target-runtime render test for high-Z overflow, rounded parents, and rotation; none was supplied"
+      ],
+      "recommendedStrength": "MUST",
+      "recommendedScope": "When a GuiObject's ClipsDescendants is actually effective, descendant overflow outside that GuiObject's rectangular bounds is invisible; ZIndex only changes draw order and cannot bypass the boundary, and UICorner does not round the clip geometry. State rotation separately and conditionally: distinguish rotated descendants from rotated clipping ancestors, and make no assertion about the target client's rollout state without a target-runtime check.",
+      "reason": "The rectangular descendant-boundary behavior is a concrete engine constraint and supports a MUST. Rotation cannot be folded into that invariant as unconditional support or unconditional failure: official documentation describes two rollout branches and does not establish the effective state for every client. This review therefore retains the stable core, narrows the rotation clause, and explicitly does not claim runtime support."
+    },
+    {
+      "ruleId": "RUI-025",
+      "verdict": "narrow",
+      "independenceAdjustedSupport": "Moderate: same-property replacement, different-property coexistence, Cancel, Pause, and Completed states are documented engine semantics, but deterministic ownership is an application recommendation from one external research synthesis. There are no repository observations or rapid-interruption runtime results.",
+      "counterexamples": [
+        {
+          "description": "A newer tween on the same object and same property already cancels and overwrites the older tween, while different-property tweens may coexist. Therefore explicit Cancel is neither universally necessary nor equivalent to one-tween-per-object ownership.",
+          "evidence": [
+            {
+              "path": "agent://MotionResearch",
+              "lines": "34-51"
+            }
+          ]
+        },
+        {
+          "description": "Cancel does not move the instance to a start or target terminal value; it leaves properties at their current interpolated values. Replaying the cancelled tween restarts its full duration, so 'terminal values' must be supplied by application state rather than inferred from Cancel.",
+          "evidence": [
+            {
+              "path": "agent://MotionResearch",
+              "lines": "53-69"
+            }
+          ]
+        },
+        {
+          "description": "Pause is not interchangeable with Cancel: Pause preserves progress and does not fire Completed, whereas Cancel fires Completed with a cancellation state. A callback policy that assumes every interruption has identical completion behavior is false.",
+          "evidence": [
+            {
+              "path": "agent://MotionResearch",
+              "lines": "61-69"
+            }
+          ]
+        },
+        {
+          "description": "Roblox does not prescribe an owner registry or ownership abstraction, and decorative fire-and-forget motion need not pay that complexity when no later state or callback depends on the outcome.",
+          "evidence": [
+            {
+              "path": "agent://MotionResearch",
+              "lines": "53-64"
+            },
+            {
+              "path": "agent://MotionResearch",
+              "lines": "190-193"
+            }
+          ]
+        }
+      ],
+      "failureModes": [
+        "A cancelled tween's Completed callback can run with PlaybackState.Cancelled and apply stale state if the callback does not discriminate playback state or generation.",
+        "An older different-property tween can continue after a replacement state transition and produce a hybrid visual state.",
+        "Calling Cancel and assuming it restores the start or commits the target leaves the object at an intermediate value.",
+        "Using Pause where terminal cleanup is expected can leave cleanup callbacks unfired; using Cancel where resume is expected loses progress semantics.",
+        "Replaying a cancelled tween can take the full original duration from an intermediate visual value and create unexpected velocity or timing.",
+        "Multiple input sources such as mouse hover, touch press, gamepad selection, disabled-state changes, and modal teardown can supersede one another unless they converge on one authoritative visual state.",
+        "Reduced-motion snapping or replacement fades can bypass assumptions made by callbacks written only for nonzero-duration motion.",
+        "An over-engineered universal owner can incorrectly cancel intentional, compatible tweens on different properties."
+      ],
+      "missingBoundaries": [
+        "Same object/same property versus same object/different properties",
+        "One tween targeting multiple properties when any target property conflicts",
+        "Callback behavior for Completed versus Cancelled and protection against stale generations",
+        "Pause/resume versus Cancel/replay semantics",
+        "Rapid reversal and animation interruption before the first rendered frame",
+        "Zero-duration or reduced-motion transitions",
+        "Instance destruction, unmount, modal close, and disabled-state changes during playback",
+        "Mouse hover, touch press, and gamepad focus issuing competing visual states",
+        "Intentional concurrent choreography versus state transitions that require atomic visual ownership",
+        "Decorative fire-and-forget motion versus correctness-bearing stateful motion",
+        "Target-runtime assertions for winning values and callback count; none were supplied"
+      ],
+      "recommendedStrength": "SHOULD",
+      "recommendedScope": "For correctness-bearing UI state that can be superseded before its transition finishes, use one authoritative state/generation and define the winning target values plus callback behavior for Completed and Cancelled outcomes. Rely on automatic cancellation only for documented same-object, same-property conflicts; explicitly cancel or otherwise invalidate older work when different properties, stale callbacks, teardown, or atomic choreography require it. Exclude decorative fire-and-forget tweens that have no state or callback dependency.",
+      "reason": "The deterministic-outcome goal is sound, but Roblox supplies semantics rather than a mandated ownership architecture. Same-property replacement already resolves one class of conflict; different-property coexistence, stale callbacks, Cancel's intermediate values, and Pause's no-Completed behavior require scoped application policy. The rule should remain a SHOULD for correctness-bearing supersedable transitions, not become a universal tween abstraction or explicit-Cancel requirement."
+    }
+  ]
+}

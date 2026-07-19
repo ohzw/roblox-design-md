@@ -1,0 +1,405 @@
+{
+  "topic": "Roblox game-HUD composition, screen-space density, mobile control collision, and modal/world-awareness guidance",
+  "claims": [
+    {
+      "id": "SRC-001",
+      "claim": "During active gameplay, Roblox recommends showing only the information and controls that are vital in the current context, especially on mobile where screen space is limited.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Cross-platform HUDs, with the strongest explicit wording applying to active gameplay on mobile screens.",
+      "limitations": [
+        "This is qualitative guidance, not an engine constraint.",
+        "What counts as vital depends on the game, current workflow, player role, world location, and held items.",
+        "The sources specify no maximum element count or screen-coverage percentage."
+      ],
+      "sources": [
+        {
+          "title": "Position and size UI objects — Context-based UI",
+          "url": "https://create.roblox.com/docs/ui/position-and-size#context-based-ui",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "States that mobile screen space is limited and creators should show only the most vital information during active gameplay, using contextual controls such as a prompt near an interactable instead of a permanently visible action button."
+        },
+        {
+          "title": "UI and UX design — Prioritization",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design#prioritization",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends identifying what is essential to the player's present activity and swapping buttons and information by context so the player has what is needed without unrelated clutter."
+        }
+      ]
+    },
+    {
+      "id": "SRC-002",
+      "claim": "Roblox recommends grouping information and controls that belong to the same category, and using proximity to communicate relationships.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Information architecture and visual hierarchy for game UI; the detailed placement example comes from an official first-person laser-tag curriculum.",
+      "limitations": [
+        "Grouping is a design recommendation, not an engine requirement.",
+        "The sources do not prescribe a fixed gap, container size, or coordinate system.",
+        "The category model and resulting groups are game- and workflow-dependent."
+      ],
+      "sources": [
+        {
+          "title": "Wireframe your layouts — Plan a visual hierarchy",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts#plan-a-visual-hierarchy",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Explicitly says that scattering different categories makes it difficult for players to know where to look and recommends grouping UI elements from the same category together."
+        },
+        {
+          "title": "UI and UX design — Attention",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design#attention",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Says proximity implies a connection and that placing related features and items near each other helps players understand associations and find them."
+        }
+      ]
+    },
+    {
+      "id": "SRC-003",
+      "claim": "Keeping persistent status information near the top or sides so the central view can remain focused on 3D action is supported as a genre-dependent HUD composition pattern, not as a universal Roblox layout rule.",
+      "verdict": "partially-supported",
+      "kind": "design-recommendation",
+      "scope": "The explicit top/middle/sides hierarchy is for Roblox's official laser-tag FPS example; contextual prioritization applies more broadly.",
+      "limitations": [
+        "The official curriculum says that its laser-tag objective information belongs near the top, action/blaster information near the middle, and peripheral player-state information near the sides; it does not require those placements for other genres.",
+        "Some games legitimately need central reticles, prompts, targeting indicators, or other world-aligned information.",
+        "No official reserved central rectangle or minimum unobstructed viewport percentage was found."
+      ],
+      "sources": [
+        {
+          "title": "Wireframe your layouts — Plan a visual hierarchy",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts#plan-a-visual-hierarchy",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Explains, for the sample FPS, that the middle is the focal area for 3D action, objective information is near the top, and peripheral player-state information is near the sides so it can be read without diverting attention from gameplay."
+        },
+        {
+          "title": "UI and UX design — Prioritization",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design#prioritization",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Provides the broader rule to prioritize information relevant to what the player is doing now, rather than a fixed HUD coordinate scheme."
+        }
+      ]
+    },
+    {
+      "id": "SRC-004",
+      "claim": "Roblox recommends minimizing obstruction and distraction through contextual display, hierarchy, and moderation, rather than through a fixed screen-space budget.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "HUDs and other in-experience UI across game workflows, particularly rapid gameplay and small mobile screens.",
+      "limitations": [
+        "Terms such as minimalist, clutter, distraction, balance, and unobtrusive are qualitative.",
+        "The appropriate amount of persistent HUD varies by genre and gameplay pace.",
+        "This guidance does not establish that every overlay must leave the 3D world visible."
+      ],
+      "sources": [
+        {
+          "title": "UI and UX design",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends prioritized and contextual UI, describes excessive buttons, screens, and text as overwhelming on small screens, and says attention tools should be used in moderation to avoid overwhelming or confusing players."
+        },
+        {
+          "title": "Wireframe your layouts",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends contextual display for different workflows, warns that too many categories or elements distract players, and describes successful flows as intuitive, unobtrusive, and convenient."
+        }
+      ]
+    },
+    {
+      "id": "SRC-005",
+      "claim": "On touch devices, Roblox identifies the bottom-left and bottom-right corners as qualitative default-control zones and recommends keeping important information and custom virtual buttons out of those zones.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Experiences using Roblox's default touch controls on phones and tablets.",
+      "limitations": [
+        "The documentation describes portions of the bottom corners, not exact pixel or normalized rectangles.",
+        "The warning concerns important information and virtual buttons; decorative or noninteractive content has different risk.",
+        "Reachability differs between phones, tablets, devices, and players' hands.",
+        "The guidance is inapplicable when an experience supplies a fully custom Scriptable control system, although that custom system still requires its own collision testing."
+      ],
+      "sources": [
+        {
+          "title": "Position and size UI objects — Reserved zones and thumb zones",
+          "url": "https://create.roblox.com/docs/ui/position-and-size#cross-platform-factors",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "States that default controls occupy a portion of the bottom-left and bottom-right corners and says to avoid placing important information or virtual buttons there; also says comfortable thumb zones vary between phone and tablet."
+        },
+        {
+          "title": "Wireframe your layouts — Block in UI elements",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts#block-in-ui-elements",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Tells creators to account for the default virtual thumbstick at bottom-left and jump button at bottom-right while composing custom UI alongside Core UI and touch controls."
+        }
+      ]
+    },
+    {
+      "id": "SRC-006",
+      "claim": "A universal fixed joystick rectangle or jump-button rectangle is not guaranteed by Roblox and must not be treated as a platform invariant.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Default character controls on touch-enabled devices.",
+      "limitations": [
+        "The curriculum's bottom-corner descriptions are useful qualitative planning guidance, not geometry guarantees.",
+        "A particular experience may intentionally lock a control mode and observe a stable arrangement for its tested client versions, but that does not create a universal platform guarantee.",
+        "The jump button lookup example shows how to place a custom control relative to the runtime button; it does not publish a guaranteed jump-button rectangle."
+      ],
+      "sources": [
+        {
+          "title": "DevTouchMovementMode enum",
+          "url": "https://create.roblox.com/docs/reference/engine/enums/DevTouchMovementMode",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents multiple touch movement modes: UserChoice, Thumbstick, DPad, Thumbpad, ClickToMove, Scriptable, and DynamicThumbstick. DynamicThumbstick appears when the player touches the lower portion of the screen, while Scriptable supplies no default character movement controls."
+        },
+        {
+          "title": "StarterPlayer.DevTouchMovementMode",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/StarterPlayer#DevTouchMovementMode",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that UserChoice lets the player's in-experience setting determine the movement mode, so a single joystick arrangement is not invariant even across users."
+        },
+        {
+          "title": "Position and size UI objects — Thumb zones",
+          "url": "https://create.roblox.com/docs/ui/position-and-size#thumb-zones",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Calls relative positioning near the actual frequently used control a reliable approach and provides code that waits for the runtime JumpButton, reads its current size and position, and places a custom button relative to it."
+        }
+      ]
+    },
+    {
+      "id": "SRC-007",
+      "claim": "Core UI and device cutouts impose platform-level safe-area constraints, and Roblox exposes runtime inset data instead of requiring hard-coded HUD margins.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "ScreenGui content around Roblox Core UI, top-bar controls, camera notches, and other device cutouts; this does not by itself reserve touch thumbstick/action zones.",
+      "limitations": [
+        "CoreUISafeInsets and device-safe areas are distinct from comfortable thumb zones and default gameplay-control occupancy.",
+        "Setting ScreenInsets to None is permitted for intentional full-screen, usually noninteractive content; it may place content behind Core UI or cutouts.",
+        "The numeric rectangles in GetInsetArea documentation are examples, not guaranteed dimensions.",
+        "GuiService.TopbarInset covers available top-bar space and is not a general API for joystick or jump-button bounds."
+      ],
+      "sources": [
+        {
+          "title": "ScreenGui API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/ScreenGui",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents that CoreUISafeInsets keeps descendants clear of top-bar controls and screen cutouts, that DeviceSafeInsets handles device-safe bounds, and that ScreenInsets.None can allow UI to be obscured. It recommends ScreenInsets for new work."
+        },
+        {
+          "title": "GuiService API reference — TopbarInset, GetGuiInset, and GetInsetArea",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiService",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents runtime inset rectangles and says TopbarInset is dynamic as Core UI visibility, size, and position change, recommending reaction through a property-changed signal."
+        }
+      ]
+    },
+    {
+      "id": "SRC-008",
+      "claim": "An official Roblox numeric maximum for HUD screen coverage, screen-space density, persistent element count, or required percentage of unobstructed gameplay view was found.",
+      "verdict": "not-found",
+      "kind": "platform-guidance",
+      "scope": "Current official Roblox composition, positioning, wireframing, UI/UX, accessibility, and testing sources reviewed for this assignment.",
+      "limitations": [
+        "The reviewed sources provide qualitative rules: show vital information, reduce clutter, balance UI with Core UI, and test against backgrounds and screen sizes.",
+        "The 40%-from-top phone/tablet example in the thumb-zone documentation illustrates that identical relative placement can have different reachability; it is not a density limit, safe-area boundary, or required placement.",
+        "Absence is limited to the current official sources and targeted searches reviewed on the access date; it is not a claim that no unpublished internal standard exists."
+      ],
+      "sources": [
+        {
+          "title": "Position and size UI objects",
+          "url": "https://create.roblox.com/docs/ui/position-and-size",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Provides qualitative cross-platform, reserved-zone, thumb-zone, and contextual-UI guidance but no numeric HUD density or unobstructed-view threshold."
+        },
+        {
+          "title": "Wireframe your layouts",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Recommends reviewing composition, balance, simultaneous UI states, and multiple screen categories, but supplies no percentage or element-count ceiling."
+        },
+        {
+          "title": "UI and UX design",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Discusses minimalist, contextual, prioritized UI and moderation without defining a numeric density rule."
+        }
+      ]
+    },
+    {
+      "id": "SRC-009",
+      "claim": "An official Roblox fixed numeric touch-control exclusion zone, including guaranteed joystick and jump-button pixel or percentage rectangles, was found.",
+      "verdict": "not-found",
+      "kind": "engine-fact",
+      "scope": "Roblox default touch controls across phones, tablets, control modes, orientations, and player settings.",
+      "limitations": [
+        "Official guidance identifies only qualitative bottom-corner zones and recommends relative placement near runtime controls.",
+        "The documented example offset of 20 pixels to the left of JumpButton is sample code for one custom button, not a required exclusion margin.",
+        "The DynamicThumbstick description says it appears in the lower portion after touch; it does not define a fixed activation or rendered rectangle."
+      ],
+      "sources": [
+        {
+          "title": "Position and size UI objects — Cross-platform factors",
+          "url": "https://create.roblox.com/docs/ui/position-and-size#cross-platform-factors",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines reserved zones and thumb reach qualitatively and recommends runtime-relative placement rather than publishing fixed zone bounds."
+        },
+        {
+          "title": "DevTouchMovementMode enum",
+          "url": "https://create.roblox.com/docs/reference/engine/enums/DevTouchMovementMode",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Shows that touch control schemes vary and that some modes do not use a fixed thumbstick at all."
+        }
+      ]
+    },
+    {
+      "id": "SRC-010",
+      "claim": "Roblox recommends composing and testing UI across multiple screen and input categories, using Studio emulation for fast coverage and real hardware for usability and behavior that emulation cannot reproduce.",
+      "verdict": "supported",
+      "kind": "platform-guidance",
+      "scope": "Supported target devices, resolutions, aspect ratios, orientations, and input types; test priorities should follow the experience's actual audience and genre.",
+      "limitations": [
+        "The curriculum names mobile, tablet, laptop, and TV as screen categories; the Device Emulator additionally covers mobile controls, consoles, and VR, but neither list is a mandatory exhaustive certification matrix.",
+        "Studio emulation provides insight into UI, controls, resolution, and aspect ratio, but official documentation says it cannot fully reproduce physical-device input latency, memory pressure, thermal behavior, or touch ergonomics.",
+        "The official hardware page says testing strategies depend on the game and that no single approach fits every project.",
+        "No official minimum number of phone, tablet, desktop, console, or TV models is prescribed for UI composition testing."
+      ],
+      "sources": [
+        {
+          "title": "Wireframe your layouts — Block in UI elements",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts#block-in-ui-elements",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Says to review custom UI alongside Core UI on multiple devices and screen sizes, explicitly including mobile, tablet, laptop, and TV, and to consider how many elements can coexist in each workflow."
+        },
+        {
+          "title": "Studio testing modes — Device emulation",
+          "url": "https://create.roblox.com/docs/studio/testing-modes#device-emulation",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Documents emulation of mobile controls, consoles, VR, different resolutions and aspect ratios, view size, orientation, touch gestures, and controllers."
+        },
+        {
+          "title": "Test on hardware",
+          "url": "https://create.roblox.com/docs/performance-optimization/test-on-hardware",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Says emulation cannot fully replicate real hardware and recommends actual-device checks for target size, readability, gesture/control conflicts, comfortable reach, input switching, and lower-supported devices."
+        }
+      ]
+    },
+    {
+      "id": "SRC-011",
+      "claim": "GuiButton.Modal is not a complete modal-dialog or focus-trapping mechanism; its documented Roblox engine effect is limited to mouse-lock behavior.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Visible GuiButton instances on Roblox clients, particularly first-person or mouse-locked camera behavior.",
+      "limitations": [
+        "The property name can be mistaken for a general dialog modality feature, but the API documentation does not say it makes background UI inert, captures touch/gameplay input, traps gamepad selection, assigns initial focus, or restores focus on close.",
+        "Gamepad focus is separately represented by GuiService.SelectedObject and selection-navigation APIs.",
+        "An experience must define its own input suppression and navigation behavior appropriate to its UI and gameplay."
+      ],
+      "sources": [
+        {
+          "title": "GuiButton.Modal API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiButton#Modal",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States only that, while a visible GUI element with Modal=true exists, the mouse will not be locked unless the right mouse button is down."
+        },
+        {
+          "title": "GuiService.SelectedObject API reference",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiService#SelectedObject",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Documents SelectedObject as the GuiObject currently focused by the GUI navigator, establishing that navigation focus is managed separately from GuiButton.Modal."
+        }
+      ]
+    },
+    {
+      "id": "SRC-012",
+      "claim": "For a truly modal interface, focus should enter and remain within the dialog, outside content should be inert and visually obscured, Escape should close it, and focus should normally return to the invoking control.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Imported W3C WAI-ARIA Authoring Practices guidance for web modal dialogs; it is high-authority accessibility guidance but not Roblox-specific engine behavior.",
+      "limitations": [
+        "This is external web accessibility guidance, not an official Roblox platform requirement.",
+        "Roblox does not expose DOM roles, aria-modal, or browser Tab behavior in an experience UI; creators must translate the interaction principle to touch, mouse/keyboard, and gamepad navigation.",
+        "The W3C pattern does not decide whether a game should pause simulation, how much of the 3D world should remain visible, or whether a particular game workflow should be modal."
+      ],
+      "sources": [
+        {
+          "title": "W3C WAI-ARIA Authoring Practices — Dialog (Modal) Pattern",
+          "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines modal background content as inert and typically dimmed, requires focus to move inside and cycle within the dialog, specifies Escape to close, and recommends restoring focus to the invoker."
+        }
+      ]
+    },
+    {
+      "id": "SRC-013",
+      "claim": "Roblox officially requires gameplay modals to preserve a specified amount of world visibility, use a specified dimming opacity, or pause world simulation.",
+      "verdict": "not-found",
+      "kind": "design-recommendation",
+      "scope": "In-experience menus, dialogs, shops, inventory screens, respawn overlays, and other modal-like game UI.",
+      "limitations": [
+        "Official Roblox sources reviewed emphasize context, hierarchy, unobtrusive flows, and genre-specific needs, but do not prescribe a universal world-awareness treatment for modal overlays.",
+        "The laser-tag curriculum's side-oriented respawn and player-state treatments are sample-specific and cannot establish a universal MUST.",
+        "Whether the world should remain visible or active is genre- and risk-dependent: a real-time combat inventory, a safe-zone shop, and an irreversible purchase confirmation have different requirements.",
+        "No official Roblox numeric background-opacity or visible-world-area threshold was found."
+      ],
+      "sources": [
+        {
+          "title": "Wireframe your layouts — Plan a visual hierarchy",
+          "url": "https://create.roblox.com/docs/tutorials/curriculums/user-interface-design/wireframe-your-layouts#plan-a-visual-hierarchy",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Provides a genre-specific laser-tag hierarchy, including player-state and respawn presentation near the sides, but does not formulate a universal modal/world-visibility rule."
+        },
+        {
+          "title": "UI and UX design",
+          "url": "https://create.roblox.com/docs/production/game-design/ui-ux-design",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Provides contextual prioritization and unobtrusive interaction goals, but no required modal coverage, dimming, or gameplay-pause behavior."
+        },
+        {
+          "title": "W3C WAI-ARIA Authoring Practices — Dialog (Modal) Pattern",
+          "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "High-authority external guidance says outside content is typically obscured or dimmed and made inert, but gives no game-world visibility percentage and does not address simulation pause."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "The official wireframing curriculum describes a default virtual thumbstick in the bottom-left and jump button in the bottom-right for planning purposes, while the official DevTouchMovementMode API allows UserChoice, ClickToMove, Scriptable, DynamicThumbstick, and other schemes. The API variability limits the curriculum description to qualitative/default composition guidance; it cannot support fixed control rectangles.",
+    "The W3C modal-dialog pattern uses modal to mean inert outside content plus contained focus. Roblox GuiButton.Modal uses the same word for a much narrower mouse-lock behavior. These are different semantics, so W3C modal requirements must not be inferred from the Roblox property name.",
+    "The wireframing curriculum encourages one adaptive visual design across devices while also recommending unique user flows for touch, gamepad, and mouse. These are complementary rather than contradictory: share the compositional system where practical, but test and adapt interaction flows by input type."
+  ],
+  "unresolved": [
+    "Context7 was used first as required. It returned relevant Roblox Creator Hub material for reserved zones, thumb zones, TopbarInset, context-based UI, and hardware testing, but did not return substantive Roblox guidance for modal focus or modal/world-awareness composition; targeted official-web searches and direct Creator Hub reads were used as the fallback.",
+    "The Firecrawl CLI was unavailable in the workstation environment, so the official-web fallback used web search plus direct reads of Roblox Creator Hub and W3C pages.",
+    "No current official Roblox source was found that defines a numeric HUD-density ceiling, a minimum unobstructed gameplay-view percentage, fixed joystick/jump exclusion rectangles, modal dimming opacity, or a universal world-awareness rule for overlays.",
+    "No current official Roblox design document was found that turns modal focus into an engine-level invariant. The only Roblox API named Modal documents mouse-lock behavior; focus containment remains an experience-level interaction responsibility."
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "topic": "Roblox text sizing, automatic sizing, localization, truncation, and UI constraints",
+  "claims": [
+    {
+      "id": "SRC-201",
+      "claim": "Long localized strings should be exercised in Studio: Player Emulator can emulate a Locale and can Elongate translated strings specifically to reveal UI that cannot accommodate text longer than the default translated text.",
+      "verdict": "partially-supported",
+      "kind": "platform-guidance",
+      "scope": "Roblox Studio playtesting of UI strings that pass through Roblox's translation system.",
+      "limitations": [
+        "The official documentation says elongation “helps” identify UI problems; it does not establish a universal platform MUST or release requirement.",
+        "Elongate affects only text that goes through the translation system, so hard-coded or otherwise unlocalized strings are outside this test unless separately inspected; Pseudolocalize is the documented tool for identifying such strings.",
+        "Elongation is synthetic. The cited page supports testing length pressure, not a claim that it validates every real locale's script, shaping, line breaking, or translation quality.",
+        "The documentation's statement that Spanish is on average 30% longer than English and German is even longer is an average, not a per-string sizing guarantee."
+      ],
+      "sources": [
+        {
+          "title": "Studio testing modes — Player emulation",
+          "url": "https://create.roblox.com/docs/studio/testing-modes#player-emulation",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Documents Locale emulation, Pseudolocalize, and an Elongate slider; states that elongation helps identify UI that cannot handle longer translated text and only affects text processed by the translation system."
+        },
+        {
+          "title": "Size modifiers and constraints — Automatic sizing",
+          "url": "https://create.roblox.com/docs/ui/size-modifiers#automatic-sizing",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Names expansion of a GuiObject to fit text localized in many languages as an intended AutomaticSize use case."
+        }
+      ]
+    },
+    {
+      "id": "SRC-202",
+      "claim": "AutomaticSize has specific, falsifiable layout interactions: it sizes a GuiObject from descendant content on the selected X, Y, or XY axes; AnchorPoint determines the point from which it expands; the object's Size is a minimum on automatically sized axes; and TextWrapped combined with AutomaticSize Y or XY expands a text object vertically as lines wrap.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "GuiObject descendants, including TextLabel, TextButton, and TextBox; axis behavior is determined by Enum.AutomaticSize.",
+      "limitations": [
+        "AutomaticSize defaults to None and affects only the selected axes.",
+        "For ScrollingFrame, the corresponding mechanism is AutomaticCanvasSize; it changes CanvasSize rather than the base GuiObject.Size.",
+        "Size remains a minimum size, so AutomaticSize does not imply that the object will shrink below its configured core Size.",
+        "The wrapping interaction requires TextWrapped and AutomaticSize Y or XY; the cited source does not support assuming vertical growth when only AutomaticSize X is enabled.",
+        "AutomaticSize does not by itself select a maximum size or an overflow policy."
+      ],
+      "sources": [
+        {
+          "title": "Size modifiers and constraints — Automatic sizing",
+          "url": "https://create.roblox.com/docs/ui/size-modifiers#automatic-sizing",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Defines descendant-based sizing, X/Y/XY modes, AnchorPoint behavior, Size as the minimum, the TextWrapped plus Y/XY interaction, and the ScrollingFrame exception."
+        },
+        {
+          "title": "GuiObject.AutomaticSize",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/GuiObject#AutomaticSize",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Defines AutomaticSize as dynamically resizing a parent UI object based on descendant content."
+        }
+      ]
+    },
+    {
+      "id": "SRC-203",
+      "claim": "UI constraints can take precedence over layout: when a GuiObject is controlled by both a UIListLayout-like layout structure and a UISizeConstraint, the UISizeConstraint overrides the layout and controls object size; UIAspectRatioConstraint has the same documented precedence. UITextSizeConstraint separately bounds font size for text objects and is respected by TextScaled.",
+      "verdict": "supported",
+      "kind": "engine-fact",
+      "scope": "Constraints parented under the GuiObject they constrain; size/layout precedence applies to UISizeConstraint and UIAspectRatioConstraint, while font bounds apply to UITextSizeConstraint on text-bearing GuiObjects.",
+      "limitations": [
+        "A constraint must be a child of the GuiObject it constrains.",
+        "The source explicitly names layout structures such as UIListLayout; it does not document every possible interaction between every layout class and AutomaticSize.",
+        "UITextSizeConstraint controls text size, not the container's dimensions or whether all text fits.",
+        "Roblox explicitly says not to set MinTextSize below 9 because it will be difficult to read for many viewers; this is readability guidance, not a claim that the engine rejects lower values."
+      ],
+      "sources": [
+        {
+          "title": "Size modifiers and constraints — Constraints",
+          "url": "https://create.roblox.com/docs/ui/size-modifiers#constraints",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Documents constraint parenting, UISizeConstraint and UIAspectRatioConstraint overriding layout control, UITextSizeConstraint min/max font bounds, TextScaled respecting those bounds, and the warning against MinTextSize below 9."
+        }
+      ]
+    },
+    {
+      "id": "SRC-204",
+      "claim": "TextScaled and AutomaticSize solve opposite sizing problems, and Roblox recommends not applying both to the same TextLabel: TextScaled changes text to fit the container, ignores TextSize, and automatically enables TextWrapped, whereas AutomaticSize changes the UI to fit content while preserving a consistent font size.",
+      "verdict": "supported",
+      "kind": "design-recommendation",
+      "scope": "Primarily on-screen TextLabel sizing; TextScaled is also documented as useful for text in BillboardGui.",
+      "limitations": [
+        "Avoiding the combination is an official recommendation, not an engine prohibition.",
+        "Without a UITextSizeConstraint, TextScaled can make text unreadably small and, when combined with AutomaticSize, can scale toward a maximum font size of 100 according to the TextLabel API documentation.",
+        "TextScaled automatically enables wrapping, so behavior attributed to TextScaled may also include TextWrapped's line-breaking and vertical-overflow behavior.",
+        "Roblox notes that TextScaled can be useful for BillboardGui text; the recommendation to prefer AutomaticSize is not a claim that TextScaled has no valid use."
+      ],
+      "sources": [
+        {
+          "title": "TextLabel.TextScaled",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TextLabel#TextScaled",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "States that TextScaled ignores TextSize and enables TextWrapped; contrasts content scaling with AutomaticSize container scaling; recommends AutomaticSize and avoiding both properties on one TextLabel; describes the unconstrained maximum font size of 100."
+        },
+        {
+          "title": "Size modifiers and constraints — Text size",
+          "url": "https://create.roblox.com/docs/ui/size-modifiers#text-size",
+          "authority": "official-doc",
+          "accessed": "2026-07-19",
+          "supports": "Documents using UITextSizeConstraint to bound TextScaled text size and warns against MinTextSize below 9."
+        }
+      ]
+    },
+    {
+      "id": "SRC-205",
+      "claim": "A fixed-size text container needs an explicit overflow decision if content must remain intentionally represented: TextFits reports whether the text fits; TextBounds reports the minimum rendered-text dimensions; TextWrapped breaks long text into lines but omits any further line whose height would exceed the container; TextTruncate.AtEnd or SplitWord replaces non-fitting graphemes with \"...\" using different word-boundary behavior.",
+      "verdict": "partially-supported",
+      "kind": "design-recommendation",
+      "scope": "Fixed-size TextLabel containers; equivalent text properties exist on other Roblox text-bearing GuiObjects, but the cited API behavior is specifically verified on TextLabel.",
+      "limitations": [
+        "The engine facts are supported, but official sources do not impose one universal overflow-handling strategy or use the normative wording that every fixed container MUST choose wrapping, resizing, or truncation.",
+        "TextFits and TextBounds are diagnostic/measurement properties; they do not themselves resize, wrap, or truncate content.",
+        "TextWrapped does not guarantee all content remains visible in a fixed-height label: lines that would exceed vertical height are not rendered.",
+        "TextTruncate deliberately hides content. AtEnd respects word boundaries only when possible; SplitWord may truncate within a word.",
+        "The fetched official references do not specify the interaction or precedence between TextTruncate and TextWrapped, so no combined-behavior claim is made."
+      ],
+      "sources": [
+        {
+          "title": "TextLabel text measurement and overflow properties",
+          "url": "https://create.roblox.com/docs/reference/engine/classes/TextLabel#TextFits",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Defines TextFits, TextBounds, TextWrapped, and TextTruncate; specifically states that TextWrapped omits a line if another line would exceed the label's vertical height."
+        },
+        {
+          "title": "TextTruncate enum",
+          "url": "https://create.roblox.com/docs/reference/engine/enums/TextTruncate",
+          "authority": "official-api",
+          "accessed": "2026-07-19",
+          "supports": "Defines None, AtEnd, and SplitWord; AtEnd replaces extra graphemes with three periods while respecting word boundaries when possible, and SplitWord may truncate inside a word."
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    "The candidate wording “long localized strings must be tested” is stronger than Roblox's official wording. The official source provides targeted test tooling and says elongation helps reveal failures, but does not define a universal release MUST.",
+    "The candidate wording “fixed text containers require overflow handling” is defensible as a design recommendation when hidden content is unacceptable, but it is not an engine invariant: Roblox permits non-fitting text and exposes several distinct measurement and rendering behaviors rather than mandating one policy.",
+    "No conflict was found between the current Creator Hub prose, current official API reference, and the Context7 Roblox material for the concrete engine behaviors reported above."
+  ],
+  "unresolved": [
+    "The official sources fetched do not define TextTruncate-versus-TextWrapped precedence or combined behavior; verify that combination in Studio before writing a rule about it.",
+    "No fetched official source establishes which overflow policy is appropriate for critical labels versus expendable labels; that remains a product/design decision.",
+    "Research-method note: Context7 resolved Roblox to /websites/create_roblox and returned relevant TextLabel, TextTruncate, AutomaticSize, and Player Emulator material. Direct official Creator Hub/API pages were then fetched for exact scope and limitations; web-search fallback was used to locate official pages where the Context7 excerpts were incomplete. No claim relies on a web-search summary or community source."
+  ]
+}

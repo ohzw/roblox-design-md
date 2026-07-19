@@ -1,0 +1,794 @@
+{
+  "decisions": [
+    {
+      "ruleId": "RUD-001",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "For on-screen text, keep authored TextSize and UITextSizeConstraint.MinTextSize at or above Roblox's recommended value of 9; whenever TextScaled is used, set an explicit minimum-size constraint and verify the resulting rendered text across every supported viewport, string, locale, and player text-size setting instead of treating an authored token as a rendered floor.",
+      "rationale": "Roblox officially recommends text not be smaller than 9 because it may be unreadable or invisible, but the engine does not enforce 9: UITextSizeConstraint.MinTextSize defaults to 1 and published TextLabel examples use smaller values. The corpus's canonical authored minima are 14–18, but these are descriptive role tokens, not accessibility thresholds, and TextScaled implementations commonly provide only MaxTextSize. TextScaled ignores TextSize and the player's Preferred Text Size adjustment, so an explicit floor plus runtime measurement is necessary. Neither 9 nor the corpus's 14–18 range is established as a universal accessibility-safe minimum.",
+      "appliesWhen": [
+        "Creator-authored on-screen TextLabel, TextButton, or TextBox content must remain readable on supported devices.",
+        "TextScaled is enabled or a fixed text token can be reduced by responsive layout, localization, or container constraints.",
+        "The UI claims conformance with an authored or project-adopted minimum rendered text size."
+      ],
+      "exceptions": [
+        "BillboardGui and other world-space text may justify TextScaled, but still require distance- and viewport-specific validation.",
+        "A project may adopt a floor above 9 for its audience, viewing distance, or platform mix; that higher value remains a project convention unless separately sourced.",
+        "Decorative text that conveys no required information may use a different treatment, but required labels, captions, values, and controls remain in scope.",
+        "The 14–18 corpus range may be cited as corpus provenance only, not as Roblox guidance or an accessibility guarantee."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-002",
+        "DES-FROSTED-001",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "DES-OBSIDIAN-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014",
+        "TypographyDesignResearch:SRC-001",
+        "TypographyDesignResearch:SRC-002",
+        "TypographyDesignResearch:SRC-003",
+        "TypographyDesignResearch:SRC-004",
+        "TypographyDesignResearch:SRC-005"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Measure TextBounds, TextFits, wrapping, clipping, and actual rendered size for every constrained or TextScaled role at the smallest supported landscape and tall/mobile viewports.",
+        "Exercise longest supported localized strings, non-Latin fallback faces, multiline wrapping, and Studio localization elongation.",
+        "Verify behavior with the player's Preferred Text Size at its supported extremes; record that TextScaled elements do not receive that preference.",
+        "Inspect captions, badges, close labels, tier labels, and HUD microcopy over representative bright, dark, saturated, high-frequency, and moving world backgrounds.",
+        "Repeat readability checks at intended handheld, desktop, and TV viewing distances before claiming an accessibility-safe project floor."
+      ]
+    },
+    {
+      "ruleId": "RUD-002",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "When two roles visible in the same reading or decision region are intended to have different rank, make that order perceptible in the final composition through size, weight, family, casing, value, stroke, placement, spacing, or container salience; do not use a 1.15 size ratio as a pass/fail threshold.",
+      "rationale": "Roblox qualitatively recommends communicating hierarchy through size, boldness, color, placement, space, and proximity, but publishes no numeric ratio. The corpus includes intentional equal and near-equal sizes, and the proposed 1.15 boundary is an analyst-selected descriptive cluster with no perceptual or runtime validation. The defensible outcome is perceivable intended order in context, not a mandatory secondary channel at a numeric cutoff.",
+      "appliesWhen": [
+        "Two or more simultaneously visible roles are intentionally ordered rather than semantic peers.",
+        "Hierarchy must survive responsive scaling, localization, or changes in the surrounding composition.",
+        "The roles occur within the same reading, choice, or workflow context."
+      ],
+      "exceptions": [
+        "Equal-sized semantic peers may remain visually equal when no ordering is intended.",
+        "Roles shown in separate containers or workflows need not be differentiated from one another solely because their numeric sizes match.",
+        "A single channel may be sufficient when it makes the intended order unambiguous in the complete composition.",
+        "Size ratios may be retained as descriptive corpus measurements, but not as official or perceptual thresholds."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-002",
+        "DES-FROSTED-001",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014",
+        "HierarchyDesignResearch:SRC-302",
+        "TypographyDesignResearch:SRC-008"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Render each ordered role pair in its real container and verify that reviewers can identify the intended rank without relying on role-token names.",
+        "Inspect the composition with color removed, then with size equalized, to identify whether the remaining hierarchy is intentional and robust rather than accidental.",
+        "Exercise font fallback, longest localized strings, TextScaled shrinkage, small landscape, and tall/mobile substitutions.",
+        "Verify that selected, disabled, pressed, and gamepad-focus treatments do not reverse or obscure the intended hierarchy."
+      ]
+    },
+    {
+      "ruleId": "RUD-003",
+      "classification": "taste-pattern",
+      "strength": "MAY",
+      "statement": "Use font weight as one optional hierarchy channel, and assign every weight change to a named role when multiple weights are used; do not claim that Roblox defines a Regular/Medium/SemiBold/Bold semantic role mapping or add weight contrast merely to satisfy a hierarchy checklist.",
+      "rationale": "Four corpus tastes use one canonical weight while others use role-specific contrasts, so weight is neither universally required nor universally dispensable. Roblox exposes weight enums and qualitatively recommends larger or bolder headings, but it does not map Regular, Medium, SemiBold, or Bold to body, label, control, or heading semantics. A chosen weight can be essential inside a particular design, especially where equal-sized roles rely on it, but hierarchy may instead be carried by other channels.",
+      "appliesWhen": [
+        "A typography system is choosing whether weight should distinguish roles.",
+        "Multiple weights are declared for one or more font families.",
+        "A single-weight display face relies on size, casing, stroke, color, placement, or component scale for hierarchy."
+      ],
+      "exceptions": [
+        "Do not remove an existing semantic weight distinction merely to make a taste single-weight.",
+        "A single-weight system is acceptable only when the required hierarchy remains perceptible through other authored channels.",
+        "A visually heavy face named Regular is still one concrete face; enum names are not perceptually equivalent across families.",
+        "Unavailable or fallback faces may require revising the project mapping rather than synthesizing or assuming a requested weight."
+      ],
+      "evidenceIds": [
+        "DES-FROSTED-001",
+        "DES-OBSIDIAN-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "DES-CANDLELIT-002",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "OBS-HONEY-LEDGER-014",
+        "TypographyDesignResearch:SRC-006",
+        "TypographyDesignResearch:SRC-007",
+        "TypographyDesignResearch:SRC-008",
+        "TypographyDesignResearch:SRC-009"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Enumerate actual family faces with TextService:GetFamilyInfoAsync and handle lookup failure before relying on a weight.",
+        "Render equal- and near-equal-size body, label, control, and heading specimens to confirm that intended distinctions remain visible.",
+        "Exercise localization fallback faces and scripts that may not provide the same requested weights.",
+        "Inspect small outlined text for closed counters, excessive darkening, or lost legibility when heavy weight and stroke are combined."
+      ]
+    },
+    {
+      "ruleId": "RUD-004",
+      "classification": "implementation-guideline",
+      "strength": "SHOULD",
+      "statement": "Assign every font family introduced into creator-authored UI to a named functional, linguistic, numeric, system, or taste-authored role, and reject additional families used solely for novelty; do not impose the corpus's one-to-three-family range as a cap.",
+      "rationale": "The corpus contains both coherent single-family systems and valid role-bound multi-family systems, including narrative/action splits, mono timers, engine-adjacent chrome, and utility text. Roblox prioritizes legibility but publishes no required family count. Named assignments make usage auditable and reduce callsite drift without falsely mandating one family or forbidding localization and functional branches.",
+      "appliesWhen": [
+        "A typography system declares more than one font family.",
+        "A component proposes a family not already assigned to its semantic role.",
+        "A role depends on monospaced numerals, script coverage, engine adjacency, branded display forms, or other family-specific behavior."
+      ],
+      "exceptions": [
+        "A single family is valid when it satisfies all required roles, glyphs, faces, and numeric behavior.",
+        "Localization fallback may introduce a family selected for script or glyph coverage rather than visual variety.",
+        "A seasonal or branded skin may introduce a contextual display family when its scope is explicit.",
+        "Short display or action text may use a decorative family that would be unsuitable for prose, provided the role boundary is enforced."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-002",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "DES-OBSIDIAN-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014",
+        "OBS-HONEY-LEDGER-015",
+        "TypographyDesignResearch:SRC-007",
+        "TypographyDesignResearch:SRC-008"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "medium",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Audit every typography callsite against its declared family role and flag unassigned family literals.",
+        "Verify family and requested-face availability in Roblox, including network-failure handling where family metadata is queried.",
+        "Render supported scripts and longest localized strings to inspect missing-glyph and fallback behavior.",
+        "Check timer, price, leaderboard, and utility roles for digit-width and alignment stability under fallback.",
+        "Render decorative families in their longest permitted role to confirm that prose or dense-copy leakage has not occurred."
+      ]
+    },
+    {
+      "ruleId": "RUD-005",
+      "classification": "accepted-conditional",
+      "strength": "AVOID",
+      "statement": "Avoid forced all-caps for prose, captions, subtitles, and long localized strings; preserve locale-appropriate source casing, and restrict intentional uppercase to short labels, acronyms, identifiers, metadata, wordmarks, or explicitly uppercase-led taste roles.",
+      "rationale": "Most corpus tastes avoid global uppercase, while Candlelit and Loud demonstrate valid localized uppercase roles. Roblox publishes no casing rule. Imported Xbox accessibility guidance recommends sentence case for lines of text and mixed case for subtitles, while explicitly exempting one- or two-word labels. The result is conditional readability and localization guidance, not a universal prohibition on uppercase.",
+      "appliesWhen": [
+        "Text contains prose, captions, subtitles, explanatory copy, or a localized string that may expand.",
+        "Code or generator policy transforms source strings to uppercase.",
+        "A taste uses casing as a hierarchy channel and its role boundary must be preserved."
+      ],
+      "exceptions": [
+        "One- or two-word controls may use uppercase when the taste assigns that treatment and localized fit is verified.",
+        "Acronyms, identifiers, player-authored names, metadata, and branded wordmarks may require source casing.",
+        "Candlelit-style action/display roles and Loud-style signage headings may intentionally be uppercase-led.",
+        "Scripts without case and locale-specific case rules must not be forced through English-centric casing logic."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-002",
+        "DES-FROSTED-001",
+        "DES-INDIGO-001",
+        "DES-LOUD-SLAB-001",
+        "DES-OBSIDIAN-001",
+        "DES-PLANTER-001",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014",
+        "TypographyDesignResearch:SRC-010",
+        "TypographyDesignResearch:SRC-011"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "medium",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Audit generator-fixed CONFIRM, PLAY, launcher, item-name, rarity, and status strings against each taste's declared casing roles.",
+        "Render longest localized strings in uppercase and source case at supported narrow widths; inspect shrinkage, wrapping, clipping, and control expansion.",
+        "Verify locale-aware case conversion for scripts and languages with non-English casing behavior.",
+        "Confirm that sentence-case normalization does not erase authored signage, acronyms, identifiers, player names, or wordmarks."
+      ]
+    },
+    {
+      "ruleId": "RUD-006",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "For every text role, choose ink, backing surface, and optional stroke against the actual composited background, and verify the final composite; use a contrasting backing or stroke for text over noisy or changing world content, but do not infer legibility from the corpus's 0–4 stroke range. If the project adopts WCAG, test 4.5:1 for normal text and 3:1 for qualifying large text as project targets, not as Roblox requirements.",
+      "rationale": "Roblox qualitatively recommends sufficient text/background contrast and advises using either a contrasting backing color or a stroke over noisy backgrounds, but it specifies neither a stroke thickness nor a numeric contrast ratio. The 0–4 corpus range contains valid unstroked and outlined taste clusters plus role-level exceptions. WCAG's 4.5:1 and 3:1 values are imported web thresholds that a project may adopt; Roblox does not state or enforce them, and WCAG's large-text definition cannot be directly converted to Roblox TextSize from the supplied evidence.",
+      "appliesWhen": [
+        "Required text appears over a surface, translucent panel, image, gradient, or changing 3D scene.",
+        "A taste uses UIStroke, glow, shadow, or a backing plate to support text legibility.",
+        "The project explicitly adopts an external numeric contrast standard."
+      ],
+      "exceptions": [
+        "A stable opaque backing with sufficient project-validated contrast may require no text stroke.",
+        "Decorative text that conveys no required information may be evaluated separately from required labels and values.",
+        "WCAG exceptions for inactive controls, incidental text, and logotypes apply only if the project adopts that external criterion and the content actually fits the exception.",
+        "Stroke thickness remains taste- and role-specific; neither 0–4 nor its median is a recommended range."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-009",
+        "DES-FROSTED-001",
+        "DES-INDIGO-002",
+        "DES-LOUD-SLAB-009",
+        "DES-OBSIDIAN-006",
+        "DES-PLANTER-011",
+        "DES-STUDDED-001",
+        "OBS-HONEY-LEDGER-014",
+        "OBS-HONEY-LEDGER-029",
+        "ColorDesignResearch:SRC-001",
+        "ColorDesignResearch:SRC-002",
+        "ColorDesignResearch:SRC-006",
+        "ColorDesignResearch:SRC-008"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Render each required text role over representative bright, dark, saturated, translucent, high-frequency, and moving backgrounds and inspect the lowest-contrast area of the final composite.",
+        "Inspect small and TextScaled glyphs for closed counters, muddy edges, clipped strokes, and loss of clarity.",
+        "Exercise Preferred Transparency and verify that backing-surface changes preserve readability.",
+        "If WCAG is project-adopted, calculate unrounded contrast on the final composited colors and document whether each text role is tested as normal or qualifying large text without converting Roblox TextSize to web points by assumption.",
+        "Inspect known unstroked exceptions and confirm that their backing and ink remain sufficient rather than applying a global stroke."
+      ]
+    },
+    {
+      "ruleId": "RUD-007",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "Within the current decision or workflow region, give primary, secondary, and tertiary interactions visibly different emphasis and avoid competing global commitment emphasis; evaluate repeated row-local actions and peer choice controls in their local context rather than enforcing one primary button per screen.",
+      "rationale": "Roblox recommends a clear interaction order with differentiated visual emphasis but does not set an exact one-primary-per-screen maximum. The corpus's recurring single global CTA is partly explained by the shared showcase fixture, while dialogs, catalogs, and peer choice sets provide valid multiple-control cases. The supported rule concerns perceivable order within a workflow, not literal button count.",
+      "appliesWhen": [
+        "A screen, modal, panel, or workflow presents actions with different intended likelihood, sequence, or commitment.",
+        "A global action appears alongside repeated item-local actions or peer choices.",
+        "Nested regions could each introduce strong focal actions that compete at the composite-screen level."
+      ],
+      "exceptions": [
+        "A primary interaction may consist of multiple same-level peer choices.",
+        "Repeated row-local purchase or management actions may recur when they remain subordinate to any global commitment action.",
+        "A secondary Cancel or No action may share geometry with a primary action when placement, value, label, or another cue preserves order.",
+        "No one-action maximum applies to an entire composite screen independent of workflow context."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-001",
+        "DES-FROSTED-002",
+        "DES-INDIGO-003",
+        "DES-LOUD-SLAB-002",
+        "DES-OBSIDIAN-002",
+        "DES-PLANTER-002",
+        "DES-STUDDED-005",
+        "OBS-HONEY-LEDGER-010",
+        "OBS-HONEY-LEDGER-012",
+        "HierarchyDesignResearch:SRC-301",
+        "HierarchyDesignResearch:SRC-302",
+        "HierarchyDesignResearch:SRC-307"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Rank action salience in the assembled screen with color removed and again with labels hidden to expose conflicting geometry or placement.",
+        "Inspect dialogs with equal-size actions, catalogs with repeated purchase controls, and nested panels for competing global commitment emphasis.",
+        "Navigate with keyboard and gamepad and verify that initial focus and focus order do not contradict the intended visual interaction order.",
+        "Test disabled, destructive, and mutually exclusive choice states so their semantics remain clear without inventing a one-button rule."
+      ]
+    },
+    {
+      "ruleId": "RUD-008",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "When spacing communicates grouping, make local relationships and semantic separations perceptibly distinct in the final layout; allow equal gaps when containment, alignment, bands, or headings already communicate the grouping, and do not use the corpus's 1.67–2.67 ratios as normative thresholds.",
+      "rationale": "Roblox independently recommends grouping related elements and using proximity, but publishes no numeric gap or ratio. The corpus numerator varies among group gaps, section gaps, and shell padding, so the measured ratios are not comparable enough to define a universal boundary. Dense ledgers and multi-level spacing systems also demonstrate that containment, alignment, and bands can carry grouping alongside or instead of a larger gap.",
+      "appliesWhen": [
+        "Spacing is intended to distinguish repeated siblings from semantic groups.",
+        "A layout contains nested groups or more than two spacing levels.",
+        "Responsive reflow or localization can alter perceived distances."
+      ],
+      "exceptions": [
+        "Equal gaps are valid when another persistent channel unambiguously carries the grouping.",
+        "Dense tables and ledgers may rely on row bands, shared alignment, dividers, or headings instead of a large gap change.",
+        "Shell padding, section separation, and immediate sibling gaps need not use one common ratio.",
+        "The 1.67–2.67 range may be reported as corpus provenance only."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-013",
+        "DES-FROSTED-015",
+        "DES-INDIGO-018",
+        "DES-LOUD-SLAB-014",
+        "DES-OBSIDIAN-015",
+        "DES-PLANTER-014",
+        "DES-STUDDED-014",
+        "OBS-HONEY-LEDGER-002",
+        "HierarchyDesignResearch:SRC-304",
+        "CompositionDesignResearch:SRC-002"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Blur or grayscale representative screens and confirm that intended groups remain recoverable from the combined spacing, containment, alignment, bands, and headings.",
+        "Exercise longest localized strings, multiline wrapping, variable-height rows, and narrow responsive reflow for collapsed or ambiguous separation.",
+        "Inspect nested groups with three or more spacing levels rather than validating only one numerator and denominator.",
+        "Verify scrolling masks, focus outlines, shadows, and clipping do not visually consume the intended separation."
+      ]
+    },
+    {
+      "ruleId": "RUD-009",
+      "classification": "generator-convention",
+      "strength": "MAY",
+      "statement": "Use 4/8/12/20/32 only as a repository fallback for generated or under-specified layouts after checking source measurements and component needs; preserve authored alternative ladders and label recurrence of the fallback as generator-policy provenance rather than independent design evidence.",
+      "rationale": "The exact ladder recurs in five tastes, but the recurrence is substantially explained by a shared schema or generator and therefore counts primarily as one policy source. Candlelit, Frosted, and Honey provide authored alternatives that would lose taste-defining density or material spacing if normalized. No spacing value in this candidate is official Roblox guidance or a perceptual threshold.",
+      "appliesWhen": [
+        "A generated or under-specified layout has no stronger source-authored spacing evidence.",
+        "Corpus aggregation counts recurrence of spacing tokens across generated tastes.",
+        "A component is being migrated between a repository fallback and a taste-authored ladder."
+      ],
+      "exceptions": [
+        "Preserve source-authored ladders such as 4/8/16/28, 4/8/12/24/48, and 4/8/12/20 when they apply.",
+        "Component-specific optical corrections and responsive overrides may sit outside a token ladder when documented and visually validated.",
+        "Do not replace a taste-defining material apron, compact ledger rhythm, safe-area padding, or content-driven spacing merely to use the fallback.",
+        "A fallback token name does not prove that every consuming component renders appropriately at every viewport."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-013",
+        "DES-FROSTED-015",
+        "DES-INDIGO-018",
+        "DES-LOUD-SLAB-014",
+        "DES-OBSIDIAN-015",
+        "DES-PLANTER-014",
+        "DES-STUDDED-014",
+        "OBS-HONEY-LEDGER-002"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "none",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Compare generated design files with pre-generator source measurements and record whether each recurring token is source-authored or policy-injected.",
+        "Render each taste's authored alternative before substituting the fallback ladder.",
+        "Exercise small landscape, tall/mobile, localization wrapping, scrolling content, and safe-area padding for every fallback use.",
+        "Audit consuming components for undocumented off-ladder values before claiming strict token adherence."
+      ]
+    },
+    {
+      "ruleId": "RUD-010",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "Assign stable named roles to saturated colors used by UI chrome, actions, states, and recurring indicators, and keep structural surfaces coherent with the taste's material family; manage item art, open rarity spectra, and promotional skins separately, and do not derive an accent-count cap from the corpus.",
+      "rationale": "Roblox recommends a limited color theme with consistent, learnable functional associations, but it does not require every saturated content color to be a semantic UI token or publish a color-count maximum. The corpus's 10–17 core RGB count does not measure accent coverage, and Obsidian and Planter demonstrate legitimate content-driven spectra. Stable roles are therefore conditional guidance for recurring UI semantics, not a universal palette size.",
+      "appliesWhen": [
+        "Saturated color communicates an action, state, recurring indicator, currency, warning, selection, or other UI-chrome role.",
+        "Several semantic color systems can appear simultaneously.",
+        "A material, event, seasonal, or promotional skin intentionally changes structural surfaces."
+      ],
+      "exceptions": [
+        "Item art, aura spectra, rarity content, and other content-driven identity colors may use a separately governed open palette.",
+        "A named event or material skin may intentionally replace the normal structural family within its declared scope.",
+        "Decorative colors that convey no recurring UI meaning need not be forced into misleading semantic role names.",
+        "No corpus token count or on-screen accent-count limit is implied."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-004",
+        "DES-FROSTED-007",
+        "DES-INDIGO-009",
+        "DES-LOUD-SLAB-007",
+        "DES-OBSIDIAN-008",
+        "DES-PLANTER-007",
+        "DES-STUDDED-008",
+        "OBS-HONEY-LEDGER-013",
+        "ColorDesignResearch:SRC-007"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Inventory actual on-screen accent coverage by semantic role and screen area rather than counting token values alone.",
+        "Render danger, currency, selection, rarity, promotion, and primary-action systems together in combinations the product permits.",
+        "Check grayscale and representative color-vision-deficiency simulations for distinctions that carry required meaning.",
+        "Audit event skins and content spectra to ensure they do not silently redefine stable UI-state associations.",
+        "Verify disabled and selected variants preserve the named role without making structural surfaces unintentionally dominant."
+      ]
+    },
+    {
+      "ruleId": "RUD-011",
+      "classification": "accepted-universal",
+      "strength": "MUST",
+      "statement": "Whenever color communicates required information, an available action, a state, or an outcome, provide a persistent non-color visual cue such as text, a symbol, a pattern, shape, position, or geometry; do not count blocked behavior or transient animation alone as the alternate cue.",
+      "rationale": "Roblox explicitly advises creators not to rely on color alone for information, actions, or outcomes and recommends non-color cues for players with color-vision deficiencies. Hue-only states have a concrete access failure mode, so a scoped MUST is justified. WCAG 1.4.1 independently corroborates the principle as imported web guidance, but the MUST already has direct Roblox support and does not import a numeric threshold.",
+      "appliesWhen": [
+        "Color distinguishes required state, action availability, currency or resource identity, validation outcome, ownership, selection, rarity needed for a decision, or other required meaning.",
+        "A persistent state must remain identifiable after transition animation ends.",
+        "The UI must remain operable or understandable for players who cannot distinguish the chosen hues."
+      ],
+      "exceptions": [
+        "Purely decorative color that conveys no required information is outside this rule.",
+        "Content color may remain stylistic when users do not need to identify or compare it to complete a task.",
+        "Animation may supplement a persistent non-color cue, but cannot be the only alternate when reduced motion or transition completion removes it.",
+        "A behavior-only disabled state is not an exception because it is invisible before attempted activation."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-006",
+        "DES-FROSTED-008",
+        "DES-INDIGO-010",
+        "DES-LOUD-SLAB-008",
+        "DES-OBSIDIAN-007",
+        "DES-PLANTER-007",
+        "DES-STUDDED-009",
+        "OBS-HONEY-LEDGER-020",
+        "OBS-HONEY-LEDGER-022",
+        "ColorDesignResearch:SRC-004",
+        "ColorDesignResearch:SRC-005",
+        "HierarchyDesignResearch:SRC-306"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Exercise default, hover, pressed, focused, selected, disabled, on/off, owned, sold-out, success, warning, and error states in grayscale.",
+        "Verify that each required currency, rarity, verdict, or resource identity retains a persistent text, symbol, pattern, shape, position, or geometry cue.",
+        "Disable or reduce animation and confirm that required state meaning remains visible after transitions complete.",
+        "Check that focus, selected, pressed, and disabled cues remain distinguishable when several states coexist.",
+        "Inspect the known hue-only verdict bands and currency markers and replace or explicitly remove their required semantic dependency on hue."
+      ]
+    },
+    {
+      "ruleId": "RUD-012",
+      "classification": "taste-pattern",
+      "strength": "SHOULD",
+      "statement": "Define a role-based silhouette vocabulary for each taste and verify that every radius, pill, and circle used by a component maps to a named role; do not prescribe two or three radius steps, the corpus's 8–20 range, or a generator-exposed full-radius token as cross-taste requirements.",
+      "rationale": "The corpus shows coherent hard-edged and rounded taste clusters, but exact step counts and radii are stylistic and partly shaped by shared generator tokens. Full rounding is sometimes exposed but unused or introduced by generated components. The useful guidance is auditable role consistency within a taste, not a universal silhouette ladder.",
+      "appliesWhen": [
+        "A taste defines finite radii, full pills, circles, badges, or other recurring silhouettes.",
+        "A component introduces UICorner or changes aspect ratio responsively.",
+        "Generator tokens expose shape values not observed in source components."
+      ],
+      "exceptions": [
+        "Avatars, circular content, pagination, notification badges, and similar functions may require a circle when that role is named.",
+        "A taste may use more or fewer finite steps than the corpus clusters when component needs justify them.",
+        "A responsive rectangle may intentionally become a pill only when the component specification names that transition.",
+        "Source-authored exceptions take precedence over an unused generator token."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-010",
+        "DES-FROSTED-010",
+        "DES-INDIGO-013",
+        "DES-LOUD-SLAB-010",
+        "DES-LOUD-SLAB-011",
+        "DES-OBSIDIAN-011",
+        "DES-PLANTER-010",
+        "DES-PLANTER-013",
+        "DES-STUDDED-010",
+        "OBS-HONEY-LEDGER-016"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "none",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Audit every UICorner and full-radius token consumption against a named component role.",
+        "Render responsive aspect-ratio changes and verify that rectangles do not accidentally become pills or circles.",
+        "Inspect circles, badges, selected outlines, and compact targets inside ClipsDescendants and scrolling masks.",
+        "Compare generated shape additions against source components before treating them as taste evidence.",
+        "Verify that focus and disabled outlines do not unintentionally alter the assigned silhouette class."
+      ]
+    },
+    {
+      "ruleId": "RUD-013",
+      "classification": "taste-pattern",
+      "strength": "SHOULD",
+      "statement": "Assign every shadow, bevel, gloss, stroke, inset, and glow to a named material, elevation, interaction-state, or salience role, and apply those roles consistently within the taste or component family; allow multiple rendering mechanisms when they support one coherent authored model, and do not turn corpus shadow or stroke counts into limits.",
+      "rationale": "The corpus demonstrates several coherent depth models, including valid multi-cue Frosted and Obsidian systems, but Roblox publishes no one-metaphor requirement. Seven-of-eight shadow absence and 2–4 stroke maxima are taste observations, not prohibitions or thresholds. Named roles prevent unassigned effects from accumulating while preserving legitimate combinations of mechanisms.",
+      "appliesWhen": [
+        "A taste or component family uses any cast shadow, inset, bevel, gloss, rim, gradient, emission, or glow to communicate material, elevation, state, or salience.",
+        "Several depth mechanisms coexist.",
+        "A press, focus, selection, disabled, modal, or stacking state changes depth cues."
+      ],
+      "exceptions": [
+        "Multiple mechanisms may coexist when they jointly express one authored material or elevation model.",
+        "Frosted-style molded slabs may combine emboss, inset values, strokes, and cast shadow.",
+        "Obsidian-style emission may combine gradient, glow, brackets, and gloss without implying cast elevation.",
+        "A local affordance such as Honey's beveled close control may intentionally differ from an otherwise flat system when its role is explicit."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-009",
+        "DES-FROSTED-011",
+        "DES-INDIGO-014",
+        "DES-LOUD-SLAB-012",
+        "DES-OBSIDIAN-012",
+        "DES-OBSIDIAN-013",
+        "DES-PLANTER-011",
+        "DES-STUDDED-011",
+        "OBS-HONEY-LEDGER-016",
+        "OBS-HONEY-LEDGER-028"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "none",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Inspect depth cues over representative real world backgrounds rather than only flat story backdrops.",
+        "Exercise pressed, focused, selected, disabled, modal, and stacked states and verify that their depth roles do not conflict.",
+        "Test scrolling and clipping boundaries for shadows, rims, gloss, and glow.",
+        "Interrupt and reverse animated press or elevation transitions and verify deterministic final depth state.",
+        "Compare generated omissions and additions against source-authored glow, blur, shadow, and bevel roles."
+      ]
+    },
+    {
+      "ruleId": "RUD-014",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "Show persistent HUD information and controls only when they are vital to the current gameplay or workflow, group them by function, and verify world occlusion, safe-area fit, and control collisions on each supported platform; treat top/side placement and a clear center as genre-dependent patterns, and use no fixed density, item-count, center-clearance, or control-zone number without a source.",
+      "rationale": "Roblox qualitatively recommends contextual vital information, grouping, reduced obstruction, dynamic safe insets, and avoiding default touch-control corners. It publishes no numeric HUD item cap, screen-coverage percentage, center-clearance threshold, or fixed joystick/jump rectangle. Only four corpus reports were numerically comparable and their counting granularity differs, so the proposed six and nine-to-ten clusters cannot be normative. Central reticles and prompts are legitimate genre-dependent counterexamples.",
+      "appliesWhen": [
+        "Persistent creator-authored HUD is shown during active gameplay or a continuous workflow.",
+        "The experience supports more than one viewport, input category, safe-area configuration, or touch-control mode.",
+        "HUD elements may overlap Core UI, device cutouts, default controls, custom controls, or world-critical content."
+      ],
+      "exceptions": [
+        "Central reticles, targeting indicators, interaction prompts, and world-aligned information may occupy the center when required by the genre.",
+        "A dense simulator or toolbox HUD may show many vital systems when grouping and runtime validation preserve usability.",
+        "Fully custom Scriptable controls are not governed by default-control corner placement, but require testing against their own runtime geometry.",
+        "Top and side placement are patterns from contextual and genre-specific guidance, not universal coordinates."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-016",
+        "DES-FROSTED-019",
+        "DES-INDIGO-023",
+        "DES-LOUD-SLAB-017",
+        "DES-LOUD-SLAB-019",
+        "DES-OBSIDIAN-018",
+        "DES-PLANTER-020",
+        "DES-STUDDED-019",
+        "OBS-HONEY-LEDGER-010",
+        "CompositionDesignResearch:SRC-001",
+        "CompositionDesignResearch:SRC-002",
+        "CompositionDesignResearch:SRC-003",
+        "CompositionDesignResearch:SRC-004",
+        "CompositionDesignResearch:SRC-005",
+        "CompositionDesignResearch:SRC-006",
+        "CompositionDesignResearch:SRC-007",
+        "CompositionDesignResearch:SRC-008",
+        "CompositionDesignResearch:SRC-009",
+        "CompositionDesignResearch:SRC-010"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Render the complete HUD at supported phone landscape, tall/mobile, tablet, desktop, console, and TV configurations applicable to the experience.",
+        "Read runtime safe insets and actual control geometry; test UserChoice, relevant default touch modes, and Scriptable controls rather than hard-coding exclusion rectangles.",
+        "Measure and visually inspect world-critical occlusion, control overlap, target capture, text bounds, and scanability during representative visually busy gameplay.",
+        "Exercise localization, input switching, Core UI visibility changes, and contextual HUD additions/removals.",
+        "Test representative real hardware for touch ergonomics and collisions that Studio emulation cannot reproduce."
+      ]
+    },
+    {
+      "ruleId": "RUD-015",
+      "classification": "accepted-conditional",
+      "strength": "SHOULD",
+      "statement": "Choose backdrop tint, opacity, panel transparency, blur, and world visibility per authored taste and workflow, and verify the composite over representative world scenes; separately define and test whether the interface is truly modal, because visual dimming and GuiButton.Modal do not make background interaction or navigation inert. Do not normalize any value from the corpus's 0–0.8 opacity range.",
+      "rationale": "The corpus supports several legitimate visual focus strategies, from no separate overlay to self-dimming panels and strong dim-plus-blur, but its opacity distribution is descriptive and partly shaped by generated fixtures. Roblox publishes no required dim amount or world-visibility threshold. GuiButton.Modal only affects mouse lock, while imported WAI-ARIA guidance describes focus containment and inert outside content; therefore visual treatment remains conditional and taste-specific, while actual modality must be implemented and verified separately.",
+      "appliesWhen": [
+        "A window, dialog, shop, inventory, confirmation, or menu appears over gameplay or other interactive UI.",
+        "The design uses a backdrop, self-dimming panel, tint, translucency, or blur to establish focus.",
+        "The workflow is intended to block background interaction or contain keyboard/gamepad navigation."
+      ],
+      "exceptions": [
+        "A nonmodal panel may intentionally leave background interaction active when the workflow specifies that behavior.",
+        "A direct-on-world or self-dimming design may omit a separate overlay when legibility and focus remain adequate.",
+        "Tap-outside dismissal is not required and may be inappropriate for irreversible or explicit-confirmation workflows.",
+        "The external WAI-ARIA modal pattern is guidance to translate, not a Roblox engine requirement or a required backdrop recipe."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-020",
+        "DES-FROSTED-023",
+        "DES-INDIGO-025",
+        "DES-LOUD-SLAB-023",
+        "DES-OBSIDIAN-010",
+        "DES-OBSIDIAN-019",
+        "DES-PLANTER-021",
+        "DES-STUDDED-018",
+        "DES-STUDDED-023",
+        "OBS-HONEY-LEDGER-028",
+        "CompositionDesignResearch:SRC-011",
+        "CompositionDesignResearch:SRC-012",
+        "CompositionDesignResearch:SRC-013"
+      ],
+      "confidence": {
+        "corpusIndependence": "medium",
+        "officialSupport": "medium",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Render the panel over bright, dark, saturated, moving, and high-frequency world scenes and inspect focus plus body-text contrast.",
+        "Exercise mouse, touch, keyboard, and gamepad background interaction, initial focus, focus containment, Escape or Back behavior, dismissal, and focus restoration according to the workflow specification.",
+        "Test stacked modals and interrupted open/close transitions for blur, dim, input-suppression, and z-order cleanup.",
+        "Exercise Preferred Transparency and reduced motion without assuming that either supplies functional modality.",
+        "Verify that no-overlay examples remain deliberate source treatments rather than missing generated backdrops."
+      ]
+    },
+    {
+      "ruleId": "RUD-016",
+      "classification": "generator-convention",
+      "strength": "AVOID",
+      "statement": "Avoid counting the recurring three-story showcase, launcher count, catalog count, global CTA, or CONFIRM copy as independent taste evidence; count shared fixture structure once as generator policy, label every normalized addition or substitution, and preserve source-observed HUD zones, catalog structure, and casing when source anatomy conflicts.",
+      "rationale": "The repeated showcase composition originates from shared fixtures and therefore represents one generator-policy source rather than eight independent design decisions. Source-native anatomies directly contradict several normalized additions and responsive substitutions. This is an evidence-governance convention, not a claim that the fixture itself is unusable for comparing component styling.",
+      "appliesWhen": [
+        "Aggregating composition evidence across generated tastes.",
+        "Generating or reviewing normalized HUD, catalog, or dialog stories.",
+        "A fixture adds anatomy, strings, actions, or zones not observed in the source."
+      ],
+      "exceptions": [
+        "A shared fixture may be used to compare component styling when its normalized anatomy is explicitly labeled and not counted as design consensus.",
+        "A source gap may be filled for demonstration when the addition is marked as an implementation substitution rather than observed evidence.",
+        "Fixture structure may be retained when it independently matches source-observed anatomy.",
+        "Responsive substitutions are permitted when required, but must remain labeled and must not overwrite the source record."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-017",
+        "DES-FROSTED-005",
+        "DES-FROSTED-021",
+        "DES-INDIGO-026",
+        "DES-INDIGO-027",
+        "DES-LOUD-SLAB-005",
+        "DES-OBSIDIAN-004",
+        "DES-OBSIDIAN-020",
+        "DES-PLANTER-005",
+        "DES-STUDDED-020",
+        "DES-STUDDED-021",
+        "OBS-HONEY-LEDGER-001",
+        "OBS-HONEY-LEDGER-011"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "none",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Compare every generated story against source screen-pattern evidence and record each normalized addition, omission, and substitution.",
+        "Review Indigo's four-column hub, Obsidian's banner stack, Studded's descriptive rows, Honey's catalog/detail/action split, and source HUD hotbars before promoting fixture anatomy to a rule.",
+        "Exercise responsive substitutions at small landscape and tall/mobile widths and label source divergence.",
+        "Inspect normalized strings for casing, localization, and orphan-grid artifacts unrelated to taste."
+      ]
+    },
+    {
+      "ruleId": "RUD-017",
+      "classification": "accepted-universal",
+      "strength": "MUST",
+      "statement": "For every control reachable through a supported keyboard or gamepad path, provide a persistent visible current-focus indicator and verify navigation order, scrolling reveal, activation, modal containment, restoration, and separation from selected, pressed, hover, and disabled states; do not use pointer-press feedback as a substitute for focus.",
+      "rationale": "Roblox officially recommends visible feedback when an interactable is focused, and inability to locate the currently activatable control is a concrete non-pointer access and functional failure. The corpus's absent focus treatments are substantially explained by one harness or component-policy gap and cannot justify omission. Exact indicator color, thickness, contrast, and animation remain taste-specific, while hover is pointer-specific rather than universal.",
+      "appliesWhen": [
+        "Keyboard or gamepad is a supported input path for an interactable control.",
+        "Focus can move within a screen, scrolling container, modal, or stacked interface.",
+        "Selected, pressed, hover, or disabled styling could be confused with current navigation focus."
+      ],
+      "exceptions": [
+        "Touch-only controls with no supported keyboard or gamepad path do not require hover or non-pointer focus styling.",
+        "Mouse hover need not exist on touch and is not equivalent to keyboard/gamepad focus.",
+        "Selected and pressed treatments may share visual primitives with focus only when the current focus remains unambiguous in every combined state.",
+        "Non-selectable and disabled controls need not receive focus, but navigation must skip them predictably."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-023",
+        "DES-FROSTED-027",
+        "DES-INDIGO-030",
+        "DES-LOUD-SLAB-026",
+        "DES-OBSIDIAN-022",
+        "DES-PLANTER-022",
+        "DES-STUDDED-025",
+        "OBS-HONEY-LEDGER-020",
+        "OBS-HONEY-LEDGER-035",
+        "HierarchyDesignResearch:SRC-303",
+        "CompositionDesignResearch:SRC-012"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "high",
+        "runtimeSupport": "none",
+        "overall": "high"
+      },
+      "requiredValidation": [
+        "Navigate every representative screen end to end with keyboard and gamepad without a pointer and verify visible focus at every step.",
+        "Exercise focus entry, order, activation, scrolling reveal, modal containment, modal close, restoration, and stacked-modal transitions.",
+        "Combine focus with selected, pressed, hover, and disabled states and confirm that current focus remains uniquely identifiable.",
+        "Interrupt any animated focus transition and confirm that the indicator remains attached to the current control.",
+        "Verify that offscreen or virtualized items are revealed before activation and that disabled controls are skipped."
+      ]
+    },
+    {
+      "ruleId": "RUD-018",
+      "classification": "generator-convention",
+      "strength": "SHOULD",
+      "statement": "Treat 44 pixels as an adopted repository interaction-target convention only, not as official Roblox or universal accessibility guidance; for every touch-supported control, verify the actual activated region, spacing, clipping, overlap, and neighboring capture on target devices, and use a larger invisible root only when it does not steal adjacent input.",
+      "rationale": "The explicit 44-pixel floors substantially originate from one shared repository or design-schema policy, and the supplied official research does not establish 44 as a Roblox platform minimum. Corpus inspection finds nominal violations and valid compact-visible/larger-root patterns, but no runtime touch exercise establishes effective hit bounds. A repository SHOULD may enforce its own convention while keeping official safety status unresolved.",
+      "appliesWhen": [
+        "A project adopts the repository's 44-pixel target convention.",
+        "A control supports touch input, especially compact tabs, toggles, buy pills, currency buttons, close glyphs, or adjacent controls.",
+        "A visible control uses a transparent or larger interactive root to satisfy the project convention."
+      ],
+      "exceptions": [
+        "Mouse precision and gamepad focus have different target concerns; the 44-pixel repository convention is specifically evaluated for touch-supported controls.",
+        "A project may adopt a different target convention when separately sourced and documented.",
+        "A compact visible affordance may sit inside a larger interactive root when the root remains unclipped, nonoverlapping, and unambiguous.",
+        "The presence of a 44-pixel token or authored statement does not prove that a component's runtime hit region honors it."
+      ],
+      "evidenceIds": [
+        "DES-CANDLELIT-014",
+        "DES-FROSTED-017",
+        "DES-INDIGO-020",
+        "DES-LOUD-SLAB-016",
+        "DES-OBSIDIAN-016",
+        "DES-OBSIDIAN-017",
+        "DES-PLANTER-016",
+        "DES-STUDDED-015",
+        "OBS-HONEY-LEDGER-006"
+      ],
+      "confidence": {
+        "corpusIndependence": "low",
+        "officialSupport": "none",
+        "runtimeSupport": "none",
+        "overall": "medium"
+      },
+      "requiredValidation": [
+        "Inspect AbsoluteSize and actual activated bounds for tabs, toggle tracks, currency plus buttons, buy pills, close glyphs, and every other compact touch control.",
+        "Exercise touch at the smallest supported landscape and tall/mobile resolutions on representative real phones and tablets.",
+        "Verify target spacing, clipping by parents or scrolling masks, transformed bounds, overlap, and which neighboring control captures edge taps.",
+        "Test expanded invisible roots with adjacent controls and scrolling gestures to ensure they do not steal input.",
+        "Record compliance as a repository convention result, not as Roblox platform or universal accessibility conformance."
+      ]
+    }
+  ]
+}
